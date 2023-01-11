@@ -1,0 +1,82 @@
+{
+    "data": [
+      {
+        "label": "Sare",
+        "value": "sare",
+        "declaratie": {
+            "proteine": 0,
+            "lipide": 0,
+            "acizi-grasi-saturati": 0,
+            "glucide": 0,
+            "zaharuri": 0,
+            "calorii": 0
+        },
+        "id": 1
+      },
+      {
+        "label": "Piper",
+        "value": "piper",
+        "declaratie": {
+            "proteine": 0,
+            "lipide": 0,
+            "acizi-grasi-saturati": 0,
+            "glucide": 0,
+            "zaharuri": 0,
+            "calorii": 0
+        },
+        "id": 2
+      },
+      {
+        "label": "Orez",
+        "value": "orez",
+        "declaratie": {
+            "proteine": 0,
+            "lipide": 0,
+            "acizi-grasi-saturati": 0,
+            "glucide": 0,
+            "zaharuri": 0,
+            "calorii": 0
+        },
+        "id": 3
+      },
+      {
+        "label": "Apa",
+        "value": "apa",
+        "declaratie": {
+            "proteine": 0,
+            "lipide": 0,
+            "acizi-grasi-saturati": 0,
+            "glucide": 0,
+            "zaharuri": 0,
+            "calorii": 0
+        },
+        "id": 4
+      },
+      {
+        "label": "Morcov",
+        "value": "morcov",
+        "declaratie": {
+            "proteine": 0,
+            "lipide": 0,
+            "acizi-grasi-saturati": 0,
+            "glucide": 0,
+            "zaharuri": 0,
+            "calorii": 0
+        },
+        "id": 5
+      },
+      {
+        "label": "Ceapa",
+        "value": "ceapa",
+        "declaratie": {
+            "proteine": 0,
+            "lipide": 0,
+            "acizi-grasi-saturati": 0,
+            "glucide": 0,
+            "zaharuri": 0,
+            "calorii": 0
+        },
+        "id": 6
+      }
+    ]
+}

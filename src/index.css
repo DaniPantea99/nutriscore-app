@@ -1,5 +1,10 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,7 +12,85 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.create-recipe-container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  padding: 0rem 1rem;
+  background-color: white;
+  box-shadow: 0 0 2px 0 gray;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover{
+  background-color: rgb(134, 210, 249);
+}
+
+
+
+
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+  height: 500px;
+  padding: 1.5rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-shadow: 0 0 2px 0 gray;
+  border-radius: 1rem;
+}
+
+.recipe-container::-webkit-scrollbar {
+  display: none;
+}
+
+.recipe-header input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.recipe-main {
+  max-width: 100%;
+}
+
+.mod-de-preparare {
+  padding: 0.5rem;
+  min-width: 100%;
+  max-width: 100%;
+  margin: 1rem 0 1rem 0;
+  border-radius: 10px;
+}
+
+.ingredient-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.ingredient-details-container {
+  display: flex;
+  align-items: center;
+  gap: 5px
+}
+
+.recipe-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; 
+}
+
+.recipe-footer button {
+  padding: 0.5rem 0;
+  width: 100%;
 }
