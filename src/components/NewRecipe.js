@@ -1,52 +1,53 @@
-import React from 'react'
-import Ingredient from './Ingredient'
-import SearchIngredient from '../components/SearchIngredient';
+import React from 'react';
+import SearchItem from './SearchItem';
+import Alergeni from './Alergeni';
+import { useSelector } from 'react-redux';
+import Ingredient from './Ingredient';
 
 
 function NewRecipe() {
+
+  let listOfIngredients = [];
+
+  // function AddIngredientHandler() {
+  //   const inputValue = selected.product_name
+  //   listOfIngredients.push(inputValue)
+  //   console.log(listOfIngredients)
+  // }
+
+  const {filtered} = useSelector((state) => state.ingredients)
+
   return (
-    <div className='rounded-xl p-4 w-96 bg-blue-300 shadow-lg'>
-        
-        <h2 className='text-center py-2'>Titlu reteta</h2>
+    <div className="rounded-xl p-4 w-96 bg-blue-300 shadow-lg">
+      <h2 className="text-center py-2">Titlu reteta</h2>
 
-        <SearchIngredient />
-   
-        <div className='flex flex-col mb-4 mt-4'>
-            {/* aici va fi un array map peste lista de ingrediente care se va salva intr-un array pana la crearea retetei  */}
-                <Ingredient
-                    index="1"
-                    label="Sare"
-                />
-                <Ingredient
-                    index="2"
-                    label="Piper"
-                />
-                <Ingredient
-                    index="3"
-                    label="Orez"
-                />
-                <Ingredient
-                    index="4"
-                    label="Ceapa"
-                />
-                <Ingredient
-                    index="5"
-                    label="Morcov"
-                />
-                <Ingredient
-                    index="6"
-                    label="Apa"
-                />
-        </div>
+      <SearchItem 
+        database={filtered}
+      />
 
-        <textarea className='p-2 outline-0 rounded-lg w-full h-40 shadow-md' name="mod-de-preparare" id="mod-de-preparare" cols="30" rows="10" placeholder='Mod de preparare...'></textarea>
+<div className="list-of-ingredients flex flex-col mb-4 mt-4">
 
-        <div className='flex justify-between py-2'>
-            <button className='p-2 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md'>Creaza reteta</button>
-            <button className='p-2 hover:bg-red-400 active:bg-red-500 hover:text-white rounded-lg transition-all shadow-md'>Anuleaza</button>
-        </div>
+{/* {listOfIngredients.length !== 0 &&
+} */}
+
+{listOfIngredients.map((item, index) => <Ingredient key={index} index={index} label={item} />)}
+
+
+</div>
+
+
+      <Alergeni />
+
+      <div className="flex justify-between py-2">
+        <button className="p-2 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md">
+          Creaza reteta
+        </button>
+        <button className="p-2 hover:bg-red-400 active:bg-red-500 hover:text-white rounded-lg transition-all shadow-md">
+          Anuleaza
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default NewRecipe
+export default NewRecipe;

@@ -2,13 +2,16 @@ import React from 'react'
 
 function EditRecipe() {
   return (
-    <div>
-        <h2>Pilaf de Orez</h2>
+    <div className='relative bg-blue-300 shadow-lg border-collapse w-4/5 rounded-xl mx-auto p-8'>
+
+        <button className='absolute right-4 top-3 p-2 rounded-md bg-black text-white hover:bg-red-400 active:bg-red-500'>X</button>
+
+        <h2 className='text-center font-bold text-2xl'>Pilaf de Orez</h2>
         
-        <div>
-            <table>
+        <div className='edit-recipe-table my-4'>
+            <table className='w-full text-left'>
                 <thead>
-                    <tr>
+                    <tr className='border-b border-b-stone-500'>
                         <th>Lista ingrediente</th>
                         <th>U.M grame</th>
                         <th>Proteine</th>
@@ -89,8 +92,8 @@ function EditRecipe() {
                     </tr>
 
                 </tbody>
-                <tfoot>
-                    <tr>
+                <tfoot className='font-bold'>
+                    <tr className='border-t border-t-stone-500'>
                         <td>Total</td>
                         <td>Suma UM grame</td>
                         <td>Suma proteine</td>
@@ -104,6 +107,15 @@ function EditRecipe() {
             </table>
         </div>
 
+        <div className='edit-recipe-footer flex justify-between py-2'>
+            <div className='utility-buttons flex gap-3'>
+                <button className='p-2 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md'>Print</button>
+                <button className='p-2 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md'>QR code</button>
+                <button className='p-2 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md'>Edit</button>
+            </div>
+            <button className='p-2 hover:bg-red-400 active:bg-red-500 hover:text-white rounded-lg transition-all shadow-md'>Delete</button>
+
+        </div>
 
 
     </div>

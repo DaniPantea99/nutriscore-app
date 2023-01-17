@@ -1,0 +1,123 @@
+{
+  "data": [
+    {
+      "product_name": "Apă",
+      "lang": "fr",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "594/232/500/1407/front_fr.3.400.jpg",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": ""
+  },
+  {
+    "product_name": "Orez mare",
+    "lang": "en",
+    "creator": "foodvisor",
+    "brands": "Scotti",
+    "image_front_url": "594/183/200/0545/front_en.3.400.jpg",
+    "packaging_tags": [],
+    "quantity": "",
+    "sursa": "OpenFoodFacts",
+    "ingredients_no": 0,
+    "aditives": [],
+    "has_pork": 0,
+    "has_chicken": 0,
+    "has_cow": 0,
+    "ingredients": "",
+    "ingredients_str": "",
+    "is_vegan": 0,
+    "is_vegetarian": 0,
+    "labels": "",
+    "nutriments": [
+        {
+            "name": "carbohydrates",
+            "quantity_100": 30
+        },
+        {
+            "name": "fat",
+            "quantity_100": 1
+        },
+        {
+            "name": "energy-kcal",
+            "quantity_100": 334
+        },
+        {
+            "name": "saturated-fat",
+            "quantity_100": 2
+        },
+        {
+            "name": "proteins",
+            "quantity_100": 14
+        },
+        {
+            "name": "sugars",
+            "quantity_100": 3
+        }
+    ],
+    "nutri_energy-kcal": 334,
+    "nutri_sugars": 3,
+    "calories": 334,
+    "burn_calories": {
+        "walking": "81.80",
+        "pedalling": "47.71",
+        "running": "35.79"
+    }
+},
+{
+  "product_name": "Sare",
+  "lang": "ro",
+  "creator": "openfoodfacts-contributors",
+  "brands": "peny",
+  "image_front_url": "009/439/369/8814/front_ro.8.400.jpg",
+  "packaging_tags": [
+      "en:plastic"
+  ],
+  "quantity": ",400g",
+  "sursa": "OpenFoodFacts",
+  "ingredients_no": 0,
+  "aditives": [],
+  "has_pork": 0,
+  "has_chicken": 0,
+  "has_cow": 0,
+  "ingredients": "",
+  "ingredients_str": "",
+  "is_vegan": 0,
+  "is_vegetarian": 0,
+  "labels": [
+      "sare"
+  ]
+},
+{
+  "product_name": "Piper negru",
+  "lang": "fr",
+  "creator": "kiliweb",
+  "brands": "",
+  "image_front_url": "642/210/200/0865/front_fr.3.400.jpg",
+  "packaging_tags": [],
+  "quantity": "",
+  "sursa": "OpenFoodFacts",
+  "ingredients_no": 0,
+  "aditives": [],
+  "has_pork": 0,
+  "has_chicken": 0,
+  "has_cow": 0,
+  "ingredients": "",
+  "ingredients_str": "",
+  "is_vegan": 0,
+  "is_vegetarian": 0,
+  "labels": ""
+}
+  ]
+}
+

@@ -1,34 +1,58 @@
-import React from 'react';
-import SearchIngredient from '../components/SearchIngredient';
+import React, {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {loadIngredients} from '../actions/ingredientsAction'
 import NewRecipe from '../components/NewRecipe';
 import RecipeCard from '../components/RecipeCard';
 import EditRecipe from '../components/EditRecipe';
 
 function CreateRecipe() {
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(loadIngredients())
+  }, [dispatch])
+
+  const [render, setRender] = useState(false)
+
+  function AddNewRecipeHandler() {
+    const isEmpty = str => !str.trim().length;
+    const inputValue = document.querySelector('.recipe-name').value
+    if(isEmpty(inputValue)) {
+      alert("Input is empty. Please add a short name for your new recipe!")
+    }else {
+      setRender(true)
+    }
+  }
+
   return (
     <div className="flex flex-col">
 
       <div className="p-8 bg-blue-300">
         <div className="flex justify-center gap-4">
           <input
-            className="outline-none p-2 cursor-default overflow-hidden rounded-lg text-left shadow-md sm:text-sm"
+            className="recipe-name outline-none p-2 cursor-default overflow-hidden rounded-lg text-left shadow-md sm:text-sm"
             type="text"
             placeholder="Denumire reteta..."
           />
-        <button className="px-6 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md">
+        <button onClick={AddNewRecipeHandler} className="px-6 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md">
           Creaza reteta noua
         </button>
         </div>
       </div>
 
-      <div className="p-12 flex justify-between">
+      <div className="p-12 flex justify-between gap-4">
         <div>
-          <NewRecipe />
+          {render !== false &&
+            <NewRecipe />
+          }
         </div>
 
         <div className="lista-retete-container">
           <h2 className="text-center font-bold text-3xl mb-8">Rețete create</h2>
-          <div className="grid gap-4 grid-cols-3">
+          
+          <div className='container mx-auto'>
+
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
             <RecipeCard
               // numeReteta={numeReteta}
               // ingrediente={listaIngrediente}
@@ -69,6 +93,8 @@ function CreateRecipe() {
           
          
           </div>
+          </div>
+
         </div>
       </div>
 
