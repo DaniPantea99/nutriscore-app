@@ -2,8 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-
-export default function SearchItem({database}) {
+export default function SearchItem({ database }) {
   const [selected, setSelected] = useState(database[0]);
   const [query, setQuery] = useState('');
 
@@ -16,7 +15,7 @@ export default function SearchItem({database}) {
             .replace(/\s+/g, '')
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
-        
+
   return (
     <div className="flex mx-auto w-max gap-1">
       <Combobox value={selected} onChange={setSelected}>
@@ -24,7 +23,7 @@ export default function SearchItem({database}) {
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
               className="input w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 outline-none"
-              placeholder='Cauta...'
+              placeholder="Cauta..."
               displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}
             />
@@ -85,7 +84,9 @@ export default function SearchItem({database}) {
           </Transition>
         </div>
       </Combobox>
-      <button className='px-6 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md'>Adauga</button>
+      <button className="px-6 hover:bg-blue-400 active:bg-blue-500 hover:text-white rounded-lg transition-all shadow-md">
+        Adauga
+      </button>
     </div>
-  )
+  );
 }

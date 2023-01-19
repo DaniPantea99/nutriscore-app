@@ -7,6 +7,8 @@ function EditRecipe() {
         <button className='absolute right-4 top-3 p-2 rounded-md bg-black text-white hover:bg-red-400 active:bg-red-500'>X</button>
 
         <h2 className='text-center font-bold text-2xl'>Pilaf de Orez</h2>
+
+
         
         <div className='edit-recipe-table my-4'>
             <table className='w-full text-left'>

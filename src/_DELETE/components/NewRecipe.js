@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SearchItem from './SearchItem';
 import Alergeni from './Alergeni';
 import { useSelector } from 'react-redux';
 import Ingredient from './Ingredient';
 
 
-function NewRecipe() {
+function NewRecipe({name}) {
 
-  let listOfIngredients = [];
+  // let listOfIngredients = [];
+
+  const [listOfIngredients, setListOfIngredients] = useState(['apa', 'sare'])
+
+
 
   // function AddIngredientHandler() {
   //   const inputValue = selected.product_name
@@ -19,7 +23,7 @@ function NewRecipe() {
 
   return (
     <div className="rounded-xl p-4 w-96 bg-blue-300 shadow-lg">
-      <h2 className="text-center py-2">Titlu reteta</h2>
+      <h2 className="text-center py-2 font-bold first-letter:capitalize">{name}</h2>
 
       <SearchItem 
         database={filtered}
@@ -27,10 +31,10 @@ function NewRecipe() {
 
 <div className="list-of-ingredients flex flex-col mb-4 mt-4">
 
-{/* {listOfIngredients.length !== 0 &&
-} */}
+{listOfIngredients.length !== 0 &&
 
-{listOfIngredients.map((item, index) => <Ingredient key={index} index={index} label={item} />)}
+listOfIngredients.map((item, index) => <Ingredient key={index} index={index+1} label={item} />)
+}
 
 
 </div>

@@ -1,9 +1,9 @@
-import CreateRecipe from "./pages/CreateRecipe";
+import Home from "./pages/Home.js";
 
 function App() {
   return (
     <div className="App">
-      <CreateRecipe />
+      <Home />
     </div>
   );
 }

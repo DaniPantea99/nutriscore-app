@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {loadIngredients} from '../actions/ingredientsAction'
-import NewRecipe from '../components/NewRecipe';
-import RecipeCard from '../components/RecipeCard';
-import EditRecipe from '../components/EditRecipe';
+import {loadIngredients} from '../../actions/ingredientsAction'
+import NewRecipe from '../NewRecipe';
+import RecipeCard from '../RecipeCard';
+import EditRecipe from '../EditRecipe';
 
 function CreateRecipe() {
 
@@ -13,14 +13,17 @@ function CreateRecipe() {
   }, [dispatch])
 
   const [render, setRender] = useState(false)
+  const [recipeName, setRecipeName] = useState('')
 
   function AddNewRecipeHandler() {
     const isEmpty = str => !str.trim().length;
-    const inputValue = document.querySelector('.recipe-name').value
-    if(isEmpty(inputValue)) {
+    let inputValue = document.querySelector('.recipe-name')
+    if(isEmpty(inputValue.value)) {
       alert("Input is empty. Please add a short name for your new recipe!")
     }else {
       setRender(true)
+      setRecipeName(inputValue.value)
+      inputValue = ""
     }
   }
 
@@ -43,7 +46,9 @@ function CreateRecipe() {
       <div className="p-12 flex justify-between gap-4">
         <div>
           {render !== false &&
-            <NewRecipe />
+            <NewRecipe
+            name={recipeName}
+            />
           }
         </div>
 
