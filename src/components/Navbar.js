@@ -59,11 +59,11 @@ function Navbar({ children }) {
               key={index}
               className={({ isActive }) => {
                 return (
-                  'flex py-3 px-4 rounded-lg transition-all duration-300 hover:bg-blue-500 hover:text-white hover:rounded-lg items-center h-16 ' +
-                  (isActive
+                  `flex py-3 px-4 rounded-lg transition-all duration-300 hover:bg-blue-500 hover:text-white hover:rounded-lg items-center h-16 
+                  ${(isActive
                     ? ' bg-blue-800 text-white hover:bg-blue-800'
-                    : undefined)
-                );
+                    : undefined)}
+                `);
               }}
             >
               <div className="text-2xl">{item.icon}</div>
