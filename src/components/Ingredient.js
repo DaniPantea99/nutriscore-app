@@ -2,7 +2,7 @@ import React from 'react'
 
 function Ingredient({label}) {
   return (
-    <div className='flex justify-between pt-1 pb-1 gap-3'>
+    <div className='flex justify-between bg-blue-300 rounded-2xl p-3 items-center gap-3 h-10'>
         <div className='flex w-full'>
 
             <label className='inline-block w-full' htmlFor={label}>{label}</label>

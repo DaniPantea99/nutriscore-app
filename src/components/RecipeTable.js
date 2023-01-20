@@ -1,15 +1,14 @@
-import React from 'react'
-import RecipeItem from './RecipeItem'
+import React from 'react';
+import RecipeItem from './RecipeItem';
 
 function RecipeTable() {
   return (
-    <div>RecipeTable:
-       <p>Table header</p>
-        {/* facem map pe lista de retete salvate */}
-        <RecipeItem />
-
+    <div>
+      <p>Table header</p>
+      {/* facem map pe lista de retete salvate */}
+      <RecipeItem />
     </div>
-  )
+  );
 }
 
-export default RecipeTable
+export default RecipeTable;

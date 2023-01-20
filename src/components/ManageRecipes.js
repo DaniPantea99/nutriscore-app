@@ -1,21 +1,27 @@
-import React from 'react'
-import RecipeTable from './RecipeTable'
-import SearchItem from './SearchItem'
+import React from 'react';
+import RecipeTable from './RecipeTable';
 
-function ManageRecipes() {
+function ManageRecipes({ state }) {
   return (
-    <div>ManageRecipes: 
+    <div className="bg-gray-200 p-11">
+      <div>
+        ManageRecipes:
         <p>-Some description</p>
-        <p>-Create New recipe Btn</p>
-        <p>-search component</p>
-        <SearchItem />
-        <p>-recipes table</p>
+        <button
+          className="bg-blue-200 p-4 rounded-3xl"
+          onClick={() => state(true)}
+        >
+          Create recipe
+        </button>
+      </div>
+
+      <p>-search component</p>
+
+      <div>
         <RecipeTable />
-        
-        
-        
+      </div>
     </div>
-  )
+  );
 }
 
-export default ManageRecipes
+export default ManageRecipes;
