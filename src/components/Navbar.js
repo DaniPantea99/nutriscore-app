@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   BsFillArrowLeftCircleFill,
   BsFillGrid1X2Fill,
   BsPersonCircle,
   BsGearFill,
-} from 'react-icons/bs';
+} from "react-icons/bs";
 
 function Navbar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,18 +13,18 @@ function Navbar({ children }) {
 
   const menuItem = [
     {
-      path: '/',
-      name: 'dashboard',
+      path: "/",
+      name: "dashboard",
       icon: <BsFillGrid1X2Fill />,
     },
     {
-      path: '/user',
-      name: 'user',
+      path: "/user",
+      name: "user",
       icon: <BsPersonCircle />,
     },
     {
-      path: '/settings',
-      name: 'settings',
+      path: "/settings",
+      name: "settings",
       icon: <BsGearFill />,
     },
   ];
@@ -33,12 +33,12 @@ function Navbar({ children }) {
     <div className="flex">
       <div
         className={`h-screen bg-gray-200 text-black transition-all duration-300 px-2 ${
-          isOpen && 'w-fit'
+          isOpen && "w-fit"
         }`}
       >
         <div className="flex py-5 px-4 justify-between items-center h-32">
           <div
-            className={`text-3xl cursor-default ${isOpen ? 'block' : 'hidden'}`}
+            className={`text-3xl cursor-default ${isOpen ? "block" : "hidden"}`}
           >
             Logo
           </div>
@@ -46,7 +46,7 @@ function Navbar({ children }) {
             <BsFillArrowLeftCircleFill
               onClick={toggleOpen}
               className={`transition-all duration-500 ${
-                !isOpen && 'rotate-180'
+                !isOpen && "rotate-180"
               }`}
             />
           </div>
@@ -69,7 +69,7 @@ function Navbar({ children }) {
               <div className="text-2xl">{item.icon}</div>
               <div
                 className="capitalize text-xl ml-3"
-                style={{ display: isOpen ? 'block' : 'none' }}
+                style={{ display: isOpen ? "block" : "none" }}
               >
                 {item.name}
               </div>
