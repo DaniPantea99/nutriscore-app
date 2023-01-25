@@ -6,7 +6,7 @@ import Settings from './pages/Settings';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Navbar>
         <Routes>
           <Route path="/" exact element={<Dashboard />} />

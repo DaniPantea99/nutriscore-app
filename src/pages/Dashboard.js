@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import ManageRecipes from '../components/ManageRecipes';
 import CreateRecipe from '../components/CreateRecipe';
 import { loadIngredients } from '../actions/ingredientsAction';
 import { useDispatch } from 'react-redux';
+import { Transition } from '@headlessui/react';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -19,16 +20,29 @@ function Dashboard() {
         <ManageRecipes state={setShowSidebar} />
       </div>
 
-      <div
-        className={`w-full lg:w-[70%] xl:w-[60%] 2xl:w-[50%]
-      fixed h-full top-0 right-0 ease-in-out duration-300 
-      ${showSidebar ? 'translate-x-0' : 'translate-x-full'}
-      `}
+      <Transition
+        as={Fragment}
+        show={showSidebar}
+        enter="transition-opacity duration-300 ease-in-out"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-300 ease-in-out"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
       >
-        <CreateRecipe state={setShowSidebar} />
-      </div>
+        <div
+          className={`w-full lg:w-[70%] xl:w-[60%] 2xl:w-[50%]
+        fixed h-full top-0 right-0
+        `}
+        >
+          <CreateRecipe state={setShowSidebar} />
+        </div>
+      </Transition>
     </div>
   );
 }
 
 export default Dashboard;
+
+// ease-in-out duration-300
+// ${showSidebar ? 'translate-x-0' : 'translate-x-full'}
