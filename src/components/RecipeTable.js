@@ -10,47 +10,12 @@ import {
   FaSortUp,
   FaSortDown,
 } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
-const list = [
-  {
-    recipeName: "Pilaf de orez",
-    qty: "200g",
-    date: "20/01/23",
-  },
-  {
-    recipeName: "Ciorba",
-    qty: "100g",
-    date: "25/01/23",
-  },
-  {
-    recipeName: "Fasole verde",
-    qty: "500g",
-    date: "26/01/23",
-  },
-  {
-    recipeName: "Fasole cu ciolan",
-    qty: "250g",
-    date: "19/01/23",
-  },
-  {
-    recipeName: "Sos",
-    qty: "300g",
-    date: "15/01/23",
-  },
-  {
-    recipeName: "Salata de vinete",
-    qty: "50g",
-    date: "24/01/23",
-  },
-  {
-    recipeName: "Meniu 1",
-    qty: "370g",
-    date: "11/01/23",
-  },
-]
 
-const generateData = () =>
-    list.map((item) => ({
+const generateData = ({filteredRecipes}) =>
+
+  filteredRecipes.map((item) => ({
     name: item.recipeName,
     qty: item.qty,
     date: item.date,
@@ -148,11 +113,11 @@ function TableComponent({
   prepareRow,
 }) {
   return (
-    <div className="w-full min-w-[30rem] bg-gray-100 rounded-xl p-1">
+    <div className="w-full min-w-[30rem] rounded-lg ">
       <table {...getTableProps()} className="w-full">
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr {...headerGroup.getHeaderGroupProps()} className="bg-blue-200">
               {headerGroup.headers.map((column) => (
                 <th 
                   {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -187,12 +152,12 @@ function TableComponent({
           {rows.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} className="hover:bg-blue-200">
+              <tr {...row.getRowProps()} className="bg-blue-200 border-t-8 border-gray-200 hover:bg-red-300">
                 {row.cells.map((cell) => {
                   return (
                     <td
                       {...cell.getCellProps()}
-                      className="p-3 text-sm font-normal text-gray-700 first:rounded-l-lg last:rounded-r-lg"
+                      className="p-3 text-sm font-normal text-gray-700 first:rounded-l-xl last:rounded-r-xl"
                     >
                       {cell.render("Cell")}
                     </td>
@@ -208,7 +173,9 @@ function TableComponent({
 }
 
 function Table() {
-  const data = useMemo(() => generateData(), []);
+const { filteredRecipes } = useSelector((state) => state.recipes);
+
+  const data = useMemo(() => generateData({filteredRecipes}), [filteredRecipes]);
   const columns = useMemo(getColumns, []);
   const {
     getTableProps,
@@ -249,8 +216,10 @@ function Table() {
 
 export default function TablePresentation() {
   return (
-    <div className="flex flex-col py-4 sm:py-0">
-      <Table />
+    <div className="flex flex-col sm:py-0">
+      <Table
+
+      />
     </div>
   );
 }

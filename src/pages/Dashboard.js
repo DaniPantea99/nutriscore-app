@@ -1,15 +1,9 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import CreateRecipe from '../components/CreateRecipe';
-import { loadIngredients } from '../actions/ingredientsAction';
-import { useDispatch } from 'react-redux';
 import { Transition } from '@headlessui/react';
 import RecipeTable from '../components/RecipeTable';
 
 function Dashboard() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadIngredients());
-  }, [dispatch]);
 
   const [showSidebar, setShowSidebar] = useState(false);
 

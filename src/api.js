@@ -3,7 +3,8 @@
 
 
 const InfoConsIngredientsURL = "http://localhost:3000/data"
+const InfoConsRecipesURL = "http://localhost:3000/recipes"
 
 
 
-export default InfoConsIngredientsURL
+export { InfoConsIngredientsURL, InfoConsRecipesURL}

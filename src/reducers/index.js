@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import ingredientsReducer from "./ingredientsReducer";
-import listOfIngredientsReducer from "./listOfIngredientsReducer";
+import recipesReducer from "./recipesReducer";
 
-const rootReducer = combineReducers({ingredients: ingredientsReducer, list: listOfIngredientsReducer})
+const rootReducer = combineReducers({ingredients: ingredientsReducer, recipes: recipesReducer})
 
 export default rootReducer;
