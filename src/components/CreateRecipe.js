@@ -10,23 +10,54 @@ function CreateRecipe({ state }) {
     state(false);
   }
 
-  const [listOfIngredients, setListOfIngredients] = useState(['Sare', 'Piper'])
+  let listOfRecipes = [
+    {
+      recipeName: '',
+      ingredients: []
+    },
+  ]
+
+  let listOfIngredients = [
+    // {
+    //   ingredientName: '',
+    //   ingredientQty: '',
+    // },
+  ]
+
+  const [newListOfIngredients, setNewListOfIngredients] = useState(listOfIngredients)
+  const [newRecipe, setNewRecipe] = useState(listOfRecipes)
+
+  function CreateNewRecipe() {
+    const recipeName = document.querySelector('.recipe-name').value;
+    setNewRecipe(
+      {
+        recipeName: {recipeName},
+        ingredients: 
+      [
+        // {listOfIngredients},
+      ]
+      }
+    )
+    console.log(recipeName)
+    console.log(newRecipe)
+    console.log(listOfIngredients)
+  }
 
   return (
-    <div className="flex flex-col justify-between h-full bg-gray-200 p-4 md:px-10 text-gray-900 min-w-fit">
-      <section className="my-8">
-        <h3 className="mb-8 md:mb-14 text-xl font-semibold">
+    <div className="flex flex-col justify-between h-full p-4 overflow-auto text-gray-900 bg-gray-200 md:px-10 ">
+      <div className="sm:my-8">
+        <h3 className="mb-8 text-lg font-semibold">
           To create a new recipe, please type in all the information below.
         </h3>
 
         <label
           htmlFor="recipe-name"
-          className="block uppercase tracking-wider text-gray-900 font-semibold ml-2 mb-1"
+          className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
         >
           Recipe Name
         </label>
         <input
-          className="rounded-2xl w-full lg:w-3/4 xl:w-2/4 h-14 text-xl p-4 bg-blue-300 placeholder:text-gray-600 mb-6"
+          className="w-full h-12 p-3 mb-6 text-base bg-blue-300 recipe-name rounded-xl placeholder:text-gray-600"
           placeholder="Recipe name..."
           type="text"
           id="recipe-name"
@@ -35,36 +66,45 @@ function CreateRecipe({ state }) {
 
       <label
           htmlFor="search-ingredients"
-          className="block uppercase tracking-wider text-gray-900 font-semibold ml-2 mb-1"
+          className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
         >
           Search Ingredients
         </label>
         <SearchItem 
         database={filtered} 
-        setListOfIngredients={setListOfIngredients}
+        setNewListOfIngredients={setNewListOfIngredients}
+        newListOfIngredients={newListOfIngredients}
         />
 
-        <div className="list-of-ingredients flex flex-col rounded-2xl bg-gray-100 p-2 mt-6 max-h-60 md:max-h-96 min-w-fit ">
+        {listOfIngredients.length !== 0 &&
+
+          <div className="flex flex-col p-2 mt-6 bg-gray-100 list-of-ingredients rounded-xl max-h-48 md:max-h-60 min-w-fit ">
           <div className="flex flex-col gap-2 overflow-y-auto scrollbar-hide snap-y no-scrollbar">
 
-            {listOfIngredients.map((item, index) => 
-      <Ingredient label={item} key={index} />)}
+            
+             {listOfIngredients.map((item, index) => 
+             <Ingredient
+             newListOfIngredients={newListOfIngredients}
+             setNewListOfIngredients={setNewListOfIngredients}
+             label={item} key={index} />)}
 
           </div>
         </div>
-      </section>
+            }
+      </div>
 
-      <section className="flex flex-col mt-8 gap-3">
-        <button className="bg-orange-600 p-4 rounded-2xl text-white tracking-widest font-semibold">
+      <div className="flex flex-col gap-3 mt-8">
+        <button className="p-4 font-semibold tracking-widest text-white bg-orange-600 rounded-2xl"
+        onClick={CreateNewRecipe}>
           Save New Recipe
         </button>
         <button
-          className="bg-blue-200 p-4 rounded-2xl tracking-widest font-semibold"
+          className="p-4 font-semibold tracking-widest bg-blue-300 rounded-2xl"
           onClick={CloseAndDiscard}
         >
           Discard my changes
         </button>
-      </section>
+      </div>
     </div>
   );
 }

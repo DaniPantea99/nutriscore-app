@@ -2,8 +2,12 @@ import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-export default function SearchItem({ database, setListOfIngredients }) {
-  const [selected, setSelected] = useState(database[0]);
+export default function SearchItem({
+  database,
+  setNewListOfIngredients,
+  newListOfIngredients,
+}) {
+  // const [selected, setSelected] = useState(database[0]);
   const [query, setQuery] = useState('');
 
   const filteredItems =
@@ -16,15 +20,26 @@ export default function SearchItem({ database, setListOfIngredients }) {
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
 
-
+  function AddNewIngredient() {
+    const isEmpty = (str) => !str.trim().length;
+    const inputValue = document.querySelector('.input').value;
+    if (isEmpty(inputValue)) {
+      alert(
+        'No ingredient selected. Please select one ingredient from the list!'
+      );
+    } else {
+      setNewListOfIngredients([...newListOfIngredients, inputValue]);
+    }
+  }
 
   return (
-    <div className="flex h-14 w-full lg:w-3/4 xl:w-2/4">
-      <Combobox value={selected} onChange={setSelected}>
+    <div className="flex h-12 w-full">
+      <button onClick={AddNewIngredient}>Add</button>
+      <Combobox>
         <div className="relative w-full">
-          <div className="relative w-full h-full cursor-default overflow-hidden rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
+          <div className="relative w-full h-full cursor-default overflow-hidden rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input
-              className="input bg-blue-300 h-full w-full border-none py-2 pl-4 pr-10 text-xl leading-5 text-gray-900 focus:ring-0 outline-none"
+              className="input bg-gray-100 h-full w-full border-none p-3 pr-10 text-base leading-5 text-gray-900 focus:ring-0 outline-none"
               placeholder="Cauta..."
               displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}

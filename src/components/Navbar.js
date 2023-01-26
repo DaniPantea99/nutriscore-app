@@ -27,16 +27,18 @@ function Navbar({ children }) {
       name: "settings",
       icon: <BsGearFill />,
     },
+    
+    
   ];
 
   return (
-    <div className="flex">
+    <div className="flex h-full grow">
       <div
-        className={`h-screen bg-gray-200 text-black transition-all duration-300 px-2 ${
-          isOpen && "w-fit"
+        className={`flex flex-col bg-gray-200 text-black transition-all duration-300 w-20 ${
+          isOpen && "w-60"
         }`}
       >
-        <div className="flex py-5 px-4 justify-between items-center h-32">
+        <div className="flex items-center justify-between px-4 py-5">
           <div
             className={`text-3xl cursor-default ${isOpen ? "block" : "hidden"}`}
           >
@@ -52,23 +54,24 @@ function Navbar({ children }) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2 px-2 overflow-y-auto no-scrollbar">
           {menuItem.map((item, index) => (
             <NavLink
               to={item.path}
               key={index}
               className={({ isActive }) => {
                 return (
-                  `flex py-3 px-4 rounded-lg transition-all duration-300 hover:bg-blue-500 hover:text-white hover:rounded-lg items-center h-16 
+                  `flex p-2 rounded-lg transition-all duration-300 hover:bg-blue-500 hover:text-white hover:rounded-lg h-16 items-center
                   ${(isActive
                     ? ' bg-blue-800 text-white hover:bg-blue-800'
-                    : undefined)}
+                    : undefined)} 
+                  ${isOpen ? "justify-left" : "justify-center"}
                 `);
               }}
             >
               <div className="text-2xl">{item.icon}</div>
               <div
-                className="capitalize text-xl ml-3"
+                className="ml-3 text-xl capitalize"
                 style={{ display: isOpen ? "block" : "none" }}
               >
                 {item.name}
@@ -77,7 +80,7 @@ function Navbar({ children }) {
           ))}
         </div>
       </div>
-      <main className="w-full">{children}</main>
+      <main className="grow">{children}</main>
     </div>
   );
 }
