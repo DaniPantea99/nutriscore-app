@@ -1,9 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import ManageRecipes from '../components/ManageRecipes';
 import CreateRecipe from '../components/CreateRecipe';
 import { loadIngredients } from '../actions/ingredientsAction';
 import { useDispatch } from 'react-redux';
 import { Transition } from '@headlessui/react';
+import RecipeTable from '../components/RecipeTable';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -14,10 +14,24 @@ function Dashboard() {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div className="flex h-full bg-gray-300">
-      <div className="flex flex-col items-center p-8 w-full">
-        <h1>Hello, Restaurant-Title</h1>
-        <ManageRecipes state={setShowSidebar} />
+    <div className="flex flex-col w-full h-full p-8 bg-gray-300">
+      <h1>Hello, Restaurant-Title</h1>
+
+      <div className="flex flex-col p-8 bg-gray-200 rounded-xl">
+        <div className="flex justify-between mb-6">
+          <div>
+            <h2>ManageRecipes:</h2>
+            <p>Some description</p>
+          </div>
+          <button
+            className="px-4 py-3 bg-blue-200 rounded-2xl"
+            onClick={() => setShowSidebar(true)}
+          >
+            Create recipe
+          </button>
+        </div>
+
+        <RecipeTable />
       </div>
 
       <Transition
@@ -31,7 +45,7 @@ function Dashboard() {
         leaveTo="opacity-0"
       >
         <div
-          className={`w-full lg:w-[70%] xl:w-[60%] 2xl:w-[50%]
+          className={`w-full lg:w-[500px]
         fixed h-full top-0 right-0
         `}
         >
@@ -43,6 +57,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-// ease-in-out duration-300
-// ${showSidebar ? 'translate-x-0' : 'translate-x-full'}
