@@ -27,14 +27,12 @@ function Navbar({ children }) {
       name: "settings",
       icon: <BsGearFill />,
     },
-    
-    
   ];
 
   return (
     <div className="flex h-full grow">
       <div
-        className={`flex flex-col bg-gray-200 text-black transition-all duration-300 w-20 ${
+        className={`flex flex-col bg-white transition-all duration-300 w-20 ${
           isOpen && "w-60"
         }`}
       >
@@ -60,13 +58,14 @@ function Navbar({ children }) {
               to={item.path}
               key={index}
               className={({ isActive }) => {
-                return (
-                  `flex p-2 rounded-lg transition-all duration-300 hover:bg-blue-500 hover:text-white hover:rounded-lg h-16 items-center
-                  ${(isActive
-                    ? ' bg-blue-800 text-white hover:bg-blue-800'
-                    : undefined)} 
+                return `text-white flex p-2 rounded-lg transition-all duration-300 h-16 items-center
+                  ${
+                    isActive
+                      ? " bg-blue-600 text-white hover:bg-blue-500"
+                      : "text-blue-600 hover:bg-blue-400 hover:text-white"
+                  } 
                   ${isOpen ? "justify-left" : "justify-center"}
-                `);
+                `;
               }}
             >
               <div className="text-2xl">{item.icon}</div>
