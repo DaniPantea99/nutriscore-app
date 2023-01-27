@@ -27,7 +27,7 @@ const getColumns = () => [
     accessor: "name",
   },
   {
-    Header: "Quantity",
+    Header: "Quantity (grams)",
     accessor: "qty",
   },
   {

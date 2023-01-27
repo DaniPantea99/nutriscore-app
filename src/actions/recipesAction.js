@@ -11,4 +11,20 @@ const loadRecipes = () => async (dispatch) => {
     })
 }
 
-export {loadRecipes}
+const createRecipe = (recipe) => async (dispatch) => {
+    const createdRecipe = await axios.post(InfoConsRecipesURL, recipe);
+    dispatch({
+        type: "CREATE_RECIPE",
+        payload: {
+            recipe: createdRecipe.data,
+        }
+    })
+    dispatch({
+        type: "FILTER_RECIPE",
+        payload: {
+            state: ""
+        }
+    })
+}
+
+export {loadRecipes, createRecipe}

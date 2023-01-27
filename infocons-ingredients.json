@@ -80,7 +80,9 @@
       "creator": "openfoodfacts-contributors",
       "brands": "peny",
       "image_front_url": "009/439/369/8814/front_ro.8.400.jpg",
-      "packaging_tags": ["en:plastic"],
+      "packaging_tags": [
+        "en:plastic"
+      ],
       "quantity": ",400g",
       "sursa": "OpenFoodFacts",
       "ingredients_no": 0,
@@ -92,7 +94,9 @@
       "ingredients_str": "",
       "is_vegan": 0,
       "is_vegetarian": 0,
-      "labels": ["sare"]
+      "labels": [
+        "sare"
+      ]
     },
     {
       "product_name": "Piper negru",
@@ -117,85 +121,58 @@
   ],
   "recipes": [
     {
+      "id": 1,
       "recipeName": "Pilaf de orez",
-      "qty": "200g",
-      "date": "20/01/23",
+      "qty": "200",
+      "date": "20.01.2023",
       "ingredients": [
         {
-            "product_name": "Piper negru",
-            "quantity": "10"
+          "productName": "Piper negru",
+          "quantity": "10"
         },
         {
-            "product_name": "Sare",
-            "quantity": "20"
+          "productName": "Sare",
+          "quantity": "20"
         },
         {
-            "product_name": "Orez mare",
-            "quantity": "200"
+          "productName": "Orez mare",
+          "quantity": "200"
         },
         {
-            "product_name": "Apă",
-            "quantity": "100"
+          "productName": "Apă",
+          "quantity": "100"
         }
       ]
     },
     {
+      "id": 2,
       "recipeName": "Ciorba de burta",
-      "qty": "200g",
-      "date": "22/01/23",
+      "qty": "200",
+      "date": "22.01.2023",
       "ingredients": [
         {
-            "product_name": "Sare",
-            "quantity": "20"
+          "productName": "Sare",
+          "quantity": "20"
         },
         {
-            "product_name": "Apă",
-            "quantity": "100"
+          "productName": "Apă",
+          "quantity": "100"
         }
       ]
     },
     {
+      "id": 3,
       "recipeName": "Salata de vinete",
-      "qty": "100g",
-      "date": "21/01/23",
+      "qty": "100",
+      "date": "21.01.2023",
       "ingredients": [
         {
-            "product_name": "Sare",
-            "quantity": "20"
+          "productName": "Sare",
+          "quantity": "20"
         },
         {
-            "product_name": "Apă",
-            "quantity": "100"
-        }
-      ]
-    },
-    {
-      "recipeName": "Ciorba de perisoare",
-      "qty": "250g",
-      "date": "23/01/23",
-      "ingredients": [
-        {
-            "product_name": "Sare",
-            "quantity": "20"
-        },
-        {
-            "product_name": "Apă",
-            "quantity": "100"
-        }
-      ]
-    },
-    {
-      "recipeName": "Ciorba",
-      "qty": "250g",
-      "date": "23/01/23",
-      "ingredients": [
-        {
-            "product_name": "Sare",
-            "quantity": "20"
-        },
-        {
-            "product_name": "Apă",
-            "quantity": "100"
+          "productName": "Apă",
+          "quantity": "100"
         }
       ]
     }
