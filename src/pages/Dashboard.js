@@ -8,7 +8,7 @@ function Dashboard() {
 
   return (
     <div className="flex flex-col w-full h-full p-8">
-      <h1 className="tracking-wide">McDonald's</h1>
+      <h1 className="tracking-wide">"McDonald's"</h1>
 
       <div className="flex flex-col p-8 bg-white rounded-xl">
         <div className="flex justify-between mb-6">

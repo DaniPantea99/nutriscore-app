@@ -156,7 +156,7 @@ function TableComponent({
                   return (
                     <td
                       {...cell.getCellProps()}
-                      className="py-2 pr-6 text-sm font-normal first:rounded-l-xl last:rounded-r-xl pl-7"
+                      className="py-2 pr-6 text-sm font-medium first:rounded-l-xl last:rounded-r-xl pl-7"
                     >
                       {cell.render("Cell")}
                     </td>
