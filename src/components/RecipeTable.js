@@ -34,7 +34,8 @@ const getColumns = () => [
     Cell: () => {
       return (
         <div>
-          <button className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400">
+          <button className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400"
+          >
             View More
           </button>
         </div>
@@ -217,6 +218,7 @@ function Table() {
 }
 
 export default function TablePresentation() {
+  
   return (
     <div className="flex flex-col sm:py-0">
       <Table />

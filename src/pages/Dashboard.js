@@ -4,7 +4,8 @@ import { Transition } from "@headlessui/react";
 import RecipeTable from "../components/RecipeTable";
 
 function Dashboard() {
-  const [showSidebar, setShowSidebar] = useState(false);
+
+  const [showRecipePanel, setShowRecipePanel] = useState(false)
 
   return (
     <div className="flex flex-col w-full h-full p-8">
@@ -16,19 +17,19 @@ function Dashboard() {
             <h2 className="tracking-wide">Manage Recipes:</h2>
           </div>
           <button
-            className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-orange-600"
-            onClick={() => setShowSidebar(true)}
+            className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-orange-400"
+            onClick={() => setShowRecipePanel(true)}
           >
-            Create recipe
+            Create New Recipe
           </button>
         </div>
 
-        <RecipeTable />
+        <RecipeTable setShowRecipePanel={setShowRecipePanel} />
       </div>
 
       <Transition
         as={Fragment}
-        show={showSidebar}
+        show={showRecipePanel}
         enter="transition-opacity duration-300 ease-in-out"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -41,7 +42,7 @@ function Dashboard() {
         fixed h-full top-0 right-0
         `}
         >
-          <CreateRecipe state={setShowSidebar} />
+          <CreateRecipe setShowRecipePanel={setShowRecipePanel} />
         </div>
       </Transition>
     </div>

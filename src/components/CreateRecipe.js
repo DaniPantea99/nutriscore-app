@@ -4,14 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Ingredient from '../components/Ingredient';
 import { createRecipe } from '../actions/recipesAction'
 
-
-
-function CreateRecipe({ state }) {
-  const { filtered } = useSelector((state) => state.ingredients);
-
-  function CloseAndDiscard() {
-    state(false);
-  }
+function CreateRecipe({ setShowRecipePanel }) {
+  const { filtered } = useSelector((state) => state.ingredients);  
   const dispatch = useDispatch();
 
   const currentDate = new Date();
@@ -20,7 +14,6 @@ function CreateRecipe({ state }) {
     month: 'numeric',
     year: 'numeric',
   });
-  
 
   const [listOfIngredients, setListOfIngredients] = useState([]);
   const [recipeName, setRecipeName] = useState();
@@ -36,25 +29,21 @@ function CreateRecipe({ state }) {
     }
 
   const getIngredient = (e) => {
-
     listOfIngredients.forEach((el, index) => {
       if(el.productName === e.name) {
         el.quantity = e.value
       }
     })
+  }
 
-    // console.log(listOfIngredients)
-    // console.log(e)
-    // console.log(e.name)
-    // console.log(e.value)
-    // console.log(e.id)
-    
+  const removeIngredient = (item) => {
+   
+    // const filterList = listOfIngredients.filter(item => item.productName !== event.name  )
+    // setListOfIngredients(filterList)
+    console.log(item)
   }
 
   function createNewRecipe() {
-    
-    // setDate(formattedDate);
-
     const recipe = {
       recipeName: recipeName,
       qty: '200',
@@ -63,14 +52,15 @@ function CreateRecipe({ state }) {
         ...listOfIngredients
       ],
     };
-    
     dispatch(createRecipe(recipe))
-    console.log(recipe);
-    console.log(listOfIngredients);
   }
-
+  
+  // function CloseAndDiscard() {
+  //   setShowRecipePanel(false);
+  // }
+  
   return (
-    <div className="flex flex-col justify-between h-full p-4 overflow-auto text-gray-900 bg-gray-200 md:px-10 ">
+    <div className="flex flex-col justify-between h-full p-4 overflow-auto text-gray-900 bg-gray-100 shadow-2xl md:px-10">
       <div className="sm:my-8">
         <h3 className="mb-8 text-lg font-semibold">
           To create a new recipe, please type in all the information below.
@@ -83,7 +73,7 @@ function CreateRecipe({ state }) {
           Recipe Name
         </label>
         <input
-          className="w-full h-12 p-3 mb-6 text-base bg-blue-300 recipe-name rounded-xl placeholder:text-gray-600"
+          className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-600"
           placeholder="Recipe name..."
           type="text"
           id="recipe-name"
@@ -110,6 +100,7 @@ function CreateRecipe({ state }) {
                 key={index}
                 index={index}
                 getIngredient={getIngredient}
+                removeIngredient={removeIngredient}
               />
             ))}
           </div>
@@ -118,14 +109,14 @@ function CreateRecipe({ state }) {
 
       <div className="flex flex-col gap-3 mt-8">
         <button
-          className="p-4 font-semibold tracking-widest text-white bg-orange-600 rounded-2xl"
+          className="p-4 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-orange-400 active:bg-orange-600"
           onClick={createNewRecipe}
         >
           Save New Recipe
         </button>
         <button
-          className="p-4 font-semibold tracking-widest bg-blue-300 rounded-2xl"
-          onClick={CloseAndDiscard}
+          className="p-4 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-blue-200 active:bg-blue-400"
+          onClick={() => setShowRecipePanel(false)}
         >
           Discard my changes
         </button>

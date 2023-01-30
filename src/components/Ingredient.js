@@ -1,12 +1,7 @@
 import React from 'react';
 import { BsFillXCircleFill } from 'react-icons/bs';
 
-function Ingredient({ item, index, getIngredient }) {
-
-  // function RemoveIngredient() {
-  //   const newArray = newListOfIngredients.filter(item => item !== label  )
-  //   setNewListOfIngredients(newArray)
-  // }
+function Ingredient({ item, index, getIngredient, removeIngredient }) {
 
   return (
     <div className="flex items-center justify-between gap-3 p-2 bg-blue-300 h-11 rounded-xl snap-start min-w-fit">
@@ -26,6 +21,7 @@ function Ingredient({ item, index, getIngredient }) {
         />
         <p>g</p>
         <BsFillXCircleFill
+          onClick={(item) => removeIngredient(item)}
           className="ml-2 text-2xl text-red-700 transition-all cursor-pointer hover:text-red-500 active:text-red-900 sm:ml-6"
         />
       </div>
