@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import SearchItem from './SearchItem';
 import { useDispatch, useSelector } from 'react-redux';
 import Ingredient from '../components/Ingredient';
+import { createRecipe } from '../actions/recipesAction'
+
 
 
 function CreateRecipe({ state }) {
@@ -49,7 +51,7 @@ function CreateRecipe({ state }) {
     
   }
 
-  function createRecipe() {
+  function createNewRecipe() {
     
     // setDate(formattedDate);
 
@@ -58,11 +60,11 @@ function CreateRecipe({ state }) {
       qty: '200',
       date: formattedDate,
       ingredients: [
-        
+        ...listOfIngredients
       ],
     };
     
-    // dispatch(createRecipe(recipe))
+    dispatch(createRecipe(recipe))
     console.log(recipe);
     console.log(listOfIngredients);
   }
@@ -117,7 +119,7 @@ function CreateRecipe({ state }) {
       <div className="flex flex-col gap-3 mt-8">
         <button
           className="p-4 font-semibold tracking-widest text-white bg-orange-600 rounded-2xl"
-          onClick={createRecipe}
+          onClick={createNewRecipe}
         >
           Save New Recipe
         </button>

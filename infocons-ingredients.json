@@ -175,6 +175,54 @@
           "quantity": "100"
         }
       ]
+    },
+    {
+      "recipeName": "Meniu1",
+      "qty": "200",
+      "date": "30.01.2023",
+      "ingredients": [
+        {
+          "productName": "Apă",
+          "quantity": "22"
+        },
+        {
+          "productName": "Orez mare",
+          "quantity": "33"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "recipeName": "Meniu2",
+      "qty": "200",
+      "date": "30.01.2023",
+      "ingredients": [
+        {
+          "productName": "Apă",
+          "quantity": "22"
+        },
+        {
+          "productName": "Orez mare",
+          "quantity": "33"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "recipeName": "Meniu2",
+      "qty": "200",
+      "date": "30.01.2023",
+      "ingredients": [
+        {
+          "productName": "Apă",
+          "quantity": "22"
+        },
+        {
+          "productName": "Orez mare",
+          "quantity": "33"
+        }
+      ],
+      "id": 6
     }
   ]
 }
