@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SearchItem from './SearchItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Ingredient from '../components/Ingredient';
+
 
 function CreateRecipe({ state }) {
   const { filtered } = useSelector((state) => state.ingredients);
@@ -9,38 +10,61 @@ function CreateRecipe({ state }) {
   function CloseAndDiscard() {
     state(false);
   }
+  const dispatch = useDispatch();
 
-  let listOfRecipes = [
-    {
-      recipeName: '',
-      ingredients: []
-    },
-  ]
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString('ro-RO', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
+  
 
-  let listOfIngredients = [
-    // {
-    //   ingredientName: '',
-    //   ingredientQty: '',
-    // },
-  ]
+  const [listOfIngredients, setListOfIngredients] = useState([]);
+  const [recipeName, setRecipeName] = useState();
 
-  const [newListOfIngredients, setNewListOfIngredients] = useState(listOfIngredients)
-  const [newRecipe, setNewRecipe] = useState(listOfRecipes)
+  const AddNewIngredient = (ingredient) => {
+      setListOfIngredients((prev) => [
+        ...prev,
+        {
+          productName: ingredient.product_name,
+          quantity: '',
+        },
+      ]);
+    }
 
-  function CreateNewRecipe() {
-    const recipeName = document.querySelector('.recipe-name').value;
-    setNewRecipe(
-      {
-        recipeName: {recipeName},
-        ingredients: 
-      [
-        // {listOfIngredients},
-      ]
+  const getIngredient = (e) => {
+
+    listOfIngredients.forEach((el, index) => {
+      if(el.productName === e.name) {
+        el.quantity = e.value
       }
-    )
-    console.log(recipeName)
-    console.log(newRecipe)
-    console.log(listOfIngredients)
+    })
+
+    // console.log(listOfIngredients)
+    // console.log(e)
+    // console.log(e.name)
+    // console.log(e.value)
+    // console.log(e.id)
+    
+  }
+
+  function createRecipe() {
+    
+    // setDate(formattedDate);
+
+    const recipe = {
+      recipeName: recipeName,
+      qty: '200',
+      date: formattedDate,
+      ingredients: [
+        
+      ],
+    };
+    
+    // dispatch(createRecipe(recipe))
+    console.log(recipe);
+    console.log(listOfIngredients);
   }
 
   return (
@@ -62,40 +86,39 @@ function CreateRecipe({ state }) {
           type="text"
           id="recipe-name"
           name="recipe-name"
+          onChange={(event) => setRecipeName(event.target.value)}
         />
 
-      <label
+        <label
           htmlFor="search-ingredients"
           className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
         >
           Search Ingredients
         </label>
-        <SearchItem 
-        database={filtered} 
-        setNewListOfIngredients={setNewListOfIngredients}
-        newListOfIngredients={newListOfIngredients}
+        <SearchItem
+          database={filtered}
+          onSelect={AddNewIngredient}
         />
 
-        {listOfIngredients.length !== 0 &&
-
-          <div className="flex flex-col p-2 mt-6 bg-gray-100 list-of-ingredients rounded-xl max-h-48 md:max-h-60 min-w-fit ">
-          <div className="flex flex-col gap-2 overflow-y-auto scrollbar-hide snap-y no-scrollbar">
-
-            
-             {listOfIngredients.map((item, index) => 
-             <Ingredient
-             newListOfIngredients={newListOfIngredients}
-             setNewListOfIngredients={setNewListOfIngredients}
-             label={item} key={index} />)}
-
+        <div className="flex flex-col mt-6 list-of-ingredients rounded-xl max-h-48 md:max-h-60 min-w-fit ">
+          <div className="flex flex-col gap-2 overflow-y-auto scrollbar-hide snap-y">
+            {(listOfIngredients.length > 0) && listOfIngredients.map((item, index) => (
+              <Ingredient
+                item={item.productName}
+                key={index}
+                index={index}
+                getIngredient={getIngredient}
+              />
+            ))}
           </div>
         </div>
-            }
       </div>
 
       <div className="flex flex-col gap-3 mt-8">
-        <button className="p-4 font-semibold tracking-widest text-white bg-orange-600 rounded-2xl"
-        onClick={CreateNewRecipe}>
+        <button
+          className="p-4 font-semibold tracking-widest text-white bg-orange-600 rounded-2xl"
+          onClick={createRecipe}
+        >
           Save New Recipe
         </button>
         <button

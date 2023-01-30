@@ -4,8 +4,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
 export default function SearchItem({
   database,
-  setNewListOfIngredients,
-  newListOfIngredients,
+  onSelect,
 }) {
   // const [selected, setSelected] = useState(database[0]);
   const [query, setQuery] = useState('');
@@ -20,33 +19,22 @@ export default function SearchItem({
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
 
-  function AddNewIngredient() {
-    const isEmpty = (str) => !str.trim().length;
-    const inputValue = document.querySelector('.input').value;
-    if (isEmpty(inputValue)) {
-      alert(
-        'No ingredient selected. Please select one ingredient from the list!'
-      );
-    } else {
-      setNewListOfIngredients([...newListOfIngredients, inputValue]);
-    }
-  }
+        
 
   return (
-    <div className="flex h-12 w-full">
-      <button onClick={AddNewIngredient}>Add</button>
-      <Combobox>
+    <div className="flex w-full h-12">
+      <Combobox onChange={(ingredient) => onSelect(ingredient)}>
         <div className="relative w-full">
-          <div className="relative w-full h-full cursor-default overflow-hidden rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
+          <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input
-              className="input bg-gray-100 h-full w-full border-none p-3 pr-10 text-base leading-5 text-gray-900 focus:ring-0 outline-none"
+              className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-gray-100 border-none outline-none input focus:ring-0"
               placeholder="Cauta..."
               displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
-                className="h-5 w-5 text-gray-600"
+                className="w-5 h-5 text-gray-600"
                 aria-hidden="true"
               />
             </Combobox.Button>
@@ -58,9 +46,9 @@ export default function SearchItem({
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
           >
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {filteredItems.length === 0 && query !== '' ? (
-                <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+                <div className="relative px-4 py-2 text-gray-700 cursor-default select-none">
                   Nothing found.
                 </div>
               ) : (
@@ -89,7 +77,7 @@ export default function SearchItem({
                               active ? 'text-white' : 'text-blue-600'
                             }`}
                           >
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                            <CheckIcon className="w-5 h-5" aria-hidden="true" />
                           </span>
                         ) : null}
                       </>

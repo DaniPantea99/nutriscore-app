@@ -1,33 +1,32 @@
 import React from 'react';
 import { BsFillXCircleFill } from 'react-icons/bs';
 
-function Ingredient({ label, newListOfIngredients, setNewListOfIngredients }) {
+function Ingredient({ item, index, getIngredient }) {
 
-  function RemoveIngredient() {
-    const newArray = newListOfIngredients.filter(item => item !== label  )
-    setNewListOfIngredients(newArray)
-  }
+  // function RemoveIngredient() {
+  //   const newArray = newListOfIngredients.filter(item => item !== label  )
+  //   setNewListOfIngredients(newArray)
+  // }
 
   return (
-    <div className="flex justify-between bg-blue-300 rounded-xl p-2 items-center gap-3 snap-start min-w-fit h-12">
+    <div className="flex items-center justify-between gap-3 p-2 bg-blue-300 h-11 rounded-xl snap-start min-w-fit">
       <div className="flex flex-col w-full">
-        <label className="inline-block" htmlFor={label}>
-          <p className="w-24 overflow-hidden sm:w-full">{label}</p> 
+        <label className="inline-block" htmlFor={item}>
+          <p className="w-24 overflow-hidden sm:w-full">{item}</p> 
         </label>
       </div>
       <div className="flex items-center">
         <input
-          className="p-2 rounded-md outline-0 text-sm mr-1 sm:mr-2 w-24 md:w-48 lg:w-32 bg-gray-100"
+          className="w-24 p-1 px-2 mr-1 text-sm bg-gray-100 rounded-md outline-0 sm:mr-2 md:w-48 lg:w-32"
           type="number"
-          name={label}
-          id={label}
+          name={item}
+          id={index}
           placeholder="adauga cantitatea..."
+          onChange={(e) => getIngredient(e.target)}
         />
         <p>g</p>
-        <BsFillXCircleFill onClick={RemoveIngredient}
-          className="
-            text-red-700 text-2xl cursor-pointer
-            hover:text-red-500 active:text-red-900 transition-all ml-2 sm:ml-6"
+        <BsFillXCircleFill
+          className="ml-2 text-2xl text-red-700 transition-all cursor-pointer hover:text-red-500 active:text-red-900 sm:ml-6"
         />
       </div>
     </div>
