@@ -16,7 +16,7 @@ const createRecipe = (recipe) => async (dispatch) => {
     dispatch({
         type: "CREATE_RECIPE",
         payload: {
-            recipe: createdRecipe.data,
+            allRecipes: createdRecipe.data,
         }
     })
     dispatch({

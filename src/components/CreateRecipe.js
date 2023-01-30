@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import SearchItem from './SearchItem';
 import { useDispatch, useSelector } from 'react-redux';
 import Ingredient from '../components/Ingredient';
-import { createRecipe } from '../actions/recipesAction';
-import { list } from 'postcss';
+
 
 function CreateRecipe({ state }) {
   const { filtered } = useSelector((state) => state.ingredients);
@@ -12,7 +11,6 @@ function CreateRecipe({ state }) {
     state(false);
   }
   const dispatch = useDispatch();
-
 
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString('ro-RO', {
@@ -24,7 +22,6 @@ function CreateRecipe({ state }) {
 
   const [listOfIngredients, setListOfIngredients] = useState([]);
   const [recipeName, setRecipeName] = useState();
-  const [date, setDate] = useState(formattedDate);
 
   const AddNewIngredient = (ingredient) => {
       setListOfIngredients((prev) => [
@@ -59,13 +56,15 @@ function CreateRecipe({ state }) {
     const recipe = {
       recipeName: recipeName,
       qty: '200',
-      date: date,
+      date: formattedDate,
       ingredients: [
-        ...listOfIngredients
+        
       ],
     };
-    dispatch(createRecipe(recipe))
+    
+    // dispatch(createRecipe(recipe))
     console.log(recipe);
+    console.log(listOfIngredients);
   }
 
   return (

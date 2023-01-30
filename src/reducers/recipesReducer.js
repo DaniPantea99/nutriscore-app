@@ -14,7 +14,7 @@ const recipesReducer = (state=initState, action) => {
       case 'CREATE_RECIPE':
         return {
           ...state,
-          allRecipes: [...state.allRecipes, action.payload.recipe],
+          allRecipes: [...state.allRecipes, action.payload.allRecipes],
         };
       case 'FILTER_RECIPE':
         return {
