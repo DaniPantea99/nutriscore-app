@@ -5,22 +5,16 @@ import {
   usePagination,
 } from "react-table";
 import { useMemo } from "react";
-import {
-  FaSearch,
-  FaSortUp,
-  FaSortDown,
-} from "react-icons/fa";
-import { useSelector } from 'react-redux';
+import { FaSearch, FaSortUp, FaSortDown } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
-
-const generateData = ({filteredRecipes}) =>
-
+const generateData = ({ filteredRecipes }) =>
   filteredRecipes.map((item) => ({
     name: item.recipeName,
     qty: item.qty,
     date: item.date,
   }));
-  
+
 const getColumns = () => [
   {
     Header: "Name",
@@ -40,10 +34,13 @@ const getColumns = () => [
     Cell: () => {
       return (
         <div>
-          <button className="p-2 text-xs text-white bg-orange-500 rounded-lg">View More</button>
+          <button className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400">
+            View More
+          </button>
         </div>
       );
     },
+    disableSortBy: true,
   },
 ];
 
@@ -61,7 +58,7 @@ function InputGroup7({
 }) {
   return (
     <div
-      className={`flex flex-row-reverse items-stretch w-full rounded-xl overflow-hidden bg-white shadow-[0_4px_10px_rgba(0,0,0,0.03)] ${className}`}
+      className={`flex flex-row-reverse items-stretch w-full rounded-xl overflow-hidden bg-blue-200 shadow-[0_4px_10px_rgba(0,0,0,0.03)] ${className}`}
     >
       <input
         id={name}
@@ -71,7 +68,7 @@ function InputGroup7({
         placeholder={label}
         aria-label={label}
         onChange={onChange}
-        className={`peer block w-full p-3 text-gray-600 focus:outline-none focus:ring-0 appearance-none ${
+        className={`peer block w-full p-3 text-gray focus:outline-none focus:ring-0 appearance-none bg-blue-200 ${
           disabled ? "bg-gray-200" : ""
         } ${inputClassName}`}
         disabled={disabled}
@@ -98,12 +95,11 @@ function GlobalSearchFilter1({
       value={globalFilter || ""}
       onChange={(e) => setGlobalFilter(e.target.value)}
       label="Search"
-      decoration={<FaSearch size="1rem" className="text-gray-400" />}
+      decoration={<FaSearch size="1rem" className="text-gray-500" />}
       className={className}
     />
   );
 }
-
 
 function TableComponent({
   getTableProps,
@@ -113,35 +109,38 @@ function TableComponent({
   prepareRow,
 }) {
   return (
-    <div className="w-full min-w-[30rem] rounded-lg ">
-      <table {...getTableProps()} className="w-full">
+    <div className="w-full min-w-[30rem]">
+      <table
+        {...getTableProps()}
+        className="w-full border-separate border-spacing-y-2"
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()} className="bg-blue-200">
               {headerGroup.headers.map((column) => (
-                <th 
+                <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className="px-3 text-xs font-light uppercase cursor-pointer"
+                  className="py-2 pr-6 text-xs uppercase cursor-pointer first:rounded-tl-xl last:rounded-tr-xl pl-7"
                   style={{ width: column.width }}
                 >
                   <div className="flex items-center gap-2">
-                    <div className="text-gray-600">
-                      {column.render("Header")}
-                    </div>
-                    <div className="flex flex-col">
-                      <FaSortUp
-                        className={`text-sm translate-y-1/2 ${
-                          column.isSorted && !column.isSortedDesc
-                            ? "text-red-400"
-                            : "text-gray-300"
-                        }`}
-                      />
-                      <FaSortDown
-                        className={`text-sm -translate-y-1/2 ${
-                          column.isSortedDesc ? "text-red-400" : "text-gray-300"
-                        }`}
-                      />
-                    </div>
+                    <div className="font-bold">{column.render("Header")}</div>
+                    {!column.disableSortBy && (
+                      <div className="flex flex-col">
+                        <FaSortUp
+                          className={`text-sm translate-y-1/2 ${
+                            column.isSorted && !column.isSortedDesc
+                              ? "text-red-300"
+                              : "text-white"
+                          }`}
+                        />
+                        <FaSortDown
+                          className={`text-sm -translate-y-1/2 ${
+                            column.isSortedDesc ? "text-red-300" : "text-white"
+                          }`}
+                        />
+                      </div>
+                    )}
                   </div>
                 </th>
               ))}
@@ -152,12 +151,12 @@ function TableComponent({
           {rows.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} className="bg-blue-200 border-t-8 border-gray-200 hover:bg-red-300">
+              <tr {...row.getRowProps()} className="bg-blue-200">
                 {row.cells.map((cell) => {
                   return (
                     <td
                       {...cell.getCellProps()}
-                      className="p-3 text-sm font-normal text-gray-700 first:rounded-l-xl last:rounded-r-xl"
+                      className="py-2 pr-6 text-sm font-medium first:rounded-l-xl last:rounded-r-xl pl-7"
                     >
                       {cell.render("Cell")}
                     </td>
@@ -173,9 +172,12 @@ function TableComponent({
 }
 
 function Table() {
-const { filteredRecipes } = useSelector((state) => state.recipes);
+  const { filteredRecipes } = useSelector((state) => state.recipes);
 
-  const data = useMemo(() => generateData({filteredRecipes}), [filteredRecipes]);
+  const data = useMemo(
+    () => generateData({ filteredRecipes }),
+    [filteredRecipes]
+  );
   const columns = useMemo(getColumns, []);
   const {
     getTableProps,
@@ -185,7 +187,7 @@ const { filteredRecipes } = useSelector((state) => state.recipes);
     state,
     setGlobalFilter,
     rows,
-    } = useTable(
+  } = useTable(
     {
       columns,
       data,
@@ -217,9 +219,7 @@ const { filteredRecipes } = useSelector((state) => state.recipes);
 export default function TablePresentation() {
   return (
     <div className="flex flex-col sm:py-0">
-      <Table
-
-      />
+      <Table />
     </div>
   );
 }

@@ -1,24 +1,22 @@
-import React, { useState, Fragment } from 'react';
-import CreateRecipe from '../components/CreateRecipe';
-import { Transition } from '@headlessui/react';
-import RecipeTable from '../components/RecipeTable';
+import React, { useState, Fragment } from "react";
+import CreateRecipe from "../components/CreateRecipe";
+import { Transition } from "@headlessui/react";
+import RecipeTable from "../components/RecipeTable";
 
 function Dashboard() {
-
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div className="flex flex-col w-full h-full p-8 bg-gray-300">
-      <h1>Hello, Restaurant-Title</h1>
+    <div className="flex flex-col w-full h-full p-8">
+      <h1 className="tracking-wide">"McDonald's"</h1>
 
-      <div className="flex flex-col p-8 bg-gray-200 rounded-xl">
+      <div className="flex flex-col p-8 bg-white rounded-xl">
         <div className="flex justify-between mb-6">
           <div>
-            <h2>ManageRecipes:</h2>
-            <p>Some description</p>
+            <h2 className="tracking-wide">Manage Recipes:</h2>
           </div>
           <button
-            className="px-4 py-3 bg-blue-200 rounded-2xl"
+            className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-orange-600"
             onClick={() => setShowSidebar(true)}
           >
             Create recipe
