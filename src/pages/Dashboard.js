@@ -1,11 +1,13 @@
 import React, { useState, Fragment } from "react";
 import CreateRecipe from "../components/CreateRecipe";
 import { Transition } from "@headlessui/react";
-import RecipeTable from "../components/RecipeTable";
+import RecipesTable from "../components/RecipesTable";
+
 
 function Dashboard() {
 
   const [showRecipePanel, setShowRecipePanel] = useState(false)
+  const toggleSidePanel = () => setShowRecipePanel(!showRecipePanel)
 
   return (
     <div className="flex flex-col w-full h-full p-8">
@@ -18,13 +20,15 @@ function Dashboard() {
           </div>
           <button
             className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-orange-400"
-            onClick={() => setShowRecipePanel(true)}
+            onClick={toggleSidePanel}
           >
             Create New Recipe
           </button>
         </div>
 
-        <RecipeTable setShowRecipePanel={setShowRecipePanel} />
+        <RecipesTable 
+        toggleSidePanel={toggleSidePanel} 
+        />
       </div>
 
       <Transition
@@ -42,7 +46,7 @@ function Dashboard() {
         fixed h-full top-0 right-0
         `}
         >
-          <CreateRecipe setShowRecipePanel={setShowRecipePanel} />
+          <CreateRecipe toggleSidePanel={toggleSidePanel} />
         </div>
       </Transition>
     </div>

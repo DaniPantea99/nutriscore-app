@@ -175,6 +175,22 @@
           "quantity": "100"
         }
       ]
+    },
+    {
+      "recipeName": "aaa",
+      "qty": "200",
+      "date": "31.01.2023",
+      "ingredients": [
+        {
+          "productName": "Orez mare",
+          "quantity": "22"
+        },
+        {
+          "productName": "Sare",
+          "quantity": "33"
+        }
+      ],
+      "id": 4
     }
   ]
 }

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Ingredient from '../components/Ingredient';
 import { createRecipe } from '../actions/recipesAction'
 
-function CreateRecipe({ setShowRecipePanel }) {
+function CreateRecipe({ toggleSidePanel }) {
   const { filtered } = useSelector((state) => state.ingredients);  
   const dispatch = useDispatch();
 
@@ -36,11 +36,11 @@ function CreateRecipe({ setShowRecipePanel }) {
     })
   }
 
-  const removeIngredient = (item) => {
+  const removeIngredient = (e) => {
    
     // const filterList = listOfIngredients.filter(item => item.productName !== event.name  )
     // setListOfIngredients(filterList)
-    console.log(item)
+    console.log(e)
   }
 
   function createNewRecipe() {
@@ -53,6 +53,7 @@ function CreateRecipe({ setShowRecipePanel }) {
       ],
     };
     dispatch(createRecipe(recipe))
+    toggleSidePanel()
   }
   
   // function CloseAndDiscard() {
@@ -96,7 +97,7 @@ function CreateRecipe({ setShowRecipePanel }) {
           <div className="flex flex-col gap-2 overflow-y-auto scrollbar-hide snap-y">
             {(listOfIngredients.length > 0) && listOfIngredients.map((item, index) => (
               <Ingredient
-                item={item.productName}
+                item={item}
                 key={index}
                 index={index}
                 getIngredient={getIngredient}
@@ -116,7 +117,7 @@ function CreateRecipe({ setShowRecipePanel }) {
         </button>
         <button
           className="p-4 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-blue-200 active:bg-blue-400"
-          onClick={() => setShowRecipePanel(false)}
+          onClick={toggleSidePanel}
         >
           Discard my changes
         </button>
