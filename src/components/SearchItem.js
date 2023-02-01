@@ -1,12 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import { list } from 'postcss';
 
 export default function SearchItem({
   database,
   onSelect,
+  listOfIngredients
 }) {
-  // const [selected, setSelected] = useState(database[0]);
+
   const [query, setQuery] = useState('');
 
   const filteredItems =
@@ -27,7 +29,7 @@ export default function SearchItem({
             <Combobox.Input
               className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-white border-none outline-none input focus:ring-0"
               placeholder="Cauta..."
-              displayValue={(item) => item.product_name}
+              // displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">

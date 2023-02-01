@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import SearchItem from './SearchItem';
 import { useDispatch, useSelector } from 'react-redux';
 import Ingredient from '../components/Ingredient';
-import { createRecipe } from '../actions/recipesAction'
+import { createRecipe, updateRecipe } from '../actions/recipesAction'
 
 function CreateRecipe({ toggleSidePanel }) {
   const { filtered } = useSelector((state) => state.ingredients);  
+  const { selected } = useSelector((state) => state.recipes);  
   const dispatch = useDispatch();
 
   const currentDate = new Date();
@@ -15,7 +16,15 @@ function CreateRecipe({ toggleSidePanel }) {
     year: 'numeric',
   });
 
-  const [listOfIngredients, setListOfIngredients] = useState([]);
+  function initList() {
+    if(Object.keys(selected).length === 0) {
+      return []
+    }else {
+      return selected.ingredients
+    }
+  }
+
+  const [listOfIngredients, setListOfIngredients] = useState(initList);
   const [recipeName, setRecipeName] = useState();
 
   const AddNewIngredient = (ingredient) => {
@@ -36,11 +45,10 @@ function CreateRecipe({ toggleSidePanel }) {
     })
   }
 
-  const removeIngredient = (e) => {
+  const removeIngredient = (e, item) => {
    
-    // const filterList = listOfIngredients.filter(item => item.productName !== event.name  )
-    // setListOfIngredients(filterList)
-    console.log(e)
+    const filterList = listOfIngredients.filter(el => el.productName !== item.productName)
+    setListOfIngredients(filterList)
   }
 
   function createNewRecipe() {
@@ -52,17 +60,30 @@ function CreateRecipe({ toggleSidePanel }) {
         ...listOfIngredients
       ],
     };
-    dispatch(createRecipe(recipe))
+    if(selected?.id) {
+      dispatch(updateRecipe(recipe))
+    } else {
+      dispatch(createRecipe(recipe))
+    }
     toggleSidePanel()
   }
   
-  // function CloseAndDiscard() {
-  //   setShowRecipePanel(false);
+  function CloseAndDiscard() {
+    // Reset()
+    toggleSidePanel()
+  }
+
+  // function Reset(){
+  //   setListOfIngredients([])
+  //   setRecipeName('')
   // }
   
   return (
     <div className="flex flex-col justify-between h-full p-4 overflow-auto text-gray-900 bg-gray-100 shadow-2xl md:px-10">
       <div className="sm:my-8">
+
+        <button onClick={() => console.log(selected.ingredients)}>test</button>
+        
         <h3 className="mb-8 text-lg font-semibold">
           To create a new recipe, please type in all the information below.
         </h3>
@@ -74,6 +95,7 @@ function CreateRecipe({ toggleSidePanel }) {
           Recipe Name
         </label>
         <input
+          value={selected.recipeName}
           className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-600"
           placeholder="Recipe name..."
           type="text"
@@ -91,6 +113,7 @@ function CreateRecipe({ toggleSidePanel }) {
         <SearchItem
           database={filtered}
           onSelect={AddNewIngredient}
+          listOfIngredients={listOfIngredients}
         />
 
         <div className="flex flex-col mt-6 list-of-ingredients rounded-xl max-h-48 md:max-h-60 min-w-fit ">
@@ -102,6 +125,7 @@ function CreateRecipe({ toggleSidePanel }) {
                 index={index}
                 getIngredient={getIngredient}
                 removeIngredient={removeIngredient}
+                selected={selected}
               />
             ))}
           </div>
@@ -113,11 +137,11 @@ function CreateRecipe({ toggleSidePanel }) {
           className="p-4 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-orange-400 active:bg-orange-600"
           onClick={createNewRecipe}
         >
-          Save New Recipe
+          {selected?.id ? 'Update' : 'Save'}
         </button>
         <button
           className="p-4 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-blue-200 active:bg-blue-400"
-          onClick={toggleSidePanel}
+          onClick={CloseAndDiscard}
         >
           Discard my changes
         </button>

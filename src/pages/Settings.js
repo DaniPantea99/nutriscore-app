@@ -2,7 +2,9 @@ import React from 'react'
 
 function Settings() {
   return (
-    <div>Settings Page</div>
+    <div className='p-8'>
+      Settings Page
+    </div>
   )
 }
 

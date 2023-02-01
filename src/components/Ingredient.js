@@ -12,6 +12,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
       </div>
       <div className="flex items-center">
         <input
+          value={item.quantity}
           className="w-24 p-1 px-2 mr-1 text-sm bg-gray-100 rounded-md outline-0 sm:mr-2 md:w-48 lg:w-32"
           type="number"
           name={item.productName}
@@ -22,7 +23,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
         <p>g</p>
         <BsFillXCircleFill
           name={item.productName}
-          onClick={(e) => removeIngredient(e)}
+          onClick={(e) => removeIngredient(e, item)}
           className="ml-2 text-2xl text-red-700 transition-all cursor-pointer hover:text-red-500 active:text-red-900 sm:ml-6"
         />
       </div>
