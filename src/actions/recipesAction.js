@@ -27,4 +27,25 @@ const createRecipe = (recipe) => async (dispatch) => {
     })
 }
 
-export {loadRecipes, createRecipe}
+const updateRecipe = (recipe) => async (dispatch) => {
+
+    dispatch({
+        type: "UPDATE_RECIPE",
+        payload: {
+            state: ""
+        }
+    })
+}
+
+const selectRecipe = (recipe) => async (dispatch) => {
+    dispatch({
+        type: "SELECT_RECIPE",
+        payload: {
+            selected: recipe,
+        }
+    })
+
+}
+
+
+export {loadRecipes, createRecipe, selectRecipe, updateRecipe}

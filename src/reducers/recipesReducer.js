@@ -1,6 +1,7 @@
 const initState= {
     allRecipes: [],
     filteredRecipes: [],
+    selected: [],
 }
 
 const recipesReducer = (state=initState, action) => {
@@ -24,6 +25,15 @@ const recipesReducer = (state=initState, action) => {
             action.payload.state ? item.state === action.payload.state : true
             )
           ]
+        };
+      case "SELECT_RECIPE":
+        return {
+          ...state,
+          selected: action.payload.selected,
+        }
+      case "UPDATE_RECIPE":
+        return {
+          ...state,
         }
         default:
             return { ...state }

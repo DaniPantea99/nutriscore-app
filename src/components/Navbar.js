@@ -6,6 +6,7 @@ import {
   BsPersonCircle,
   BsGearFill,
 } from "react-icons/bs";
+import logo from '../images/mrbeast-burger_classic-beast.svg'
 
 function Navbar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,19 +34,21 @@ function Navbar({ children }) {
     <div className="flex h-full grow">
       <div
         className={`flex flex-col bg-white transition-all duration-300 w-20 ${
-          isOpen && "w-60"
+          isOpen && "w-56"
         }`}
       >
-        <div className="flex items-center justify-between px-4 py-5">
-          <div
+        <div className="flex items-center justify-between px-4 py-8 mb-2 h-28">
+          {/* <div
             className={`text-3xl cursor-default ${isOpen ? "block" : "hidden"}`}
-          >
-            Logo
-          </div>
-          <div className="flex text-3xl cursor-pointer">
+          > */}
+            <img 
+             className={`w-28 ${isOpen ? "block" : "hidden"}`}
+             src={logo} alt="logo" />
+          {/* </div> */}
+          <div className="flex justify-center text-3xl">
             <BsFillArrowLeftCircleFill
               onClick={toggleOpen}
-              className={`transition-all duration-500 ${
+              className={`transition-all duration-500 ml-2 fill-blue-900 ${
                 !isOpen && "rotate-180"
               }`}
             />
@@ -58,11 +61,11 @@ function Navbar({ children }) {
               to={item.path}
               key={index}
               className={({ isActive }) => {
-                return `text-white flex p-2 rounded-lg transition-all duration-300 h-16 items-center
+                return `text-white flex p-2 rounded-lg transition-all duration-500 h-16 items-center
                   ${
                     isActive
-                      ? " bg-blue-600 text-white hover:bg-blue-500"
-                      : "text-blue-600 hover:bg-blue-400 hover:text-white"
+                      ? " text-white bg-gradient-to-t from-blue-400 to-blue-600 hover:bg-gradient-to-t hover:from-blue-400 hover:to-blue-400"
+                      : "text-blue-800 hover:bg-blue-200"
                   } 
                   ${isOpen ? "justify-left" : "justify-center"}
                 `;
