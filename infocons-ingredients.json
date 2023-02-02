@@ -175,6 +175,30 @@
           "quantity": "100"
         }
       ]
+    },
+    {
+      "recipeName": "Test1",
+      "qty": "200",
+      "date": "02.02.2023",
+      "ingredients": [
+        {
+          "productName": "Apă",
+          "quantity": "11"
+        },
+        {
+          "productName": "Orez mare",
+          "quantity": "22"
+        },
+        {
+          "productName": "Sare",
+          "quantity": "33"
+        },
+        {
+          "productName": "Piper negru",
+          "quantity": "44"
+        }
+      ],
+      "id": 4
     }
   ]
 }

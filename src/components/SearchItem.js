@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
-import { list } from 'postcss';
 
 export default function SearchItem({
   database,
@@ -23,7 +22,9 @@ export default function SearchItem({
 
   return (
     <div className="flex w-full h-12">
-      <Combobox onChange={(ingredient) => onSelect(ingredient)}>
+      <Combobox 
+      onChange={(ingredient) => onSelect(ingredient)}
+      >
         <div className="relative w-full">
           <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input
