@@ -4,8 +4,14 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 
 function Ingredient({ item, index, getIngredient, removeIngredient }) {
+
+  function format2Decimals(str) {
+    const num = parseFloat(str)
+    return Math.round(num * 100) / 100
+  }
+  
   return (
-    <div className="flex flex-col snap-start">
+    <div className="flex flex-col">
       <Disclosure>
         {({ open }) => (
           <>
@@ -30,6 +36,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
                 <div className="flex items-center">
                   <input
                     // defaultValue={item?.quantity ? item.quantity : ''}
+                    required
                     defaultValue={item.quantity}
                     className="w-24 p-1 px-2 mr-1 text-sm bg-gray-100 rounded-md outline-0 sm:mr-2 md:w-48 lg:w-32"
                     type="number"
@@ -37,6 +44,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
                     id={index}
                     placeholder="adauga cantitatea..."
                     onChange={(e) => getIngredient(e.target)}
+                    onClick={(e) => e.stopPropagation()}
                   />
                   <p>g</p>
                   <BsFillXCircleFill
@@ -48,16 +56,32 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
               </div>
             </Disclosure.Button>
             <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
-              <ul className='ml-3 list-disc'>
-                <li>Calories: {item.calories}</li>
-              </ul>
+              <div className='mb-2'>
+                <p>Brand:&nbsp;<span className={`${item.brand ? '' : 'italic'}`}>{item.brand ? item.brand : "Unavailable"}</span></p>
+                <p>Calories (100 g):&nbsp;
+                  <span className={`${item.calories ? '' : 'italic'}`}>
+                    {item.calories ? item.calories : '0'}
+                    <span className='not-italic'>&nbsp;kcal /&nbsp;</span>
+                    {format2Decimals(item.calories ? (item.calories * 4.184) : '0')}
+                    <span className='not-italic'>&nbsp;kJ</span>
+                  </span>
+                </p>
+              </div>
 
               <div>
-                <p>Nutriments:</p>
-                  <ul className='ml-3 list-disc'>
-                  {item.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100}</li>
-                  )}
+                <p>Nutriments (100 g):</p>
+                  <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7`}>
+                  {item.nutriments ? (item.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100} g</li>))
+                  : 'Info unavailable'
+                  }
                   </ul>
+              </div>
+              <div className='mt-2'>
+                <p>Source:&nbsp;
+                  <span className={`${item.source ? '' : 'italic'}`}>
+                    {item.source ? item.source : 'Unavailable'}
+                  </span>
+                </p>
               </div>
               
             </Disclosure.Panel>
