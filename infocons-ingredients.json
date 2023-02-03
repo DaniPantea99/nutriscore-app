@@ -121,60 +121,222 @@
   ],
   "recipes": [
     {
-      "id": 1,
-      "recipeName": "Pilaf de orez",
-      "qty": "200",
-      "date": "20.01.2023",
+      "recipeName": "meniu1",
+      "qty": 40,
+      "date": "03.02.2023",
       "ingredients": [
         {
-          "productName": "Piper negru",
-          "quantity": "10"
-        },
-        {
-          "productName": "Sare",
-          "quantity": "20"
+          "productName": "Apă",
+          "brand": "",
+          "quantity": 10,
+          "source": "OpenFoodFacts"
         },
         {
           "productName": "Orez mare",
-          "quantity": "200"
+          "brand": "Scotti",
+          "quantity": 10,
+          "calories": 334,
+          "nutriments": [
+            {
+              "name": "carbohydrates",
+              "quantity_100": 30
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 334
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 3
+            }
+          ],
+          "source": "OpenFoodFacts"
         },
-        {
-          "productName": "Apă",
-          "quantity": "100"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "recipeName": "Ciorba de burta",
-      "qty": "200",
-      "date": "22.01.2023",
-      "ingredients": [
         {
           "productName": "Sare",
-          "quantity": "20"
+          "brand": "peny",
+          "quantity": 10,
+          "source": "OpenFoodFacts"
         },
         {
-          "productName": "Apă",
-          "quantity": "100"
+          "productName": "Piper negru",
+          "brand": "",
+          "quantity": 10,
+          "source": "OpenFoodFacts"
         }
-      ]
+      ],
+      "nutriments": {
+        "calories": null,
+        "fat": null,
+        "saturated_fat": "",
+        "carbohydrates": "",
+        "sugars": "",
+        "proteins": "",
+        "salt": ""
+      },
+      "id": 1
     },
     {
-      "id": 3,
-      "recipeName": "Salata de vinete",
-      "qty": "100",
-      "date": "21.01.2023",
+      "recipeName": "meniu2",
+      "qty": 200,
+      "date": "03.02.2023",
       "ingredients": [
         {
-          "productName": "Sare",
-          "quantity": "20"
-        },
-        {
-          "productName": "Apă",
-          "quantity": "100"
+          "productName": "Orez mare",
+          "brand": "Scotti",
+          "quantity": 200,
+          "calories": 334,
+          "nutriments": [
+            {
+              "name": "carbohydrates",
+              "quantity_100": 30
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 334
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 3
+            }
+          ],
+          "source": "OpenFoodFacts"
         }
-      ]
+      ],
+      "nutriments": {
+        "calories": 334,
+        "fat": null,
+        "saturated_fat": "",
+        "carbohydrates": "",
+        "sugars": "",
+        "proteins": "",
+        "salt": ""
+      },
+      "id": 2
+    },
+    {
+      "recipeName": "meniu3",
+      "qty": 100,
+      "date": "03.02.2023",
+      "ingredients": [
+        {
+          "productName": "Orez mare",
+          "brand": "Scotti",
+          "quantity": 100,
+          "calories": 334,
+          "nutriments": [
+            {
+              "name": "carbohydrates",
+              "quantity_100": 30
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 334
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 3
+            }
+          ],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 334,
+        "fat": null,
+        "saturated_fat": "",
+        "carbohydrates": "",
+        "sugars": "",
+        "proteins": "",
+        "salt": ""
+      },
+      "id": 3
+    },
+    {
+      "recipeName": "meniu4",
+      "qty": 10,
+      "date": "03.02.2023",
+      "ingredients": [
+        {
+          "productName": "Orez mare",
+          "brand": "Scotti",
+          "quantity": 10,
+          "calories": 334,
+          "nutriments": [
+            {
+              "name": "carbohydrates",
+              "quantity_100": 30
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 334
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 3
+            }
+          ],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 334,
+        "fat": null,
+        "saturated_fat": "",
+        "carbohydrates": "",
+        "sugars": "",
+        "proteins": "",
+        "salt": ""
+      },
+      "id": 4
     }
   ]
 }

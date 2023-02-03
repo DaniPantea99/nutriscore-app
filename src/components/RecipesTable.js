@@ -4,7 +4,7 @@ import {
   useSortBy,
   usePagination,
 } from 'react-table';
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { selectRecipe } from '../actions/recipesAction';
@@ -79,11 +79,11 @@ export default function RecipesTable({ toggleSidePanel }) {
       date: item.date,
     }));
 
-    const handleClick = (e) => {
+    const viewMoreHandler = useCallback((e) => {
       const recipe = filteredRecipes.find(el => el.recipeName === e)
       dispatch(selectRecipe(recipe))
       toggleSidePanel()
-    }
+    }, [dispatch, filteredRecipes, toggleSidePanel])
     
   const getColumns = () => [
     {
@@ -109,7 +109,7 @@ export default function RecipesTable({ toggleSidePanel }) {
             <button
               value={cell.row.values.name}
               className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400"
-              onClick={(e) => handleClick(e.target.value)}
+              onClick={(e) => viewMoreHandler(e.target.value)}
               >
               View More
             </button>
@@ -129,7 +129,7 @@ export default function RecipesTable({ toggleSidePanel }) {
     prepareRow,
   }) {
     return (
-      <div className="w-full min-w-[30rem]">
+      <div className='overflow-y-scroll'>
         <table
           {...getTableProps()}
           className="w-full border-separate border-spacing-y-2"
@@ -138,12 +138,12 @@ export default function RecipesTable({ toggleSidePanel }) {
             {headerGroups.map((headerGroup) => (
               <tr
                 {...headerGroup.getHeaderGroupProps()}
-                className="bg-blue-200"
+                className="sticky top-2"
               >
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="py-2 pr-6 text-xs uppercase cursor-pointer first:rounded-tl-xl last:rounded-tr-xl pl-7"
+                    className="py-2 pr-6 text-xs uppercase bg-blue-200 cursor-pointer first:rounded-tl-xl last:rounded-tr-xl pl-7"
                     style={{ width: column.width }}
                   >
                     <div className="flex items-center gap-2">
@@ -172,6 +172,7 @@ export default function RecipesTable({ toggleSidePanel }) {
               </tr>
             ))}
           </thead>
+            
           <tbody {...getTableBodyProps()}>
             {rows.map((row, i) => {
               prepareRow(row);
@@ -191,6 +192,7 @@ export default function RecipesTable({ toggleSidePanel }) {
               );
             })}
           </tbody>
+
         </table>
       </div>
     );
@@ -201,7 +203,7 @@ export default function RecipesTable({ toggleSidePanel }) {
     [filteredRecipes]
   );
 
-  const columns = useMemo(getColumns, [filteredRecipes]);
+  const columns = useMemo(getColumns, [viewMoreHandler]);
   const {
     getTableProps,
     getTableBodyProps,
@@ -221,7 +223,7 @@ export default function RecipesTable({ toggleSidePanel }) {
   );
   
   return (
-    <div className="flex flex-col gap-4 sm:py-0 ">
+    <div className="flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
         <GlobalSearchFilter1
           className="sm:w-64"

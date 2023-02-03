@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
-import { list } from 'postcss';
 
 export default function SearchItem({
   database,
@@ -23,7 +22,9 @@ export default function SearchItem({
 
   return (
     <div className="flex w-full h-12">
-      <Combobox onChange={(ingredient) => onSelect(ingredient)}>
+      <Combobox 
+      onChange={(ingredient) => onSelect(ingredient)}
+      >
         <div className="relative w-full">
           <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input
@@ -46,7 +47,7 @@ export default function SearchItem({
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
           >
-            <Combobox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute z-40 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {filteredItems.length === 0 && query !== '' ? (
                 <div className="relative px-4 py-2 text-gray-700 cursor-default select-none">
                   Nothing found.

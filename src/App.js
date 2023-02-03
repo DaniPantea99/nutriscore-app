@@ -18,7 +18,7 @@ function App() {
 
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full overflow-hidden">
       <Navbar>
    
         <Routes>

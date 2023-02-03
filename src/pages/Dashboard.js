@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useCallback } from 'react';
 import CreateRecipe from '../components/CreateRecipe';
 import { Transition } from '@headlessui/react';
 import RecipesTable from '../components/RecipesTable';
@@ -7,17 +7,17 @@ import logo from '../images/mrbeast-logo-portrait.svg';
 
 function Dashboard() {
   const [showRecipePanel, setShowRecipePanel] = useState(false);
-  const toggleSidePanel = () => {
+  const toggleSidePanel = useCallback(() => {
     setShowRecipePanel(!showRecipePanel);
-  }
+  }, [showRecipePanel])
   return (
     <div className="flex flex-col w-full h-full p-8">
       <div className="flex items-center gap-4 mb-16">
           <img width="50px" src={logo} alt="logo" />
           <h1 className="tracking-wide uppercase cursor-default">mrbeast burger</h1>
       </div>
-
-      <div className="flex flex-col p-8 bg-white rounded-xl">
+      
+      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px]">
         <div className="flex justify-between mb-6">
           <div>
             <h2 className="tracking-wide">Manage Recipes:</h2>
@@ -30,7 +30,8 @@ function Dashboard() {
           </button>
         </div>
 
-        <RecipesTable toggleSidePanel={toggleSidePanel} />
+         <RecipesTable toggleSidePanel={toggleSidePanel} />
+     
       </div>
 
       <Transition
