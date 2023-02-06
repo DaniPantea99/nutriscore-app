@@ -35,6 +35,11 @@ const recipesReducer = (state=initState, action) => {
         return {
           ...state,
         }
+      case "REMOVE_RECIPE":
+        return {
+          ...state,
+          allRecipes: action.payload.recipe,
+        }
         default:
             return { ...state }
   }

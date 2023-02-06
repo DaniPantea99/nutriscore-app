@@ -16,8 +16,6 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
         {({ open }) => (
           <>
             <Disclosure.Button 
-            // onClick={() => console.log(item)}
-            // className="flex items-center w-full bg-blue-300 h-11 rounded-xl "
             className={`${open ? 'rounded-t-xl' : 'rounded-xl'} flex items-center w-full bg-blue-300 h-11`}
             >
               <ChevronUpIcon
@@ -59,10 +57,10 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
               <div className='mb-2'>
                 <p>Brand:&nbsp;<span className={`${item.brand ? '' : 'italic'}`}>{item.brand ? item.brand : "Unavailable"}</span></p>
                 <p>Calories (100 g):&nbsp;
-                  <span className={`${item.calories ? '' : 'italic'}`}>
-                    {item.calories ? item.calories : '0'}
+                  <span className={`${item.calories_100 ? '' : 'italic'}`}>
+                    {item.calories_100 ? item.calories_100 : '0'}
                     <span className='not-italic'>&nbsp;kcal /&nbsp;</span>
-                    {format2Decimals(item.calories ? (item.calories * 4.184) : '0')}
+                    {format2Decimals(item.calories_100 ? (item.calories_100 * 4.184) : '0')}
                     <span className='not-italic'>&nbsp;kJ</span>
                   </span>
                 </p>

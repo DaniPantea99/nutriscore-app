@@ -6,9 +6,9 @@ import {
 } from 'react-table';
 import { useMemo, useCallback } from 'react';
 import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectRecipe } from '../actions/recipesAction';
-import { useDispatch } from 'react-redux';
+import RecipeOptions from './RecipeOptions';
 
 function InputGroup7({
   label,
@@ -67,7 +67,7 @@ function GlobalSearchFilter1({
   );
 }
 
-export default function RecipesTable({ toggleSidePanel }) {
+export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
@@ -105,14 +105,19 @@ export default function RecipesTable({ toggleSidePanel }) {
         Cell: ({cell}) => {
           
           return (
-            <div>
-            <button
+            <div className='z-0'>
+            {/* <button
               value={cell.row.values.name}
               className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400"
               onClick={(e) => viewMoreHandler(e.target.value)}
               >
               View More
-            </button>
+            </button> */}
+            <RecipeOptions 
+            value={cell.row.values.name}
+            viewMoreHandler={viewMoreHandler}
+            RemoveRecipe={RemoveRecipe}
+            />
           </div>
         );
       
@@ -138,7 +143,7 @@ export default function RecipesTable({ toggleSidePanel }) {
             {headerGroups.map((headerGroup) => (
               <tr
                 {...headerGroup.getHeaderGroupProps()}
-                className="sticky top-2"
+                className="sticky z-20 top-2"
               >
                 {headerGroup.headers.map((column) => (
                   <th
@@ -177,7 +182,7 @@ export default function RecipesTable({ toggleSidePanel }) {
             {rows.map((row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="bg-blue-200">
+                <tr {...row.getRowProps()} className="overflow-visible bg-blue-200 h-11">
                   {row.cells.map((cell) => {
                     return (
                       <td
@@ -203,7 +208,7 @@ export default function RecipesTable({ toggleSidePanel }) {
     [filteredRecipes]
   );
 
-  const columns = useMemo(getColumns, [viewMoreHandler]);
+  const columns = useMemo(getColumns, [viewMoreHandler, RemoveRecipe]);
   const {
     getTableProps,
     getTableBodyProps,
@@ -223,7 +228,7 @@ export default function RecipesTable({ toggleSidePanel }) {
   );
   
   return (
-    <div className="flex flex-col gap-4 overflow-hidden sm:py-0">
+    <div className="z-0 flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
         <GlobalSearchFilter1
           className="sm:w-64"
