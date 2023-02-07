@@ -16,7 +16,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
         {({ open }) => (
           <>
             <Disclosure.Button 
-            className={`${open ? 'rounded-t-xl' : 'rounded-xl'} flex items-center w-full bg-blue-300 h-11`}
+            className={`${open ? 'rounded-t-xl' : 'rounded-xl'} flex items-center w-full bg-blue-300 h-11 focus:outline-none`}
             >
               <ChevronUpIcon
                 className={`${
@@ -56,7 +56,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
             <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
               <div className='mb-2'>
                 <p>Brand:&nbsp;<span className={`${item.brand ? '' : 'italic'}`}>{item.brand ? item.brand : "Unavailable"}</span></p>
-                <p>Calories (100 g):&nbsp;
+                <p>Calories (100g):&nbsp;
                   <span className={`${item.calories_100 ? '' : 'italic'}`}>
                     {item.calories_100 ? item.calories_100 : '0'}
                     <span className='not-italic'>&nbsp;kcal /&nbsp;</span>
@@ -67,10 +67,21 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
               </div>
 
               <div>
-                <p>Nutriments (100 g):</p>
+                <p>Nutriments (100g):</p>
+                {
+                // Object.values(item.nutriments).map((el, index) => console.log(el, index))
+                // item.nutriments.map((el, index) => console.log(el, index))
+                }
                   <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7`}>
-                  {item.nutriments ? (item.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100} g</li>))
-                  : 'Info unavailable'
+                    
+                  {
+                  (Array.isArray(item.nutriments) ? 
+                  
+                  item.nutriments ? (item?.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100}g</li>))
+                  : 'Info unavailable' 
+                  : 
+                  item.nutriments ? (Object.values(item.nutriments).map((el, index) => <li key={index}>{el.name}: {el.quantity_100}g</li>)) : ' Info unavailable'
+                  )
                   }
                   </ul>
               </div>

@@ -6,6 +6,8 @@ import { createRecipe, updateRecipe } from '../actions/recipesAction';
 import { selectRecipe } from '../actions/recipesAction';
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import {BsFillXCircleFill} from 'react-icons/bs'
+import { nutriScore } from "nutri-score";
 
 function CreateRecipe({ toggleSidePanel }) {
   const { filtered } = useSelector((state) => state.ingredients);
@@ -110,13 +112,30 @@ function CreateRecipe({ toggleSidePanel }) {
   //   listOfIngredients.nutriments?.map((item) => console.log(item));
   // }
 
+  function NutriScoreCalculator() {
+    const result = nutriScore.calculateClass({
+      energy: 0,
+      fibers: 4,
+      fruit_percentage: 60,
+      proteins: 2,
+      saturated_fats: 2,
+      sodium: 500,
+      sugar: 10
+    });
+    return result;
+  }
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
       {/* <button onClick={() => console.log(listOfIngredients)}>test</button> */}
-      <h2 className="text-base font-semibold">
-        To create a new recipe, please type in all the information below.
-      </h2>
+      <div className='flex justify-between gap-3'>
+        <h2 className="text-base font-semibold">
+          To create a new recipe, please type in all the information below.
+        </h2>
+        <BsFillXCircleFill 
+        onClick={CloseAndDiscard}
+        className='text-4xl text-blue-900 cursor-pointer blue-900 hover:text-opacity-70 active:text-opacity-100'/>
+      </div>
       <form
         action="submit"
         onSubmit={createNewRecipe}
@@ -133,7 +152,7 @@ function CreateRecipe({ toggleSidePanel }) {
             <input
               required
               defaultValue={selectedRecipe.recipeName}
-              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-600"
+              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-600 focus:outline-none"
               placeholder="Recipe name..."
               type="text"
               id="recipe-name"
@@ -176,7 +195,7 @@ function CreateRecipe({ toggleSidePanel }) {
                   <Disclosure.Button
                     className={`${
                       open ? 'rounded-t-xl' : 'rounded-xl'
-                    } flex items-center w-full bg-blue-400 h-11`}
+                    } flex items-center w-full bg-blue-400 h-11 hover:bg-opacity-70`}
                   >
                     <ChevronUpIcon
                       className={`${
@@ -234,12 +253,17 @@ function CreateRecipe({ toggleSidePanel }) {
               )}
             </Disclosure>
           </div>
+
+          <div>
+            {/* {NutriScoreCalculator()} */}
+          </div>
+
         </div>
 
         <div className="flex flex-col mt-4">
           <button
             type="submit"
-            className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-orange-400 active:bg-orange-600"
+            className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
             // onClick={(e) => createNewRecipe(e)}
           >
             {selectedRecipe?.id ? 'Update' : 'Save'}
@@ -248,7 +272,7 @@ function CreateRecipe({ toggleSidePanel }) {
       </form>
 
       <button
-        className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-blue-200 active:bg-blue-400"
+        className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={CloseAndDiscard}
       >
         Discard my changes

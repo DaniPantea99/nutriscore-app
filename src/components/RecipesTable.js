@@ -228,7 +228,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   );
   
   return (
-    <div className="z-0 flex flex-col gap-4 overflow-hidden sm:py-0">
+    <div className="flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
         <GlobalSearchFilter1
           className="sm:w-64"
