@@ -3,6 +3,11 @@ import CreateRecipe from '../components/CreateRecipe';
 import { Transition } from '@headlessui/react';
 import RecipesTable from '../components/RecipesTable';
 import logo from '../images/mrbeast-logo-portrait.svg';
+import { removeRecipe } from '../actions/recipesAction';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+
 
 
 function Dashboard() {
@@ -10,6 +15,16 @@ function Dashboard() {
   const toggleSidePanel = useCallback(() => {
     setShowRecipePanel(!showRecipePanel);
   }, [showRecipePanel])
+
+  const { filteredRecipes } = useSelector((state) => state.recipes);
+  const dispatch = useDispatch()
+
+  const RemoveRecipe = useCallback((e) => {
+    const recipe = filteredRecipes.find(el => el.recipeName === e)
+    dispatch(removeRecipe(recipe))
+    }, [dispatch, filteredRecipes]) 
+  
+
   return (
     <div className="flex flex-col w-full h-full p-8">
       <div className="flex items-center gap-4 mb-16">
@@ -17,7 +32,7 @@ function Dashboard() {
           <h1 className="tracking-wide uppercase cursor-default">mrbeast burger</h1>
       </div>
       
-      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px]">
+      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px] z-0">
         <div className="flex justify-between mb-6">
           <div>
             <h2 className="tracking-wide">Manage Recipes:</h2>
@@ -30,7 +45,10 @@ function Dashboard() {
           </button>
         </div>
 
-         <RecipesTable toggleSidePanel={toggleSidePanel} />
+         <RecipesTable 
+         toggleSidePanel={toggleSidePanel} 
+         RemoveRecipe={RemoveRecipe}
+         />
      
       </div>
 
@@ -46,7 +64,7 @@ function Dashboard() {
       >
         <div
           className={`w-full lg:w-[500px]
-        fixed h-full top-0 right-0
+        fixed h-full top-0 right-0 z-50
         `}
         >
           <CreateRecipe toggleSidePanel={toggleSidePanel} />

@@ -47,5 +47,22 @@ const selectRecipe = (recipe) => async (dispatch) => {
 
 }
 
+const removeRecipe = (recipe) => async (dispatch) => {
+    const allRecipes = await axios.get(InfoConsRecipesURL)
+    const filtered = allRecipes.data.filter(element => element.id !== recipe.id)
+    await axios.delete(InfoConsRecipesURL + `/${recipe.id}`);
+    dispatch({
+        type: "REMOVE_RECIPE",
+        payload: {
+            recipe: filtered,
+        }
+    })
+    dispatch({
+        type: "FILTER_RECIPE",
+        payload: {
+            state: ""
+        }
+    })
+}
 
-export {loadRecipes, createRecipe, selectRecipe, updateRecipe}
+export {loadRecipes, createRecipe, selectRecipe, updateRecipe, removeRecipe}
