@@ -146,8 +146,7 @@ function CreateRecipe({ toggleSidePanel }) {
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      <button onClick={CalculateQty} 
-        >test</button>
+      {/* <button onClick={CalculateQty}>test</button> */}
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           To create a new recipe, please type in all the information below.
@@ -294,7 +293,7 @@ function CreateRecipe({ toggleSidePanel }) {
         className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={CloseAndDiscard}
       >
-        Discard my changes
+        {selectedRecipe?.id ? 'Discard my changes' : 'Discard and close'}
       </button>
     </div>
   );
