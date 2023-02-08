@@ -6,7 +6,6 @@ import {
   BsPersonCircle,
   BsGearFill,
 } from "react-icons/bs";
-import logo from '../images/mrbeast-burger_classic-beast.svg'
 
 function Navbar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +40,7 @@ function Navbar({ children }) {
 
             <img 
              className={`w-28 ${isOpen ? "block" : "hidden"}`}
-             src={logo} alt="logo" />
+             src={`./images/mrbeast-logo1.svg`} alt="restaurant-logo" />
   
           <div className="flex justify-center text-3xl">
             <BsFillArrowLeftCircleFill

@@ -2,10 +2,8 @@ import React, { useState, Fragment, useCallback } from 'react';
 import CreateRecipe from '../components/CreateRecipe';
 import { Transition } from '@headlessui/react';
 import RecipesTable from '../components/RecipesTable';
-import logo from '../images/mrbeast-logo-portrait.svg';
 import { removeRecipe } from '../actions/recipesAction';
 import { useDispatch, useSelector } from 'react-redux';
-import nutriscore_logo from '../images/nutriscore/nutriscore-logo.svg'
 import NutriScoreInfo from '../components/NutriScoreInfo';
 
 function Dashboard() {
@@ -31,12 +29,12 @@ function Dashboard() {
     <div className="flex flex-col w-full h-full p-8">
       <div className='flex items-center justify-between mb-16'>
         <div className="flex items-center gap-4">
-            <img width="50px" src={logo} alt="logo" />
+            <img width="50px" src={`./images/mrbeast-logo2.svg`} alt="restaurant-logo" />
             <h1 className="tracking-wide uppercase cursor-default">mrbeast burger</h1>
         </div>
         <img 
         onClick={openModal}
-        className='w-[110px] mr-3 cursor-pointer' src={nutriscore_logo} alt="nutriscore logo" />
+        className='w-[110px] mr-3 cursor-pointer hover:scale-105 transition-all duration-200' src={`./images/nutriscore/nutriscore.svg`} alt="nutriscore logo" />
           {isOpen &&
             <NutriScoreInfo 
             isOpen={isOpen}

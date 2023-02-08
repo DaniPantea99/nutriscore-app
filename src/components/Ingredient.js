@@ -68,19 +68,15 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
 
               <div>
                 <p>Nutriments (100g):</p>
-                {
-                // Object.values(item.nutriments).map((el, index) => console.log(el, index))
-                // item.nutriments.map((el, index) => console.log(el, index))
-                }
                   <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7`}>
                     
                   {
                   (Array.isArray(item.nutriments) ? 
                   
-                  item.nutriments ? (item?.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100}g</li>))
+                  item.nutriments ? (item?.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100}</li>))
                   : 'Info unavailable' 
                   : 
-                  item.nutriments ? (Object.values(item.nutriments).map((el, index) => <li key={index}>{el.name}: {el.quantity_100}g</li>)) : ' Info unavailable'
+                  item.nutriments ? (Object.values(item.nutriments).map((el, index) => <li key={index}>{el.name}: {el.quantity_100}</li>)) : ' Info unavailable'
                   )
                   }
                   </ul>
