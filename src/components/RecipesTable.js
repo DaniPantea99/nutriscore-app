@@ -75,7 +75,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
       name: item.recipeName,
-      qty: item.qty,
+      qty: item.recipeQuantity,
       date: item.date,
     }));
 
@@ -187,7 +187,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
                     return (
                       <td
                         {...cell.getCellProps()}
-                        className="py-2 pr-6 text-sm font-medium first:rounded-l-xl last:rounded-r-xl pl-7"
+                        className="py-2 pr-6 text-sm font-medium capitalize first:rounded-l-xl last:rounded-r-xl pl-7"
                       >
                         {cell.render('Cell')}
                       </td>
@@ -228,7 +228,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   );
   
   return (
-    <div className="z-0 flex flex-col gap-4 overflow-hidden sm:py-0">
+    <div className="flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
         <GlobalSearchFilter1
           className="sm:w-64"
