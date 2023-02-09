@@ -6,7 +6,6 @@ import {
   BsPersonCircle,
   BsGearFill,
 } from "react-icons/bs";
-import logo from '../images/mrbeast-burger_classic-beast.svg'
 
 function Navbar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,17 +37,15 @@ function Navbar({ children }) {
         }`}
       >
         <div className="flex items-center justify-between px-4 py-8 mb-2 h-28">
-          {/* <div
-            className={`text-3xl cursor-default ${isOpen ? "block" : "hidden"}`}
-          > */}
+
             <img 
              className={`w-28 ${isOpen ? "block" : "hidden"}`}
-             src={logo} alt="logo" />
-          {/* </div> */}
+             src={`./images/mrbeast-logo1.svg`} alt="restaurant-logo" />
+  
           <div className="flex justify-center text-3xl">
             <BsFillArrowLeftCircleFill
               onClick={toggleOpen}
-              className={`transition-all duration-500 ml-2 fill-blue-900 ${
+              className={`transition-all duration-500 ml-2 text-blue-900 cursor-pointer hover:text-opacity-70 active:text-opacity-100 ${
                 !isOpen && "rotate-180"
               }`}
             />

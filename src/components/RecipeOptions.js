@@ -30,7 +30,7 @@ export default function RecipeOptions({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg left-[115px] top-0 ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute z-10 w-full origin-top-right bg-white divide-y divide-gray-100 rounded-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="p-1">
               <Menu.Item>
                 {({ active }) => (

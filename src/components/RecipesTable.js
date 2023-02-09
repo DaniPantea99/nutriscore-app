@@ -3,12 +3,12 @@ import {
   useGlobalFilter,
   useSortBy,
   usePagination,
-} from "react-table";
-import { useMemo, useCallback } from "react";
-import { FaSearch, FaSortUp, FaSortDown } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { selectRecipe } from "../actions/recipesAction";
-import RecipeOptions from "./RecipeOptions";
+} from 'react-table';
+import { useMemo, useCallback } from 'react';
+import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectRecipe } from '../actions/recipesAction';
+// import RecipeOptions from './RecipeOptions';
 import { useTranslation } from "react-i18next";
 
 function InputGroup7({
@@ -79,8 +79,9 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
       name: item.recipeName,
-      qty: item.qty,
+      qty: item.recipeQuantity,
       date: item.date,
+      nutriscore: item.recipeNutriscore,
     }));
 
   const viewMoreHandler = useCallback(
@@ -106,24 +107,44 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
       accessor: "date",
     },
     {
-      Header: t("recipeList.header.action"),
-      accessor: "action",
 
-      Cell: ({ cell }) => {
+      Header: 'Nutriscore',
+      accessor: 'nutriscore',
+
+      Cell: ({cell}) => {
         return (
-          <div className="z-0">
-            {/* <button
+          <div>
+            <img width='70px' src={`./images/nutriscore/nutriscore_${cell.value}.svg`} alt={`logo-nutriscore`} />
+          </div>
+        )
+      }
+    },
+    {
+      Header: t("recipeList.header.action"),
+      accessor: 'action',
+      
+        Cell: ({cell}) => {
+          return (
+            <div className='z-0 flex items-center justify-between'>
+            <button
               value={cell.row.values.name}
-              className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400"
+              className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
               onClick={(e) => viewMoreHandler(e.target.value)}
               >
-              View More
-            </button> */}
-            <RecipeOptions
-              value={cell.row.values.name}
-              viewMoreHandler={viewMoreHandler}
-              RemoveRecipe={RemoveRecipe}
-            />
+              Open
+            </button>
+            <button
+            value={cell.row.values.name}
+            className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
+            onClick={(e) => RemoveRecipe(e.target.value)}
+            >
+              Remove
+              </button>
+            {/* <RecipeOptions 
+            value={cell.row.values.name}
+            viewMoreHandler={viewMoreHandler}
+            RemoveRecipe={RemoveRecipe}
+            /> */}
           </div>
         );
       },
@@ -195,7 +216,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
                     return (
                       <td
                         {...cell.getCellProps()}
-                        className="py-2 pr-6 text-sm font-medium first:rounded-l-xl last:rounded-r-xl pl-7"
+                        className="py-2 pr-6 text-sm font-medium capitalize first:rounded-l-xl last:rounded-r-xl pl-7"
                       >
                         {cell.render("Cell")}
                       </td>
@@ -235,7 +256,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   );
 
   return (
-    <div className="z-0 flex flex-col gap-4 overflow-hidden sm:py-0">
+    <div className="flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
         <GlobalSearchFilter1
           className="sm:w-64"
