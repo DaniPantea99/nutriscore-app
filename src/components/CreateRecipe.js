@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import SearchItem from './SearchItem';
-import { useDispatch, useSelector } from 'react-redux';
-import Ingredient from '../components/Ingredient';
-import { createRecipe, updateRecipe } from '../actions/recipesAction';
-import { selectRecipe } from '../actions/recipesAction';
-import { Disclosure } from '@headlessui/react';
-import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import React, { useState } from "react";
+import SearchItem from "./SearchItem";
+import { useDispatch, useSelector } from "react-redux";
+import Ingredient from "../components/Ingredient";
+import { createRecipe, updateRecipe } from "../actions/recipesAction";
+import { selectRecipe } from "../actions/recipesAction";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { BsFillXCircleFill } from 'react-icons/bs';
 import { nutriScore } from 'nutri-score';
+import { useTranslation } from "react-i18next";
 
 function CreateRecipe({ toggleSidePanel }) {
   const { filtered } = useSelector((state) => state.ingredients);
@@ -16,10 +17,10 @@ function CreateRecipe({ toggleSidePanel }) {
   const [listOfIngredients, setListOfIngredients] = useState(initList);
   const [recipeName, setRecipeName] = useState();
   const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleString('ro-RO', {
-    day: 'numeric',
-    month: 'numeric',
-    year: 'numeric',
+  const formattedDate = currentDate.toLocaleString("ro-RO", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
   });
 
   function format2Decimals(str) {
@@ -75,7 +76,7 @@ function CreateRecipe({ toggleSidePanel }) {
   function createNewRecipe(e) {
     e.preventDefault();
     if (listOfIngredients.length === 0) {
-      alert('No ingredients selected.');
+      alert("No ingredients selected.");
     } else {
       const recipe = {
         recipeName: recipeName,
@@ -144,18 +145,19 @@ function CreateRecipe({ toggleSidePanel }) {
     return <img width="100px" src={`./images/nutriscore/nutriscore_${score.toLowerCase()}.svg`} alt={`logo-nutriscore-${score.toLowerCase()}`} />;
   }
 
+  const { t } = useTranslation();
+  
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
       {/* <button onClick={CalculateQty}>test</button> */}
       <div className="flex justify-between gap-3">
-        <h2 className="text-base font-semibold">
-          To create a new recipe, please type in all the information below.
-        </h2>
+        <h2 className="text-base font-semibold">{t("editRecipe.description")}</h2>
         <BsFillXCircleFill
           onClick={CloseAndDiscard}
           className="text-4xl text-blue-900 cursor-pointer blue-900 hover:text-opacity-70 active:text-opacity-100"
         />
       </div>
+
       <form
         action="submit"
         onSubmit={createNewRecipe}
@@ -167,7 +169,7 @@ function CreateRecipe({ toggleSidePanel }) {
               htmlFor="recipe-name"
               className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
             >
-              Recipe Name
+              {t("editRecipe.firstLabel")}
             </label>
             <input
               required
@@ -184,7 +186,7 @@ function CreateRecipe({ toggleSidePanel }) {
               htmlFor="search-ingredients"
               className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
             >
-              Search Ingredients
+              {t("editRecipe.secondLabel")}
             </label>
             <SearchItem
               database={filtered}
@@ -194,7 +196,9 @@ function CreateRecipe({ toggleSidePanel }) {
           </div>
 
           <div className="flex flex-col mt-6 list-of-ingredients rounded-xl min-w-fit">
-            {listOfIngredients.length > 0 && <h3>List of Ingredients:</h3>}
+            {listOfIngredients.length > 0 && (
+              <h3>{t("editRecipe.ingredientsList")}</h3>
+            )}
             <div className="flex flex-col gap-2 mb-6">
               {listOfIngredients.length > 0 &&
                 listOfIngredients.map((item, index) => (
@@ -219,11 +223,11 @@ function CreateRecipe({ toggleSidePanel }) {
                   >
                     <ChevronUpIcon
                       className={`${
-                        open ? 'rotate-180 transform' : ''
+                        open ? "rotate-180 transform" : ""
                       } h-5 w-5 text-blue-900 ml-1`}
                     />
                     <div className="flex items-center justify-between w-full gap-3 p-2">
-                      <span>Recipe Details</span>
+                      <span>{t("editRecipe.details")}</span>
                     </div>
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
@@ -284,7 +288,7 @@ function CreateRecipe({ toggleSidePanel }) {
             type="submit"
             className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
-            {selectedRecipe?.id ? 'Update' : 'Save'}
+            {selectedRecipe?.id ? t("editRecipe.updateButton") : "Save"}
           </button>
         </div>
       </form>
