@@ -3,23 +3,24 @@ import {
   useGlobalFilter,
   useSortBy,
   usePagination,
-} from 'react-table';
-import { useMemo, useCallback } from 'react';
-import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectRecipe } from '../actions/recipesAction';
-import RecipeOptions from './RecipeOptions';
+} from "react-table";
+import { useMemo, useCallback } from "react";
+import { FaSearch, FaSortUp, FaSortDown } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { selectRecipe } from "../actions/recipesAction";
+import RecipeOptions from "./RecipeOptions";
+import { useTranslation } from "react-i18next";
 
 function InputGroup7({
   label,
   name,
   value,
   onChange,
-  type = 'text',
+  type = "text",
   decoration,
-  className = '',
-  inputClassName = '',
-  decorationClassName = '',
+  className = "",
+  inputClassName = "",
+  decorationClassName = "",
   disabled,
 }) {
   return (
@@ -35,13 +36,13 @@ function InputGroup7({
         aria-label={label}
         onChange={onChange}
         className={`peer block w-full p-3 text-gray focus:outline-none focus:ring-0 appearance-none bg-blue-200 ${
-          disabled ? 'bg-gray-200' : ''
+          disabled ? "bg-gray-200" : ""
         } ${inputClassName}`}
         disabled={disabled}
       />
       <div
         className={`flex items-center pl-3 py-3 text-gray-600 ${
-          disabled ? 'bg-gray-200' : ''
+          disabled ? "bg-gray-200" : ""
         } ${decorationClassName}`}
       >
         {decoration}
@@ -53,14 +54,16 @@ function InputGroup7({
 function GlobalSearchFilter1({
   globalFilter,
   setGlobalFilter,
-  className = '',
+  className = "",
 }) {
+  const { t } = useTranslation();
+
   return (
     <InputGroup7
       name="search"
-      value={globalFilter || ''}
+      value={globalFilter || ""}
       onChange={(e) => setGlobalFilter(e.target.value)}
-      label="Search"
+      label={t("recipeList.searchInput")}
       decoration={<FaSearch size="1rem" className="text-gray-500" />}
       className={className}
     />
@@ -68,9 +71,10 @@ function GlobalSearchFilter1({
 }
 
 export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
-  
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
 
   const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
@@ -79,33 +83,35 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
       date: item.date,
     }));
 
-    const viewMoreHandler = useCallback((e) => {
-      const recipe = filteredRecipes.find(el => el.recipeName === e)
-      dispatch(selectRecipe(recipe))
-      toggleSidePanel()
-    }, [dispatch, filteredRecipes, toggleSidePanel])
-    
+  const viewMoreHandler = useCallback(
+    (e) => {
+      const recipe = filteredRecipes.find((el) => el.recipeName === e);
+      dispatch(selectRecipe(recipe));
+      toggleSidePanel();
+    },
+    [dispatch, filteredRecipes, toggleSidePanel]
+  );
+
   const getColumns = () => [
     {
-      Header: 'Name',
-      accessor: 'name',
+      Header: t("recipeList.header.name"),
+      accessor: "name",
     },
     {
-      Header: 'Quantity (grams)',
-      accessor: 'qty',
+      Header: t("recipeList.header.qty"),
+      accessor: "qty",
     },
     {
-      Header: 'Date',
-      accessor: 'date',
+      Header: t("recipeList.header.date"),
+      accessor: "date",
     },
     {
-      Header: 'Action',
-      accessor: 'action',
-      
-        Cell: ({cell}) => {
-          
-          return (
-            <div className='z-0'>
+      Header: t("recipeList.header.action"),
+      accessor: "action",
+
+      Cell: ({ cell }) => {
+        return (
+          <div className="z-0">
             {/* <button
               value={cell.row.values.name}
               className="p-2 text-xs text-white bg-orange-500 rounded-lg hover:bg-orange-400"
@@ -113,14 +119,13 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
               >
               View More
             </button> */}
-            <RecipeOptions 
-            value={cell.row.values.name}
-            viewMoreHandler={viewMoreHandler}
-            RemoveRecipe={RemoveRecipe}
+            <RecipeOptions
+              value={cell.row.values.name}
+              viewMoreHandler={viewMoreHandler}
+              RemoveRecipe={RemoveRecipe}
             />
           </div>
         );
-      
       },
       disableSortBy: true,
     },
@@ -134,7 +139,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
     prepareRow,
   }) {
     return (
-      <div className='overflow-y-scroll'>
+      <div className="overflow-y-scroll">
         <table
           {...getTableProps()}
           className="w-full border-separate border-spacing-y-2"
@@ -152,21 +157,21 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
                     style={{ width: column.width }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="font-bold">{column.render('Header')}</div>
+                      <div className="font-bold">{column.render("Header")}</div>
                       {!column.disableSortBy && (
                         <div className="flex flex-col">
                           <FaSortUp
                             className={`text-sm translate-y-1/2 ${
                               column.isSorted && !column.isSortedDesc
-                                ? 'text-red-300'
-                                : 'text-white'
+                                ? "text-red-300"
+                                : "text-white"
                             }`}
                           />
                           <FaSortDown
                             className={`text-sm -translate-y-1/2 ${
                               column.isSortedDesc
-                                ? 'text-red-300'
-                                : 'text-white'
+                                ? "text-red-300"
+                                : "text-white"
                             }`}
                           />
                         </div>
@@ -177,19 +182,22 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
               </tr>
             ))}
           </thead>
-            
+
           <tbody {...getTableBodyProps()}>
             {rows.map((row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="overflow-visible bg-blue-200 h-11">
+                <tr
+                  {...row.getRowProps()}
+                  className="overflow-visible bg-blue-200 h-11"
+                >
                   {row.cells.map((cell) => {
                     return (
                       <td
                         {...cell.getCellProps()}
                         className="py-2 pr-6 text-sm font-medium first:rounded-l-xl last:rounded-r-xl pl-7"
                       >
-                        {cell.render('Cell')}
+                        {cell.render("Cell")}
                       </td>
                     );
                   })}
@@ -197,7 +205,6 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
               );
             })}
           </tbody>
-
         </table>
       </div>
     );
@@ -226,7 +233,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
     useSortBy,
     usePagination
   );
-  
+
   return (
     <div className="z-0 flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import SearchItem from './SearchItem';
-import { useDispatch, useSelector } from 'react-redux';
-import Ingredient from '../components/Ingredient';
-import { createRecipe, updateRecipe } from '../actions/recipesAction';
-import { selectRecipe } from '../actions/recipesAction';
-import { Disclosure } from '@headlessui/react';
-import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import React, { useState } from "react";
+import SearchItem from "./SearchItem";
+import { useDispatch, useSelector } from "react-redux";
+import Ingredient from "../components/Ingredient";
+import { createRecipe, updateRecipe } from "../actions/recipesAction";
+import { selectRecipe } from "../actions/recipesAction";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import { useTranslation } from "react-i18next";
 
 function CreateRecipe({ toggleSidePanel }) {
   const { filtered } = useSelector((state) => state.ingredients);
@@ -13,10 +14,10 @@ function CreateRecipe({ toggleSidePanel }) {
   const dispatch = useDispatch();
 
   const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleString('ro-RO', {
-    day: 'numeric',
-    month: 'numeric',
-    year: 'numeric',
+  const formattedDate = currentDate.toLocaleString("ro-RO", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
   });
 
   function initList() {
@@ -50,7 +51,7 @@ function CreateRecipe({ toggleSidePanel }) {
       if (el.productName === e.name) {
         el.quantity = Number(e.value);
       }
-      el.calories_currQty = (Number(el?.calories_100/100)*e.value) ?? 0
+      el.calories_currQty = Number(el?.calories_100 / 100) * e.value ?? 0;
       // console.log(
       //   'actual calories qty',
       //   Number((el?.calories_100 / 100) * e.value)
@@ -69,7 +70,7 @@ function CreateRecipe({ toggleSidePanel }) {
   function createNewRecipe(e) {
     e.preventDefault();
     if (listOfIngredients.length === 0) {
-      alert('No ingredients selected.');
+      alert("No ingredients selected.");
     } else {
       const recipe = {
         recipeName: recipeName,
@@ -110,13 +111,12 @@ function CreateRecipe({ toggleSidePanel }) {
   //   listOfIngredients.nutriments?.map((item) => console.log(item));
   // }
 
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
       {/* <button onClick={() => console.log(listOfIngredients)}>test</button> */}
-      <h2 className="text-base font-semibold">
-        To create a new recipe, please type in all the information below.
-      </h2>
+      <h2 className="text-base font-semibold">{t("editRecipe.description")}</h2>
       <form
         action="submit"
         onSubmit={createNewRecipe}
@@ -128,7 +128,7 @@ function CreateRecipe({ toggleSidePanel }) {
               htmlFor="recipe-name"
               className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
             >
-              Recipe Name
+              {t("editRecipe.firstLabel")}
             </label>
             <input
               required
@@ -145,7 +145,7 @@ function CreateRecipe({ toggleSidePanel }) {
               htmlFor="search-ingredients"
               className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
             >
-              Search Ingredients
+              {t("editRecipe.secondLabel")}
             </label>
             <SearchItem
               database={filtered}
@@ -155,7 +155,9 @@ function CreateRecipe({ toggleSidePanel }) {
           </div>
 
           <div className="flex flex-col mt-6 list-of-ingredients rounded-xl min-w-fit">
-            {listOfIngredients.length > 0 && <h3>List of Ingredients:</h3>}
+            {listOfIngredients.length > 0 && (
+              <h3>{t("editRecipe.ingredientsList")}</h3>
+            )}
             <div className="flex flex-col gap-2 mb-6">
               {listOfIngredients.length > 0 &&
                 listOfIngredients.map((item, index) => (
@@ -175,16 +177,16 @@ function CreateRecipe({ toggleSidePanel }) {
                 <>
                   <Disclosure.Button
                     className={`${
-                      open ? 'rounded-t-xl' : 'rounded-xl'
+                      open ? "rounded-t-xl" : "rounded-xl"
                     } flex items-center w-full bg-blue-400 h-11`}
                   >
                     <ChevronUpIcon
                       className={`${
-                        open ? 'rotate-180 transform' : ''
+                        open ? "rotate-180 transform" : ""
                       } h-5 w-5 text-blue-900 ml-1`}
                     />
                     <div className="flex items-center justify-between w-full gap-3 p-2">
-                      <span>Recipe Details</span>
+                      <span>{t("editRecipe.details")}</span>
                     </div>
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
@@ -196,31 +198,31 @@ function CreateRecipe({ toggleSidePanel }) {
                         <p>Nutrition Facts:</p>
                         <ul className="ml-6 list-disc">
                           <li>
-                            Calories:{' '}
+                            Calories:{" "}
                             {selectedRecipe?.nutriments?.calories ?? 0}g
                           </li>
                           <li>
                             Fat: {selectedRecipe?.nutriments?.fat ?? 0}g
                             <ul className="ml-6 list-disc">
                               <li>
-                                Saturated fat:{' '}
+                                Saturated fat:{" "}
                                 {selectedRecipe?.nutriments?.saturated_fat ?? 0}
                                 g
                               </li>
                             </ul>
                           </li>
                           <li>
-                            Carbohydrates:{' '}
+                            Carbohydrates:{" "}
                             {selectedRecipe?.nutriments?.carbohydrates ?? 0}g
                             <ul className="ml-6 list-disc">
                               <li>
-                                Sugars:{' '}
+                                Sugars:{" "}
                                 {selectedRecipe?.nutriments?.sugars ?? 0}g
                               </li>
                             </ul>
                           </li>
                           <li>
-                            Proteins:{' '}
+                            Proteins:{" "}
                             {selectedRecipe?.nutriments?.proteins ?? 0}g
                           </li>
                           <li>
@@ -242,7 +244,7 @@ function CreateRecipe({ toggleSidePanel }) {
             className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-orange-400 active:bg-orange-600"
             // onClick={(e) => createNewRecipe(e)}
           >
-            {selectedRecipe?.id ? 'Update' : 'Save'}
+            {selectedRecipe?.id ? t("editRecipe.updateButton") : "Save"}
           </button>
         </div>
       </form>
@@ -251,7 +253,7 @@ function CreateRecipe({ toggleSidePanel }) {
         className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-blue-200 active:bg-blue-400"
         onClick={CloseAndDiscard}
       >
-        Discard my changes
+        {t("editRecipe.discardButton")}
       </button>
     </div>
   );
