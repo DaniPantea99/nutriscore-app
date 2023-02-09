@@ -8,7 +8,6 @@ import { useMemo, useCallback } from 'react';
 import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectRecipe } from '../actions/recipesAction';
-// import RecipeOptions from './RecipeOptions';
 import { useTranslation } from "react-i18next";
 
 function InputGroup7({
@@ -56,8 +55,9 @@ function GlobalSearchFilter1({
   setGlobalFilter,
   className = "",
 }) {
-  const { t } = useTranslation();
 
+  const { t } = useTranslation();
+  
   return (
     <InputGroup7
       name="search"
@@ -73,7 +73,6 @@ function GlobalSearchFilter1({
 export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
-
   const { t } = useTranslation();
 
   const generateData = ({ filteredRecipes }) =>
@@ -144,11 +143,6 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
             >
               Remove
               </button>
-            {/* <RecipeOptions 
-            value={cell.row.values.name}
-            viewMoreHandler={viewMoreHandler}
-            RemoveRecipe={RemoveRecipe}
-            /> */}
           </div>
         );
       },
@@ -240,7 +234,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
     [filteredRecipes]
   );
 
-  const columns = useMemo(getColumns, [viewMoreHandler, RemoveRecipe]);
+  const columns = useMemo(getColumns, [viewMoreHandler, RemoveRecipe, t]);
   const {
     getTableProps,
     getTableBodyProps,

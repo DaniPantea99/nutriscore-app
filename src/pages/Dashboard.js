@@ -2,10 +2,9 @@ import React, { useState, Fragment, useCallback } from "react";
 import CreateRecipe from "../components/CreateRecipe";
 import { Transition } from "@headlessui/react";
 import RecipesTable from "../components/RecipesTable";
-import logo from "../images/mrbeast-logo-portrait.svg";
 import { removeRecipe } from "../actions/recipesAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import NutriScoreInfo from '../components/NutriScoreInfo';
 
 // const lngs = {
