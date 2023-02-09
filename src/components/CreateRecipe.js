@@ -32,7 +32,8 @@ function CreateRecipe({ toggleSidePanel }) {
       if (el.productName === e.name) {
         el.quantity = Number(e.value);
       }
-      el.calories_currQty = Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;
+      el.calories_currQty =
+        Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;
     });
   };
 
@@ -67,6 +68,7 @@ function CreateRecipe({ toggleSidePanel }) {
         calories_100: ingredient.calories,
         calories_currQty: null,
         nutriments: ingredient.nutriments,
+        additives: ingredient.additives_tags,
         source: ingredient.sursa,
       },
     ]);
@@ -95,25 +97,25 @@ function CreateRecipe({ toggleSidePanel }) {
           carbohydrates: format2Decimals(CalculateQty('carbohydrates')),
           sugars: format2Decimals(CalculateQty('sugars')),
           proteins: format2Decimals(CalculateQty('proteins')),
-          salt: format2Decimals(CalculateQty('salt'))
+          salt: format2Decimals(CalculateQty('salt')),
         },
         recipeNutriscore: nutriScore.calculateClass({
-          energy: format2Decimals(CalculateQty('energy-kcal')*4.184),
+          energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
           fibers: format2Decimals(CalculateQty('fibers')),
           fruit_percentage: 0,
           proteins: format2Decimals(CalculateQty('proteins')),
           saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
-          sodium: format2Decimals(CalculateQty('salt')*400),
-          sugar: format2Decimals(CalculateQty('sugars'))
+          sodium: format2Decimals(CalculateQty('salt') * 400),
+          sugar: format2Decimals(CalculateQty('sugars')),
         }),
         recipeNutriscore_TEMPORARY: {
-          energy: format2Decimals(CalculateQty('energy-kcal')*4.184),
+          energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
           fibers: format2Decimals(CalculateQty('fibers') ?? 0),
           fruit_percentage: 0,
           proteins: format2Decimals(CalculateQty('proteins')),
           saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
-          sodium: format2Decimals(CalculateQty('salt')*400),
-          sugar: format2Decimals(CalculateQty('sugars'))
+          sodium: format2Decimals(CalculateQty('salt') * 400),
+          sugar: format2Decimals(CalculateQty('sugars')),
         },
       };
       if (selectedRecipe?.id) {
@@ -126,23 +128,78 @@ function CreateRecipe({ toggleSidePanel }) {
   }
 
   function CalculateQty(nutrimentName = '') {
-    return listOfIngredients.filter(item => item.nutriments).map(element => {
-      if(!Array.isArray(element.nutriments)){
-        return Object.values(element.nutriments)
-      }
-      return element.nutriments
-    }).reduce((acc, curr) => {
-      return acc + curr.find(nutriment => nutriment.name === nutrimentName)?.quantity_100 ?? 0
-    }, 0)
+    return listOfIngredients
+      .filter((item) => item.nutriments)
+      .map((element) => {
+        if (!Array.isArray(element.nutriments)) {
+          return Object.values(element.nutriments);
+        }
+        return element.nutriments;
+      })
+      .reduce((acc, curr) => {
+        return (
+          acc +
+            curr.find((nutriment) => nutriment.name === nutrimentName)
+              ?.quantity_100 ?? 0
+        );
+      }, 0);
   }
 
   function ShowNutriScore() {
     const score = selectedRecipe.recipeNutriscore;
-    if(!score){
-      return <img width="100px" src={`./images/nutriscore/nutriscore.svg`} alt={`logo-nutriscore`} />;
-    } 
-    return <img width="100px" src={`./images/nutriscore/nutriscore_${score.toLowerCase()}.svg`} alt={`logo-nutriscore-${score.toLowerCase()}`} />;
+    if (!score) {
+      return (
+        <img
+          width="100px"
+          src={`./images/nutriscore/nutriscore.svg`}
+          alt={`logo-nutriscore`}
+        />
+      );
+    }
+    return (
+      <img
+        width="100px"
+        src={`./images/nutriscore/nutriscore_${score.toLowerCase()}.svg`}
+        alt={`logo-nutriscore-${score.toLowerCase()}`}
+      />
+    );
   }
+
+  const NutritionFacts = () => {
+    return (
+      <div>
+        <p>Nutrition Facts (per 1 recipe):</p>
+        <ul className="ml-6 list-disc">
+          <li>
+            Calories:&nbsp;
+            {selectedRecipe?.recipeNutriments?.calories ?? 0} kcal /&nbsp;
+            {format2Decimals(
+              (selectedRecipe?.recipeNutriments?.calories ?? 0) * 4.184
+            )}{' '}
+            kJ
+          </li>
+          <li>
+            Fat:&nbsp;{selectedRecipe?.recipeNutriments?.fat ?? 0}
+            <ul className="ml-6 list-disc">
+              <li>
+                Saturated fat:&nbsp;
+                {selectedRecipe?.recipeNutriments?.saturated_fat ?? 0}
+              </li>
+            </ul>
+          </li>
+          <li>
+            Carbohydrates:{' '}
+            {selectedRecipe?.recipeNutriments?.carbohydrates ?? 0}
+            <ul className="ml-6 list-disc">
+              <li>Sugars: {selectedRecipe?.recipeNutriments?.sugars ?? 0}</li>
+            </ul>
+          </li>
+          <li>Proteins: {selectedRecipe?.recipeNutriments?.proteins ?? 0}</li>
+          <li>Salt: {selectedRecipe?.recipeNutriments?.salt ?? 0}</li>
+        </ul>
+      </div>
+    );
+  };
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
@@ -231,43 +288,11 @@ function CreateRecipe({ toggleSidePanel }) {
                       <h3>Servings: 1</h3>
                       <hr />
                       <div className="mt-2">
-                        <p>Quantity:&nbsp;{selectedRecipe?.recipeQuantity ?? 0}g</p>
-                        <p>Nutrition Facts (per 1 recipe):</p>
-                        <ul className="ml-6 list-disc">
-                          <li>
-                            Calories:&nbsp;
-                            {selectedRecipe?.recipeNutriments?.calories ?? 0} kcal
-                            /&nbsp;
-                            {format2Decimals((selectedRecipe?.recipeNutriments?.calories ?? 0)* 4.184)}{' '}
-                            kJ
-                          </li>
-                          <li>
-                            Fat:&nbsp;{selectedRecipe?.recipeNutriments?.fat ?? 0}
-                            <ul className="ml-6 list-disc">
-                              <li>
-                                Saturated fat:&nbsp;
-                                {selectedRecipe?.recipeNutriments?.saturated_fat ?? 0}
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            Carbohydrates:{' '}
-                            {selectedRecipe?.recipeNutriments?.carbohydrates ?? 0}
-                            <ul className="ml-6 list-disc">
-                              <li>
-                                Sugars:{' '}
-                                {selectedRecipe?.recipeNutriments?.sugars ?? 0}
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            Proteins:{' '}
-                            {selectedRecipe?.recipeNutriments?.proteins ?? 0}
-                          </li>
-                          <li>
-                            Salt: {selectedRecipe?.recipeNutriments?.salt ?? 0}
-                          </li>
-                        </ul>
+                        <p>
+                          Quantity:&nbsp;{selectedRecipe?.recipeQuantity ?? 0}g
+                        </p>
+
+                        <NutritionFacts />
                       </div>
                     </div>
                   </Disclosure.Panel>

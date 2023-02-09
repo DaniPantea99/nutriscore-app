@@ -1,6 +1,666 @@
 {
   "data": [
     {
+      "product_name": "Mușchi file",
+      "lang": "ro",
+      "creator": "rapiteanu",
+      "brands": "Matache Măcelaru",
+      "image_front_url": "281/393/400/3041/front_ro.4.400.jpg",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "cotlet porc (90%), apă, sare, zaharuri (sirop de glucoză), stabilizatori (trifosfați), proteină animală din porc, proteină din lapte, antioxidant (ascorbat de sodiu), extracte de condimente, arome naturale, conservant (acetat de sodiu, nitrit de sodiu). Produsul poate conține urme de ȚELINA, LACTOZĂ.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "additives_tags": [
+          "en:e250",
+          "en:e262",
+          "en:e262i",
+          "en:e301",
+          "en:e451"
+      ],
+      "nutriments": {
+          "0": {
+              "name": "nova-group",
+              "quantity_100": 4
+          },
+          "1": {
+              "name": "proteins",
+              "quantity_100": 17.7
+          },
+          "2": {
+              "name": "salt",
+              "quantity_100": 1.9
+          },
+          "3": {
+              "name": "sugars",
+              "quantity_100": 0.85
+          },
+          "4": {
+              "name": "sodium",
+              "quantity_100": 0.76
+          },
+          "5": {
+              "name": "carbohydrates",
+              "quantity_100": 0.9
+          },
+          "6": {
+              "name": "fat",
+              "quantity_100": 1.5
+          },
+          "8": {
+              "name": "energy-kcal",
+              "quantity_100": 87.9
+          },
+          "10": {
+              "name": "saturated-fat",
+              "quantity_100": 1
+          }
+      },
+      "nova-score": 4,
+      "nova-info": "",
+      "nutri_salt": 1.9,
+      "nutri_sugars": 0.85,
+      "nutri_sodium": 0.76,
+      "nutri_energy-kcal": 87.9,
+      "allergens": [
+          "milk"
+      ],
+      "calories": 87,
+      "burn_calories": {
+          "walking": "21.31",
+          "pedalling": "12.43",
+          "running": "9.32"
+      }
+  },
+    {
+      "product_name": "Vin",
+      "lang": "en",
+      "creator": "foodvisor",
+      "brands": "",
+      "image_front_url": "",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": [
+          {
+              "name": "saturated-fat",
+              "quantity_100": 3030
+          },
+          {
+              "name": "energy-kcal",
+              "quantity_100": 318
+          }
+      ],
+      "nutri_energy-kcal": 318,
+      "calories": 318,
+      "burn_calories": {
+          "walking": "77.88",
+          "pedalling": "45.43",
+          "running": "34.07"
+      }
+  },
+    {
+      "product_name": "miere",
+      "lang": "fr",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "594/118/519/2744/front_fr.3.400.jpg",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": {
+          "0": {
+              "name": "carbohydrates",
+              "quantity_100": 80.8
+          },
+          "2": {
+              "name": "fat",
+              "quantity_100": 0
+          },
+          "3": {
+              "name": "proteins",
+              "quantity_100": 0.5
+          },
+          "4": {
+              "name": "energy-kcal",
+              "quantity_100": 325
+          },
+          "5": {
+              "name": "saturated-fat",
+              "quantity_100": 0
+          },
+          "9": {
+              "name": "sugars",
+              "quantity_100": 80.8
+          }
+      },
+      "nutri_energy-kcal": 325,
+      "nutri_sugars": 80.8,
+      "calories": 325,
+      "burn_calories": {
+          "walking": "79.59",
+          "pedalling": "46.43",
+          "running": "34.82"
+      }
+  },
+    {
+      "product_name": "Pesmet Boromir",
+      "lang": "ro",
+      "creator": "cristih21",
+      "brands": "Boromir",
+      "image_front_url": "594/144/600/0948/front_ro.5.400.jpg",
+      "packaging_tags": [
+          "en:pachet-plastic"
+      ],
+      "quantity": "500 g,",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "Biscuiti (Faină albă de grau (contine gluten), sirop glucoză, grasime vegetala nehidrogenată de palmier, afânatori: bicarbonat de sodiu, bicarbonat de amoniu, sare iodată, conservant: metabisulfit de sodiu.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "additives_tags": [
+          "en:e223",
+          "en:e500",
+          "en:e500ii",
+          "en:e503",
+          "en:e503ii"
+      ],
+      "nutriments": {
+          "0": {
+              "name": "fat",
+              "quantity_100": 4.7
+          },
+          "1": {
+              "name": "sugars",
+              "quantity_100": 2.06
+          },
+          "2": {
+              "name": "energy-kcal",
+              "quantity_100": 401.18
+          },
+          "3": {
+              "name": "saturated-fat",
+              "quantity_100": 1.97
+          },
+          "4": {
+              "name": "proteins",
+              "quantity_100": 11.81
+          },
+          "5": {
+              "name": "carbohydrates",
+              "quantity_100": 77.91
+          },
+          "6": {
+              "name": "sodium",
+              "quantity_100": 0.44400000000000006
+          },
+          "9": {
+              "name": "salt",
+              "quantity_100": 1.11
+          },
+          "11": {
+              "name": "nova-group",
+              "quantity_100": 3
+          }
+      },
+      "nutri_sugars": 2.06,
+      "nutri_energy-kcal": 401.18,
+      "nutri_sodium": 0.44400000000000006,
+      "nutri_salt": 1.11,
+      "nova-score": 3,
+      "nova-info": "",
+      "allergens": [
+          "gluten"
+      ],
+      "calories": 401,
+      "burn_calories": {
+          "walking": "98.20",
+          "pedalling": "57.29",
+          "running": "42.96"
+      }
+  },
+    {
+      "product_name": "Avocado",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "088/721/410/8834/front_en.3.400.jpg",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": {
+        "0": {
+          "name": "sodium",
+          "quantity_100": 0.073333333333332
+        },
+        "1": {
+          "name": "sugars",
+          "quantity_100": 0
+        },
+        "2": {
+          "name": "salt",
+          "quantity_100": 0.18333333333333
+        },
+        "3": {
+          "name": "proteins",
+          "quantity_100": 14.666666666667
+        },
+        "4": {
+          "name": "energy-kcal",
+          "quantity_100": 8.6666666666667
+        },
+        "5": {
+          "name": "saturated-fat",
+          "quantity_100": 2
+        },
+        "6": {
+          "name": "carbohydrates",
+          "quantity_100": 8.6666666666667
+        },
+        "8": {
+          "name": "fat",
+          "quantity_100": 14.666666666667
+        }
+      },
+      "nutri_sodium": 0.073333333333332,
+      "nutri_sugars": 0,
+      "nutri_salt": 0.18333333333333,
+      "nutri_energy-kcal": 8.6666666666667,
+      "calories": 8,
+      "burn_calories": {
+        "walking": "1.96",
+        "pedalling": "1.14",
+        "running": "0.86"
+      }
+    },
+    {
+      "product_name": "Cartofi Bio",
+      "lang": "en",
+      "creator": "cmind",
+      "brands": "inima.bio",
+      "image_front_url": "642/624/500/0379/front_en.4.400.jpg",
+      "packaging_tags": [
+        "en:plastic-net"
+      ],
+      "quantity": "1kg",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "CARTOFI BIO Categoria - II",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": [
+        "Organic",
+        " EU Organic",
+        " BG-BIO-04"
+      ],
+      "nutriments": []
+    },
+    {
+      "product_name": "Broccoli",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "004/970/569/4053/front_en.3.400.jpg",
+      "packaging_tags": [],
+      "quantity": "32 oz",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": [
+        {
+          "name": "proteins",
+          "quantity_100": 3.3333333333333
+        },
+        {
+          "name": "sugars",
+          "quantity_100": 1.1111111111111
+        },
+        {
+          "name": "fat",
+          "quantity_100": 0
+        },
+        {
+          "name": "carbohydrates",
+          "quantity_100": 4.4444444444444
+        },
+        {
+          "name": "saturated-fat",
+          "quantity_100": 0
+        },
+        {
+          "name": "energy-kcal",
+          "quantity_100": 27.777777777778
+        }
+      ],
+      "nutri_sugars": 1.1111111111111,
+      "nutri_energy-kcal": 27.777777777778,
+      "calories": 27,
+      "burn_calories": {
+        "walking": "6.61",
+        "pedalling": "3.86",
+        "running": "2.89"
+      }
+    },
+    {
+      "product_name": "Zuzu lapte",
+      "lang": "en",
+      "creator": "brandprivat",
+      "brands": "Zuzu",
+      "image_front_url": "",
+      "packaging_tags": [
+        "en:plastic",
+        "en:pet-polyethylene-terephthalate"
+      ],
+      "quantity": "1,8 l,",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "semi-skimmed, standardized, homogenized and pasteurized cow's milk,",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": {
+        "0": {
+          "name": "proteins",
+          "quantity_100": 3.1
+        },
+        "1": {
+          "name": "sugars",
+          "quantity_100": 4.5
+        },
+        "2": {
+          "name": "sodium",
+          "quantity_100": 0.04
+        },
+        "3": {
+          "name": "salt",
+          "quantity_100": 0.1
+        },
+        "4": {
+          "name": "carbohydrates",
+          "quantity_100": 4.5
+        },
+        "6": {
+          "name": "fat",
+          "quantity_100": 1.5
+        },
+        "7": {
+          "name": "energy-kcal",
+          "quantity_100": 44
+        },
+        "8": {
+          "name": "saturated-fat",
+          "quantity_100": 1
+        }
+      },
+      "nutri_sugars": 4.5,
+      "nutri_sodium": 0.04,
+      "nutri_salt": 0.1,
+      "nutri_energy-kcal": 44,
+      "calories": 44,
+      "burn_calories": {
+        "walking": "10.78",
+        "pedalling": "6.29",
+        "running": "4.71"
+      }
+    },
+    {
+      "product_name": "lapte",
+      "lang": "ro",
+      "creator": "openfoodfacts-contributors",
+      "brands": "Friss",
+      "image_front_url": "594/117/340/5610/front_ro.32.400.jpg",
+      "packaging_tags": [
+        "en:tetra-pak",
+        "en:container"
+      ],
+      "quantity": "1 L",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "Lapte de vacă integral, standardizat, omogenizat și pasteurizat",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": [
+        "Lapte"
+      ],
+      "nutriments": {
+        "0": {
+          "name": "energy-kcal",
+          "quantity_100": 62
+        },
+        "1": {
+          "name": "fat",
+          "quantity_100": 3.5
+        },
+        "2": {
+          "name": "salt",
+          "quantity_100": 0.1
+        },
+        "3": {
+          "name": "sodium",
+          "quantity_100": 0.04
+        },
+        "4": {
+          "name": "sugars",
+          "quantity_100": 4.5
+        },
+        "5": {
+          "name": "proteins",
+          "quantity_100": 3
+        },
+        "7": {
+          "name": "carbohydrates",
+          "quantity_100": 4.5
+        },
+        "10": {
+          "name": "saturated-fat",
+          "quantity_100": 2.4
+        }
+      },
+      "nutri_energy-kcal": 62,
+      "nutri_salt": 0.1,
+      "nutri_sodium": 0.04,
+      "nutri_sugars": 4.5,
+      "allergens": [
+        "milk"
+      ],
+      "calories": 62,
+      "burn_calories": {
+        "walking": "15.18",
+        "pedalling": "8.86",
+        "running": "6.64"
+      }
+    },
+    {
+      "product_name": "Porumb",
+      "lang": "en",
+      "creator": "foodvisor",
+      "brands": "Globus",
+      "image_front_url": "",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": [
+        {
+          "name": "sugars",
+          "quantity_100": 3.5
+        },
+        {
+          "name": "proteins",
+          "quantity_100": 3
+        },
+        {
+          "name": "saturated-fat",
+          "quantity_100": 0.1
+        },
+        {
+          "name": "energy-kcal",
+          "quantity_100": 118
+        },
+        {
+          "name": "fat",
+          "quantity_100": 1.3
+        },
+        {
+          "name": "carbohydrates",
+          "quantity_100": 22
+        }
+      ],
+      "nutri_sugars": 3.5,
+      "nutri_energy-kcal": 118,
+      "calories": 118,
+      "burn_calories": {
+        "walking": "28.90",
+        "pedalling": "16.86",
+        "running": "12.64"
+      }
+    },
+    {
+      "product_name": "Porumb dulce",
+      "lang": "ro",
+      "creator": "adriaxx",
+      "brands": "Alex Star",
+      "image_front_url": "642/169/300/1183/front_ro.4.400.jpg",
+      "packaging_tags": [
+        "en:metal",
+        "en:canned"
+      ],
+      "quantity": "340 g",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "Porumb dulce boabe, apa, sare, zahăr tos.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": [
+        "en:Porumb"
+      ],
+      "nutriments": [
+        {
+          "name": "sugars",
+          "quantity_100": 2
+        },
+        {
+          "name": "fat",
+          "quantity_100": 0
+        },
+        {
+          "name": "saturated-fat",
+          "quantity_100": 0
+        },
+        {
+          "name": "energy-kcal",
+          "quantity_100": 228
+        },
+        {
+          "name": "proteins",
+          "quantity_100": 2.2
+        },
+        {
+          "name": "sodium",
+          "quantity_100": 0.4
+        },
+        {
+          "name": "carbohydrates",
+          "quantity_100": 11.2
+        },
+        {
+          "name": "salt",
+          "quantity_100": 1
+        }
+      ],
+      "nutri_sugars": 2,
+      "nutri_energy-kcal": 228,
+      "nutri_sodium": 0.4,
+      "nutri_salt": 1,
+      "calories": 228,
+      "burn_calories": {
+        "walking": "55.84",
+        "pedalling": "32.57",
+        "running": "24.43"
+      }
+    },
+    {
       "product_name": "Bulion",
       "lang": "ro",
       "creator": "openfoodfacts-contributors",
@@ -796,6 +1456,79 @@
         "sugar": 8.1
       },
       "id": 1
+    },
+    {
+      "recipeName": "meniu2",
+      "recipeQuantity": 10,
+      "date": "09.02.2023",
+      "recipeIngredients": [
+        {
+          "productName": "Bulion",
+          "brand": "Sultan",
+          "quantity": 10,
+          "calories_100": 80,
+          "calories_currQty": 8,
+          "nutriments": {
+            "0": {
+              "name": "proteins",
+              "quantity_100": 3
+            },
+            "1": {
+              "name": "sodium",
+              "quantity_100": 0.368
+            },
+            "2": {
+              "name": "carbohydrates",
+              "quantity_100": 15.4
+            },
+            "3": {
+              "name": "fat",
+              "quantity_100": 1.1
+            },
+            "4": {
+              "name": "sugars",
+              "quantity_100": 8.1
+            },
+            "5": {
+              "name": "saturated-fat",
+              "quantity_100": 0.35
+            },
+            "6": {
+              "name": "energy-kcal",
+              "quantity_100": 80
+            },
+            "9": {
+              "name": "nova-group",
+              "quantity_100": 3
+            },
+            "11": {
+              "name": "salt",
+              "quantity_100": 0.92
+            }
+          },
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "recipeNutriments": {
+        "calories": 8,
+        "fat": 1.1,
+        "saturated_fat": 0.35,
+        "carbohydrates": 15.4,
+        "sugars": 8.1,
+        "proteins": 3,
+        "salt": 0.92
+      },
+      "recipeNutriscore": "C",
+      "recipeNutriscore_TEMPORARY": {
+        "energy": 334.72,
+        "fibers": null,
+        "fruit_percentage": 0,
+        "proteins": 3,
+        "saturated_fats": 0.35,
+        "sodium": 368,
+        "sugar": 8.1
+      },
+      "id": 2
     }
   ]
 }

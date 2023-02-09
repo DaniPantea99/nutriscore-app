@@ -76,8 +76,9 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
     filteredRecipes.map((item) => ({
       name: item.recipeName,
       qty: item.recipeQuantity,
-      date: item.date,
+      calories: item.recipeNutriments.calories,
       nutriscore: item.recipeNutriscore,
+      date: item.date,
     }));
 
     const viewMoreHandler = useCallback((e) => {
@@ -96,8 +97,8 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
       accessor: 'qty',
     },
     {
-      Header: 'Date',
-      accessor: 'date',
+      Header: 'Calories',
+      accessor: 'calories',
     },
     {
       Header: 'Nutriscore',
@@ -110,6 +111,10 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
           </div>
         )
       }
+    },
+    {
+      Header: 'Date',
+      accessor: 'date',
     },
     {
       Header: 'Action',
