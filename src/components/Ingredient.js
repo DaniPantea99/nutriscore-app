@@ -4,19 +4,88 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 
 function Ingredient({ item, index, getIngredient, removeIngredient }) {
-
   function format2Decimals(str) {
-    const num = parseFloat(str)
-    return Math.round(num * 100) / 100
+    const num = parseFloat(str);
+    return Math.round(num * 100) / 100;
   }
+
+  const Calories = () => {
+    return (
+      <div>
+        <p>
+          Calories (100g):&nbsp;
+          <span className={`${item.calories_100 ? '' : 'italic'}`}>
+            {format2Decimals(item.calories_100 ? item.calories_100 : '0')}
+            <span className="not-italic">&nbsp;kcal /&nbsp;</span>
+            {format2Decimals(
+              item.calories_100 ? item.calories_100 * 4.184 : '0'
+            )}
+            <span className="not-italic">&nbsp;kJ</span>
+          </span>
+        </p>
+      </div>
+    );
+  };
+
+  const Nutriments = () => {
+    return (
+      <div>
+        <p>Nutriments (100g):</p>
+        <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7`}>
+        {Array.isArray(item.nutriments)
+          ? item.nutriments
+          ? item?.nutriments?.map((el, index) => (
+            <li key={index}>
+                    {el.name}: {format2Decimals(el.quantity_100)}
+                  </li>
+                ))
+                : 'Info unavailable'
+                : item.nutriments
+                ? Object.values(item.nutriments).map((el, index) => (
+                  <li key={index}>
+                  {el.name}: {format2Decimals(el.quantity_100)}
+                </li>
+              ))
+              : ' Info unavailable'}
+        </ul>
+      </div>
+    );
+  };
   
+  const Additives = () => {
+    return (
+      <div>
+        <p>Additives:</p>
+        <ul
+          className={`${
+            item.additives ? '' : 'italic'
+          } list-disc ml-7 capitalize`}
+        >
+          {Array.isArray(item.additives)
+            ? item.additives
+              ? item?.additives?.map((el, index) => (
+                  <li key={index}>{el.toString().slice(3)}</li>
+                ))
+              : 'Info unavailable'
+            : item.additives
+            ? Object.values(item?.additives)?.map((el, index) => (
+                <li key={index}>{el.toString().slice(3)}</li>
+              ))
+            : ' Info unavailable'}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-col">
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button 
-            className={`${open ? 'rounded-t-xl' : 'rounded-xl'} flex items-center w-full bg-blue-300 h-11 focus:outline-none`}
+            <Disclosure.Button
+              className={`${
+                open ? 'rounded-t-xl' : 'rounded-xl'
+              } flex items-center w-full bg-blue-300 h-11 focus:outline-none`}
             >
               <ChevronUpIcon
                 className={`${
@@ -26,7 +95,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
               <div className="flex items-center justify-between w-full gap-3 p-2">
                 <div className="flex flex-col items-start w-full">
                   <label className="inline-block" htmlFor={item.productName}>
-                    <p className="w-24 overflow-hidden sm:w-full">
+                    <p className="w-24 overflow-hidden capitalize sm:w-full">
                       {item.productName}
                     </p>
                   </label>
@@ -54,41 +123,29 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
               </div>
             </Disclosure.Button>
             <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
-              <div className='mb-2'>
-                <p>Brand:&nbsp;<span className={`${item.brand ? '' : 'italic'}`}>{item.brand ? item.brand : "Unavailable"}</span></p>
-                <p>Calories (100g):&nbsp;
-                  <span className={`${item.calories_100 ? '' : 'italic'}`}>
-                    {item.calories_100 ? item.calories_100 : '0'}
-                    <span className='not-italic'>&nbsp;kcal /&nbsp;</span>
-                    {format2Decimals(item.calories_100 ? (item.calories_100 * 4.184) : '0')}
-                    <span className='not-italic'>&nbsp;kJ</span>
+              <div className="mb-2">
+                <p>
+                  Brand:&nbsp;
+                  <span className={`${item.brand ? '' : 'italic'}`}>
+                    {item.brand ? item.brand : 'Unavailable'}
                   </span>
                 </p>
+                <Calories />
               </div>
 
-              <div>
-                <p>Nutriments (100g):</p>
-                  <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7`}>
-                    
-                  {
-                  (Array.isArray(item.nutriments) ? 
-                  
-                  item.nutriments ? (item?.nutriments?.map((el, index) => <li key={index}>{el.name}: {el.quantity_100}</li>))
-                  : 'Info unavailable' 
-                  : 
-                  item.nutriments ? (Object.values(item.nutriments).map((el, index) => <li key={index}>{el.name}: {el.quantity_100}</li>)) : ' Info unavailable'
-                  )
-                  }
-                  </ul>
-              </div>
-              <div className='mt-2'>
-                <p>Source:&nbsp;
+              <Nutriments />
+              {item.additives &&                
+              <Additives />
+              }
+
+              <div className="mt-2">
+                <p>
+                  Source:&nbsp;
                   <span className={`${item.source ? '' : 'italic'}`}>
                     {item.source ? item.source : 'Unavailable'}
                   </span>
                 </p>
               </div>
-              
             </Disclosure.Panel>
           </>
         )}

@@ -57,7 +57,7 @@ export default function SearchItem({
                   <Combobox.Option
                     key={item.product_name}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      `relative cursor-default select-none py-2 pl-10 pr-4 capitalize ${
                         active ? 'bg-blue-600 text-white' : 'text-gray-900'
                       }`
                     }
