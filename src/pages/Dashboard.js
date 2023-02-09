@@ -1,19 +1,26 @@
-import React, { useState, Fragment, useCallback } from 'react';
-import CreateRecipe from '../components/CreateRecipe';
-import { Transition } from '@headlessui/react';
-import RecipesTable from '../components/RecipesTable';
-import { removeRecipe } from '../actions/recipesAction';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, Fragment, useCallback } from "react";
+import CreateRecipe from "../components/CreateRecipe";
+import { Transition } from "@headlessui/react";
+import RecipesTable from "../components/RecipesTable";
+import logo from "../images/mrbeast-logo-portrait.svg";
+import { removeRecipe } from "../actions/recipesAction";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation, Trans } from "react-i18next";
 import NutriScoreInfo from '../components/NutriScoreInfo';
+
+// const lngs = {
+//   en: { nativeName: "English" },
+//   ro: { nativeName: "Romanian" },
+// };
 
 function Dashboard() {
   const [showRecipePanel, setShowRecipePanel] = useState(false);
   const toggleSidePanel = useCallback(() => {
     setShowRecipePanel(!showRecipePanel);
-  }, [showRecipePanel])
+  }, [showRecipePanel]);
 
   const { filteredRecipes } = useSelector((state) => state.recipes);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const RemoveRecipe = useCallback((e) => {
     const recipe = filteredRecipes.find(el => el.recipeName === e)
@@ -25,6 +32,8 @@ function Dashboard() {
       setIsOpen(true)
     }
 
+ const { t } = useTranslation();
+ 
   return (
     <div className="flex flex-col w-full h-full p-8">
       <div className='flex items-center justify-between mb-16'>
@@ -42,25 +51,25 @@ function Dashboard() {
             />
           }
       </div>
-      
+
       <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px]">
+
         <div className="flex justify-between mb-6">
           <div>
-            <h2 className="tracking-wide">Manage Recipes:</h2>
+            <h2 className="tracking-wide">{t("recipeList.title")}</h2>
           </div>
           <button
             className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
             onClick={toggleSidePanel}
           >
-            Create New Recipe
+            {t("recipeList.createButton")}
           </button>
         </div>
 
-         <RecipesTable 
-         toggleSidePanel={toggleSidePanel} 
-         RemoveRecipe={RemoveRecipe}
-         />
-     
+        <RecipesTable
+          toggleSidePanel={toggleSidePanel}
+          RemoveRecipe={RemoveRecipe}
+        />
       </div>
 
       <Transition

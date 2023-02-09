@@ -1,18 +1,20 @@
-import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { useTranslation } from "react-i18next";
 
 export default function RecipeOptions({
   viewMoreHandler,
   value,
   RemoveRecipe,
 }) {
+  const { t } = useTranslation();
   return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="z-0 flex justify-center w-full px-4 py-1 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-opacity-70 active:bg-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
-            Options
+          <Menu.Button className="flex justify-center w-full px-4 py-1 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            {t("recipesOption.button")}
             <ChevronDownIcon
               className="w-5 h-5 ml-2 -mr-1 text-white"
               aria-hidden="true"
@@ -36,7 +38,7 @@ export default function RecipeOptions({
                     value={value}
                     onClick={(e) => viewMoreHandler(e.target.value)}
                     className={`${
-                      active ? 'bg-blue-400 text-white' : 'text-gray-900'
+                      active ? "bg-blue-400 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-1 text-sm`}
                   >
                     {active ? (
@@ -50,7 +52,7 @@ export default function RecipeOptions({
                         aria-hidden="true"
                       />
                     )}
-                    Edit
+                    {t("recipesOption.editOption")}
                   </button>
                 )}
               </Menu.Item>
@@ -62,7 +64,7 @@ export default function RecipeOptions({
                     value={value}
                     onClick={(e) => RemoveRecipe(e.target.value)}
                     className={`${
-                      active ? 'bg-blue-400 text-white' : 'text-gray-900'
+                      active ? "bg-blue-400 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-1 text-sm`}
                   >
                     {active ? (
@@ -76,7 +78,7 @@ export default function RecipeOptions({
                         aria-hidden="true"
                       />
                     )}
-                    Delete
+                    {t("recipesOption.deleteOption")}
                   </button>
                 )}
               </Menu.Item>
