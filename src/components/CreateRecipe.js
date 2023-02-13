@@ -169,10 +169,10 @@ function CreateRecipe({ toggleSidePanel }) {
   const NutritionFacts = () => {
     return (
       <div>
-        <p>Nutrition Facts (per 1 recipe):</p>
+        <p>{t("editRecipe.details.nutrition")}:</p>
         <ul className="ml-6 list-disc">
           <li>
-            Calories:&nbsp;
+            {t("editRecipe.details.calories")}:&nbsp;
             {selectedRecipe?.recipeNutriments?.calories ?? 0} kcal /&nbsp;
             {format2Decimals(
               (selectedRecipe?.recipeNutriments?.calories ?? 0) * 4.184
@@ -180,23 +180,33 @@ function CreateRecipe({ toggleSidePanel }) {
             kJ
           </li>
           <li>
-            Fat:&nbsp;{selectedRecipe?.recipeNutriments?.fat ?? 0}
+            {t("editRecipe.details.fat")}:&nbsp;
+            {selectedRecipe?.recipeNutriments?.fat ?? 0}
             <ul className="ml-6 list-disc">
               <li>
-                Saturated fat:&nbsp;
+                {t("editRecipe.details.saturatedFat")}:&nbsp;
                 {selectedRecipe?.recipeNutriments?.saturated_fat ?? 0}
               </li>
             </ul>
           </li>
           <li>
-            Carbohydrates:{" "}
+            {t("editRecipe.details.carbohydrates")}:{" "}
             {selectedRecipe?.recipeNutriments?.carbohydrates ?? 0}
             <ul className="ml-6 list-disc">
-              <li>Sugars: {selectedRecipe?.recipeNutriments?.sugars ?? 0}</li>
+              <li>
+                {t("editRecipe.details.sugar")}:{" "}
+                {selectedRecipe?.recipeNutriments?.sugars ?? 0}
+              </li>
             </ul>
           </li>
-          <li>Proteins: {selectedRecipe?.recipeNutriments?.proteins ?? 0}</li>
-          <li>Salt: {selectedRecipe?.recipeNutriments?.salt ?? 0}</li>
+          <li>
+            {t("editRecipe.details.proteins")}:{" "}
+            {selectedRecipe?.recipeNutriments?.proteins ?? 0}
+          </li>
+          <li>
+            {t("editRecipe.details.salt")}:{" "}
+            {selectedRecipe?.recipeNutriments?.salt ?? 0}
+          </li>
         </ul>
       </div>
     );
@@ -286,16 +296,17 @@ function CreateRecipe({ toggleSidePanel }) {
                       } h-5 w-5 text-blue-900 ml-1`}
                     />
                     <div className="flex items-center justify-between w-full gap-3 p-2">
-                      <span>{t("editRecipe.details")}</span>
+                      <span>{t("editRecipe.details.title")}</span>
                     </div>
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
                     <div className="mb-2">
-                      <h3>Servings: 1</h3>
+                      <h3>{t("editRecipe.details.servings")}: 1</h3>
                       <hr />
                       <div className="mt-2">
                         <p>
-                          Quantity:&nbsp;{selectedRecipe?.recipeQuantity ?? 0}g
+                          {t("editRecipe.details.quantity")}:&nbsp;
+                          {selectedRecipe?.recipeQuantity ?? 0}g
                         </p>
 
                         <NutritionFacts />

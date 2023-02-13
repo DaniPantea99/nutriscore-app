@@ -1,8 +1,8 @@
-import i18next from "i18next";
+import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
-i18next
+i18n
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
@@ -45,17 +45,89 @@ i18next
             details: {
               title: "Recipe Details",
               servings: "Servings",
-              qty: "Quantity",
+              quantity: "Quantity",
               nutrition: "Nutrition Facts(per 1 recipe)",
+              calories: "Calories",
+              fat: "Fat",
+              saturatedFat: "Saturated fat",
+              carbohydrates: "Carbohydrates",
+              sugar: "Sugar",
+              proteins: "Proteins",
+              salt: "Salt",
             },
-
             updateButton: "Update",
             discardButton: "Discard my changes",
+          },
+          userPage: {
+            title: "User Page",
+          },
+          settingsPage: {
+            title: "Settings Page",
+            translateButton: "Translate",
+            language: "Language",
           },
         },
       },
       ro: {
-        title: "Gestionare Rețete",
+        translation: {
+          recipeList: {
+            title: "Mr Beast Burger",
+            subtitle: "Gestionare Rețete",
+            header: {
+              name: "Nume",
+              qty: "Cantitate (grame)",
+              cal: "Calorii",
+              ntrs: "Nutriscore",
+              date: "Data",
+              action: "Acțiune",
+            },
+            createButton: "Creare Rețetă Nouă",
+            searchInput: "Căutare",
+          },
+          recipesOption: {
+            openBtn: "Deschide",
+            removeBtn: "Șterge",
+          },
+          createRecipe: {
+            saveBtn: "Salvează",
+            discardBtn: "Renunță și închide",
+          },
+          editRecipe: {
+            description:
+              "Pentru a crea o rețetă nouă, vă rugăm să introduceți toate informațiile de mai jos.",
+            firstLabel: "Nume Rețetă",
+            placeholder: "Nume...",
+            secondLabel: "Căutare Ingrediente",
+            placeholderSecond: "Caută...",
+            nothingFound: "Niciun ingredient găsit",
+            ingredientsList: "Lista de Ingrediente:",
+            details: {
+              title: "Detalii Rețetă",
+              servings: "Porții",
+              quantity: "Cantitate",
+              nutrition: "Informații nutriționale (pentru 1 rețetă)",
+              calories: "Calorii",
+              fat: "Grăsimi",
+              saturatedFat: "Grăsimi saturate",
+              carbohydrates: "Carbohidrați",
+              sugar: "Zaharuri",
+              proteins: "Proteine",
+              salt: "Sare",
+            },
+            updateButton: "Actualizare",
+            discardButton: "Renunțare la modificări",
+          },
+          userPage: {
+            title: "User Page",
+          },
+          settingsPage: {
+            title: "Settings Page",
+            translateButton: "Translate",
+            language: "Limbă",
+          },
+        },
       },
     },
   });
+
+export default i18n;

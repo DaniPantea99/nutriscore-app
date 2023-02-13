@@ -37,11 +37,12 @@ function Navbar({ children }) {
         }`}
       >
         <div className="flex items-center justify-between px-4 py-8 mb-2 h-28">
+          <img
+            className={`w-28 ${isOpen ? "block" : "hidden"}`}
+            src={`./images/mrbeast-logo1.svg`}
+            alt="restaurant-logo"
+          />
 
-            <img 
-             className={`w-28 ${isOpen ? "block" : "hidden"}`}
-             src={`./images/mrbeast-logo1.svg`} alt="restaurant-logo" />
-  
           <div className="flex justify-center text-3xl">
             <BsFillArrowLeftCircleFill
               onClick={toggleOpen}
