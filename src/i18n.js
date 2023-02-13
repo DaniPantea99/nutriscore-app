@@ -12,10 +12,13 @@ i18next
       en: {
         translation: {
           recipeList: {
-            title: "Manage Recipes",
+            title: "Mr Beast Burger",
+            subtitle: "Manage Recipes",
             header: {
               name: "Name",
               qty: "Quantity (grams)",
+              cal: "Calories",
+              ntrs: "Nutriscore",
               date: "Date",
               action: "Action",
             },
@@ -23,17 +26,29 @@ i18next
             searchInput: "Search",
           },
           recipesOption: {
-            button: "Options",
-            editOption: "Edit",
-            deleteOption: "Delete",
+            openBtn: "Open",
+            removeBtn: "Remove",
+          },
+          createRecipe: {
+            saveBtn: "Save",
+            discardBtn: "Discard and close",
           },
           editRecipe: {
             description:
               "To create a new recipe, please type in all the information below.",
             firstLabel: "Recipe Name",
+            placeholder: "Recipe Name...",
             secondLabel: "Search Ingredients",
+            placeholderSecond: "Search...",
+            nothingFound: "Nothing found",
             ingredientsList: "List of Ingredients:",
-            details: "Recipe Details",
+            details: {
+              title: "Recipe Details",
+              servings: "Servings",
+              qty: "Quantity",
+              nutrition: "Nutrition Facts(per 1 recipe)",
+            },
+
             updateButton: "Update",
             discardButton: "Discard my changes",
           },

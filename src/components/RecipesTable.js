@@ -3,11 +3,11 @@ import {
   useGlobalFilter,
   useSortBy,
   usePagination,
-} from 'react-table';
-import { useMemo, useCallback } from 'react';
-import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectRecipe } from '../actions/recipesAction';
+} from "react-table";
+import { useMemo, useCallback } from "react";
+import { FaSearch, FaSortUp, FaSortDown } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { selectRecipe } from "../actions/recipesAction";
 import { useTranslation } from "react-i18next";
 
 function InputGroup7({
@@ -55,9 +55,8 @@ function GlobalSearchFilter1({
   setGlobalFilter,
   className = "",
 }) {
-
   const { t } = useTranslation();
-  
+
   return (
     <InputGroup7
       name="search"
@@ -103,46 +102,50 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
       accessor: "qty",
     },
     {
-      Header: 'Calories',
-      accessor: 'calories',
+      Header: t("recipeList.header.cal"),
+      accessor: "calories",
     },
     {
-      Header: 'Nutriscore',
-      accessor: 'nutriscore',
+      Header: t("recipeList.header.ntrs"),
+      accessor: "nutriscore",
 
-      Cell: ({cell}) => {
+      Cell: ({ cell }) => {
         return (
           <div>
-            <img width='70px' src={`./images/nutriscore/nutriscore_${cell.value}.svg`} alt={`logo-nutriscore`} />
+            <img
+              width="70px"
+              src={`./images/nutriscore/nutriscore_${cell.value}.svg`}
+              alt={`logo-nutriscore`}
+            />
           </div>
-        )
-      }
+        );
+      },
     },
     {
       Header: t("recipeList.header.date"),
-      accessor: 'date',
+      accessor: "date",
     },
     {
       Header: t("recipeList.header.action"),
-      accessor: 'action',
-      
-        Cell: ({cell}) => {
-          return (
-            <div className='z-0 flex items-center justify-between'>
+      accessor: "action",
+
+      Cell: ({ cell }) => {
+        return (
+          <div className="z-0 flex items-center justify-between">
             <button
               value={cell.row.values.name}
               className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
               onClick={(e) => viewMoreHandler(e.target.value)}
-              >
-              Open
+            >
+              {t("recipesOption.openBtn")}
             </button>
             <button
-            value={cell.row.values.name}
-            className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
-            onClick={(e) => RemoveRecipe(e.target.value)}
+              value={cell.row.values.name}
+              className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
+              onClick={(e) => RemoveRecipe(e.target.value)}
             >
-              Remove
-              </button>
+              {t("recipesOption.removeBtn")}
+            </button>
           </div>
         );
       },
