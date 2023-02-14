@@ -3,23 +3,23 @@ import {
   useGlobalFilter,
   useSortBy,
   usePagination,
-} from "react-table";
-import { useMemo, useCallback } from "react";
-import { FaSearch, FaSortUp, FaSortDown } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { selectRecipe } from "../actions/recipesAction";
-import { useTranslation } from "react-i18next";
+} from 'react-table';
+import { useMemo, useCallback } from 'react';
+import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectRecipe } from '../actions/recipesAction';
+import { useTranslation } from 'react-i18next';
 
 function InputGroup7({
   label,
   name,
   value,
   onChange,
-  type = "text",
+  type = 'text',
   decoration,
-  className = "",
-  inputClassName = "",
-  decorationClassName = "",
+  className = '',
+  inputClassName = '',
+  decorationClassName = '',
   disabled,
 }) {
   return (
@@ -35,13 +35,13 @@ function InputGroup7({
         aria-label={label}
         onChange={onChange}
         className={`peer block w-full p-3 text-gray focus:outline-none focus:ring-0 appearance-none bg-blue-200 ${
-          disabled ? "bg-gray-200" : ""
+          disabled ? 'bg-gray-200' : ''
         } ${inputClassName}`}
         disabled={disabled}
       />
       <div
         className={`flex items-center pl-3 py-3 text-gray-600 ${
-          disabled ? "bg-gray-200" : ""
+          disabled ? 'bg-gray-200' : ''
         } ${decorationClassName}`}
       >
         {decoration}
@@ -53,16 +53,16 @@ function InputGroup7({
 function GlobalSearchFilter1({
   globalFilter,
   setGlobalFilter,
-  className = "",
+  className = '',
 }) {
   const { t } = useTranslation();
 
   return (
     <InputGroup7
       name="search"
-      value={globalFilter || ""}
+      value={globalFilter || ''}
       onChange={(e) => setGlobalFilter(e.target.value)}
-      label={t("recipeList.searchInput")}
+      label={t('recipeList.searchInput')}
       decoration={<FaSearch size="1rem" className="text-gray-500" />}
       className={className}
     />
@@ -94,20 +94,20 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
 
   const getColumns = () => [
     {
-      Header: t("recipeList.header.name"),
-      accessor: "name",
+      Header: t('recipeList.header.name'),
+      accessor: 'name',
     },
     {
-      Header: t("recipeList.header.qty"),
-      accessor: "qty",
+      Header: t('recipeList.header.qty'),
+      accessor: 'qty',
     },
     {
-      Header: t("recipeList.header.cal"),
-      accessor: "calories",
+      Header: t('recipeList.header.cal'),
+      accessor: 'calories',
     },
     {
-      Header: t("recipeList.header.ntrs"),
-      accessor: "nutriscore",
+      Header: t('recipeList.header.ntrs'),
+      accessor: 'nutriscore',
 
       Cell: ({ cell }) => {
         return (
@@ -122,12 +122,12 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
       },
     },
     {
-      Header: t("recipeList.header.date"),
-      accessor: "date",
+      Header: t('recipeList.header.date'),
+      accessor: 'date',
     },
     {
-      Header: t("recipeList.header.action"),
-      accessor: "action",
+      Header: t('recipeList.header.action'),
+      accessor: 'action',
 
       Cell: ({ cell }) => {
         return (
@@ -137,14 +137,14 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
               className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
               onClick={(e) => viewMoreHandler(e.target.value)}
             >
-              {t("recipesOption.openBtn")}
+              {t('recipesOption.openBtn')}
             </button>
             <button
               value={cell.row.values.name}
               className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
               onClick={(e) => RemoveRecipe(e.target.value)}
             >
-              {t("recipesOption.removeBtn")}
+              {t('recipesOption.removeBtn')}
             </button>
           </div>
         );
@@ -179,21 +179,21 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
                     style={{ width: column.width }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="font-bold">{column.render("Header")}</div>
+                      <div className="font-bold">{column.render('Header')}</div>
                       {!column.disableSortBy && (
                         <div className="flex flex-col">
                           <FaSortUp
                             className={`text-sm translate-y-1/2 ${
                               column.isSorted && !column.isSortedDesc
-                                ? "text-red-300"
-                                : "text-white"
+                                ? 'text-red-300'
+                                : 'text-white'
                             }`}
                           />
                           <FaSortDown
                             className={`text-sm -translate-y-1/2 ${
                               column.isSortedDesc
-                                ? "text-red-300"
-                                : "text-white"
+                                ? 'text-red-300'
+                                : 'text-white'
                             }`}
                           />
                         </div>
@@ -219,7 +219,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
                         {...cell.getCellProps()}
                         className="py-2 pr-6 text-sm font-medium capitalize first:rounded-l-xl last:rounded-r-xl pl-7"
                       >
-                        {cell.render("Cell")}
+                        {cell.render('Cell')}
                       </td>
                     );
                   })}
