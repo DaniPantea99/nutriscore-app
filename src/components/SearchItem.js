@@ -4,8 +4,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
 export default function SearchItem({
   database,
-  onSelect,
-  listOfIngredients
+  onSelect
 }) {
 
   const [query, setQuery] = useState('');
@@ -29,7 +28,7 @@ export default function SearchItem({
           <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input
               className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-white border-none outline-none input focus:ring-0"
-              placeholder="Cauta..."
+              placeholder="search ingredient..."
               // displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}
             />

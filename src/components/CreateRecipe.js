@@ -3,18 +3,17 @@ import SearchItem from "./SearchItem";
 import { useDispatch, useSelector } from "react-redux";
 import Ingredient from "../components/Ingredient";
 import { createRecipe, updateRecipe } from "../actions/recipesAction";
-import { selectRecipe } from "../actions/recipesAction";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { BsFillXCircleFill } from 'react-icons/bs';
 import { nutriScore } from 'nutri-score';
 import { useTranslation } from "react-i18next";
+import {v4 as uuidv4} from 'uuid';
 
-function CreateRecipe({ toggleSidePanel }) {
+
+function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const { filtered } = useSelector((state) => state.ingredients);
-  const { selectedRecipe } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
-  const [listOfIngredients, setListOfIngredients] = useState(initList);
   const [recipeName, setRecipeName] = useState();
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString("ro-RO", {
@@ -22,34 +21,6 @@ function CreateRecipe({ toggleSidePanel }) {
     month: "numeric",
     year: "numeric",
   });
-
-  function format2Decimals(str) {
-    const num = parseFloat(str);
-    return Math.round(num * 100) / 100;
-  }
-
-  const getIngredient = (e) => {
-    listOfIngredients.forEach((el) => {
-      if (el.productName === e.name) {
-        el.quantity = Number(e.value);
-      }
-      el.calories_currQty =
-        Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;
-    });
-  };
-
-  const removeIngredient = (e, item) => {
-    e.stopPropagation();
-    const filterList = listOfIngredients.filter(
-      (el) => el.productName !== item.productName
-    );
-    setListOfIngredients(filterList);
-  };
-
-  function CloseAndDiscard() {
-    toggleSidePanel();
-    dispatch(selectRecipe([]));
-  }
 
   function initList() {
     if (Object.keys(selectedRecipe).length === 0) {
@@ -59,10 +30,44 @@ function CreateRecipe({ toggleSidePanel }) {
     }
   }
 
+  const [listOfIngredients, setListOfIngredients] = useState(initList);
+
+  function format2Decimals(str) {
+    const num = parseFloat(str);
+    return Math.round(num * 100) / 100;
+  }
+
+  const getIngredient = (e) => {
+    listOfIngredients.forEach(el => {
+      if (el.productName === e.name) {
+        el.quantity = Number(e.value);
+        el.calories_currQty = Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0
+      }
+    });
+  };
+
+  const removeIngredient = (e, item) => {
+    e.stopPropagation();
+    const filterList = listOfIngredients.filter(
+      (el) => el.id !== item.id
+    );
+    setListOfIngredients(filterList);
+  };
+
+  function CloseAndDiscard() {
+    toggleSidePanel();
+    setSelectedRecipe([])
+  }
+
   const AddNewIngredient = (ingredient) => {
+    let uuid = uuidv4();
+    if(listOfIngredients.some(el => el.productName === ingredient.product_name)) {
+      alert('Already added!')      
+    } else {
     setListOfIngredients((prev) => [
       ...prev,
       {
+        id: uuid,
         productName: ingredient.product_name,
         brand: ingredient.brands,
         quantity: null,
@@ -73,14 +78,17 @@ function CreateRecipe({ toggleSidePanel }) {
         source: ingredient.sursa,
       },
     ]);
+  }
   };
 
   function createNewRecipe(e) {
     e.preventDefault();
+    let uuid = uuidv4();
     if (listOfIngredients.length === 0) {
       alert("No ingredients selected.");
     } else {
       const recipe = {
+        id: uuid,
         recipeName: recipeName,
         recipeQuantity: listOfIngredients.reduce(
           (acc, curr) => acc + curr?.quantity ?? 0,
@@ -102,7 +110,7 @@ function CreateRecipe({ toggleSidePanel }) {
         },
         recipeNutriscore: nutriScore.calculateClass({
           energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
-          fibers: format2Decimals(CalculateQty('fibers')),
+          fibers: format2Decimals(CalculateQty('fibers') ?? 0),
           fruit_percentage: 0,
           proteins: format2Decimals(CalculateQty('proteins')),
           saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
@@ -124,7 +132,7 @@ function CreateRecipe({ toggleSidePanel }) {
       } else {
         dispatch(createRecipe(recipe));
       }
-      toggleSidePanel();
+      CloseAndDiscard();
     }
   }
 
@@ -140,8 +148,8 @@ function CreateRecipe({ toggleSidePanel }) {
       .reduce((acc, curr) => {
         return (
           acc +
-            curr.find((nutriment) => nutriment.name === nutrimentName)
-              ?.quantity_100 ?? 0
+            (curr?.find((nutriment) => nutriment.name === nutrimentName)
+              ?.quantity_100 ?? 0) ?? 0
         );
       }, 0);
   }
@@ -206,7 +214,7 @@ function CreateRecipe({ toggleSidePanel }) {
   
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      {/* <button onClick={CalculateQty}>test</button> */}
+      {/* <button onClick={() => console.log(selectedRecipe)}>test</button> */}
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">{t("editRecipe.description")}</h2>
         <BsFillXCircleFill
@@ -257,7 +265,8 @@ function CreateRecipe({ toggleSidePanel }) {
               <h3>{t("editRecipe.ingredientsList")}</h3>
             )}
             <div className="flex flex-col gap-2 mb-6">
-              {listOfIngredients.length > 0 &&
+              {
+              listOfIngredients.length > 0 &&
                 listOfIngredients.map((item, index) => (
                   <Ingredient
                     item={item}
@@ -265,9 +274,9 @@ function CreateRecipe({ toggleSidePanel }) {
                     index={index}
                     getIngredient={getIngredient}
                     removeIngredient={removeIngredient}
-                    selected={selectedRecipe}
                   />
-                ))}
+                ))
+                }
             </div>
 
             <Disclosure>

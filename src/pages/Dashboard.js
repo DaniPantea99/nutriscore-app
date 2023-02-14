@@ -13,6 +13,7 @@ import NutriScoreInfo from '../components/NutriScoreInfo';
 // };
 
 function Dashboard() {
+  const [selectedRecipe, setSelectedRecipe] = useState([])
   const [showRecipePanel, setShowRecipePanel] = useState(false);
   const toggleSidePanel = useCallback(() => {
     setShowRecipePanel(!showRecipePanel);
@@ -21,12 +22,12 @@ function Dashboard() {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
 
-  const RemoveRecipe = useCallback((e) => {
-    const recipe = filteredRecipes.find(el => el.recipeName === e)
-    dispatch(removeRecipe(recipe))
+  const RemoveRecipe = useCallback((recipe) => {
+    const selected = filteredRecipes.find(el => el.id === recipe.id)
+    dispatch(removeRecipe(selected))
     }, [dispatch, filteredRecipes]) 
   
-    let [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     function openModal() {
       setIsOpen(true)
     }
@@ -35,7 +36,7 @@ function Dashboard() {
  
   return (
     <div className="flex flex-col w-full h-full p-8">
-      <div className='flex items-center justify-between mb-16'>
+      <div className='flex items-center justify-between h-screen'>
         <div className="flex items-center gap-4">
             <img width="50px" src={`./images/mrbeast-logo2.svg`} alt="restaurant-logo" />
             <h1 className="tracking-wide uppercase cursor-default">mrbeast burger</h1>
@@ -51,9 +52,9 @@ function Dashboard() {
           }
       </div>
 
-      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px]">
+      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px] w-[500px] sm:w-full">
 
-        <div className="flex justify-between mb-6">
+        <div className="flex flex-col justify-between mb-6 sm:flex-row">
           <div>
             <h2 className="tracking-wide">{t("recipeList.title")}</h2>
           </div>
@@ -66,6 +67,7 @@ function Dashboard() {
         </div>
 
         <RecipesTable
+          setSelectedRecipe={setSelectedRecipe}
           toggleSidePanel={toggleSidePanel}
           RemoveRecipe={RemoveRecipe}
         />
@@ -86,7 +88,11 @@ function Dashboard() {
         fixed h-full top-0 right-0 z-50 
         `}
         >
-          <CreateRecipe toggleSidePanel={toggleSidePanel} />
+          <CreateRecipe
+          selectedRecipe={selectedRecipe}
+          setSelectedRecipe={setSelectedRecipe}
+          showRecipePanel={showRecipePanel} 
+          toggleSidePanel={toggleSidePanel} />
         </div>
       </Transition>
     </div>

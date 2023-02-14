@@ -28,23 +28,18 @@ const createRecipe = (recipe) => async (dispatch) => {
 }
 
 const updateRecipe = (recipe) => async (dispatch) => {
-
     dispatch({
         type: "UPDATE_RECIPE",
+        payload: {
+            selected: recipe
+        }
+    })
+    dispatch({
+        type: "FILTER_RECIPE",
         payload: {
             state: ""
         }
     })
-}
-
-const selectRecipe = (recipe) => async (dispatch) => {
-    dispatch({
-        type: "SELECT_RECIPE",
-        payload: {
-            selected: recipe,
-        }
-    })
-
 }
 
 const removeRecipe = (recipe) => async (dispatch) => {
@@ -65,4 +60,4 @@ const removeRecipe = (recipe) => async (dispatch) => {
     })
 }
 
-export {loadRecipes, createRecipe, selectRecipe, updateRecipe, removeRecipe}
+export {loadRecipes, createRecipe, updateRecipe, removeRecipe}

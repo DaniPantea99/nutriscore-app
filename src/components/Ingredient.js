@@ -93,9 +93,9 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
                 } h-5 w-5 text-blue-900 ml-1`}
               />
               <div className="flex items-center justify-between w-full gap-3 p-2">
-                <div className="flex flex-col items-start w-full">
+                <div className="flex flex-col w-full">
                   <label className="inline-block" htmlFor={item.productName}>
-                    <p className="w-24 overflow-hidden capitalize sm:w-full">
+                    <p className="w-24 overflow-hidden text-left capitalize sm:w-full">
                       {item.productName}
                     </p>
                   </label>
@@ -109,7 +109,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
                     type="number"
                     name={item.productName}
                     id={index}
-                    placeholder="adauga cantitatea..."
+                    placeholder="quantity..."
                     onChange={(e) => getIngredient(e.target)}
                     onClick={(e) => e.stopPropagation()}
                   />
