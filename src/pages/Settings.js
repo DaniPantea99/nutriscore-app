@@ -1,4 +1,4 @@
-import i18n from 'i18next';
+// import i18n from 'i18next';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Fragment, useState } from 'react';
@@ -12,7 +12,7 @@ const languages = [
 
 function Settings() {
   const { t, i18n } = useTranslation();
-  const [selected, setSelected] = useState(languages[0]);
+  // const [selected, setSelected] = useState(languages[0]);
   const [query, setQuery] = useState('');
 
   const filteredLanguages =

@@ -1,6 +1,82 @@
 {
   "data": [
     {
+      "product_name": "Vegeta",
+      "lang": "en",
+      "creator": "openfood-ch-import",
+      "brands": "VegetaPodravka,",
+      "image_front_url": "385/010/400/8443/front_en.50.400.jpg",
+      "packaging_tags": [
+        "en:plastic",
+        "en:plastika"
+      ],
+      "quantity": "500 g",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "cooking salt, dehydrated vegetables 15,5% (carrot, parsnips, potato, onion, celery, parsley), flavour enhancers (monosodium glutamate, disodium inosinate), sugar, spices, starch da corn, dye (riboflavine),",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": [
+        "Green Dot",
+        "Halal",
+        "Bez konzervansa",
+        ""
+      ],
+      "additives_tags": [
+        "en:e101",
+        "en:e621",
+        "en:e631"
+      ],
+      "nutriments": {
+        "0": {
+          "name": "sugars",
+          "quantity_100": 22
+        },
+        "1": {
+          "name": "saturated-fat",
+          "quantity_100": 0.3
+        },
+        "2": {
+          "name": "energy-kcal",
+          "quantity_100": 157
+        },
+        "3": {
+          "name": "nova-group",
+          "quantity_100": 4
+        },
+        "4": {
+          "name": "carbohydrates",
+          "quantity_100": 27
+        },
+        "9": {
+          "name": "proteins",
+          "quantity_100": 8.5
+        },
+        "11": {
+          "name": "fat",
+          "quantity_100": 0.5
+        }
+      },
+      "nutri_sugars": 22,
+      "nutri_energy-kcal": 157,
+      "nova-score": 4,
+      "nova-info": "",
+      "allergens": [
+        "celery"
+      ],
+      "calories": 157,
+      "burn_calories": {
+        "walking": "38.45",
+        "pedalling": "22.43",
+        "running": "16.82"
+      }
+    },
+    {
       "product_name": "Mușchi file",
       "lang": "ro",
       "creator": "rapiteanu",
@@ -1385,247 +1461,125 @@
   ],
   "recipes": [
     {
-      "id": "1babea73-395a-470c-893d-f86ebac255a4",
-      "recipeName": "reteta12",
-      "recipeQuantity": 20,
+      "id": "a7824fe2-035f-4fb9-9d5c-09a5600d0c28",
+      "recipeName": "asdasd",
+      "recipeQuantity": 33,
       "date": "14.02.2023",
       "recipeIngredients": [
         {
-          "id": "b90a865b-03cf-4c4d-842b-84d5952fcfff",
-          "productName": "Mușchi file",
-          "brand": "Matache Măcelaru",
-          "quantity": 10,
-          "calories_100": 87,
-          "calories_currQty": 8.7,
+          "id": "f4b812aa-4ef2-4960-a06e-726144faec5d",
+          "productName": "Vegeta",
+          "brand": "VegetaPodravka,",
+          "quantity": 11,
+          "calories_100": 157,
+          "calories_currQty": 17.27,
           "nutriments": {
             "0": {
+              "name": "sugars",
+              "quantity_100": 22
+            },
+            "1": {
+              "name": "saturated-fat",
+              "quantity_100": 0.3
+            },
+            "2": {
+              "name": "energy-kcal",
+              "quantity_100": 157
+            },
+            "3": {
               "name": "nova-group",
               "quantity_100": 4
             },
-            "1": {
+            "4": {
+              "name": "carbohydrates",
+              "quantity_100": 27
+            },
+            "9": {
               "name": "proteins",
-              "quantity_100": 17.7
+              "quantity_100": 8.5
+            },
+            "11": {
+              "name": "fat",
+              "quantity_100": 0.5
+            }
+          },
+          "additives": [
+            "en:e101",
+            "en:e621",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "75da213c-917f-42e1-ab65-1285077d1ca9",
+          "productName": "Mustar",
+          "brand": "Mustardino",
+          "quantity": 22,
+          "calories_100": 109,
+          "calories_currQty": 23.98,
+          "nutriments": {
+            "0": {
+              "name": "sugars",
+              "quantity_100": 7
+            },
+            "1": {
+              "name": "sodium",
+              "quantity_100": 0.48
             },
             "2": {
               "name": "salt",
-              "quantity_100": 1.9
+              "quantity_100": 1.2
             },
             "3": {
-              "name": "sugars",
-              "quantity_100": 0.85
+              "name": "proteins",
+              "quantity_100": 5.4
             },
             "4": {
-              "name": "sodium",
-              "quantity_100": 0.76
-            },
-            "5": {
-              "name": "carbohydrates",
-              "quantity_100": 0.9
+              "name": "nova-group",
+              "quantity_100": 4
             },
             "6": {
-              "name": "fat",
-              "quantity_100": 1.5
+              "name": "energy-kcal",
+              "quantity_100": 109
+            },
+            "7": {
+              "name": "saturated-fat",
+              "quantity_100": 0.3
             },
             "8": {
-              "name": "energy-kcal",
-              "quantity_100": 87.9
+              "name": "carbohydrates",
+              "quantity_100": 10.6
             },
             "10": {
-              "name": "saturated-fat",
-              "quantity_100": 1
-            }
-          },
-          "additives": [
-            "en:e250",
-            "en:e262",
-            "en:e262i",
-            "en:e301",
-            "en:e451"
-          ],
-          "source": "OpenFoodFacts"
-        },
-        {
-          "id": "ea969558-9286-4f2d-a717-413a118413f4",
-          "productName": "miere",
-          "brand": "",
-          "quantity": 10,
-          "calories_100": 325,
-          "calories_currQty": 32.5,
-          "nutriments": {
-            "0": {
-              "name": "carbohydrates",
-              "quantity_100": 80.8
-            },
-            "2": {
-              "name": "fat",
-              "quantity_100": 0
-            },
-            "3": {
-              "name": "proteins",
-              "quantity_100": 0.5
-            },
-            "4": {
-              "name": "energy-kcal",
-              "quantity_100": 325
-            },
-            "5": {
-              "name": "saturated-fat",
-              "quantity_100": 0
-            },
-            "9": {
-              "name": "sugars",
-              "quantity_100": 80.8
-            }
-          },
-          "source": "OpenFoodFacts"
-        }
-      ],
-      "recipeNutriments": {
-        "calories": 41.2,
-        "fat": 1.5,
-        "saturated_fat": 1,
-        "carbohydrates": 81.7,
-        "sugars": 81.65,
-        "proteins": 18.2,
-        "salt": 1.9
-      },
-      "recipeNutriscore": "E",
-      "recipeNutriscore_TEMPORARY": {
-        "energy": 1727.57,
-        "fibers": 0,
-        "fruit_percentage": 0,
-        "proteins": 18.2,
-        "saturated_fats": 1,
-        "sodium": 760,
-        "sugar": 81.65
-      }
-    },
-    {
-      "id": "9e9aca69-8b46-4b69-a9b4-372009f5439a",
-      "recipeName": "reteta13",
-      "recipeQuantity": 20,
-      "date": "14.02.2023",
-      "recipeIngredients": [
-        {
-          "id": "61a0a141-bfa2-4299-9135-ae7f41e96007",
-          "productName": "Pesmet Boromir",
-          "brand": "Boromir",
-          "quantity": 10,
-          "calories_100": 401,
-          "calories_currQty": 40.099999999999994,
-          "nutriments": {
-            "0": {
               "name": "fat",
               "quantity_100": 4.7
-            },
-            "1": {
-              "name": "sugars",
-              "quantity_100": 2.06
-            },
-            "2": {
-              "name": "energy-kcal",
-              "quantity_100": 401.18
-            },
-            "3": {
-              "name": "saturated-fat",
-              "quantity_100": 1.97
-            },
-            "4": {
-              "name": "proteins",
-              "quantity_100": 11.81
-            },
-            "5": {
-              "name": "carbohydrates",
-              "quantity_100": 77.91
-            },
-            "6": {
-              "name": "sodium",
-              "quantity_100": 0.44400000000000006
-            },
-            "9": {
-              "name": "salt",
-              "quantity_100": 1.11
-            },
-            "11": {
-              "name": "nova-group",
-              "quantity_100": 3
             }
           },
           "additives": [
-            "en:e223",
-            "en:e500",
-            "en:e500ii",
-            "en:e503",
-            "en:e503ii"
+            "en:e101"
           ],
-          "source": "OpenFoodFacts"
-        },
-        {
-          "id": "9aaea2b2-1b1f-42a6-9d49-27ecd8822a10",
-          "productName": "Bulion",
-          "brand": "Sultan",
-          "quantity": 10,
-          "calories_100": 80,
-          "calories_currQty": 8,
-          "nutriments": {
-            "0": {
-              "name": "proteins",
-              "quantity_100": 3
-            },
-            "1": {
-              "name": "sodium",
-              "quantity_100": 0.368
-            },
-            "2": {
-              "name": "carbohydrates",
-              "quantity_100": 15.4
-            },
-            "3": {
-              "name": "fat",
-              "quantity_100": 1.1
-            },
-            "4": {
-              "name": "sugars",
-              "quantity_100": 8.1
-            },
-            "5": {
-              "name": "saturated-fat",
-              "quantity_100": 0.35
-            },
-            "6": {
-              "name": "energy-kcal",
-              "quantity_100": 80
-            },
-            "9": {
-              "name": "nova-group",
-              "quantity_100": 3
-            },
-            "11": {
-              "name": "salt",
-              "quantity_100": 0.92
-            }
-          },
           "source": "OpenFoodFacts"
         }
       ],
       "recipeNutriments": {
-        "calories": 48.1,
-        "fat": 5.8,
-        "saturated_fat": 2.32,
-        "carbohydrates": 93.31,
-        "sugars": 10.16,
-        "proteins": 14.81,
-        "salt": 2.03
+        "calories": 41.25,
+        "fat": 5.2,
+        "saturated_fat": 0.6,
+        "carbohydrates": 37.6,
+        "sugars": 29,
+        "proteins": 13.9,
+        "salt": 1.2
       },
-      "recipeNutriscore": "E",
+      "recipeAdditives": " e101 e621 e631 e101",
+      "recipeNutriscore": "D",
       "recipeNutriscore_TEMPORARY": {
-        "energy": 2013.26,
+        "energy": 1112.94,
         "fibers": 0,
         "fruit_percentage": 0,
-        "proteins": 14.81,
-        "saturated_fats": 2.32,
-        "sodium": 812,
-        "sugar": 10.16
+        "proteins": 13.9,
+        "saturated_fats": 0.6,
+        "sodium": 480,
+        "sugar": 29
       }
     }
   ]
