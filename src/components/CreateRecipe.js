@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import SearchItem from "./SearchItem";
-import { useDispatch, useSelector } from "react-redux";
-import Ingredient from "../components/Ingredient";
-import { createRecipe, updateRecipe } from "../actions/recipesAction";
-import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import React, { useState } from 'react';
+import SearchItem from './SearchItem';
+import { useDispatch, useSelector } from 'react-redux';
+import Ingredient from '../components/Ingredient';
+import { createRecipe, updateRecipe } from '../actions/recipesAction';
+import { Disclosure } from '@headlessui/react';
+import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { BsFillXCircleFill } from 'react-icons/bs';
 import { nutriScore } from 'nutri-score';
-import { useTranslation } from "react-i18next";
-import {v4 as uuidv4} from 'uuid';
-
+import { useTranslation } from 'react-i18next';
+import { v4 as uuidv4 } from 'uuid';
 
 function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const { filtered } = useSelector((state) => state.ingredients);
   const dispatch = useDispatch();
   const [recipeName, setRecipeName] = useState();
   const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleString("ro-RO", {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
+  const formattedDate = currentDate.toLocaleString('ro-RO', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
   });
 
   function initList() {
@@ -38,54 +37,55 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   }
 
   const getIngredient = (e) => {
-    listOfIngredients.forEach(el => {
+    listOfIngredients.forEach((el) => {
       if (el.productName === e.name) {
         el.quantity = Number(e.value);
-        el.calories_currQty = Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0
+        el.calories_currQty =
+          Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;
       }
     });
   };
 
   const removeIngredient = (e, item) => {
     e.stopPropagation();
-    const filterList = listOfIngredients.filter(
-      (el) => el.id !== item.id
-    );
+    const filterList = listOfIngredients.filter((el) => el.id !== item.id);
     setListOfIngredients(filterList);
   };
 
   function CloseAndDiscard() {
     toggleSidePanel();
-    setSelectedRecipe([])
+    setSelectedRecipe([]);
   }
 
   const AddNewIngredient = (ingredient) => {
     let uuid = uuidv4();
-    if(listOfIngredients.some(el => el.productName === ingredient.product_name)) {
-      alert('Already added!')      
+    if (
+      listOfIngredients.some((el) => el.productName === ingredient.product_name)
+    ) {
+      alert('Already added!');
     } else {
-    setListOfIngredients((prev) => [
-      ...prev,
-      {
-        id: uuid,
-        productName: ingredient.product_name,
-        brand: ingredient.brands,
-        quantity: null,
-        calories_100: ingredient.calories,
-        calories_currQty: null,
-        nutriments: ingredient.nutriments,
-        additives: ingredient.additives_tags,
-        source: ingredient.sursa,
-      },
-    ]);
-  }
+      setListOfIngredients((prev) => [
+        ...prev,
+        {
+          id: uuid,
+          productName: ingredient.product_name,
+          brand: ingredient.brands,
+          quantity: null,
+          calories_100: ingredient.calories,
+          calories_currQty: null,
+          nutriments: ingredient.nutriments,
+          additives: ingredient.additives_tags,
+          source: ingredient.sursa,
+        },
+      ]);
+    }
   };
 
   function createNewRecipe(e) {
     e.preventDefault();
     let uuid = uuidv4();
     if (listOfIngredients.length === 0) {
-      alert("No ingredients selected.");
+      alert('No ingredients selected.');
     } else {
       const recipe = {
         id: uuid,
@@ -211,12 +211,14 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   };
 
   const { t } = useTranslation();
-  
+
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
       {/* <button onClick={() => console.log(selectedRecipe)}>test</button> */}
       <div className="flex justify-between gap-3">
-        <h2 className="text-base font-semibold">{t("editRecipe.description")}</h2>
+        <h2 className="text-base font-semibold">
+          {t('editRecipe.description')}
+        </h2>
         <BsFillXCircleFill
           onClick={CloseAndDiscard}
           className="text-4xl text-blue-900 cursor-pointer blue-900 hover:text-opacity-70 active:text-opacity-100"
@@ -234,7 +236,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
               htmlFor="recipe-name"
               className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
             >
-              {t("editRecipe.firstLabel")}
+              {t('editRecipe.firstLabel')}
             </label>
             <input
               required
@@ -251,7 +253,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
               htmlFor="search-ingredients"
               className="block mb-1 ml-2 font-semibold tracking-wider text-gray-900 uppercase"
             >
-              {t("editRecipe.secondLabel")}
+              {t('editRecipe.secondLabel')}
             </label>
             <SearchItem
               database={filtered}
@@ -262,11 +264,10 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
 
           <div className="flex flex-col mt-6 list-of-ingredients rounded-xl min-w-fit">
             {listOfIngredients.length > 0 && (
-              <h3>{t("editRecipe.ingredientsList")}</h3>
+              <h3>{t('editRecipe.ingredientsList')}</h3>
             )}
             <div className="flex flex-col gap-2 mb-6">
-              {
-              listOfIngredients.length > 0 &&
+              {listOfIngredients.length > 0 &&
                 listOfIngredients.map((item, index) => (
                   <Ingredient
                     item={item}
@@ -275,8 +276,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
                     getIngredient={getIngredient}
                     removeIngredient={removeIngredient}
                   />
-                ))
-                }
+                ))}
             </div>
 
             <Disclosure>
@@ -289,11 +289,11 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
                   >
                     <ChevronUpIcon
                       className={`${
-                        open ? "rotate-180 transform" : ""
+                        open ? 'rotate-180 transform' : ''
                       } h-5 w-5 text-blue-900 ml-1`}
                     />
                     <div className="flex items-center justify-between w-full gap-3 p-2">
-                      <span>{t("editRecipe.details")}</span>
+                      <span>{t('editRecipe.details')}</span>
                     </div>
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
@@ -322,7 +322,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             type="submit"
             className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
-            {selectedRecipe?.id ? t("editRecipe.updateButton") : "Save"}
+            {selectedRecipe?.id ? t('editRecipe.updateButton') : 'Save'}
           </button>
         </div>
       </form>

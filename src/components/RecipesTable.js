@@ -9,7 +9,6 @@ import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-
 function InputGroup7({
   label,
   name,
@@ -69,11 +68,15 @@ function GlobalSearchFilter1({
   );
 }
 
-export default function RecipesTable({ toggleSidePanel, RemoveRecipe, setSelectedRecipe }) {
+export default function RecipesTable({
+  toggleSidePanel,
+  RemoveRecipe,
+  setSelectedRecipe,
+}) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const { t } = useTranslation();
 
-  const generateData = ({ filteredRecipes }) => 
+  const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
       id: item.id,
       name: item.recipeName,
@@ -81,13 +84,12 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe, setSelecte
       calories: item.recipeNutriments.calories,
       nutriscore: item.recipeNutriscore,
       date: item.date,
-    })
-    );
+    }));
 
   const viewMoreHandler = useCallback(
     (recipe) => {
-      const selected = filteredRecipes.find(el => el.id === recipe.id)
-      setSelectedRecipe(selected)
+      const selected = filteredRecipes.find((el) => el.id === recipe.id);
+      setSelectedRecipe(selected);
       toggleSidePanel();
     },
     [toggleSidePanel, filteredRecipes, setSelectedRecipe]

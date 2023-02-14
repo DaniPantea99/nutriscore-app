@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function Settings() {
-  return (
-    <div className='p-8'>
-      Settings Page
-    </div>
-  )
+  return <div className="p-8">Settings Page</div>;
 }
 
-export default Settings
+export default Settings;

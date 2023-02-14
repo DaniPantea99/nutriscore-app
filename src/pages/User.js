@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function User() {
-  return (
-    <div className='p-8'>
-      User Page
-    </div>
-  )
+  return <div className="p-8">User Page</div>;
 }
 
-export default User
+export default User;
