@@ -60,11 +60,11 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
 
   const AddNewIngredient = (ingredient) => {
     let uuid = uuidv4();
-    if (
-      listOfIngredients.some((el) => el.productName === ingredient.product_name)
-    ) {
-      alert('Already added!');
-    } else {
+    // if (
+    //   listOfIngredients.some((el) => el.productName === ingredient.product_name)
+    // ) {
+    //   alert('Already added!');
+    // } else {
       setListOfIngredients((prev) => [
         ...prev,
         {
@@ -79,7 +79,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
           source: ingredient.sursa,
         },
       ]);
-    }
+    // }
   };
 
   function createNewRecipe(e) {
@@ -109,6 +109,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
           proteins: format2Decimals(CalculateQty('proteins')),
           salt: format2Decimals(CalculateQty('salt')),
         },
+        recipeAdditives: CalculateAdditives(),
         recipeNutriscore: nutriScore.calculateClass({
           energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
           fibers: format2Decimals(CalculateQty('fibers') ?? 0),
@@ -135,6 +136,29 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
       }
       CloseAndDiscard();
     }
+  }
+
+  function CalculateAdditives() {
+    return listOfIngredients
+    .filter(item => item.additives)
+    .map(el => {
+      if (!Array.isArray(el.additives)) {
+        return Object.values(el.additives).map(elem => elem).reduce((acc, curr) => {
+          return (
+            acc + curr.toString().slice(3)
+          )
+        }, '')
+      }
+      return el.additives.map(elem => elem).reduce((acc, curr) => {
+        return (
+          acc + ' ' + curr.toString().slice(3)
+        )
+      }, '')
+    }).reduce((acc, curr) => {
+      return (
+        acc + curr
+      )
+    }, '')
   }
 
   function CalculateQty(nutrimentName = '') {
@@ -221,11 +245,24 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
     );
   };
 
+  const Additives = () => {
+    return (
+      <div>
+        {t('editRecipe.details.additives')}:&nbsp;
+        <ul className="ml-6 list-disc">
+          <li>
+            {selectedRecipe?.recipeAdditives ?? 'no additives found'}
+          </li>
+        </ul>
+      </div>
+    )
+  }
+
   const { t } = useTranslation();
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      {/* <button onClick={() => console.log(selectedRecipe)}>test</button> */}
+      <button onClick={() => console.log(CalculateAdditives())}>test</button>
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           {t('editRecipe.description')}
@@ -318,6 +355,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
                         </p>
 
                         <NutritionFacts />
+                        <Additives />
                       </div>
                     </div>
                   </Disclosure.Panel>

@@ -26,7 +26,7 @@ i18n
             searchInput: 'Search',
           },
           recipesOption: {
-            openBtn: 'Open',
+            openBtn: 'View',
             removeBtn: 'Remove',
           },
           createRecipe: {
@@ -54,6 +54,7 @@ i18n
               sugar: 'Sugar',
               proteins: 'Proteins',
               salt: 'Salt',
+              additives: 'Additives',
             },
             updateButton: 'Update',
             discardButton: 'Discard my changes',
@@ -113,6 +114,7 @@ i18n
               sugar: 'Zaharuri',
               proteins: 'Proteine',
               salt: 'Sare',
+              additives: 'Aditivi',
             },
             updateButton: 'Actualizare',
             discardButton: 'Renunțare la modificări',
