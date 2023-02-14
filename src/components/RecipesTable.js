@@ -6,8 +6,7 @@ import {
 } from 'react-table';
 import { useMemo, useCallback } from 'react';
 import { FaSearch, FaSortUp, FaSortDown } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectRecipe } from '../actions/recipesAction';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 function InputGroup7({
@@ -69,13 +68,17 @@ function GlobalSearchFilter1({
   );
 }
 
-export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
+export default function RecipesTable({
+  toggleSidePanel,
+  RemoveRecipe,
+  setSelectedRecipe,
+}) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
-  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
+      id: item.id,
       name: item.recipeName,
       qty: item.recipeQuantity,
       calories: item.recipeNutriments.calories,
@@ -84,12 +87,12 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
     }));
 
   const viewMoreHandler = useCallback(
-    (e) => {
-      const recipe = filteredRecipes.find((el) => el.recipeName === e);
-      dispatch(selectRecipe(recipe));
+    (recipe) => {
+      const selected = filteredRecipes.find((el) => el.id === recipe.id);
+      setSelectedRecipe(selected);
       toggleSidePanel();
     },
-    [dispatch, filteredRecipes, toggleSidePanel]
+    [toggleSidePanel, filteredRecipes, setSelectedRecipe]
   );
 
   const getColumns = () => [
@@ -131,18 +134,16 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
 
       Cell: ({ cell }) => {
         return (
-          <div className="z-0 flex items-center justify-between">
+          <div className="z-0 flex items-center justify-between gap-2">
             <button
-              value={cell.row.values.name}
               className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
-              onClick={(e) => viewMoreHandler(e.target.value)}
+              onClick={() => viewMoreHandler(cell.row.original)}
             >
               {t('recipesOption.openBtn')}
             </button>
             <button
-              value={cell.row.values.name}
               className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
-              onClick={(e) => RemoveRecipe(e.target.value)}
+              onClick={() => RemoveRecipe(cell.row.original)}
             >
               {t('recipesOption.removeBtn')}
             </button>
@@ -161,7 +162,7 @@ export default function RecipesTable({ toggleSidePanel, RemoveRecipe }) {
     prepareRow,
   }) {
     return (
-      <div className="overflow-y-scroll">
+      <div className="overflow-auto">
         <table
           {...getTableProps()}
           className="w-full border-separate border-spacing-y-2"

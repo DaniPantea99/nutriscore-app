@@ -3,7 +3,7 @@ import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
 
-export default function SearchItem({ database, onSelect, listOfIngredients }) {
+export default function SearchItem({ database, onSelect }) {
   const [query, setQuery] = useState('');
 
   const filteredItems =
