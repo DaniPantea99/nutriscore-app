@@ -10,6 +10,7 @@ import { nutriScore } from 'nutri-score';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 
+
 function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const { filtered } = useSelector((state) => state.ingredients);
   const dispatch = useDispatch();
@@ -177,10 +178,10 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const NutritionFacts = () => {
     return (
       <div>
-        <p>Nutrition Facts (per 1 recipe):</p>
+        <p>{t('editRecipe.details.nutrition')}:</p>
         <ul className="ml-6 list-disc">
           <li>
-            Calories:&nbsp;
+            {t('editRecipe.details.calories')}:&nbsp;
             {selectedRecipe?.recipeNutriments?.calories ?? 0} kcal /&nbsp;
             {format2Decimals(
               (selectedRecipe?.recipeNutriments?.calories ?? 0) * 4.184
@@ -188,23 +189,33 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             kJ
           </li>
           <li>
-            Fat:&nbsp;{selectedRecipe?.recipeNutriments?.fat ?? 0}
+            {t('editRecipe.details.fat')}:&nbsp;
+            {selectedRecipe?.recipeNutriments?.fat ?? 0}
             <ul className="ml-6 list-disc">
               <li>
-                Saturated fat:&nbsp;
+                {t('editRecipe.details.saturatedFat')}:&nbsp;
                 {selectedRecipe?.recipeNutriments?.saturated_fat ?? 0}
               </li>
             </ul>
           </li>
           <li>
-            Carbohydrates:{' '}
+            {t('editRecipe.details.carbohydrates')}:{' '}
             {selectedRecipe?.recipeNutriments?.carbohydrates ?? 0}
             <ul className="ml-6 list-disc">
-              <li>Sugars: {selectedRecipe?.recipeNutriments?.sugars ?? 0}</li>
+              <li>
+                {t('editRecipe.details.sugar')}:{' '}
+                {selectedRecipe?.recipeNutriments?.sugars ?? 0}
+              </li>
             </ul>
           </li>
-          <li>Proteins: {selectedRecipe?.recipeNutriments?.proteins ?? 0}</li>
-          <li>Salt: {selectedRecipe?.recipeNutriments?.salt ?? 0}</li>
+          <li>
+            {t('editRecipe.details.proteins')}:{' '}
+            {selectedRecipe?.recipeNutriments?.proteins ?? 0}
+          </li>
+          <li>
+            {t('editRecipe.details.salt')}:{' '}
+            {selectedRecipe?.recipeNutriments?.salt ?? 0}
+          </li>
         </ul>
       </div>
     );
@@ -241,8 +252,8 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             <input
               required
               defaultValue={selectedRecipe.recipeName}
-              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-600 focus:outline-none"
-              placeholder="Recipe name..."
+              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-400 focus:outline-none"
+              placeholder={t('editRecipe.placeholder')}
               type="text"
               id="recipe-name"
               name="recipe-name"
@@ -293,16 +304,17 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
                       } h-5 w-5 text-blue-900 ml-1`}
                     />
                     <div className="flex items-center justify-between w-full gap-3 p-2">
-                      <span>{t('editRecipe.details')}</span>
+                      <span>{t('editRecipe.details.title')}</span>
                     </div>
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
                     <div className="mb-2">
-                      <h3>Servings: 1</h3>
+                      <h3>{t('editRecipe.details.servings')}: 1</h3>
                       <hr />
                       <div className="mt-2">
                         <p>
-                          Quantity:&nbsp;{selectedRecipe?.recipeQuantity ?? 0}g
+                          {t('editRecipe.details.quantity')}:&nbsp;
+                          {selectedRecipe?.recipeQuantity ?? 0}g
                         </p>
 
                         <NutritionFacts />
@@ -322,7 +334,9 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             type="submit"
             className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
-            {selectedRecipe?.id ? t('editRecipe.updateButton') : 'Save'}
+            {selectedRecipe?.id
+              ? t('editRecipe.updateButton')
+              : t('createRecipe.saveBtn')}
           </button>
         </div>
       </form>
@@ -331,7 +345,9 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
         className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={CloseAndDiscard}
       >
-        {selectedRecipe?.id ? 'Discard my changes' : 'Discard and close'}
+        {selectedRecipe?.id
+          ? t('editRecipe.discardButton')
+          : t('createRecipe.discardBtn')}
       </button>
     </div>
   );

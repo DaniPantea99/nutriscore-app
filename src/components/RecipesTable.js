@@ -105,11 +105,11 @@ export default function RecipesTable({
       accessor: 'qty',
     },
     {
-      Header: 'Calories',
+      Header: t('recipeList.header.cal'),
       accessor: 'calories',
     },
     {
-      Header: 'Nutriscore',
+      Header: t('recipeList.header.ntrs'),
       accessor: 'nutriscore',
 
       Cell: ({ cell }) => {
@@ -139,13 +139,13 @@ export default function RecipesTable({
               className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
               onClick={() => viewMoreHandler(cell.row.original)}
             >
-              View
+              {t('recipesOption.openBtn')}
             </button>
             <button
               className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
               onClick={() => RemoveRecipe(cell.row.original)}
             >
-              Remove
+              {t('recipesOption.removeBtn')}
             </button>
           </div>
         );

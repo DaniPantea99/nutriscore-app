@@ -47,7 +47,7 @@ function Dashboard() {
             alt="restaurant-logo"
           />
           <h1 className="tracking-wide uppercase cursor-default">
-            mrbeast burger
+            {t("recipeList.title")}
           </h1>
         </div>
         <img
@@ -62,7 +62,7 @@ function Dashboard() {
       <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px] w-[500px] sm:w-full">
         <div className="flex flex-col justify-between mb-6 sm:flex-row">
           <div>
-            <h2 className="tracking-wide">{t('recipeList.title')}</h2>
+            <h2 className="tracking-wide">{t('recipeList.subtitle')}</h2>
           </div>
           <button
             className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
