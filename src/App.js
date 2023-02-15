@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard.js';
-import User from './pages/User';
-import Settings from './pages/Settings';
 import { loadIngredients } from './actions/ingredientsAction';
 import { loadRecipes } from './actions/recipesAction';
 import { useDispatch } from 'react-redux';
+import Dashboard from './pages/Dashboard.js';
+import Settings from './pages/Settings';
+import User from './pages/User';
+import Navbar from './components/Navbar';
 
 function App() {
   const dispatch = useDispatch();

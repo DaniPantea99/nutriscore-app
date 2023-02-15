@@ -10,7 +10,6 @@ import { nutriScore } from 'nutri-score';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 
-
 function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const { filtered } = useSelector((state) => state.ingredients);
   const dispatch = useDispatch();
@@ -21,6 +20,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
     month: 'numeric',
     year: 'numeric',
   });
+
 
   function initList() {
     if (Object.keys(selectedRecipe).length === 0) {
@@ -37,9 +37,9 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
     return Math.round(num * 100) / 100;
   }
 
-  const getIngredient = (e) => {
+  const getIngredient = (e, ingredient) => {
     listOfIngredients.forEach((el) => {
-      if (el.productName === e.name) {
+      if (el.id === ingredient.id) {
         el.quantity = Number(e.value);
         el.calories_currQty =
           Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;
@@ -65,20 +65,20 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
     // ) {
     //   alert('Already added!');
     // } else {
-      setListOfIngredients((prev) => [
-        ...prev,
-        {
-          id: uuid,
-          productName: ingredient.product_name,
-          brand: ingredient.brands,
-          quantity: null,
-          calories_100: ingredient.calories,
-          calories_currQty: null,
-          nutriments: ingredient.nutriments,
-          additives: ingredient.additives_tags,
-          source: ingredient.sursa,
-        },
-      ]);
+    setListOfIngredients((prev) => [
+      ...prev,
+      {
+        id: uuid,
+        productName: ingredient.product_name,
+        brand: ingredient.brands,
+        quantity: null,
+        calories_100: ingredient.calories,
+        calories_currQty: null,
+        nutriments: ingredient.nutriments,
+        additives: ingredient.additives_tags,
+        source: ingredient.sursa,
+      },
+    ])
     // }
   };
 
@@ -100,6 +100,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
         recipeNutriments: {
           calories: listOfIngredients.reduce(
             (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
+            // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
             0
           ),
           fat: format2Decimals(CalculateQty('fat')),
@@ -139,26 +140,15 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   }
 
   function CalculateAdditives() {
-    return listOfIngredients
-    .filter(item => item.additives)
-    .map(el => {
-      if (!Array.isArray(el.additives)) {
-        return Object.values(el.additives).map(elem => elem).reduce((acc, curr) => {
-          return (
-            acc + curr.toString().slice(3)
-          )
-        }, '')
-      }
-      return el.additives.map(elem => elem).reduce((acc, curr) => {
-        return (
-          acc + ' ' + curr.toString().slice(3)
+    const additivesList = [];
+    listOfIngredients
+      .filter((el) => el.additives)
+      .map((item) =>
+        item.additives.map((elem) =>
+          additivesList.push(elem.toString().slice(3) + ' ')
         )
-      }, '')
-    }).reduce((acc, curr) => {
-      return (
-        acc + curr
-      )
-    }, '')
+      );
+    return Array.from(new Set(additivesList));
   }
 
   function CalculateQty(nutrimentName = '') {
@@ -202,7 +192,9 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const NutritionFacts = () => {
     return (
       <div>
-        <p>{t('editRecipe.details.nutrition')}:</p>
+        <p className='font-semibold'>
+          {t('editRecipe.details.nutrition')}:
+        </p>
         <ul className="ml-6 list-disc">
           <li>
             {t('editRecipe.details.calories')}:&nbsp;
@@ -248,13 +240,44 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const Additives = () => {
     return (
       <div>
-        {t('editRecipe.details.additives')}:&nbsp;
-        <ul className="ml-6 list-disc">
-          <li>
-            {selectedRecipe?.recipeAdditives ?? 'no additives found'}
-          </li>
-        </ul>
+        <p className='font-semibold'>
+          {t('editRecipe.details.additives')}:&nbsp;
+        </p>
+        {selectedRecipe?.recipeAdditives ? (
+          <ul className="ml-6 capitalize list-disc">
+            <li>{selectedRecipe?.recipeAdditives.map((item) => item)}</li>
+          </ul>
+        ) : (
+          t('editRecipe.details.noadditivesfound')
+        )}
       </div>
+    );
+  };
+
+  const IngredientsTable = () => {
+    return (
+      <table className="w-full my-4">
+      <thead>
+        <tr className="font-medium border-b border-gray-300">
+          <td>{t('editRecipe.details.table.column1')}</td>
+          <td>{t('editRecipe.details.table.column2')}</td>
+        </tr>
+      </thead>
+      <tbody>
+        {listOfIngredients.map((item, index) => (
+          <tr key={index}>
+            <td className='first-letter:uppercase'>{item.productName}</td>
+            <td>{item.quantity}</td>
+          </tr>
+        ))}
+      </tbody>
+      <tfoot>
+        <tr className="font-semibold">
+          <td>{t('editRecipe.details.totalQuantity')}</td>
+          <td>{selectedRecipe?.recipeQuantity ?? 0}</td>
+        </tr>
+      </tfoot>
+    </table>
     )
   }
 
@@ -262,7 +285,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      <button onClick={() => console.log(CalculateAdditives())}>test</button>
+      {/* <button onClick={() => console.log(selectedRecipe)}>test</button> */}
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           {t('editRecipe.description')}
@@ -346,17 +369,18 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
                     <div className="mb-2">
-                      <h3>{t('editRecipe.details.servings')}: 1</h3>
-                      <hr />
-                      <div className="mt-2">
-                        <p>
-                          {t('editRecipe.details.quantity')}:&nbsp;
-                          {selectedRecipe?.recipeQuantity ?? 0}g
-                        </p>
+                      <h3>
+                        {t('editRecipe.details.ingredientperserving')}{' '}
+                        <span className="font-bold uppercase">
+                          {selectedRecipe?.recipeName 
+                            ? selectedRecipe.recipeName
+                            : t('editRecipe.details.defaultRecipeName')}
+                        </span>
+                      </h3>
+                     <IngredientsTable />
 
-                        <NutritionFacts />
-                        <Additives />
-                      </div>
+                      <NutritionFacts />
+                      <Additives />
                     </div>
                   </Disclosure.Panel>
                 </>
@@ -370,7 +394,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
         <div className="flex flex-col mt-4">
           <button
             type="submit"
-            className="p-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
+            className="px-4 py-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
             {selectedRecipe?.id
               ? t('editRecipe.updateButton')
@@ -380,7 +404,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
       </form>
 
       <button
-        className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
+        className="px-4 py-2 mt-2 font-medium tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={CloseAndDiscard}
       >
         {selectedRecipe?.id

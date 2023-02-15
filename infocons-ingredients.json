@@ -1461,18 +1461,18 @@
   ],
   "recipes": [
     {
-      "id": "a7824fe2-035f-4fb9-9d5c-09a5600d0c28",
-      "recipeName": "asdasd",
-      "recipeQuantity": 33,
-      "date": "14.02.2023",
+      "id": "499931a5-bfb3-400c-91c2-60943afcbb3e",
+      "recipeName": "asdas",
+      "recipeQuantity": 23,
+      "date": "15.02.2023",
       "recipeIngredients": [
         {
-          "id": "f4b812aa-4ef2-4960-a06e-726144faec5d",
+          "id": "f530ef4c-3983-4d6e-8475-87b94103b692",
           "productName": "Vegeta",
           "brand": "VegetaPodravka,",
-          "quantity": 11,
+          "quantity": 23,
           "calories_100": 157,
-          "calories_currQty": 17.27,
+          "calories_currQty": 36.11,
           "nutriments": {
             "0": {
               "name": "sugars",
@@ -1509,77 +1509,31 @@
             "en:e631"
           ],
           "source": "OpenFoodFacts"
-        },
-        {
-          "id": "75da213c-917f-42e1-ab65-1285077d1ca9",
-          "productName": "Mustar",
-          "brand": "Mustardino",
-          "quantity": 22,
-          "calories_100": 109,
-          "calories_currQty": 23.98,
-          "nutriments": {
-            "0": {
-              "name": "sugars",
-              "quantity_100": 7
-            },
-            "1": {
-              "name": "sodium",
-              "quantity_100": 0.48
-            },
-            "2": {
-              "name": "salt",
-              "quantity_100": 1.2
-            },
-            "3": {
-              "name": "proteins",
-              "quantity_100": 5.4
-            },
-            "4": {
-              "name": "nova-group",
-              "quantity_100": 4
-            },
-            "6": {
-              "name": "energy-kcal",
-              "quantity_100": 109
-            },
-            "7": {
-              "name": "saturated-fat",
-              "quantity_100": 0.3
-            },
-            "8": {
-              "name": "carbohydrates",
-              "quantity_100": 10.6
-            },
-            "10": {
-              "name": "fat",
-              "quantity_100": 4.7
-            }
-          },
-          "additives": [
-            "en:e101"
-          ],
-          "source": "OpenFoodFacts"
         }
       ],
       "recipeNutriments": {
-        "calories": 41.25,
-        "fat": 5.2,
-        "saturated_fat": 0.6,
-        "carbohydrates": 37.6,
-        "sugars": 29,
-        "proteins": 13.9,
-        "salt": 1.2
+        "calories": 36.11,
+        "fat": 0.5,
+        "saturated_fat": 0.3,
+        "carbohydrates": 27,
+        "sugars": 22,
+        "proteins": 8.5,
+        "salt": 0
       },
-      "recipeAdditives": " e101 e621 e631 e101",
-      "recipeNutriscore": "D",
+      "recipeAdditives": [
+        "e101 ",
+        "e621 ",
+        "e631 "
+      ],
+      "recipeNutriscore": "B",
       "recipeNutriscore_TEMPORARY": {
-        "energy": 1112.94,
+        "energy": 656.89,
         "fibers": 0,
         "fruit_percentage": 0,
-        "proteins": 13.9,
-        "saturated_fats": 0.6,
-        "sodium": 480,
-        "sugar": 29
+        "proteins": 8.5,
+        "saturated_fats": 0.3,
+        "sodium": 0,
+        "sugar": 22
       }
     }
   ]
