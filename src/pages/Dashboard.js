@@ -13,6 +13,29 @@ import NutriScoreInfo from '../components/NutriScoreInfo';
 // };
 
 function Dashboard() {
+
+  // const initialRecipe = {
+  //   id: '',
+  //   recipeName: '',
+  //   recipeQuantity: null,
+  //   date: null,
+  //   recipeIngredients: [],
+  //   recipeNutriments: {
+  //     calories: 0,
+  //     fat: 0,
+  //     saturated_fat: 0,
+  //     carbohydrates: 0,
+  //     sugars: 0,
+  //     proteins: 0,
+  //     salt: 0,
+  //   },
+  //   recipeAdditives: [],
+  //   recipeNutriscore: undefined,
+  //   recipeNutriscore_TEMPORARY: undefined,
+  // }
+
+  // const [recipe, setRecipe] = useState(initialRecipe)
+  
   const [selectedRecipe, setSelectedRecipe] = useState([]);
   const [showRecipePanel, setShowRecipePanel] = useState(false);
   const toggleSidePanel = useCallback(() => {
@@ -65,7 +88,7 @@ function Dashboard() {
             <h2 className="tracking-wide">{t('recipeList.subtitle')}</h2>
           </div>
           <button
-            className="px-4 py-3 font-bold text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
+            className="px-6 py-3 font-semibold text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
             onClick={toggleSidePanel}
           >
             {t('recipeList.createButton')}

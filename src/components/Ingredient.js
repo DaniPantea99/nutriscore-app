@@ -3,7 +3,7 @@ import { BsFillXCircleFill } from 'react-icons/bs';
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 
-function Ingredient({ item, index, getIngredient, removeIngredient }) {
+function Ingredient({ item, getIngredient, removeIngredient }) {
   function format2Decimals(str) {
     const num = parseFloat(str);
     return Math.round(num * 100) / 100;
@@ -31,7 +31,7 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
     return (
       <div>
         <p>Nutriments (100g):</p>
-        <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7`}>
+        <ul className={`${item.nutriments ? '' : 'italic'} list-disc ml-7 capitalize`}>
           {Array.isArray(item.nutriments)
             ? item.nutriments
               ? item?.nutriments?.map((el, index) => (
@@ -95,27 +95,23 @@ function Ingredient({ item, index, getIngredient, removeIngredient }) {
               <div className="flex items-center justify-between w-full gap-3 p-2">
                 <div className="flex flex-col w-full">
                   <label className="inline-block" htmlFor={item.productName}>
-                    <p className="w-24 overflow-hidden text-left capitalize sm:w-full">
+                    <p className="w-24 overflow-hidden text-left first-letter:uppercase sm:w-full">
                       {item.productName}
                     </p>
                   </label>
                 </div>
                 <div className="flex items-center">
                   <input
-                    // defaultValue={item?.quantity ? item.quantity : ''}
                     required
                     defaultValue={item.quantity}
                     className="w-24 p-1 px-2 mr-1 text-sm bg-gray-100 rounded-md outline-0 sm:mr-2 md:w-48 lg:w-32"
                     type="number"
-                    name={item.productName}
-                    id={index}
                     placeholder="quantity..."
-                    onChange={(e) => getIngredient(e.target)}
+                    onChange={(e) => getIngredient(e.target, item)}
                     onClick={(e) => e.stopPropagation()}
                   />
                   <p>g</p>
                   <BsFillXCircleFill
-                    name={item.productName}
                     onClick={(e) => removeIngredient(e, item)}
                     className="ml-2 text-2xl text-red-700 transition-all cursor-pointer hover:text-red-500 active:text-red-900 sm:ml-6"
                   />

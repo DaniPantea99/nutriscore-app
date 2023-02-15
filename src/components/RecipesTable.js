@@ -136,13 +136,13 @@ export default function RecipesTable({
         return (
           <div className="z-0 flex items-center justify-between gap-2">
             <button
-              className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
+              className="px-4 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
               onClick={() => viewMoreHandler(cell.row.original)}
             >
               {t('recipesOption.openBtn')}
             </button>
             <button
-              className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
+              className="px-4 py-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
               onClick={() => RemoveRecipe(cell.row.original)}
             >
               {t('recipesOption.removeBtn')}
@@ -218,7 +218,7 @@ export default function RecipesTable({
                     return (
                       <td
                         {...cell.getCellProps()}
-                        className="py-2 pr-6 text-sm font-medium capitalize first:rounded-l-xl last:rounded-r-xl pl-7"
+                        className="py-2 pr-6 text-sm font-medium first-letter:uppercase first:rounded-l-xl last:rounded-r-xl pl-7"
                       >
                         {cell.render('Cell')}
                       </td>
