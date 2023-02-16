@@ -7,43 +7,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import NutriScoreInfo from '../components/NutriScoreInfo';
 
-// const lngs = {
-//   en: { nativeName: "English" },
-//   ro: { nativeName: "Romanian" },
-// };
-
 function Dashboard() {
-
-  // const initialRecipe = {
-  //   id: '',
-  //   recipeName: '',
-  //   recipeQuantity: null,
-  //   date: null,
-  //   recipeIngredients: [],
-  //   recipeNutriments: {
-  //     calories: 0,
-  //     fat: 0,
-  //     saturated_fat: 0,
-  //     carbohydrates: 0,
-  //     sugars: 0,
-  //     proteins: 0,
-  //     salt: 0,
-  //   },
-  //   recipeAdditives: [],
-  //   recipeNutriscore: undefined,
-  //   recipeNutriscore_TEMPORARY: undefined,
-  // }
-
-  // const [recipe, setRecipe] = useState(initialRecipe)
-  
-  const [selectedRecipe, setSelectedRecipe] = useState([]);
+  const { filteredRecipes } = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const [recipe, setRecipe] = useState({
+    id: '',
+    recipeName: '',
+    recipeQuantity: null,
+    date: '',
+    recipeIngredients: [],
+    recipeNutriments: {
+      calories: 0,
+      fat: 0,
+      saturated_fat: 0,
+      carbohydrates: 0,
+      sugars: 0,
+      proteins: 0,
+      salt: 0,
+    },
+    recipeAdditives: [],
+    recipeNutriscore: undefined,
+  });
   const [showRecipePanel, setShowRecipePanel] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  
   const toggleSidePanel = useCallback(() => {
     setShowRecipePanel(!showRecipePanel);
   }, [showRecipePanel]);
-
-  const { filteredRecipes } = useSelector((state) => state.recipes);
-  const dispatch = useDispatch();
 
   const RemoveRecipe = useCallback(
     (recipe) => {
@@ -53,15 +44,23 @@ function Dashboard() {
     [dispatch, filteredRecipes]
   );
 
-  const [isOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
 
-  const { t } = useTranslation();
+  const viewRecipeDetails = (recipe) => {
+    setRecipe(recipe);
+    toggleSidePanel();
+  };
+
+  function CloseAndDiscard() {
+    toggleSidePanel();
+    setRecipe([]);
+  }
 
   return (
     <div className="flex flex-col w-full h-full p-8">
+      <button onClick={() => console.log(recipe)}>TEST</button>
       <div className="flex items-center justify-between h-screen">
         <div className="flex items-center gap-4">
           <img
@@ -70,7 +69,7 @@ function Dashboard() {
             alt="restaurant-logo"
           />
           <h1 className="tracking-wide uppercase cursor-default">
-            {t("recipeList.title")}
+            {t('recipeList.title')}
           </h1>
         </div>
         <img
@@ -96,8 +95,7 @@ function Dashboard() {
         </div>
 
         <RecipesTable
-          setSelectedRecipe={setSelectedRecipe}
-          toggleSidePanel={toggleSidePanel}
+          onSelect={viewRecipeDetails}
           RemoveRecipe={RemoveRecipe}
         />
       </div>
@@ -105,10 +103,10 @@ function Dashboard() {
       <Transition
         as={Fragment}
         show={showRecipePanel}
-        enter="transition-opacity duration-300 ease-in-out"
+        enter="transition-opacity duration-500 ease-in-out"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition-opacity duration-300 ease-in-out"
+        leave="transition-opacity duration-200 ease-in-out"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
@@ -118,10 +116,9 @@ function Dashboard() {
         `}
         >
           <CreateRecipe
-            selectedRecipe={selectedRecipe}
-            setSelectedRecipe={setSelectedRecipe}
-            showRecipePanel={showRecipePanel}
-            toggleSidePanel={toggleSidePanel}
+            recipe={recipe}
+            setRecipe={setRecipe}
+            CloseAndDiscard={CloseAndDiscard}
           />
         </div>
       </Transition>

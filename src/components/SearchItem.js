@@ -2,14 +2,16 @@ import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
-export default function SearchItem({ database, onSelect }) {
+export default function SearchItem({ AddNewIngredient }) {
   const [query, setQuery] = useState('');
+  const { filtered } = useSelector((state) => state.ingredients);
 
   const filteredItems =
     query === ''
-      ? database
-      : database.filter((item) =>
+      ? filtered
+      : filtered.filter((item) =>
           item.product_name
             .toLowerCase()
             .replace(/\s+/g, '')
@@ -20,7 +22,7 @@ export default function SearchItem({ database, onSelect }) {
 
   return (
     <div className="flex w-full h-12">
-      <Combobox onChange={(ingredient) => onSelect(ingredient)}>
+      <Combobox onChange={(ingredient) => AddNewIngredient(ingredient)}>
         <div className="relative w-full">
           <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input
@@ -67,6 +69,10 @@ export default function SearchItem({ database, onSelect }) {
                           }`}
                         >
                           {item.product_name}
+                          {item.brands.length > 0 ?
+                          ` - ${item.brands}`
+                          : ` - ${item.creator}`
+                          }
                         </span>
                         {selected ? (
                           <span

@@ -69,9 +69,8 @@ function GlobalSearchFilter1({
 }
 
 export default function RecipesTable({
-  toggleSidePanel,
   RemoveRecipe,
-  setSelectedRecipe,
+  onSelect,
 }) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const { t } = useTranslation();
@@ -89,10 +88,9 @@ export default function RecipesTable({
   const viewMoreHandler = useCallback(
     (recipe) => {
       const selected = filteredRecipes.find((el) => el.id === recipe.id);
-      setSelectedRecipe(selected);
-      toggleSidePanel();
+      onSelect(selected);
     },
-    [toggleSidePanel, filteredRecipes, setSelectedRecipe]
+    [filteredRecipes, onSelect]
   );
 
   const getColumns = () => [
@@ -227,7 +225,7 @@ export default function RecipesTable({
                 </tr>
               );
             })}
-          </tbody>
+            </tbody>
         </table>
       </div>
     );

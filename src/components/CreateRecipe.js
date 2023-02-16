@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchItem from './SearchItem';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Ingredient from '../components/Ingredient';
 import { createRecipe, updateRecipe } from '../actions/recipesAction';
-import { Disclosure } from '@headlessui/react';
-import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { BsFillXCircleFill } from 'react-icons/bs';
 import { nutriScore } from 'nutri-score';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
+import { format2Decimals } from '../utility';
+import RecipeDetails from './RecipeDetails';
 
-function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
-  const { filtered } = useSelector((state) => state.ingredients);
+function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [recipeName, setRecipeName] = useState();
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString('ro-RO', {
     day: 'numeric',
@@ -21,24 +20,15 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
     year: 'numeric',
   });
 
-
-  function initList() {
-    if (Object.keys(selectedRecipe).length === 0) {
-      return [];
-    } else {
-      return selectedRecipe.recipeIngredients;
-    }
-  }
-
-  const [listOfIngredients, setListOfIngredients] = useState(initList);
-
-  function format2Decimals(str) {
-    const num = parseFloat(str);
-    return Math.round(num * 100) / 100;
-  }
+  const getRecipeName = (e) => {
+    setRecipe({
+      ...recipe,
+      recipeName: e.target.value,
+    });
+  };
 
   const getIngredient = (e, ingredient) => {
-    listOfIngredients.forEach((el) => {
+    recipe?.recipeIngredients.forEach((el) => {
       if (el.id === ingredient.id) {
         el.quantity = Number(e.value);
         el.calories_currQty =
@@ -49,56 +39,57 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
 
   const removeIngredient = (e, item) => {
     e.stopPropagation();
-    const filterList = listOfIngredients.filter((el) => el.id !== item.id);
-    setListOfIngredients(filterList);
+    const filterList = recipe?.recipeIngredients.filter(
+      (el) => el.id !== item.id
+    );
+    setRecipe({
+      ...recipe,
+      recipeIngredients: filterList,
+    });
   };
-
-  function CloseAndDiscard() {
-    toggleSidePanel();
-    setSelectedRecipe([]);
-  }
 
   const AddNewIngredient = (ingredient) => {
     let uuid = uuidv4();
-    // if (
-    //   listOfIngredients.some((el) => el.productName === ingredient.product_name)
-    // ) {
-    //   alert('Already added!');
-    // } else {
-    setListOfIngredients((prev) => [
-      ...prev,
-      {
-        id: uuid,
-        productName: ingredient.product_name,
-        brand: ingredient.brands,
-        quantity: null,
-        calories_100: ingredient.calories,
-        calories_currQty: null,
-        nutriments: ingredient.nutriments,
-        additives: ingredient.additives_tags,
-        source: ingredient.sursa,
-      },
-    ])
-    // }
+    setRecipe({
+      ...recipe,
+      recipeIngredients:
+      [ 
+        { 
+          id: uuid,
+          productName: ingredient.product_name,
+          brand: ingredient.brands,
+          quantity: null,
+          calories_100: ingredient.calories,
+          calories_currQty: null,
+          nutriments: ingredient.nutriments,
+          additives: ingredient.additives_tags,
+          source: ingredient.sursa,
+        },
+      ],
+    });
+    // setListOfIngredients((prev) => [
+    //   ...prev,
+    //   { id: uuid,
+    //     productName: ingredient.product_name,
+    //     ...etc }]);
   };
 
   function createNewRecipe(e) {
     e.preventDefault();
     let uuid = uuidv4();
-    if (listOfIngredients.length === 0) {
+    if (recipe.recipeIngredients.length === 0) {
       alert('No ingredients selected.');
     } else {
-      const recipe = {
+      setRecipe({
+        ...recipe,
         id: uuid,
-        recipeName: recipeName,
-        recipeQuantity: listOfIngredients.reduce(
+        recipeQuantity: recipe.recipeIngredients.reduce(
           (acc, curr) => acc + curr?.quantity ?? 0,
           0
         ),
         date: formattedDate,
-        recipeIngredients: [...listOfIngredients],
         recipeNutriments: {
-          calories: listOfIngredients.reduce(
+          calories: recipe.recipeIngredients.reduce(
             (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
             // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
             0
@@ -120,17 +111,51 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
           sodium: format2Decimals(CalculateQty('salt') * 400),
           sugar: format2Decimals(CalculateQty('sugars')),
         }),
-        recipeNutriscore_TEMPORARY: {
-          energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
-          fibers: format2Decimals(CalculateQty('fibers') ?? 0),
-          fruit_percentage: 0,
-          proteins: format2Decimals(CalculateQty('proteins')),
-          saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
-          sodium: format2Decimals(CalculateQty('salt') * 400),
-          sugar: format2Decimals(CalculateQty('sugars')),
-        },
-      };
-      if (selectedRecipe?.id) {
+      });
+
+      // const recipe = {
+      //   id: uuid,
+      //   recipeName: '',
+      //   recipeQuantity: listOfIngredients.reduce(
+      //     (acc, curr) => acc + curr?.quantity ?? 0,
+      //     0
+      //   ),
+      //   date: formattedDate,
+      //   recipeIngredients: [...listOfIngredients],
+      //   recipeNutriments: {
+      //     calories: listOfIngredients.reduce(
+      //       (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
+      //       // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
+      //       0
+      //     ),
+      //     fat: format2Decimals(CalculateQty('fat')),
+      //     saturated_fat: format2Decimals(CalculateQty('saturated-fat')),
+      //     carbohydrates: format2Decimals(CalculateQty('carbohydrates')),
+      //     sugars: format2Decimals(CalculateQty('sugars')),
+      //     proteins: format2Decimals(CalculateQty('proteins')),
+      //     salt: format2Decimals(CalculateQty('salt')),
+      //   },
+      //   recipeAdditives: CalculateAdditives(),
+      //   recipeNutriscore: nutriScore.calculateClass({
+      //     energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
+      //     fibers: format2Decimals(CalculateQty('fibers') ?? 0),
+      //     fruit_percentage: 0,
+      //     proteins: format2Decimals(CalculateQty('proteins')),
+      //     saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
+      //     sodium: format2Decimals(CalculateQty('salt') * 400),
+      //     sugar: format2Decimals(CalculateQty('sugars')),
+      //   }),
+      //   recipeNutriscore_TEMPORARY: {
+      //     energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
+      //     fibers: format2Decimals(CalculateQty('fibers') ?? 0),
+      //     fruit_percentage: 0,
+      //     proteins: format2Decimals(CalculateQty('proteins')),
+      //     saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
+      //     sodium: format2Decimals(CalculateQty('salt') * 400),
+      //     sugar: format2Decimals(CalculateQty('sugars')),
+      //   },
+      // };
+      if (recipe?.id) {
         dispatch(updateRecipe(recipe));
       } else {
         dispatch(createRecipe(recipe));
@@ -141,7 +166,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
 
   function CalculateAdditives() {
     const additivesList = [];
-    listOfIngredients
+    recipe.recipeIngredients
       .filter((el) => el.additives)
       .map((item) =>
         item.additives.map((elem) =>
@@ -152,7 +177,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   }
 
   function CalculateQty(nutrimentName = '') {
-    return listOfIngredients
+    return recipe.recipeIngredients
       .filter((item) => item.nutriments)
       .map((element) => {
         if (!Array.isArray(element.nutriments)) {
@@ -169,8 +194,8 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
       }, 0);
   }
 
-  function ShowNutriScore() {
-    const score = selectedRecipe.recipeNutriscore;
+  const ShowNutriScore = () => {
+    const score = recipe.recipeNutriscore;
     if (!score) {
       return (
         <img
@@ -187,105 +212,11 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
         alt={`logo-nutriscore-${score.toLowerCase()}`}
       />
     );
-  }
-
-  const NutritionFacts = () => {
-    return (
-      <div>
-        <p className='font-semibold'>
-          {t('editRecipe.details.nutrition')}:
-        </p>
-        <ul className="ml-6 list-disc">
-          <li>
-            {t('editRecipe.details.calories')}:&nbsp;
-            {selectedRecipe?.recipeNutriments?.calories ?? 0} kcal /&nbsp;
-            {format2Decimals(
-              (selectedRecipe?.recipeNutriments?.calories ?? 0) * 4.184
-            )}{' '}
-            kJ
-          </li>
-          <li>
-            {t('editRecipe.details.fat')}:&nbsp;
-            {selectedRecipe?.recipeNutriments?.fat ?? 0}
-            <ul className="ml-6 list-disc">
-              <li>
-                {t('editRecipe.details.saturatedFat')}:&nbsp;
-                {selectedRecipe?.recipeNutriments?.saturated_fat ?? 0}
-              </li>
-            </ul>
-          </li>
-          <li>
-            {t('editRecipe.details.carbohydrates')}:{' '}
-            {selectedRecipe?.recipeNutriments?.carbohydrates ?? 0}
-            <ul className="ml-6 list-disc">
-              <li>
-                {t('editRecipe.details.sugar')}:{' '}
-                {selectedRecipe?.recipeNutriments?.sugars ?? 0}
-              </li>
-            </ul>
-          </li>
-          <li>
-            {t('editRecipe.details.proteins')}:{' '}
-            {selectedRecipe?.recipeNutriments?.proteins ?? 0}
-          </li>
-          <li>
-            {t('editRecipe.details.salt')}:{' '}
-            {selectedRecipe?.recipeNutriments?.salt ?? 0}
-          </li>
-        </ul>
-      </div>
-    );
   };
-
-  const Additives = () => {
-    return (
-      <div>
-        <p className='font-semibold'>
-          {t('editRecipe.details.additives')}:&nbsp;
-        </p>
-        {selectedRecipe?.recipeAdditives ? (
-          <ul className="ml-6 capitalize list-disc">
-            <li>{selectedRecipe?.recipeAdditives.map((item) => item)}</li>
-          </ul>
-        ) : (
-          t('editRecipe.details.noadditivesfound')
-        )}
-      </div>
-    );
-  };
-
-  const IngredientsTable = () => {
-    return (
-      <table className="w-full my-4">
-      <thead>
-        <tr className="font-medium border-b border-gray-300">
-          <td>{t('editRecipe.details.table.column1')}</td>
-          <td>{t('editRecipe.details.table.column2')}</td>
-        </tr>
-      </thead>
-      <tbody>
-        {listOfIngredients.map((item, index) => (
-          <tr key={index}>
-            <td className='first-letter:uppercase'>{item.productName}</td>
-            <td>{item.quantity}</td>
-          </tr>
-        ))}
-      </tbody>
-      <tfoot>
-        <tr className="font-semibold">
-          <td>{t('editRecipe.details.totalQuantity')}</td>
-          <td>{selectedRecipe?.recipeQuantity ?? 0}</td>
-        </tr>
-      </tfoot>
-    </table>
-    )
-  }
-
-  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      {/* <button onClick={() => console.log(selectedRecipe)}>test</button> */}
+      <button onClick={() => console.log(recipe)}>TEST</button>
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           {t('editRecipe.description')}
@@ -311,13 +242,13 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             </label>
             <input
               required
-              defaultValue={selectedRecipe.recipeName}
+              defaultValue={recipe.recipeName}
               className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-400 focus:outline-none"
               placeholder={t('editRecipe.placeholder')}
               type="text"
               id="recipe-name"
               name="recipe-name"
-              onChange={(event) => setRecipeName(event.target.value)}
+              onChange={getRecipeName}
             />
 
             <label
@@ -327,19 +258,18 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
               {t('editRecipe.secondLabel')}
             </label>
             <SearchItem
-              database={filtered}
-              onSelect={AddNewIngredient}
-              listOfIngredients={listOfIngredients}
+              AddNewIngredient={AddNewIngredient}
             />
           </div>
 
           <div className="flex flex-col mt-6 list-of-ingredients rounded-xl min-w-fit">
-            {listOfIngredients.length > 0 && (
+            {recipe.recipeIngredients?.length > 0 && (
               <h3>{t('editRecipe.ingredientsList')}</h3>
             )}
             <div className="flex flex-col gap-2 mb-6">
-              {listOfIngredients.length > 0 &&
-                listOfIngredients.map((item, index) => (
+              {
+              // recipe.recipeIngredients?.length > 0 &&
+                recipe?.recipeIngredients?.map((item, index) => (
                   <Ingredient
                     item={item}
                     key={index}
@@ -350,42 +280,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
                 ))}
             </div>
 
-            <Disclosure>
-              {({ open }) => (
-                <>
-                  <Disclosure.Button
-                    className={`${
-                      open ? 'rounded-t-xl' : 'rounded-xl'
-                    } flex items-center w-full bg-blue-400 h-11 hover:bg-opacity-70 outline-none`}
-                  >
-                    <ChevronUpIcon
-                      className={`${
-                        open ? 'rotate-180 transform' : ''
-                      } h-5 w-5 text-blue-900 ml-1`}
-                    />
-                    <div className="flex items-center justify-between w-full gap-3 p-2">
-                      <span>{t('editRecipe.details.title')}</span>
-                    </div>
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
-                    <div className="mb-2">
-                      <h3>
-                        {t('editRecipe.details.ingredientperserving')}{' '}
-                        <span className="font-bold uppercase">
-                          {selectedRecipe?.recipeName 
-                            ? selectedRecipe.recipeName
-                            : t('editRecipe.details.defaultRecipeName')}
-                        </span>
-                      </h3>
-                     <IngredientsTable />
-
-                      <NutritionFacts />
-                      <Additives />
-                    </div>
-                  </Disclosure.Panel>
-                </>
-              )}
-            </Disclosure>
+            <RecipeDetails recipe={recipe} />
           </div>
 
           <div className="my-4">{ShowNutriScore()}</div>
@@ -396,7 +291,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             type="submit"
             className="px-4 py-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
-            {selectedRecipe?.id
+            {recipe?.id
               ? t('editRecipe.updateButton')
               : t('createRecipe.saveBtn')}
           </button>
@@ -407,7 +302,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
         className="px-4 py-2 mt-2 font-medium tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={CloseAndDiscard}
       >
-        {selectedRecipe?.id
+        {recipe?.id
           ? t('editRecipe.discardButton')
           : t('createRecipe.discardBtn')}
       </button>
