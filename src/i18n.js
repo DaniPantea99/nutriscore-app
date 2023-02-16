@@ -11,6 +11,18 @@ i18n
     resources: {
       en: {
         translation: {
+          nutriscore: {
+            description: {
+              firstParagraph:
+                'The Nutri-Score, also known as the 5-Colour Nutrition label or 5-CNL, is a five-colour nutrition label and nutritional rating system, and an attempt to simplify the nutritional rating system demonstrating the overall nutritional value of food products. It assigns products a rating letter from A(best) to E(worst), with associated colors from green to red.',
+              secondParagraph:
+                'This system was selected by the French government in March 2017 to be displayed on food products after it was compared against several labels proposed by industry or retailers. The system relies on the computation of a nutrient profiling system derived from the United Kingdom Food Standards Agency nutrient profiling system (FSA score). It was created by Santé Publique France, the French public health agency, based on the work of Serge Hercberg from Sorbonne Paris North University. Other bodies involved in the development of the system included the Agency for Food, Environmental and Occupational Health and Safety (ANSES) and the High Council for Public Health (HCSP).',
+              thirdParagraph:
+                "The system has been recommended by other European Union countries as well as the European Commission and the World Health Organization. Due to the system's methodology, its implementation for general use is controversial in some EU countries.",
+              source: 'Source',
+              button: 'Got it, thanks!',
+            },
+          },
           recipeList: {
             title: 'Mr Beast Burger',
             subtitle: 'Manage Recipes',
@@ -26,7 +38,7 @@ i18n
             searchInput: 'Search',
           },
           recipesOption: {
-            openBtn: 'Open',
+            openBtn: 'View',
             removeBtn: 'Remove',
           },
           createRecipe: {
@@ -70,6 +82,18 @@ i18n
       },
       ro: {
         translation: {
+          nutriscore: {
+            description: {
+              firstParagraph:
+                'Nutri-Score, cunoscut și sub numele de eticheta nutrițională în 5 culori sau 5-CNL, este o etichetă nutrițională în cinci culori și un sistem de evaluare nutrițională, precum și o încercare de a simplifica sistemul de evaluare nutrițională care demonstrează valoarea nutrițională globală a produselor alimentare. Acesta atribuie produselor o literă de rating de la A (cel mai bun) la E (cel mai rău), cu culori asociate de la verde la roșu.',
+              secondParagraph:
+                'Acest sistem a fost selectat de guvernul francez în martie 2017 pentru a fi afișat pe produsele alimentare, după ce a fost comparat cu mai multe etichete propuse de industrie sau de retaileri. Sistemul se bazează pe calculul unui sistem de profilare a nutrienților derivat din sistemul de profilare a nutrienților al Agenției pentru standarde alimentare din Regatul Unit (scorul FSA). Acesta a fost creat de Santé Publique France, agenția franceză de sănătate publică, pe baza lucrărilor lui Serge Hercberg de la Universitatea Sorbona Paris Nord. Alte organisme implicate în dezvoltarea sistemului au fost Agenția pentru Sănătate și Siguranță Alimentară, de Mediu și Profesională (ANSES) și Înaltul Consiliu pentru Sănătate Publică (HCSP).',
+              thirdParagraph:
+                'Sistemul a fost recomandat de alte țări din Uniunea Europeană, precum și de Comisia Europeană și de Organizația Mondială a Sănătății. Din cauza metodologiei sistemului, punerea sa în aplicare pentru uz general este controversată în unele țări ale UE.',
+              source: 'Sursă',
+              button: 'Am înteles, mulțumesc!',
+            },
+          },
           recipeList: {
             title: 'Mr Beast Burger',
             subtitle: 'Gestionare Rețete',
@@ -115,14 +139,13 @@ i18n
               salt: 'Sare',
             },
             updateButton: 'Actualizare',
-            discardButton: 'Renunțare la modificări',
+            discardButton: 'Renunță la modificări',
           },
           userPage: {
-            title: 'User Page',
+            title: 'Pagină Client',
           },
           settingsPage: {
-            title: 'Settings Page',
-            translateButton: 'Translate',
+            title: 'Setări',
             language: 'Limbă',
           },
         },

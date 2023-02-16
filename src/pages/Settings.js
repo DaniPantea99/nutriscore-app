@@ -32,7 +32,7 @@ function Settings() {
   return (
     <div className="p-8">
       {t('settingsPage.title')}
-      <div className="p-4">
+      <div className="p-4 w-44">
         <Combobox
           value={
             languages.find((language) => language.key === i18n.resolvedLanguage)
