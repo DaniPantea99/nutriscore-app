@@ -4,7 +4,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-export default function SearchItem({ AddNewIngredient }) {
+export default function SearchItem({ onAddNewIngredient }) {
   const [query, setQuery] = useState('');
   const { filtered } = useSelector((state) => state.ingredients);
 
@@ -22,7 +22,7 @@ export default function SearchItem({ AddNewIngredient }) {
 
   return (
     <div className="flex w-full h-12">
-      <Combobox onChange={(ingredient) => AddNewIngredient(ingredient)}>
+      <Combobox onChange={(ingredient) => onAddNewIngredient(ingredient)}>
         <div className="relative w-full">
           <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
             <Combobox.Input

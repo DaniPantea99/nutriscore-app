@@ -17,7 +17,7 @@ function RecipeDetails({recipe}) {
           </tr>
         </thead>
         <tbody>
-          {recipe?.recipeIngredients?.map((item, index) => (
+          {recipe?.ingredients?.map((item, index) => (
             <tr key={index}>
               <td className="first-letter:uppercase">{item.productName}</td>
               <td>{item.quantity}</td>
@@ -27,7 +27,7 @@ function RecipeDetails({recipe}) {
         <tfoot>
           <tr className="font-semibold">
             <td>{t('editRecipe.details.totalQuantity')}</td>
-            <td>{recipe?.recipeQuantity ?? 0}</td>
+            <td>{recipe?.quantity ?? 0}</td>
           </tr>
         </tfoot>
       </table>
@@ -41,39 +41,39 @@ function RecipeDetails({recipe}) {
         <ul className="ml-6 list-disc">
           <li>
             {t('editRecipe.details.calories')}:&nbsp;
-            {recipe?.recipeNutriments?.calories ?? 0} kcal /&nbsp;
+            {recipe?.nutriments?.calories ?? 0} kcal /&nbsp;
             {format2Decimals(
-              (recipe?.recipeNutriments?.calories ?? 0) * 4.184
+              (recipe?.nutriments?.calories ?? 0) * 4.184
             )}{' '}
             kJ
           </li>
           <li>
             {t('editRecipe.details.fat')}:&nbsp;
-            {recipe?.recipeNutriments?.fat ?? 0}
+            {recipe?.nutriments?.fat ?? 0}
             <ul className="ml-6 list-disc">
               <li>
                 {t('editRecipe.details.saturatedFat')}:&nbsp;
-                {recipe?.recipeNutriments?.saturated_fat ?? 0}
+                {recipe?.nutriments?.saturated_fat ?? 0}
               </li>
             </ul>
           </li>
           <li>
             {t('editRecipe.details.carbohydrates')}:{' '}
-            {recipe?.recipeNutriments?.carbohydrates ?? 0}
+            {recipe?.nutriments?.carbohydrates ?? 0}
             <ul className="ml-6 list-disc">
               <li>
                 {t('editRecipe.details.sugar')}:{' '}
-                {recipe?.recipeNutriments?.sugars ?? 0}
+                {recipe?.nutriments?.sugars ?? 0}
               </li>
             </ul>
           </li>
           <li>
             {t('editRecipe.details.proteins')}:{' '}
-            {recipe?.recipeNutriments?.proteins ?? 0}
+            {recipe?.nutriments?.proteins ?? 0}
           </li>
           <li>
             {t('editRecipe.details.salt')}:{' '}
-            {recipe?.recipeNutriments?.salt ?? 0}
+            {recipe?.nutriments?.salt ?? 0}
           </li>
         </ul>
       </div>
@@ -86,9 +86,9 @@ function RecipeDetails({recipe}) {
         <span className="font-semibold">
           {t('editRecipe.details.additives')}:&nbsp;
         </span>
-        {recipe?.recipeAdditives?.length ? (
+        {recipe?.additives?.length ? (
           <ul className="ml-6 capitalize list-disc">
-            <li>{recipe?.recipeAdditives.map((item) => item)}</li>
+            <li>{recipe?.additives.map((item) => item)}</li>
           </ul>
         ) : (
           <span>{t('editRecipe.details.noadditivesfound')}</span>
@@ -121,8 +121,8 @@ function RecipeDetails({recipe}) {
                 <h3>
                   {t('editRecipe.details.ingredientperserving')}{' '}
                   <span className="font-bold uppercase">
-                    {recipe?.recipeName
-                      ? recipe.recipeName
+                    {recipe?.name
+                      ? recipe.name
                       : t('editRecipe.details.defaultRecipeName')}
                   </span>
                 </h3>

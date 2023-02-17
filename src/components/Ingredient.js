@@ -4,7 +4,7 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { format2Decimals } from '../utility';
 
-function Ingredient({ item, calculateIngredientQty, removeIngredient }) {
+function Ingredient({ item, onChange, onRemove }) {
   const Calories = () => {
     return (
       <div>
@@ -114,12 +114,15 @@ function Ingredient({ item, calculateIngredientQty, removeIngredient }) {
                     max="9999.99"
                     step="0.01"
                     onWheel={(e) => e.target.blur()}
-                    onChange={(e) => calculateIngredientQty(e.target, item)}
+                    onChange={(e) => onChange(e.target.value, item)}
                     onClick={(e) => e.stopPropagation()}
                   />
                   <p>g</p>
                   <BsFillXCircleFill
-                    onClick={(e) => removeIngredient(e, item)}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onRemove(item)
+                    }}
                     className="ml-2 text-2xl text-red-700 transition-all cursor-pointer hover:text-red-500 active:text-red-900 sm:ml-6"
                   />
                 </div>

@@ -11,24 +11,7 @@ function Dashboard() {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const [recipe, setRecipe] = useState({
-    id: '',
-    recipeName: '',
-    recipeQuantity: null,
-    date: '',
-    recipeIngredients: [],
-    recipeNutriments: {
-      calories: 0,
-      fat: 0,
-      saturated_fat: 0,
-      carbohydrates: 0,
-      sugars: 0,
-      proteins: 0,
-      salt: 0,
-    },
-    recipeAdditives: [],
-    recipeNutriscore: undefined,
-  });
+
   const [showRecipePanel, setShowRecipePanel] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   
@@ -53,35 +36,16 @@ function Dashboard() {
   }
 
   const viewRecipeDetails = (recipe) => {
-    setRecipe(recipe);
     toggleSidePanel();
   };
 
   function CloseAndDiscard() {
     toggleSidePanel();
-    setRecipe({
-      id: '',
-      recipeName: '',
-      recipeQuantity: null,
-      date: '',
-      recipeIngredients: [],
-      recipeNutriments: {
-        calories: 0,
-        fat: 0,
-        saturated_fat: 0,
-        carbohydrates: 0,
-        sugars: 0,
-        proteins: 0,
-        salt: 0,
-      },
-      recipeAdditives: [],
-      recipeNutriscore: undefined,
-    });
   }
 
   return (
     <div className="flex flex-col w-full h-full p-8">
-      <button onClick={() => console.log(recipe)}>TEST</button>
+      {/* <button onClick={() => console.log(recipe)}>TEST</button> */}
       <div className="flex items-center justify-between h-screen">
         <div className="flex items-center gap-4">
           <img
@@ -136,11 +100,12 @@ function Dashboard() {
         fixed h-full top-0 right-0 z-50 
         `}
         >
+          {showRecipePanel &&
           <CreateRecipe
-            recipe={recipe}
-            setRecipe={setRecipe}
-            CloseAndDiscard={CloseAndDiscard}
+            recipe={{}}
+            onCloseAndDiscard={CloseAndDiscard}
           />
+          }
         </div>
       </Transition>
     </div>
