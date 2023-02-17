@@ -48,6 +48,10 @@ function Dashboard() {
     setIsOpen(true);
   }
 
+  const createNewRecipe = () => {
+    toggleSidePanel();
+  }
+
   const viewRecipeDetails = (recipe) => {
     setRecipe(recipe);
     toggleSidePanel();
@@ -55,7 +59,24 @@ function Dashboard() {
 
   function CloseAndDiscard() {
     toggleSidePanel();
-    setRecipe([]);
+    setRecipe({
+      id: '',
+      recipeName: '',
+      recipeQuantity: null,
+      date: '',
+      recipeIngredients: [],
+      recipeNutriments: {
+        calories: 0,
+        fat: 0,
+        saturated_fat: 0,
+        carbohydrates: 0,
+        sugars: 0,
+        proteins: 0,
+        salt: 0,
+      },
+      recipeAdditives: [],
+      recipeNutriscore: undefined,
+    });
   }
 
   return (
@@ -88,7 +109,7 @@ function Dashboard() {
           </div>
           <button
             className="px-6 py-3 font-semibold text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
-            onClick={toggleSidePanel}
+            onClick={createNewRecipe}
           >
             {t('recipeList.createButton')}
           </button>

@@ -4,7 +4,7 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { format2Decimals } from '../utility';
 
-function Ingredient({ item, getIngredient, removeIngredient }) {
+function Ingredient({ item, calculateIngredientQty, removeIngredient }) {
   const Calories = () => {
     return (
       <div>
@@ -114,7 +114,7 @@ function Ingredient({ item, getIngredient, removeIngredient }) {
                     max="9999.99"
                     step="0.01"
                     onWheel={(e) => e.target.blur()}
-                    onChange={(e) => getIngredient(e.target, item)}
+                    onChange={(e) => calculateIngredientQty(e.target, item)}
                     onClick={(e) => e.stopPropagation()}
                   />
                   <p>g</p>

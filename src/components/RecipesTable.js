@@ -174,11 +174,11 @@ export default function RecipesTable({
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="py-2 pr-6 text-xs uppercase bg-blue-200 cursor-pointer first:rounded-tl-xl last:rounded-tr-xl pl-7"
+                    className="px-4 py-2 text-xs uppercase bg-blue-200 cursor-pointer first:rounded-tl-xl last:rounded-tr-xl"
                     style={{ width: column.width }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="font-bold">{column.render('Header')}</div>
+                      <div className="font-bold text-left">{column.render('Header')}</div>
                       {!column.disableSortBy && (
                         <div className="flex flex-col">
                           <FaSortUp
@@ -216,7 +216,7 @@ export default function RecipesTable({
                     return (
                       <td
                         {...cell.getCellProps()}
-                        className="py-2 pr-6 text-sm font-medium first-letter:uppercase first:rounded-l-xl last:rounded-r-xl pl-7"
+                        className="px-4 py-2 text-sm font-medium first-letter:uppercase first:rounded-l-xl last:rounded-r-xl"
                       >
                         {cell.render('Cell')}
                       </td>

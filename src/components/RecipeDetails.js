@@ -17,7 +17,7 @@ function RecipeDetails({recipe}) {
           </tr>
         </thead>
         <tbody>
-          {recipe?.recipeIngredients.map((item, index) => (
+          {recipe?.recipeIngredients?.map((item, index) => (
             <tr key={index}>
               <td className="first-letter:uppercase">{item.productName}</td>
               <td>{item.quantity}</td>

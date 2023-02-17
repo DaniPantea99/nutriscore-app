@@ -27,25 +27,31 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
     });
   };
 
-  const getIngredient = (e, ingredient) => {
+  const calculateIngredientQty = (e, ingredient) => {
     recipe?.recipeIngredients.forEach((el) => {
       if (el.id === ingredient.id) {
         el.quantity = Number(e.value);
         el.calories_currQty =
-          Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;
-      }
+          Number(((el?.calories_100 ?? 0) / 100) * e.value) ?? 0;   
+          Object.values(el.nutriments).forEach(element => {
+            element.quantity_current = Number((element.quantity_100 / 100) * e.value)
+          })
+      
+        }
+      calculateRecipeProperties()
     });
   };
 
-  const removeIngredient = (e, item) => {
+  function RemoveIngredient(e, item) {
     e.stopPropagation();
     const filterList = recipe?.recipeIngredients.filter(
       (el) => el.id !== item.id
-    );
-    setRecipe({
-      ...recipe,
-      recipeIngredients: filterList,
-    });
+      );
+      setRecipe({
+        ...recipe,
+        recipeIngredients: filterList,
+      });
+      // calculateRecipeProperties()
   };
 
   const AddNewIngredient = (ingredient) => {
@@ -53,7 +59,7 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
     setRecipe({
       ...recipe,
       recipeIngredients:
-      [ 
+      [...recipe.recipeIngredients,
         { 
           id: uuid,
           productName: ingredient.product_name,
@@ -67,6 +73,7 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
         },
       ],
     });
+    
     // setListOfIngredients((prev) => [
     //   ...prev,
     //   { id: uuid,
@@ -74,95 +81,52 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
     //     ...etc }]);
   };
 
-  function createNewRecipe(e) {
-    e.preventDefault();
-    let uuid = uuidv4();
-    if (recipe.recipeIngredients.length === 0) {
-      alert('No ingredients selected.');
-    } else {
-      setRecipe({
-        ...recipe,
-        id: uuid,
-        recipeQuantity: recipe.recipeIngredients.reduce(
-          (acc, curr) => acc + curr?.quantity ?? 0,
+  function calculateRecipeProperties() {
+    setRecipe({
+      ...recipe,
+      recipeQuantity: recipe.recipeIngredients.reduce(
+        (acc, curr) => acc + curr?.quantity ?? 0,
+        0
+      ),
+      date: formattedDate,
+      recipeNutriments: {
+        calories: recipe.recipeIngredients.reduce(
+          (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
+          // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
           0
         ),
-        date: formattedDate,
-        recipeNutriments: {
-          calories: recipe.recipeIngredients.reduce(
-            (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
-            // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
-            0
-          ),
-          fat: format2Decimals(CalculateQty('fat')),
-          saturated_fat: format2Decimals(CalculateQty('saturated-fat')),
-          carbohydrates: format2Decimals(CalculateQty('carbohydrates')),
-          sugars: format2Decimals(CalculateQty('sugars')),
-          proteins: format2Decimals(CalculateQty('proteins')),
-          salt: format2Decimals(CalculateQty('salt')),
-        },
-        recipeAdditives: CalculateAdditives(),
-        recipeNutriscore: nutriScore.calculateClass({
-          energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
-          fibers: format2Decimals(CalculateQty('fibers') ?? 0),
-          fruit_percentage: 0,
-          proteins: format2Decimals(CalculateQty('proteins')),
-          saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
-          sodium: format2Decimals(CalculateQty('salt') * 400),
-          sugar: format2Decimals(CalculateQty('sugars')),
-        }),
-      });
+        fat: format2Decimals(CalculateQty('fat')),
+        saturated_fat: format2Decimals(CalculateQty('saturated-fat')),
+        carbohydrates: format2Decimals(CalculateQty('carbohydrates')),
+        sugars: format2Decimals(CalculateQty('sugars')),
+        proteins: format2Decimals(CalculateQty('proteins')),
+        salt: format2Decimals(CalculateQty('salt')),
+      },
+      recipeAdditives: CalculateAdditives(),
+      recipeNutriscore: nutriScore.calculateClass({
+        energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
+        fibers: format2Decimals(CalculateQty('fibers') ?? 0),
+        fruit_percentage: 0,
+        proteins: format2Decimals(CalculateQty('proteins')),
+        saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
+        sodium: format2Decimals(CalculateQty('salt') * 400),
+        sugar: format2Decimals(CalculateQty('sugars')),
+      }),
+    });
+  }
 
-      // const recipe = {
-      //   id: uuid,
-      //   recipeName: '',
-      //   recipeQuantity: listOfIngredients.reduce(
-      //     (acc, curr) => acc + curr?.quantity ?? 0,
-      //     0
-      //   ),
-      //   date: formattedDate,
-      //   recipeIngredients: [...listOfIngredients],
-      //   recipeNutriments: {
-      //     calories: listOfIngredients.reduce(
-      //       (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
-      //       // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
-      //       0
-      //     ),
-      //     fat: format2Decimals(CalculateQty('fat')),
-      //     saturated_fat: format2Decimals(CalculateQty('saturated-fat')),
-      //     carbohydrates: format2Decimals(CalculateQty('carbohydrates')),
-      //     sugars: format2Decimals(CalculateQty('sugars')),
-      //     proteins: format2Decimals(CalculateQty('proteins')),
-      //     salt: format2Decimals(CalculateQty('salt')),
-      //   },
-      //   recipeAdditives: CalculateAdditives(),
-      //   recipeNutriscore: nutriScore.calculateClass({
-      //     energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
-      //     fibers: format2Decimals(CalculateQty('fibers') ?? 0),
-      //     fruit_percentage: 0,
-      //     proteins: format2Decimals(CalculateQty('proteins')),
-      //     saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
-      //     sodium: format2Decimals(CalculateQty('salt') * 400),
-      //     sugar: format2Decimals(CalculateQty('sugars')),
-      //   }),
-      //   recipeNutriscore_TEMPORARY: {
-      //     energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
-      //     fibers: format2Decimals(CalculateQty('fibers') ?? 0),
-      //     fruit_percentage: 0,
-      //     proteins: format2Decimals(CalculateQty('proteins')),
-      //     saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
-      //     sodium: format2Decimals(CalculateQty('salt') * 400),
-      //     sugar: format2Decimals(CalculateQty('sugars')),
-      //   },
-      // };
-      if (recipe?.id) {
+  function createNewRecipe(e) {
+    e.preventDefault();
+    if (recipe.recipeIngredients.length === 0) {
+      alert('No ingredients selected.');
+    } else if(recipe.id) {
         dispatch(updateRecipe(recipe));
+      CloseAndDiscard();
       } else {
         dispatch(createRecipe(recipe));
-      }
       CloseAndDiscard();
+      }
     }
-  }
 
   function CalculateAdditives() {
     const additivesList = [];
@@ -189,7 +153,7 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
         return (
           acc +
             (curr?.find((nutriment) => nutriment.name === nutrimentName)
-              ?.quantity_100 ?? 0) ?? 0
+              ?.quantity_current ?? 0) ?? 0
         );
       }, 0);
   }
@@ -274,8 +238,8 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
                     item={item}
                     key={index}
                     index={index}
-                    getIngredient={getIngredient}
-                    removeIngredient={removeIngredient}
+                    calculateIngredientQty={calculateIngredientQty}
+                    removeIngredient={RemoveIngredient}
                   />
                 ))}
             </div>
@@ -291,7 +255,7 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
             type="submit"
             className="px-4 py-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
-            {recipe?.id
+            {recipe.id
               ? t('editRecipe.updateButton')
               : t('createRecipe.saveBtn')}
           </button>
@@ -302,7 +266,7 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
         className="px-4 py-2 mt-2 font-medium tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={CloseAndDiscard}
       >
-        {recipe?.id
+        {recipe.id
           ? t('editRecipe.discardButton')
           : t('createRecipe.discardBtn')}
       </button>
@@ -311,3 +275,48 @@ function CreateRecipe({ CloseAndDiscard, recipe, setRecipe }) {
 }
 
 export default CreateRecipe;
+
+
+//From createNewRecipe()
+      // const recipe = {
+      //   id: uuid,
+      //   recipeName: '',
+      //   recipeQuantity: listOfIngredients.reduce(
+      //     (acc, curr) => acc + curr?.quantity ?? 0,
+      //     0
+      //   ),
+      //   date: formattedDate,
+      //   recipeIngredients: [...listOfIngredients],
+      //   recipeNutriments: {
+      //     calories: listOfIngredients.reduce(
+      //       (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
+      //       // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
+      //       0
+      //     ),
+      //     fat: format2Decimals(CalculateQty('fat')),
+      //     saturated_fat: format2Decimals(CalculateQty('saturated-fat')),
+      //     carbohydrates: format2Decimals(CalculateQty('carbohydrates')),
+      //     sugars: format2Decimals(CalculateQty('sugars')),
+      //     proteins: format2Decimals(CalculateQty('proteins')),
+      //     salt: format2Decimals(CalculateQty('salt')),
+      //   },
+      //   recipeAdditives: CalculateAdditives(),
+      //   recipeNutriscore: nutriScore.calculateClass({
+      //     energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
+      //     fibers: format2Decimals(CalculateQty('fibers') ?? 0),
+      //     fruit_percentage: 0,
+      //     proteins: format2Decimals(CalculateQty('proteins')),
+      //     saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
+      //     sodium: format2Decimals(CalculateQty('salt') * 400),
+      //     sugar: format2Decimals(CalculateQty('sugars')),
+      //   }),
+      //   recipeNutriscore_TEMPORARY: {
+      //     energy: format2Decimals(CalculateQty('energy-kcal') * 4.184),
+      //     fibers: format2Decimals(CalculateQty('fibers') ?? 0),
+      //     fruit_percentage: 0,
+      //     proteins: format2Decimals(CalculateQty('proteins')),
+      //     saturated_fats: format2Decimals(CalculateQty('saturated-fat')),
+      //     sodium: format2Decimals(CalculateQty('salt') * 400),
+      //     sugar: format2Decimals(CalculateQty('sugars')),
+      //   },
+      // };
