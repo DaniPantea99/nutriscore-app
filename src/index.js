@@ -9,7 +9,13 @@ import rootReducer from './reducers/index';
 
 import './i18n';
 
-const store = configureStore({ reducer: rootReducer });
+const store = configureStore({ 
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+})
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
