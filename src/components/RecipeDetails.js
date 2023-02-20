@@ -20,14 +20,14 @@ function RecipeDetails({recipe}) {
           {recipe?.ingredients?.map((item, index) => (
             <tr key={index}>
               <td className="first-letter:uppercase">{item.productName}</td>
-              <td>{item.quantity}</td>
+              <td>{format2Decimals(Number(item?.quantity)) ?? 0}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr className="font-semibold">
             <td>{t('editRecipe.details.totalQuantity')}</td>
-            <td>{recipe?.quantity ?? 0}</td>
+            <td>{format2Decimals(Number(recipe?.quantity)) ?? 0}</td>
           </tr>
         </tfoot>
       </table>

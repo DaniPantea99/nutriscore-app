@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 export default function SearchItem({ onAddNewIngredient }) {
   const [query, setQuery] = useState('');
   const { filtered } = useSelector((state) => state.ingredients);
-
+  const { t } = useTranslation();
   const filteredItems =
     query === ''
       ? filtered
@@ -17,8 +17,6 @@ export default function SearchItem({ onAddNewIngredient }) {
             .replace(/\s+/g, '')
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
-
-  const { t } = useTranslation();
 
   return (
     <div className="flex w-full h-12">

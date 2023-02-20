@@ -69,7 +69,7 @@ function GlobalSearchFilter1({
 }
 
 export default function RecipesTable({
-  RemoveRecipe,
+  onRemoveRecipe,
   onSelect,
 }) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
@@ -78,10 +78,10 @@ export default function RecipesTable({
   const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
       id: item.id,
-      name: item.recipeName,
-      qty: item.recipeQuantity,
-      calories: item.recipeNutriments.calories,
-      nutriscore: item.recipeNutriscore,
+      name: item.name,
+      qty: item.quantity,
+      calories: item.nutriments.calories,
+      nutriscore: item.nutriscore,
       date: item.date,
     }));
 
@@ -141,7 +141,7 @@ export default function RecipesTable({
             </button>
             <button
               className="px-4 py-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
-              onClick={() => RemoveRecipe(cell.row.original)}
+              onClick={() => onRemoveRecipe(cell.row.original)}
             >
               {t('recipesOption.removeBtn')}
             </button>
@@ -236,7 +236,7 @@ export default function RecipesTable({
     [filteredRecipes]
   );
 
-  const columns = useMemo(getColumns, [viewMoreHandler, RemoveRecipe, t]);
+  const columns = useMemo(getColumns, [viewMoreHandler, onRemoveRecipe, t]);
   const {
     getTableProps,
     getTableBodyProps,

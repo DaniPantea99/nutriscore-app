@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useCallback } from 'react';
+import React, { useState, Fragment } from 'react';
 import CreateRecipe from '../components/CreateRecipe';
 import { Transition } from '@headlessui/react';
 import RecipesTable from '../components/RecipesTable';
@@ -11,42 +11,26 @@ function Dashboard() {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
   const [showRecipePanel, setShowRecipePanel] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   
-  const toggleSidePanel = useCallback(() => {
-    setShowRecipePanel(!showRecipePanel);
-  }, [showRecipePanel]);
-
-  const RemoveRecipe = useCallback(
-    (recipe) => {
+  const handleRemoveRecipe = (recipe) => {
       const selected = filteredRecipes.find((el) => el.id === recipe.id);
       dispatch(removeRecipe(selected));
-    },
-    [dispatch, filteredRecipes]
-  );
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  const createNewRecipe = () => {
-    toggleSidePanel();
   }
 
   const viewRecipeDetails = (recipe) => {
-    toggleSidePanel();
+    setShowRecipePanel(true);
   };
 
-  function CloseAndDiscard() {
-    toggleSidePanel();
+  const CloseAndDiscard = () => {
+    setShowRecipePanel(false);
   }
 
   return (
-    <div className="flex flex-col w-full h-full p-8">
+    <div className="flex flex-col w-full h-full gap-4 p-8">
       {/* <button onClick={() => console.log(recipe)}>TEST</button> */}
-      <div className="flex items-center justify-between h-screen">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img
             width="50px"
@@ -58,12 +42,12 @@ function Dashboard() {
           </h1>
         </div>
         <img
-          onClick={openModal}
+          onClick={() => setShowModal(true)}
           className="w-[110px] mr-3 cursor-pointer hover:scale-105 transition-all duration-200"
           src={`./images/nutriscore/nutriscore.svg`}
           alt="nutriscore logo"
         />
-        {isOpen && <NutriScoreInfo isOpen={isOpen} setIsOpen={setIsOpen} />}
+        {showModal && <NutriScoreInfo showModal={showModal} onClose={setShowModal} />}
       </div>
 
       <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px] w-[500px] sm:w-full">
@@ -73,7 +57,7 @@ function Dashboard() {
           </div>
           <button
             className="px-6 py-3 font-semibold text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
-            onClick={createNewRecipe}
+            onClick={() => setShowRecipePanel(true)}
           >
             {t('recipeList.createButton')}
           </button>
@@ -81,7 +65,7 @@ function Dashboard() {
 
         <RecipesTable
           onSelect={viewRecipeDetails}
-          RemoveRecipe={RemoveRecipe}
+          onRemoveRecipe={handleRemoveRecipe}
         />
       </div>
 

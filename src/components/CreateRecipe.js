@@ -42,35 +42,14 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
   });
   const [state, setState] = useState(initialState);
 
-  const calculateIngredientQty = (value, ingredient) => {
-    state.recipe?.ingredients.forEach((item) => {
-      if (item.id === ingredient.id) {
-        item.quantity = Number(value);
-        item.calories_currQty =
-          Number(((item?.calories_100 ?? 0) / 100) * value) ?? 0;
-        Object.values(item.nutriments).forEach(
-          (element) =>
-            (element.quantity_current = Number(
-              (element.quantity_100 / 100) * value
-            ))
-        );
-      }
-      calculateRecipeProperties();
-    });
-  };
-
-  function removeIngredient(ingredient) {
-    const filteredList = state.recipe?.ingredients.filter(
-      (el) => el.id !== ingredient.id
-    );
+  const formHandler = (formData) => {
     setState({
       recipe: {
         ...state.recipe,
-        ingredients: filteredList,
+        ...formData,
       },
     });
-    calculateRecipeProperties();
-  }
+  };
 
   const addNewIngredient = (ingredient) => {
     let uuid = uuidv4();
@@ -81,7 +60,11 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       quantity: null,
       calories_100: ingredient.calories,
       calories_currQty: null,
-      nutriments: ingredient.nutriments,
+      nutriments: ingredient.nutriments
+        ? Array.isArray(ingredient.nutriments)
+          ? ingredient.nutriments
+          : Object.values(ingredient.nutriments)
+        : [],
       additives: ingredient.additives_tags,
       source: ingredient.sursa,
     };
@@ -93,56 +76,84 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     });
   };
 
-  function calculateRecipeProperties() {
+  const removeIngredient = (ingredient) => {
+    const filteredList = state.recipe.ingredients.filter(
+      (el) => el.id !== ingredient.id
+    );
     setState({
       recipe: {
         ...state.recipe,
-        quantity: state.recipe.ingredients.reduce(
-          (acc, curr) => acc + curr?.quantity ?? 0,
-          0
-        ),
-        date: formattedDate,
-        nutriments: {
-          calories: state.recipe.ingredients.reduce(
-            (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
-            // (acc, curr) => format2Decimals(acc + (curr?.calories_100 ?? 0)),
-            0
-          ),
-          fat: format2Decimals(calculateQty('fat')),
-          saturated_fat: format2Decimals(calculateQty('saturated-fat')),
-          carbohydrates: format2Decimals(calculateQty('carbohydrates')),
-          sugars: format2Decimals(calculateQty('sugars')),
-          proteins: format2Decimals(calculateQty('proteins')),
-          salt: format2Decimals(calculateQty('salt')),
-        },
-        additives: calculateAdditives(),
-        nutriscore: nutriScore.calculateClass({
-          energy: format2Decimals(calculateQty('energy-kcal') * 4.184),
-          fibers: format2Decimals(calculateQty('fibers') ?? 0),
-          fruit_percentage: 0,
-          proteins: format2Decimals(calculateQty('proteins')),
-          saturated_fats: format2Decimals(calculateQty('saturated-fat')),
-          sodium: format2Decimals(calculateQty('salt') * 400),
-          sugar: format2Decimals(calculateQty('sugars')),
-        }),
+        ingredients: [...filteredList],
+        ...calculateRecipeDetails(filteredList),
       },
     });
-  }
+  };
 
-  function createNewRecipe(e) {
-    e.preventDefault();
-    if (state.recipe.ingredients.length === 0) {
-      alert('No ingredients selected.');
-    } else if (state.recipe.id) {
-      dispatch(updateRecipe(state.recipe));
-      onCloseAndDiscard();
-    } else {
-      dispatch(createRecipe(state.recipe));
-      onCloseAndDiscard();
-    }
-  }
+  const updateIngredient = (value, ingredient) => {
+    const updatedIngredients = state.recipe.ingredients.map((item) => {
+      if (item.id === ingredient.id) {
+        return {
+          ...item,
+          quantity: Number(value),
+          calories_currQty: Number((item.calories_100 ?? 0) / 100) * value ?? 0,
+          nutriments: item.nutriments?.length
+            ? item.nutriments?.map((el) => ({
+                ...el,
+                quantity_current: Number((el.quantity_100 / 100) * value),
+              }))
+            : ingredient.productName.toLowerCase().includes('sare')
+            ? [
+                {
+                  name: 'salt',
+                  quantity_current: Number(value) ?? 0,
+                },
+              ]
+            : [],
+        };
+      }
+      return item;
+    });
+    formHandler({
+      ...state.recipe,
+      ingredients: [...updatedIngredients],
+      ...calculateRecipeDetails(updatedIngredients),
+    });
+  };
 
-  function calculateAdditives() {
+  const calculateRecipeDetails = (ingredients) => {
+    const _ingredients = ingredients ? ingredients : state.recipe.ingredients
+    return {
+      quantity: _ingredients.reduce(
+        (acc, curr) => acc + curr.quantity ?? 0,
+        0
+      ),
+      date: formattedDate,
+      nutriments: {
+        calories: _ingredients.reduce(
+          (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
+          0
+        ),
+        fat: calculateQty(_ingredients, 'fat'),
+        saturated_fat: calculateQty(_ingredients, 'saturated-fat'),
+        carbohydrates: calculateQty(_ingredients, 'carbohydrates'),
+        sugars: calculateQty(_ingredients, 'sugars'),
+        proteins: calculateQty(_ingredients, 'proteins'),
+        salt: calculateQty(_ingredients, 'salt'),
+      },
+      additives: calculateAdditives(),
+      nutriscore: nutriScore.calculateClass({
+        energy: calculateQty(_ingredients, 'energy-kcal') * 4.184,
+        fibers: calculateQty(_ingredients, 'fibers') ?? 0,
+        fruit_percentage: 0,
+        proteins: calculateQty(_ingredients, 'proteins'),
+        saturated_fats: calculateQty(_ingredients, 'saturated-fat'),
+        sodium: calculateQty(_ingredients, 'salt') * 400,
+        sugar: calculateQty(_ingredients, 'sugars'),
+      }),
+    };
+  };
+
+  const calculateAdditives = () => {
     const additivesList = [];
     state.recipe.ingredients
       .filter((el) => el.additives)
@@ -154,8 +165,9 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     return Array.from(new Set(additivesList));
   }
 
-  function calculateQty(nutrimentName = '') {
-    return state.recipe.ingredients
+  const calculateQty = (ingredients ,nutrimentName = '') => {
+    const _ingredients = ingredients ? ingredients : state.recipe.ingredients
+    return _ingredients
       .filter((item) => item.nutriments)
       .map((element) => {
         if (!Array.isArray(element.nutriments)) {
@@ -165,10 +177,11 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       })
       .reduce((acc, curr) => {
         return (
+          format2Decimals(
           acc +
             (curr?.find((nutriment) => nutriment.name === nutrimentName)
               ?.quantity_current ?? 0) ?? 0
-        );
+        ));
       }, 0);
   }
 
@@ -192,18 +205,22 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     );
   };
 
-  const formHandler = (formData) => {
-    setState({
-      recipe: {
-        ...state.recipe,
-        ...formData,
-      },
-    });
-  };
+  const createNewRecipe = (e) => {
+    e.preventDefault();
+    if (state.recipe.ingredients.length === 0) {
+      alert('No ingredients selected.');
+    } else if (state.recipe.id) {
+      dispatch(updateRecipe(state.recipe));
+      onCloseAndDiscard();
+    } else {
+      dispatch(createRecipe(state.recipe));
+      onCloseAndDiscard();
+    }
+  }
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      {/* <button onClick={() => console.log(state.recipe)}>TEST</button> */}
+      <button onClick={() => console.log(state.recipe)}>TEST</button>
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           {t('editRecipe.description')}
@@ -254,11 +271,11 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
 
             {state.recipe.ingredients?.length > 0 && (
               <div className="flex flex-col gap-2 mb-6">
-                {state.recipe?.ingredients?.map((item, index) => (
+                {state.recipe?.ingredients.map((item, index) => (
                   <Ingredient
                     item={item}
                     key={index}
-                    onChange={calculateIngredientQty}
+                    onChange={updateIngredient}
                     onRemove={removeIngredient}
                   />
                 ))}
