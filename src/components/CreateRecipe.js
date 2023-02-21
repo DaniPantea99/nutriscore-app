@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SearchItem from './SearchItem';
 import { useDispatch } from 'react-redux';
-import Ingredient from '../components/Ingredient';
+// import Ingredient from '../components/Ingredient';
 import { createRecipe, updateRecipe } from '../actions/recipesAction';
 import { BsFillXCircleFill } from 'react-icons/bs';
 import { nutriScore } from 'nutri-score';
@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import { format2Decimals } from '../utility';
 import RecipeDetails from './RecipeDetails';
+import ListOfIngredients from './ListOfIngredients';
 
 const initialState = {
   recipe: {
@@ -40,7 +41,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     month: 'numeric',
     year: 'numeric',
   });
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(recipe.id ? {recipe} : initialState);
 
   const formHandler = (formData) => {
     setState({
@@ -92,23 +93,25 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
   const updateIngredient = (value, ingredient) => {
     const updatedIngredients = state.recipe.ingredients.map((item) => {
       if (item.id === ingredient.id) {
+        let nutriments = [];
+        if (ingredient.productName.toLowerCase().includes('sare')) {
+          nutriments = [
+            {
+              name: 'salt',
+              quantity_current: Number(value) ?? 0,
+            },
+          ];
+        } else if (item.nutriments.length) {
+          nutriments = item.nutriments?.map((el) => ({
+            ...el,
+            quantity_current: Number((el.quantity_100 / 100) * value),
+          }));
+        }
         return {
           ...item,
           quantity: Number(value),
           calories_currQty: Number((item.calories_100 ?? 0) / 100) * value ?? 0,
-          nutriments: item.nutriments?.length
-            ? item.nutriments?.map((el) => ({
-                ...el,
-                quantity_current: Number((el.quantity_100 / 100) * value),
-              }))
-            : ingredient.productName.toLowerCase().includes('sare')
-            ? [
-                {
-                  name: 'salt',
-                  quantity_current: Number(value) ?? 0,
-                },
-              ]
-            : [],
+          nutriments: nutriments,
         };
       }
       return item;
@@ -140,8 +143,9 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
         proteins: calculateQty(_ingredients, 'proteins'),
         salt: calculateQty(_ingredients, 'salt'),
       },
-      additives: calculateAdditives(),
-      nutriscore: nutriScore.calculateClass({
+      additives: _ingredients.length ? calculateAdditives(_ingredients) : [],
+      nutriscore: _ingredients.length ?
+      nutriScore.calculateClass({
         energy: calculateQty(_ingredients, 'energy-kcal') * 4.184,
         fibers: calculateQty(_ingredients, 'fibers') ?? 0,
         fruit_percentage: 0,
@@ -149,13 +153,14 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
         saturated_fats: calculateQty(_ingredients, 'saturated-fat'),
         sodium: calculateQty(_ingredients, 'salt') * 400,
         sugar: calculateQty(_ingredients, 'sugars'),
-      }),
+      }) : null,
     };
   };
 
-  const calculateAdditives = () => {
+  const calculateAdditives = (ingredients) => {
+    const _ingredients = ingredients ? ingredients : state.recipe.ingredients
     const additivesList = [];
-    state.recipe.ingredients
+    _ingredients
       .filter((el) => el.additives)
       .map((item) =>
         item.additives.map((elem) =>
@@ -165,7 +170,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     return Array.from(new Set(additivesList));
   }
 
-  const calculateQty = (ingredients ,nutrimentName = '') => {
+  const calculateQty = (ingredients, nutrimentName = '') => {
     const _ingredients = ingredients ? ingredients : state.recipe.ingredients
     return _ingredients
       .filter((item) => item.nutriments)
@@ -208,7 +213,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
   const createNewRecipe = (e) => {
     e.preventDefault();
     if (state.recipe.ingredients.length === 0) {
-      alert('No ingredients selected.');
+      alert(t('editRecipe.noIngredientsAlert'));
     } else if (state.recipe.id) {
       dispatch(updateRecipe(state.recipe));
       onCloseAndDiscard();
@@ -220,7 +225,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      <button onClick={() => console.log(state.recipe)}>TEST</button>
+      {/* <button onClick={() => console.log(state.recipe)}>TEST</button> */}
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           {t('editRecipe.description')}
@@ -264,8 +269,8 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             <SearchItem onAddNewIngredient={addNewIngredient} />
           </div>
 
-          <div className="flex flex-col mt-6 list-of-ingredients rounded-xl min-w-fit">
-            {state.recipe.ingredients?.length > 0 && (
+          <div className="flex flex-col mt-6 rounded-xl min-w-fit">
+            {/* {state.recipe.ingredients?.length > 0 && (
               <h3>{t('editRecipe.ingredientsList')}</h3>
             )}
 
@@ -280,7 +285,12 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
                   />
                 ))}
               </div>
-            )}
+            )} */}
+            <ListOfIngredients 
+            recipe={state.recipe}
+            updateIngredient={updateIngredient}
+            removeIngredient={removeIngredient}
+            />
             <RecipeDetails recipe={state.recipe} />
           </div>
 
@@ -292,7 +302,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             type="submit"
             className="px-4 py-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
-            {state.recipe.id
+            {recipe.id
               ? t('editRecipe.updateButton')
               : t('createRecipe.saveBtn')}
           </button>
@@ -303,7 +313,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
         className="px-4 py-2 mt-2 font-medium tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
         onClick={onCloseAndDiscard}
       >
-        {state.recipe.id
+        {recipe.id
           ? t('editRecipe.discardButton')
           : t('createRecipe.discardBtn')}
       </button>

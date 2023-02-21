@@ -28,10 +28,11 @@ const createRecipe = (recipe) => async (dispatch) => {
 };
 
 const updateRecipe = (recipe) => async (dispatch) => {
+  const updatedRecipe = await axios.put(`${InfoConsRecipesURL}/${recipe.id}`, recipe)
   dispatch({
     type: 'UPDATE_RECIPE',
     payload: {
-      selected: recipe,
+      recipe: updatedRecipe.data,
     },
   });
   dispatch({

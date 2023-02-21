@@ -17,12 +17,18 @@ function RecipeDetails({recipe}) {
           </tr>
         </thead>
         <tbody>
-          {recipe?.ingredients?.map((item, index) => (
+          {recipe.ingredients.length ?
+          recipe?.ingredients?.map((item, index) => (
             <tr key={index}>
               <td className="first-letter:uppercase">{item.productName}</td>
               <td>{format2Decimals(Number(item?.quantity)) ?? 0}</td>
             </tr>
-          ))}
+          ))
+        :
+        <tr>
+          <td><p>{t('editRecipe.details.table.noIngredient')}</p></td>
+        </tr>
+        }
         </tbody>
         <tfoot>
           <tr className="font-semibold">
@@ -37,7 +43,8 @@ function RecipeDetails({recipe}) {
   const NutritionFacts = () => {
     return (
       <div>
-        <p className="font-semibold">{t('editRecipe.details.nutrition')}:</p>
+        <span className="font-semibold">{t('editRecipe.details.nutrition')}:{' '}</span>
+        {recipe.ingredients.length ?
         <ul className="ml-6 list-disc">
           <li>
             {t('editRecipe.details.calories')}:&nbsp;
@@ -76,6 +83,8 @@ function RecipeDetails({recipe}) {
             {recipe?.nutriments?.salt ?? 0}
           </li>
         </ul>
+        : <span>{t('editRecipe.details.table.noIngredient')}</span>
+            }
       </div>
     );
   };
@@ -91,7 +100,7 @@ function RecipeDetails({recipe}) {
             <li>{recipe?.additives.map((item) => item)}</li>
           </ul>
         ) : (
-          <span>{t('editRecipe.details.noadditivesfound')}</span>
+          <span>{t('editRecipe.details.noAdditivesFound')}</span>
         )}
       </div>
     );
@@ -119,7 +128,7 @@ function RecipeDetails({recipe}) {
             <Disclosure.Panel className="px-4 pt-2 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
               <div className="mb-2">
                 <h3>
-                  {t('editRecipe.details.ingredientperserving')}{' '}
+                  {t('editRecipe.details.ingredientsPerServing')}{' '}
                   <span className="font-bold uppercase">
                     {recipe?.name
                       ? recipe.name

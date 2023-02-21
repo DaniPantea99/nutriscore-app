@@ -26,9 +26,9 @@ const recipesReducer = (state = initState, action) => {
         ],
       };
     case 'UPDATE_RECIPE':
-      return {
+      return { 
         ...state,
-        // allRecipes: action.payload.selected,
+        allRecipes: [...state.allRecipes.map(item => (item.id === action.payload.recipe.id ? {...item, ...action.payload.recipe} : item))]
       };
     case 'REMOVE_RECIPE':
       return {

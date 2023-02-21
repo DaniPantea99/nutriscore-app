@@ -3,13 +3,15 @@ import { BsFillXCircleFill } from 'react-icons/bs';
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { format2Decimals } from '../utility';
+import { useTranslation } from 'react-i18next';
 
 function Ingredient({ item, onChange, onRemove }) {
+  const { t } = useTranslation();
   const Calories = () => {
     return (
       <div>
         <p>
-          Calories (100g):&nbsp;
+          {t('ingredient.calories')} (100g):&nbsp;
           <span className={`${item.calories_100 ? '' : 'italic'}`}>
             {format2Decimals(item.calories_100 ? item.calories_100 : '0')}
             <span className="not-italic">&nbsp;kcal /&nbsp;</span>
@@ -26,28 +28,18 @@ function Ingredient({ item, onChange, onRemove }) {
   const Nutriments = () => {
     return (
       <div>
-        <p>Nutriments (100g):</p>
-        <ul
-          className={`${
-            item.nutriments ? '' : 'italic'
-          } list-disc ml-7 capitalize`}
-        >
-          {Array.isArray(item.nutriments)
-            ? item.nutriments
-              ? item?.nutriments?.map((el, index) => (
-                  <li key={index}>
-                    {el.name}: {format2Decimals(el.quantity_100)}
-                  </li>
-                ))
-              : 'Info unavailable'
-            : item.nutriments
-            ? Object.values(item.nutriments).map((el, index) => (
-                <li key={index}>
-                  {el.name}: {format2Decimals(el.quantity_100)}
-                </li>
-              ))
-            : ' Info unavailable'}
-        </ul>
+        <span>{t('ingredient.nutriments')} (100g): </span>
+        {item.nutriments.length ? (
+          <ul className="capitalize list-disc ml-7">
+            {item?.nutriments.map((el, index) => (
+              <li key={index}>
+                {el.name}: {format2Decimals(el.quantity_100)}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span className="italic">{t('ingredient.infoUnavailable')}</span>
+        )}
       </div>
     );
   };
@@ -55,24 +47,16 @@ function Ingredient({ item, onChange, onRemove }) {
   const Additives = () => {
     return (
       <div>
-        <p>Additives:</p>
-        <ul
-          className={`${
-            item.additives ? '' : 'italic'
-          } list-disc ml-7 capitalize`}
-        >
-          {Array.isArray(item.additives)
-            ? item.additives
-              ? item?.additives?.map((el, index) => (
-                  <li key={index}>{el.toString().slice(3)}</li>
-                ))
-              : 'Info unavailable'
-            : item.additives
-            ? Object.values(item?.additives)?.map((el, index) => (
-                <li key={index}>{el.toString().slice(3)}</li>
-              ))
-            : ' Info unavailable'}
-        </ul>
+        <span>{t('ingredient.additives')}: </span>
+        {item.additives ? (
+          <ul className="capitalize list-disc ml-7">
+            {item.additives.map((el, index) => (
+              <li key={index}>{el.toString().slice(3)}</li>
+            ))}
+          </ul>
+        ) : (
+          <span className="italic">{t('ingredient.infoUnavailable')}</span>
+        )}
       </div>
     );
   };
@@ -109,7 +93,7 @@ function Ingredient({ item, onChange, onRemove }) {
                     defaultValue={item.quantity}
                     className="w-24 p-1 px-2 mr-1 text-sm bg-gray-100 rounded-md outline-0 sm:mr-2 md:w-48 lg:w-32"
                     type="number"
-                    placeholder="quantity..."
+                    placeholder={t('ingredient.inputPlaceholder')}
                     min="0.01"
                     max="9999.99"
                     step="0.01"
@@ -120,8 +104,8 @@ function Ingredient({ item, onChange, onRemove }) {
                   <p>g</p>
                   <BsFillXCircleFill
                     onClick={(e) => {
-                      e.stopPropagation()
-                      onRemove(item)
+                      e.stopPropagation();
+                      onRemove(item);
                     }}
                     className="ml-2 text-2xl text-red-700 transition-all cursor-pointer hover:text-red-500 active:text-red-900 sm:ml-6"
                   />
@@ -131,22 +115,22 @@ function Ingredient({ item, onChange, onRemove }) {
             <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 bg-white rounded-b-xl">
               <div className="mb-2">
                 <p>
-                  Brand:&nbsp;
+                  {t('ingredient.brand')}:&nbsp;
                   <span className={`${item.brand ? '' : 'italic'}`}>
-                    {item.brand ? item.brand : 'Unavailable'}
+                    {item.brand ? item.brand : t('ingredient.infoUnavailable')}
                   </span>
                 </p>
                 <Calories />
               </div>
-
               <Nutriments />
-              {item.additives && <Additives />}
-
+              <Additives />
               <div className="mt-2">
                 <p>
-                  Source:&nbsp;
+                  {t('ingredient.source')}:&nbsp;
                   <span className={`${item.source ? '' : 'italic'}`}>
-                    {item.source ? item.source : 'Unavailable'}
+                    {item.source
+                      ? item.source
+                      : t('ingredient.infoUnavailable')}
                   </span>
                 </p>
               </div>

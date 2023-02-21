@@ -13,6 +13,7 @@ function Dashboard() {
   const { t } = useTranslation();
   const [showRecipePanel, setShowRecipePanel] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState([])
   
   const handleRemoveRecipe = (recipe) => {
       const selected = filteredRecipes.find((el) => el.id === recipe.id);
@@ -20,10 +21,12 @@ function Dashboard() {
   }
 
   const viewRecipeDetails = (recipe) => {
+    setSelectedRecipe(recipe)
     setShowRecipePanel(true);
   };
 
   const CloseAndDiscard = () => {
+    setSelectedRecipe([])
     setShowRecipePanel(false);
   }
 
@@ -86,7 +89,7 @@ function Dashboard() {
         >
           {showRecipePanel &&
           <CreateRecipe
-            recipe={{}}
+            recipe={selectedRecipe}
             onCloseAndDiscard={CloseAndDiscard}
           />
           }

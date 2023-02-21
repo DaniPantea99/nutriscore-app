@@ -1459,5 +1459,80 @@
       "labels": ""
     }
   ],
-  "recipes": []
+  "recipes": [
+    {
+      "id": 1,
+      "name": "test",
+      "quantity": 100,
+      "date": "21.02.2023",
+      "ingredients": [
+        {
+          "id": "4cc24614-b3e2-457f-a064-017d47ca5156",
+          "productName": "Vegeta",
+          "brand": "VegetaPodravka,",
+          "quantity": 100,
+          "calories_100": 157,
+          "calories_currQty": 157,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 22,
+              "quantity_current": 22
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 157,
+              "quantity_current": 157
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 4
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 27,
+              "quantity_current": 27
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 8.5,
+              "quantity_current": 8.5
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0.5,
+              "quantity_current": 0.5
+            }
+          ],
+          "additives": [
+            "en:e101",
+            "en:e621",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 157,
+        "fat": 0.5,
+        "saturated_fat": 0.3,
+        "carbohydrates": 27,
+        "sugars": 22,
+        "proteins": 8.5,
+        "salt": 0
+      },
+      "additives": [
+        "e101 ",
+        "e621 ",
+        "e631 "
+      ],
+      "nutriscore": "B"
+    }
+  ]
 }
