@@ -1459,5 +1459,308 @@
       "labels": ""
     }
   ],
-  "recipes": []
+  "recipes": [
+    {
+      "id": 1,
+      "name": "test1",
+      "quantity": 250,
+      "date": "23.02.2023",
+      "ingredients": [
+        {
+          "id": "92a49f44-8e09-4a74-aa75-e82567c49f51",
+          "productName": "Vegeta",
+          "brand": "VegetaPodravka,",
+          "quantity": 100,
+          "calories_100": 157,
+          "calories_currQty": 157,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 22,
+              "quantity_current": 22
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 157,
+              "quantity_current": 157
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 4
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 27,
+              "quantity_current": 27
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 8.5,
+              "quantity_current": 8.5
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0.5,
+              "quantity_current": 0.5
+            }
+          ],
+          "additives": [
+            "en:e101",
+            "en:e621",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "6a48184b-1a93-4db1-9d5b-8cc9c5ddb258",
+          "productName": "Mușchi file",
+          "brand": "Matache Măcelaru",
+          "quantity": 150,
+          "calories_100": 87,
+          "calories_currQty": 130.5,
+          "nutriments": [
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 6
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 17.7,
+              "quantity_current": 26.55
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.9,
+              "quantity_current": 2.85
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.85,
+              "quantity_current": 1.28
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.76,
+              "quantity_current": 1.14
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0.9,
+              "quantity_current": 1.35
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.5,
+              "quantity_current": 2.25
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 87.9,
+              "quantity_current": 131.85
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1,
+              "quantity_current": 1.5
+            }
+          ],
+          "additives": [
+            "en:e250",
+            "en:e262",
+            "en:e262i",
+            "en:e301",
+            "en:e451"
+          ],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 115,
+        "fat": 1.1,
+        "saturated_fat": 0.72,
+        "carbohydrates": 11.34,
+        "sugars": 9.31,
+        "proteins": 14.02,
+        "salt": 1.14
+      },
+      "additives": [
+        "e101 ",
+        "e621 ",
+        "e631 ",
+        "e250 ",
+        "e262 ",
+        "e262i ",
+        "e301 ",
+        "e451 "
+      ],
+      "nutriscore": "C",
+      "nutriscore_TEMP": {
+        "energy": 483.42,
+        "fibers": 0,
+        "fruit_percentage": 0,
+        "proteins": 14.02,
+        "saturated_fats": 0.72,
+        "sodium": 456,
+        "sugar": 9.31
+      }
+    },
+    {
+      "id": 2,
+      "name": "test2",
+      "quantity": 250,
+      "date": "23.02.2023",
+      "ingredients": [
+        {
+          "id": "9e97ddb5-9e96-4869-ac4d-8da874ff4972",
+          "productName": "Vegeta",
+          "brand": "VegetaPodravka,",
+          "quantity": 100,
+          "calories_100": 157,
+          "calories_currQty": 157,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 22,
+              "quantity_current": 22
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 157,
+              "quantity_current": 157
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 4
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 27,
+              "quantity_current": 27
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 8.5,
+              "quantity_current": 8.5
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0.5,
+              "quantity_current": 0.5
+            }
+          ],
+          "additives": [
+            "en:e101",
+            "en:e621",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "0144e9d3-fc1d-4dbe-95b9-11d84c083292",
+          "productName": "Mușchi file",
+          "brand": "Matache Măcelaru",
+          "quantity": 150,
+          "calories_100": 87,
+          "calories_currQty": 130.5,
+          "nutriments": [
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 6
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 17.7,
+              "quantity_current": 26.55
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.9,
+              "quantity_current": 2.85
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.85,
+              "quantity_current": 1.28
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.76,
+              "quantity_current": 1.14
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0.9,
+              "quantity_current": 1.35
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.5,
+              "quantity_current": 2.25
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 87.9,
+              "quantity_current": 131.85
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1,
+              "quantity_current": 1.5
+            }
+          ],
+          "additives": [
+            "en:e250",
+            "en:e262",
+            "en:e262i",
+            "en:e301",
+            "en:e451"
+          ],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 115,
+        "fat": 1.1,
+        "saturated_fat": 0.72,
+        "carbohydrates": 11.34,
+        "sugars": 9.31,
+        "proteins": 14.02,
+        "salt": 1.14
+      },
+      "additives": [
+        "e101 ",
+        "e621 ",
+        "e631 ",
+        "e250 ",
+        "e262 ",
+        "e262i ",
+        "e301 ",
+        "e451 "
+      ],
+      "nutriscore": "E",
+      "nutriscore_TEMP": {
+        "energy": 1208.55,
+        "fibers": 0,
+        "fruit_percentage": 0,
+        "proteins": 35.05,
+        "saturated_fats": 1.8,
+        "sodium": 1140,
+        "sugar": 23.28
+      }
+    }
+  ]
 }

@@ -52,35 +52,35 @@ function RecipeDetails({ recipe }) {
           <ul className="ml-6 list-disc">
             <li>
               {t('editRecipe.details.calories')}:&nbsp;
-              {recipe?.nutriments?.calories ?? 0} kcal /&nbsp;
-              {format2Decimals((recipe?.nutriments?.calories ?? 0) * 4.184)} kJ
+              {Number(recipe.nutriments.calories) ? recipe?.nutriments?.calories : 0} kcal /&nbsp;
+              {Number(recipe.nutriments.calories) ? format2Decimals(recipe?.nutriments?.calories * 4.184) : 0} kJ
             </li>
             <li>
               {t('editRecipe.details.fat')}:&nbsp;
-              {recipe?.nutriments?.fat ?? 0}
+              {Number(recipe.nutriments.fat) ? recipe?.nutriments?.fat : 0}
               <ul className="ml-6 list-disc">
                 <li>
                   {t('editRecipe.details.saturatedFat')}:&nbsp;
-                  {recipe?.nutriments?.saturated_fat ?? 0}
+                  {Number(recipe.nutriments.saturated_fat) ? recipe?.nutriments?.saturated_fat : 0}
                 </li>
               </ul>
             </li>
             <li>
               {t('editRecipe.details.carbohydrates')}:{' '}
-              {recipe?.nutriments?.carbohydrates ?? 0}
+              {Number(recipe.nutriments.carbohydrates) ? recipe?.nutriments?.carbohydrates : 0}
               <ul className="ml-6 list-disc">
                 <li>
                   {t('editRecipe.details.sugar')}:{' '}
-                  {recipe?.nutriments?.sugars ?? 0}
+                  {Number(recipe.nutriments.sugars) ? recipe?.nutriments?.sugars : 0}
                 </li>
               </ul>
             </li>
             <li>
               {t('editRecipe.details.proteins')}:{' '}
-              {recipe?.nutriments?.proteins ?? 0}
+              {Number(recipe.nutriments.proteins) ? recipe?.nutriments?.proteins : 0}
             </li>
             <li>
-              {t('editRecipe.details.salt')}: {recipe?.nutriments?.salt ?? 0}
+              {t('editRecipe.details.salt')}: {Number(recipe.nutriments.salt) ? recipe?.nutriments?.salt :  0}
             </li>
           </ul>
         ) : (

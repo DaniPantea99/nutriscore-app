@@ -151,27 +151,47 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             100) /
             Number(recipeQuantity)
         ),
-        fat: 
-          (calculateQty(_ingredients, 'fat') * 100) / Number(recipeQuantity)
-        ,
-        saturated_fat: format2Decimals(calculateQty(_ingredients, 'saturated-fat') * 100 / Number(recipeQuantity)),
-        carbohydrates: format2Decimals(calculateQty(_ingredients, 'carbohydrates') * 100 / Number(recipeQuantity)),
-        sugars: format2Decimals(calculateQty(_ingredients, 'sugars') * 100 / Number(recipeQuantity)),
-        proteins: format2Decimals(calculateQty(_ingredients, 'proteins') * 100 / Number(recipeQuantity)),
-        salt: format2Decimals(calculateQty(_ingredients, 'salt') * 100 / Number(recipeQuantity)),
+        fat: format2Decimals((calculateQty(_ingredients, 'fat') * 100) / Number(recipeQuantity)),
+        saturated_fat: format2Decimals(
+          (calculateQty(_ingredients, 'saturated-fat') * 100) /
+            Number(recipeQuantity)
+        ),
+        carbohydrates: format2Decimals(
+          (calculateQty(_ingredients, 'carbohydrates') * 100) /
+            Number(recipeQuantity)
+        ),
+        sugars: format2Decimals(
+          (calculateQty(_ingredients, 'sugars') * 100) / Number(recipeQuantity)
+        ),
+        proteins: format2Decimals(
+          (calculateQty(_ingredients, 'proteins') * 100) /
+            Number(recipeQuantity)
+        ),
+        salt: format2Decimals(
+          (calculateQty(_ingredients, 'salt') * 100) / Number(recipeQuantity)
+        ),
       },
       additives: _ingredients.length ? calculateAdditives(_ingredients) : [],
       nutriscore: _ingredients.length
         ? nutriScore.calculateClass({
-            energy: format2Decimals((calculateQty(_ingredients, 'energy-kcal') * 4.184) * 100 / Number(recipeQuantity)),
-            fibers: format2Decimals((calculateQty(_ingredients, 'fibers') ?? 0)) * 100 / Number(recipeQuantity),
+            energy: format2Decimals(calculateQty(_ingredients, 'energy-kcal') * 4.184),
+            fibers: format2Decimals(calculateQty(_ingredients, 'fibers') ?? 0),
             fruit_percentage: 0,
-            proteins: format2Decimals(calculateQty(_ingredients, 'proteins') * 100 / Number(recipeQuantity)),
-            saturated_fats: format2Decimals(calculateQty(_ingredients, 'saturated-fat') * 100 / Number(recipeQuantity)),
-            sodium: format2Decimals((calculateQty(_ingredients, 'salt') * 400) * 100 / Number(recipeQuantity)),
-            sugar: format2Decimals(calculateQty(_ingredients, 'sugars') * 100 / Number(recipeQuantity)),
+            proteins: format2Decimals(calculateQty(_ingredients, 'proteins')),
+            saturated_fats: format2Decimals(calculateQty(_ingredients, 'saturated-fat')),
+            sodium: format2Decimals(calculateQty(_ingredients, 'salt') * 400),
+            sugar: format2Decimals(calculateQty(_ingredients, 'sugars')),
           })
         : null,
+      nutriscore_TEMP: {
+        energy: format2Decimals(calculateQty(_ingredients, 'energy-kcal') * 4.184),
+        fibers: format2Decimals(calculateQty(_ingredients, 'fibers') ?? 0),
+        fruit_percentage: 0,
+        proteins: format2Decimals(calculateQty(_ingredients, 'proteins')),
+        saturated_fats: format2Decimals(calculateQty(_ingredients, 'saturated-fat')),
+        sodium: format2Decimals(calculateQty(_ingredients, 'salt') * 400),
+        sugar: format2Decimals(calculateQty(_ingredients, 'sugars')),
+      },
     };
   };
 
@@ -233,10 +253,10 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       alert(t('editRecipe.noIngredientsAlert'));
     } else if (state.recipe.id) {
       dispatch(updateRecipe(state.recipe));
-      onCloseAndDiscard();
+      onCloseAndDiscard(e);
     } else {
       dispatch(createRecipe(state.recipe));
-      onCloseAndDiscard();
+      onCloseAndDiscard(e);
     }
   };
 
