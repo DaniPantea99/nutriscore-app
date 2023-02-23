@@ -43,5 +43,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
+<script>
+  const isDarkMode = localStorage.getItem('darkMode');
+  if (isDarkMode === 'true') {
+    document.documentElement.classList.add('dark');
+  }
+
+</script>
 
 </html>

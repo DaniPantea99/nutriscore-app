@@ -47,7 +47,7 @@ function Dashboard() {
             alt="restaurant-logo"
           />
           <h1 className="tracking-wide uppercase cursor-default">
-            {t("recipeList.title")}
+            {t('recipeList.title')}
           </h1>
         </div>
         <img
@@ -59,7 +59,7 @@ function Dashboard() {
         {isOpen && <NutriScoreInfo isOpen={isOpen} setIsOpen={setIsOpen} />}
       </div>
 
-      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px] w-[500px] sm:w-full">
+      <div className="flex flex-col p-8 bg-white rounded-xl min-h-[500px] w-[500px] sm:w-full dark:text-gray-100 dark:bg-slate-800">
         <div className="flex flex-col justify-between mb-6 sm:flex-row">
           <div>
             <h2 className="tracking-wide">{t('recipeList.subtitle')}</h2>

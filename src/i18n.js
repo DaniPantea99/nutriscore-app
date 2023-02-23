@@ -76,7 +76,8 @@ i18n
           settingsPage: {
             title: 'Settings Page',
             translateButton: 'Translate',
-            language: 'Language',
+            language: 'Select Language:',
+            themeSwitcher: 'Set Theme:',
           },
         },
       },
@@ -146,7 +147,11 @@ i18n
           },
           settingsPage: {
             title: 'Setări',
-            language: 'Limbă',
+            language: 'Selectează Limba',
+            theme: {
+              title: 'Set Theme:',
+              mode: 'Light / Dark',
+            },
           },
         },
       },

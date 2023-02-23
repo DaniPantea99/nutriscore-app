@@ -10,7 +10,6 @@ import { nutriScore } from 'nutri-score';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 
-
 function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
   const { filtered } = useSelector((state) => state.ingredients);
   const dispatch = useDispatch();
@@ -239,9 +238,9 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
       <form
         action="submit"
         onSubmit={createNewRecipe}
-        className="flex flex-col h-full mt-8 overflow-hidden grow"
+        className="flex flex-col h-full p-1 mt-8 overflow-hidden grow"
       >
-        <div className="overflow-auto grow">
+        <div className="px-1 overflow-auto grow">
           <div className="header">
             <label
               htmlFor="recipe-name"
@@ -252,7 +251,7 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
             <input
               required
               defaultValue={selectedRecipe.recipeName}
-              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-400 focus:outline-none"
+              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
               placeholder={t('editRecipe.placeholder')}
               type="text"
               id="recipe-name"
@@ -338,17 +337,16 @@ function CreateRecipe({ toggleSidePanel, selectedRecipe, setSelectedRecipe }) {
               ? t('editRecipe.updateButton')
               : t('createRecipe.saveBtn')}
           </button>
+          <button
+            className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
+            onClick={CloseAndDiscard}
+          >
+            {selectedRecipe?.id
+              ? t('editRecipe.discardButton')
+              : t('createRecipe.discardBtn')}
+          </button>
         </div>
       </form>
-
-      <button
-        className="p-2 mt-2 font-semibold tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
-        onClick={CloseAndDiscard}
-      >
-        {selectedRecipe?.id
-          ? t('editRecipe.discardButton')
-          : t('createRecipe.discardBtn')}
-      </button>
     </div>
   );
 }

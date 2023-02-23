@@ -19,12 +19,12 @@ export default function SearchItem({ database, onSelect }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex w-full h-12">
+    <div className="flex h-12">
       <Combobox onChange={(ingredient) => onSelect(ingredient)}>
         <div className="relative w-full">
-          <div className="relative w-full h-full overflow-hidden text-left cursor-default rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200">
+          <div className="relative w-full text-left cursor-default ">
             <Combobox.Input
-              className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-white border-none outline-none input focus:ring-0"
+              className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-white rounded-xl input focus:outline-none focus:ring-1 focus:ring-blue-600"
               placeholder={t('editRecipe.placeholderSecond')}
               // displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}
