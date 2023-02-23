@@ -36,8 +36,8 @@ function Dashboard() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img
-            width="50px"
-            src={`./images/mrbeast-logo2.svg`}
+            width="100px"
+            src={`./images/logo.png`}
             alt="restaurant-logo"
           />
           <h1 className="tracking-wide uppercase cursor-default">

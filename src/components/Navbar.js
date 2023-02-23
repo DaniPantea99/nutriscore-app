@@ -38,8 +38,8 @@ function Navbar({ children }) {
       >
         <div className="flex items-center justify-between px-4 py-8 mb-2 h-28">
           <img
-            className={`w-28 ${isOpen ? 'block' : 'hidden'}`}
-            src={`./images/mrbeast-logo1.svg`}
+            className={`w-32 ${isOpen ? 'block' : 'hidden'}`}
+            src={`./images/bon-appetit-bistro-logo.png`}
             alt="restaurant-logo"
           />
 

@@ -24,7 +24,7 @@ i18n
             },
           },
           recipeList: {
-            title: 'Mr Beast Burger',
+            title: 'Bon Appetit Bistro',
             subtitle: 'Manage Recipes',
             header: {
               name: 'Name',
@@ -114,7 +114,7 @@ i18n
             },
           },
           recipeList: {
-            title: 'Mr Beast Burger',
+            title: 'Bon Appetit Bistro',
             subtitle: 'Gestionare Rețete',
             header: {
               name: 'Nume',
