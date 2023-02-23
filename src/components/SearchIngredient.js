@@ -2,31 +2,30 @@ import React, { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
-export default function SearchItem({ database, onSelect }) {
+export default function SearchIngredient({ onAddNewIngredient }) {
   const [query, setQuery] = useState('');
-
+  const { filtered } = useSelector((state) => state.ingredients);
+  const { t } = useTranslation();
   const filteredItems =
     query === ''
-      ? database
-      : database.filter((item) =>
+      ? filtered
+      : filtered.filter((item) =>
           item.product_name
             .toLowerCase()
             .replace(/\s+/g, '')
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
 
-  const { t } = useTranslation();
-
   return (
-    <div className="flex h-12">
-      <Combobox onChange={(ingredient) => onSelect(ingredient)}>
+    <div className="flex w-full h-12">
+      <Combobox onChange={(ingredient) => onAddNewIngredient(ingredient)}>
         <div className="relative w-full">
           <div className="relative w-full text-left cursor-default ">
             <Combobox.Input
               className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-white rounded-xl input focus:outline-none focus:ring-1 focus:ring-blue-600"
               placeholder={t('editRecipe.placeholderSecond')}
-              // displayValue={(item) => item.product_name}
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
@@ -67,6 +66,9 @@ export default function SearchItem({ database, onSelect }) {
                           }`}
                         >
                           {item.product_name}
+                          {item.brands.length > 0
+                            ? ` - ${item.brands}`
+                            : ` - ${item.creator}`}
                         </span>
                         {selected ? (
                           <span

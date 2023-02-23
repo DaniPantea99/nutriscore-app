@@ -80,7 +80,7 @@ function Navbar({ children }) {
           ))}
         </div>
       </div>
-      <main className="overflow-scroll grow">{children}</main>
+      <main className="overflow-auto grow">{children}</main>
     </div>
   );
 }

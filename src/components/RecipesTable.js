@@ -70,31 +70,26 @@ function GlobalSearchFilter1({
   );
 }
 
-export default function RecipesTable({
-  toggleSidePanel,
-  RemoveRecipe,
-  setSelectedRecipe,
-}) {
+export default function RecipesTable({ onRemoveRecipe, onSelect }) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const { t } = useTranslation();
 
   const generateData = ({ filteredRecipes }) =>
     filteredRecipes.map((item) => ({
       id: item.id,
-      name: item.recipeName,
-      qty: item.recipeQuantity,
-      calories: item.recipeNutriments.calories,
-      nutriscore: item.recipeNutriscore,
+      name: item.name,
+      qty: item.quantity,
+      calories: item.nutriments.calories,
+      nutriscore: item.nutriscore,
       date: item.date,
     }));
 
   const viewMoreHandler = useCallback(
     (recipe) => {
       const selected = filteredRecipes.find((el) => el.id === recipe.id);
-      setSelectedRecipe(selected);
-      toggleSidePanel();
+      onSelect(selected);
     },
-    [toggleSidePanel, filteredRecipes, setSelectedRecipe]
+    [filteredRecipes, onSelect]
   );
 
   const getColumns = () => [
@@ -138,14 +133,14 @@ export default function RecipesTable({
         return (
           <div className="z-0 flex items-center justify-between gap-2">
             <button
-              className="px-5 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
+              className="px-4 py-2 text-xs text-white bg-orange-500 rounded-lg outline-none hover:opacity-70 active:opacity-100"
               onClick={() => viewMoreHandler(cell.row.original)}
             >
               {t('recipesOption.openBtn')}
             </button>
             <button
-              className="p-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
-              onClick={() => RemoveRecipe(cell.row.original)}
+              className="px-4 py-2 text-xs text-white bg-gray-400 rounded-lg outline-none hover:bg-red-400 active:bg-red-500"
+              onClick={() => onRemoveRecipe(cell.row.original)}
             >
               {t('recipesOption.removeBtn')}
             </button>
@@ -178,11 +173,13 @@ export default function RecipesTable({
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="py-2 pr-6 text-xs uppercase bg-blue-200 cursor-pointer dark:bg-blue-400 first:rounded-tl-xl last:rounded-tr-xl pl-7"
+                    className="px-4 py-2 text-xs uppercase bg-blue-200 cursor-pointer first:rounded-tl-xl last:rounded-tr-xl dark:bg-blue-400"
                     style={{ width: column.width }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="font-bold">{column.render('Header')}</div>
+                      <div className="font-bold text-left">
+                        {column.render('Header')}
+                      </div>
                       {!column.disableSortBy && (
                         <div className="flex flex-col">
                           <FaSortUp
@@ -220,7 +217,7 @@ export default function RecipesTable({
                     return (
                       <td
                         {...cell.getCellProps()}
-                        className="py-2 pr-6 text-sm font-medium capitalize first:rounded-l-xl last:rounded-r-xl pl-7"
+                        className="px-4 py-2 text-sm font-medium first-letter:uppercase first:rounded-l-xl last:rounded-r-xl"
                       >
                         {cell.render('Cell')}
                       </td>
@@ -240,7 +237,7 @@ export default function RecipesTable({
     [filteredRecipes]
   );
 
-  const columns = useMemo(getColumns, [viewMoreHandler, RemoveRecipe, t]);
+  const columns = useMemo(getColumns, [viewMoreHandler, onRemoveRecipe, t]);
   const {
     getTableProps,
     getTableBodyProps,
