@@ -35,20 +35,11 @@ function Settings() {
   const onLanguageChange = (language) => {
     i18n.changeLanguage(language);
   };
-  const options = [
-    {
-      icon: 'sunny',
-      text: 'light',
-    },
-    {
-      icon: 'moon',
-      text: 'dark',
-    },
-  ];
 
   return (
     <div className="min-h-screen p-8 duration-100 dark:text-gray-100 dark:bg-slate-900">
-      <h2 className="text-gray-900 dark:text-gray-100">
+      <img className='inline mr-2' width="50px" src="./images/nutriscore-app-logo.png" alt="nutriscore-app-logo" />
+      <h2 className="inline text-gray-900 dark:text-gray-100">
         {t('settingsPage.title')}
       </h2>
       <div className="p-4 w-44">
