@@ -30,9 +30,9 @@ function Navbar({ children }) {
   ];
 
   return (
-    <div className="flex h-full grow">
+    <div className="flex h-full grow dark:text-gray-100 dark:bg-slate-900 ">
       <div
-        className={`flex flex-col bg-white transition-all duration-300 w-20 ${
+        className={`flex flex-col bg-white transition-all duration-300 w-20 dark:text-gray-100 dark:bg-slate-800 ${
           isOpen && 'w-56'
         }`}
       >
@@ -46,7 +46,7 @@ function Navbar({ children }) {
           <div className="flex justify-center text-3xl">
             <BsFillArrowLeftCircleFill
               onClick={toggleOpen}
-              className={`transition-all duration-500 ml-2 text-blue-900 cursor-pointer hover:text-opacity-70 active:text-opacity-100 ${
+              className={`transition-all duration-500 ml-2 text-blue-900 dark:text-blue-300 cursor-pointer hover:text-opacity-70 active:text-opacity-100 ${
                 !isOpen && 'rotate-180'
               }`}
             />
@@ -63,7 +63,7 @@ function Navbar({ children }) {
                   ${
                     isActive
                       ? ' text-white bg-gradient-to-t from-blue-400 to-blue-600 hover:bg-gradient-to-t hover:from-blue-400 hover:to-blue-400'
-                      : 'text-blue-800 hover:bg-blue-200'
+                      : 'text-blue-800 hover:bg-blue-200 dark:text-blue-300'
                   } 
                   ${isOpen ? 'justify-left' : 'justify-center'}
                 `;

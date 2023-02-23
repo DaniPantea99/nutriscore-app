@@ -23,7 +23,7 @@ function InputGroup7({
 }) {
   return (
     <div
-      className={`flex flex-row-reverse items-stretch w-full rounded-xl overflow-hidden bg-blue-200 shadow-[0_4px_10px_rgba(0,0,0,0.03)] ${className}`}
+      className={`flex flex-row-reverse items-stretch w-full rounded-xl overflow-hidden bg-blue-200 shadow-[0_4px_10px_rgba(0,0,0,0.03)] = ${className}`}
     >
       <input
         id={name}
@@ -33,13 +33,13 @@ function InputGroup7({
         placeholder={label}
         aria-label={label}
         onChange={onChange}
-        className={`peer block w-full p-3 text-gray focus:outline-none focus:ring-0 appearance-none bg-blue-200 ${
+        className={`peer block w-full p-3 focus:outline-none dark:placeholder:text-gray-500 focus:ring-0 appearance-none bg-blue-200 dark:bg-blue-400 ${
           disabled ? 'bg-gray-200' : ''
         } ${inputClassName}`}
         disabled={disabled}
       />
       <div
-        className={`flex items-center pl-3 py-3 text-gray-600 ${
+        className={`flex items-center pl-3 py-3 text-red-400${
           disabled ? 'bg-gray-200' : ''
         } ${decorationClassName}`}
       >
@@ -62,16 +62,15 @@ function GlobalSearchFilter1({
       value={globalFilter || ''}
       onChange={(e) => setGlobalFilter(e.target.value)}
       label={t('recipeList.searchInput')}
-      decoration={<FaSearch size="1rem" className="text-gray-500" />}
+      decoration={
+        <FaSearch size="1rem" className="text-gray-400 dark:text-gray-600" />
+      }
       className={className}
     />
   );
 }
 
-export default function RecipesTable({
-  onRemoveRecipe,
-  onSelect,
-}) {
+export default function RecipesTable({ onRemoveRecipe, onSelect }) {
   const { filteredRecipes } = useSelector((state) => state.recipes);
   const { t } = useTranslation();
 
@@ -174,11 +173,13 @@ export default function RecipesTable({
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="px-4 py-2 text-xs uppercase bg-blue-200 cursor-pointer first:rounded-tl-xl last:rounded-tr-xl"
+                    className="px-4 py-2 text-xs uppercase bg-blue-200 cursor-pointer first:rounded-tl-xl last:rounded-tr-xl dark:bg-blue-400"
                     style={{ width: column.width }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="font-bold text-left">{column.render('Header')}</div>
+                      <div className="font-bold text-left">
+                        {column.render('Header')}
+                      </div>
                       {!column.disableSortBy && (
                         <div className="flex flex-col">
                           <FaSortUp
@@ -210,7 +211,7 @@ export default function RecipesTable({
               return (
                 <tr
                   {...row.getRowProps()}
-                  className="overflow-visible bg-blue-200 h-11"
+                  className="overflow-visible bg-blue-200 h-11 dark:bg-blue-400"
                 >
                   {row.cells.map((cell) => {
                     return (
@@ -225,7 +226,7 @@ export default function RecipesTable({
                 </tr>
               );
             })}
-            </tbody>
+          </tbody>
         </table>
       </div>
     );
@@ -259,7 +260,7 @@ export default function RecipesTable({
     <div className="flex flex-col gap-4 overflow-hidden sm:py-0">
       <div className="flex flex-col justify-between gap-2 sm:flex-row">
         <GlobalSearchFilter1
-          className="sm:w-64"
+          className="sm:w-64 dark:bg-blue-400"
           globalFilter={state.globalFilter}
           setGlobalFilter={setGlobalFilter}
         />

@@ -151,7 +151,9 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             100) /
             Number(recipeQuantity)
         ),
-        fat: format2Decimals((calculateQty(_ingredients, 'fat') * 100) / Number(recipeQuantity)),
+        fat: format2Decimals(
+          (calculateQty(_ingredients, 'fat') * 100) / Number(recipeQuantity)
+        ),
         saturated_fat: format2Decimals(
           (calculateQty(_ingredients, 'saturated-fat') * 100) /
             Number(recipeQuantity)
@@ -174,21 +176,29 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       additives: _ingredients.length ? calculateAdditives(_ingredients) : [],
       nutriscore: _ingredients.length
         ? nutriScore.calculateClass({
-            energy: format2Decimals(calculateQty(_ingredients, 'energy-kcal') * 4.184),
+            energy: format2Decimals(
+              calculateQty(_ingredients, 'energy-kcal') * 4.184
+            ),
             fibers: format2Decimals(calculateQty(_ingredients, 'fibers') ?? 0),
             fruit_percentage: 0,
             proteins: format2Decimals(calculateQty(_ingredients, 'proteins')),
-            saturated_fats: format2Decimals(calculateQty(_ingredients, 'saturated-fat')),
+            saturated_fats: format2Decimals(
+              calculateQty(_ingredients, 'saturated-fat')
+            ),
             sodium: format2Decimals(calculateQty(_ingredients, 'salt') * 400),
             sugar: format2Decimals(calculateQty(_ingredients, 'sugars')),
           })
         : null,
       nutriscore_TEMP: {
-        energy: format2Decimals(calculateQty(_ingredients, 'energy-kcal') * 4.184),
+        energy: format2Decimals(
+          calculateQty(_ingredients, 'energy-kcal') * 4.184
+        ),
         fibers: format2Decimals(calculateQty(_ingredients, 'fibers') ?? 0),
         fruit_percentage: 0,
         proteins: format2Decimals(calculateQty(_ingredients, 'proteins')),
-        saturated_fats: format2Decimals(calculateQty(_ingredients, 'saturated-fat')),
+        saturated_fats: format2Decimals(
+          calculateQty(_ingredients, 'saturated-fat')
+        ),
         sodium: format2Decimals(calculateQty(_ingredients, 'salt') * 400),
         sugar: format2Decimals(calculateQty(_ingredients, 'sugars')),
       },
@@ -277,9 +287,9 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       <form
         action="submit"
         onSubmit={createNewRecipe}
-        className="flex flex-col h-full mt-8 overflow-hidden grow"
+        className="flex flex-col h-full p-1 mt-8 overflow-hidden grow"
       >
-        <div className="overflow-auto grow">
+        <div className="px-1 overflow-auto grow">
           <div className="header">
             <label
               htmlFor="recipe-name"
@@ -290,7 +300,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             <input
               required
               defaultValue={state.recipe.name}
-              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-400 focus:outline-none"
+              className="w-full h-12 p-3 mb-6 text-base bg-white recipe-name rounded-xl placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
               placeholder={t('editRecipe.placeholder')}
               type="text"
               id="recipe-name"
