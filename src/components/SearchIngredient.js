@@ -4,7 +4,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-export default function SearchItem({ onAddNewIngredient }) {
+export default function SearchIngredient({ onAddNewIngredient }) {
   const [query, setQuery] = useState('');
   const { filtered } = useSelector((state) => state.ingredients);
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ export default function SearchItem({ onAddNewIngredient }) {
             <Combobox.Input
               className="w-full h-full p-3 pr-10 text-base leading-5 text-gray-900 bg-white border-none outline-none input focus:ring-0"
               placeholder={t('editRecipe.placeholderSecond')}
-              // displayValue={(item) => item.product_name}
+
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">

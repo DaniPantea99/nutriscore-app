@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard.js';
 import Settings from './pages/Settings';
 import User from './pages/User';
 import Navbar from './components/Navbar';
+import PdfDocument from './pages/PdfDocument';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" exact element={<Dashboard />} />
           <Route path="/user" exact element={<User />} />
           <Route path="/settings" exact element={<Settings />} />
+          <Route path="/pdf" exact element={<PdfDocument />} />
         </Routes>
       </Navbar>
     </div>
