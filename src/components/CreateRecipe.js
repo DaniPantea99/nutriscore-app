@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import SearchItem from './SearchItem';
+import SearchIngredient from './SearchIngredient';
 import { useDispatch } from 'react-redux';
-// import Ingredient from '../components/Ingredient';
 import { createRecipe, updateRecipe } from '../actions/recipesAction';
 import { BsFillXCircleFill } from 'react-icons/bs';
 import { nutriScore } from 'nutri-score';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import { format2Decimals } from '../utility';
-import RecipeDetails from './RecipeDetails';
+import { RecipeDetails } from './RecipeDetails';
 import ListOfIngredients from './ListOfIngredients';
+import { NavLink } from 'react-router-dom';
 
 const initialState = {
   recipe: {
@@ -41,7 +41,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     month: 'numeric',
     year: 'numeric',
   });
-  const [state, setState] = useState(recipe.id ? {recipe} : initialState);
+  const [state, setState] = useState(recipe.id ? { recipe } : initialState);
 
   const formHandler = (formData) => {
     setState({
@@ -81,11 +81,16 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
     const filteredList = state.recipe.ingredients.filter(
       (el) => el.id !== ingredient.id
     );
+    const updatedQuantity = filteredList.reduce(
+      (acc, curr) => acc + curr.quantity ?? 0,
+      0
+    );
     setState({
       recipe: {
         ...state.recipe,
+        quantity: updatedQuantity,
         ingredients: [...filteredList],
-        ...calculateRecipeDetails(filteredList),
+        ...calculateRecipeDetails(filteredList, updatedQuantity),
       },
     });
   };
@@ -104,61 +109,74 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
         } else if (item.nutriments.length) {
           nutriments = item.nutriments?.map((el) => ({
             ...el,
-            quantity_current: Number((el.quantity_100 / 100) * value),
+            quantity_current: format2Decimals(
+              (Number(el.quantity_100) / 100) * Number(value)
+            ),
           }));
         }
         return {
           ...item,
           quantity: Number(value),
-          calories_currQty: Number((item.calories_100 ?? 0) / 100) * value ?? 0,
+          calories_currQty:
+            format2Decimals(
+              ((Number(item.calories_100) ?? 0) / 100) * Number(value)
+            ) ?? 0,
           nutriments: nutriments,
         };
       }
       return item;
     });
+    const updatedQuantity = updatedIngredients.reduce(
+      (acc, curr) => acc + curr.quantity ?? 0,
+      0
+    );
     formHandler({
       ...state.recipe,
+      quantity: updatedQuantity,
       ingredients: [...updatedIngredients],
-      ...calculateRecipeDetails(updatedIngredients),
+      ...calculateRecipeDetails(updatedIngredients, updatedQuantity),
     });
   };
 
-  const calculateRecipeDetails = (ingredients) => {
-    const _ingredients = ingredients ? ingredients : state.recipe.ingredients
+  const calculateRecipeDetails = (ingredients, recipeQuantity) => {
+    const _ingredients = ingredients ? ingredients : state.recipe.ingredients;
     return {
-      quantity: _ingredients.reduce(
-        (acc, curr) => acc + curr.quantity ?? 0,
-        0
-      ),
       date: formattedDate,
       nutriments: {
-        calories: _ingredients.reduce(
-          (acc, curr) => format2Decimals(acc + (curr?.calories_currQty ?? 0)),
-          0
+        calories: format2Decimals(
+          (_ingredients.reduce(
+            (acc, curr) => acc + (curr?.calories_currQty ?? 0),
+            0
+          ) *
+            100) /
+            Number(recipeQuantity)
         ),
-        fat: calculateQty(_ingredients, 'fat'),
-        saturated_fat: calculateQty(_ingredients, 'saturated-fat'),
-        carbohydrates: calculateQty(_ingredients, 'carbohydrates'),
-        sugars: calculateQty(_ingredients, 'sugars'),
-        proteins: calculateQty(_ingredients, 'proteins'),
-        salt: calculateQty(_ingredients, 'salt'),
+        fat: 
+          (calculateQty(_ingredients, 'fat') * 100) / Number(recipeQuantity)
+        ,
+        saturated_fat: format2Decimals(calculateQty(_ingredients, 'saturated-fat') * 100 / Number(recipeQuantity)),
+        carbohydrates: format2Decimals(calculateQty(_ingredients, 'carbohydrates') * 100 / Number(recipeQuantity)),
+        sugars: format2Decimals(calculateQty(_ingredients, 'sugars') * 100 / Number(recipeQuantity)),
+        proteins: format2Decimals(calculateQty(_ingredients, 'proteins') * 100 / Number(recipeQuantity)),
+        salt: format2Decimals(calculateQty(_ingredients, 'salt') * 100 / Number(recipeQuantity)),
       },
       additives: _ingredients.length ? calculateAdditives(_ingredients) : [],
-      nutriscore: _ingredients.length ?
-      nutriScore.calculateClass({
-        energy: calculateQty(_ingredients, 'energy-kcal') * 4.184,
-        fibers: calculateQty(_ingredients, 'fibers') ?? 0,
-        fruit_percentage: 0,
-        proteins: calculateQty(_ingredients, 'proteins'),
-        saturated_fats: calculateQty(_ingredients, 'saturated-fat'),
-        sodium: calculateQty(_ingredients, 'salt') * 400,
-        sugar: calculateQty(_ingredients, 'sugars'),
-      }) : null,
+      nutriscore: _ingredients.length
+        ? nutriScore.calculateClass({
+            energy: format2Decimals((calculateQty(_ingredients, 'energy-kcal') * 4.184) * 100 / Number(recipeQuantity)),
+            fibers: format2Decimals((calculateQty(_ingredients, 'fibers') ?? 0)) * 100 / Number(recipeQuantity),
+            fruit_percentage: 0,
+            proteins: format2Decimals(calculateQty(_ingredients, 'proteins') * 100 / Number(recipeQuantity)),
+            saturated_fats: format2Decimals(calculateQty(_ingredients, 'saturated-fat') * 100 / Number(recipeQuantity)),
+            sodium: format2Decimals((calculateQty(_ingredients, 'salt') * 400) * 100 / Number(recipeQuantity)),
+            sugar: format2Decimals(calculateQty(_ingredients, 'sugars') * 100 / Number(recipeQuantity)),
+          })
+        : null,
     };
   };
 
   const calculateAdditives = (ingredients) => {
-    const _ingredients = ingredients ? ingredients : state.recipe.ingredients
+    const _ingredients = ingredients ? ingredients : state.recipe.ingredients;
     const additivesList = [];
     _ingredients
       .filter((el) => el.additives)
@@ -168,10 +186,10 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
         )
       );
     return Array.from(new Set(additivesList));
-  }
+  };
 
   const calculateQty = (ingredients, nutrimentName = '') => {
-    const _ingredients = ingredients ? ingredients : state.recipe.ingredients
+    const _ingredients = ingredients ? ingredients : state.recipe.ingredients;
     return _ingredients
       .filter((item) => item.nutriments)
       .map((element) => {
@@ -182,13 +200,12 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       })
       .reduce((acc, curr) => {
         return (
-          format2Decimals(
           acc +
             (curr?.find((nutriment) => nutriment.name === nutrimentName)
               ?.quantity_current ?? 0) ?? 0
-        ));
+        );
       }, 0);
-  }
+  };
 
   const showNutriScore = () => {
     const score = state.recipe.nutriscore;
@@ -221,11 +238,12 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
       dispatch(createRecipe(state.recipe));
       onCloseAndDiscard();
     }
-  }
+  };
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      {/* <button onClick={() => console.log(state.recipe)}>TEST</button> */}
+      <NavLink to={'/pdf'}>Print</NavLink>
+      <button onClick={() => console.log(state.recipe)}>TEST recipe</button>
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
           {t('editRecipe.description')}
@@ -266,30 +284,14 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             >
               {t('editRecipe.secondLabel')}
             </label>
-            <SearchItem onAddNewIngredient={addNewIngredient} />
+            <SearchIngredient onAddNewIngredient={addNewIngredient} />
           </div>
 
           <div className="flex flex-col mt-6 rounded-xl min-w-fit">
-            {/* {state.recipe.ingredients?.length > 0 && (
-              <h3>{t('editRecipe.ingredientsList')}</h3>
-            )}
-
-            {state.recipe.ingredients?.length > 0 && (
-              <div className="flex flex-col gap-2 mb-6">
-                {state.recipe?.ingredients.map((item, index) => (
-                  <Ingredient
-                    item={item}
-                    key={index}
-                    onChange={updateIngredient}
-                    onRemove={removeIngredient}
-                  />
-                ))}
-              </div>
-            )} */}
-            <ListOfIngredients 
-            recipe={state.recipe}
-            updateIngredient={updateIngredient}
-            removeIngredient={removeIngredient}
+            <ListOfIngredients
+              recipe={state.recipe}
+              updateIngredient={updateIngredient}
+              removeIngredient={removeIngredient}
             />
             <RecipeDetails recipe={state.recipe} />
           </div>
@@ -297,26 +299,25 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
           <div className="my-4">{showNutriScore()}</div>
         </div>
 
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col gap-2 mt-4">
           <button
             type="submit"
-            className="px-4 py-2 font-semibold tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
+            className="px-4 py-2 font-medium tracking-widest text-white bg-orange-500 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
           >
             {recipe.id
               ? t('editRecipe.updateButton')
               : t('createRecipe.saveBtn')}
           </button>
+          <button
+            className="px-4 py-2 font-medium tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
+            onClick={onCloseAndDiscard}
+          >
+            {recipe.id
+              ? t('editRecipe.discardButton')
+              : t('createRecipe.discardBtn')}
+          </button>
         </div>
       </form>
-
-      <button
-        className="px-4 py-2 mt-2 font-medium tracking-widest bg-blue-300 rounded-2xl hover:bg-opacity-70 active:bg-opacity-100"
-        onClick={onCloseAndDiscard}
-      >
-        {recipe.id
-          ? t('editRecipe.discardButton')
-          : t('createRecipe.discardBtn')}
-      </button>
     </div>
   );
 }

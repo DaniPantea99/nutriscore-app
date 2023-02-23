@@ -4,9 +4,9 @@ import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { useTranslation } from 'react-i18next';
 import { format2Decimals } from '../utility';
 
-
-function RecipeDetails({recipe}) {
+function RecipeDetails({ recipe }) {
   const { t } = useTranslation();
+
   const IngredientsTable = () => {
     return (
       <table className="w-full my-4">
@@ -17,18 +17,20 @@ function RecipeDetails({recipe}) {
           </tr>
         </thead>
         <tbody>
-          {recipe.ingredients.length ?
-          recipe?.ingredients?.map((item, index) => (
-            <tr key={index}>
-              <td className="first-letter:uppercase">{item.productName}</td>
-              <td>{format2Decimals(Number(item?.quantity)) ?? 0}</td>
+          {recipe.ingredients.length ? (
+            recipe?.ingredients?.map((item, index) => (
+              <tr key={index}>
+                <td className="first-letter:uppercase">{item.productName}</td>
+                <td>{format2Decimals(Number(item?.quantity)) ?? 0}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td>
+                <p>{t('editRecipe.details.table.noIngredient')}</p>
+              </td>
             </tr>
-          ))
-        :
-        <tr>
-          <td><p>{t('editRecipe.details.table.noIngredient')}</p></td>
-        </tr>
-        }
+          )}
         </tbody>
         <tfoot>
           <tr className="font-semibold">
@@ -43,48 +45,47 @@ function RecipeDetails({recipe}) {
   const NutritionFacts = () => {
     return (
       <div>
-        <span className="font-semibold">{t('editRecipe.details.nutrition')}:{' '}</span>
-        {recipe.ingredients.length ?
-        <ul className="ml-6 list-disc">
-          <li>
-            {t('editRecipe.details.calories')}:&nbsp;
-            {recipe?.nutriments?.calories ?? 0} kcal /&nbsp;
-            {format2Decimals(
-              (recipe?.nutriments?.calories ?? 0) * 4.184
-            )}{' '}
-            kJ
-          </li>
-          <li>
-            {t('editRecipe.details.fat')}:&nbsp;
-            {recipe?.nutriments?.fat ?? 0}
-            <ul className="ml-6 list-disc">
-              <li>
-                {t('editRecipe.details.saturatedFat')}:&nbsp;
-                {recipe?.nutriments?.saturated_fat ?? 0}
-              </li>
-            </ul>
-          </li>
-          <li>
-            {t('editRecipe.details.carbohydrates')}:{' '}
-            {recipe?.nutriments?.carbohydrates ?? 0}
-            <ul className="ml-6 list-disc">
-              <li>
-                {t('editRecipe.details.sugar')}:{' '}
-                {recipe?.nutriments?.sugars ?? 0}
-              </li>
-            </ul>
-          </li>
-          <li>
-            {t('editRecipe.details.proteins')}:{' '}
-            {recipe?.nutriments?.proteins ?? 0}
-          </li>
-          <li>
-            {t('editRecipe.details.salt')}:{' '}
-            {recipe?.nutriments?.salt ?? 0}
-          </li>
-        </ul>
-        : <span>{t('editRecipe.details.table.noIngredient')}</span>
-            }
+        <span className="font-semibold">
+          {t('editRecipe.details.nutrition')}:{' '}
+        </span>
+        {recipe.ingredients.length ? (
+          <ul className="ml-6 list-disc">
+            <li>
+              {t('editRecipe.details.calories')}:&nbsp;
+              {recipe?.nutriments?.calories ?? 0} kcal /&nbsp;
+              {format2Decimals((recipe?.nutriments?.calories ?? 0) * 4.184)} kJ
+            </li>
+            <li>
+              {t('editRecipe.details.fat')}:&nbsp;
+              {recipe?.nutriments?.fat ?? 0}
+              <ul className="ml-6 list-disc">
+                <li>
+                  {t('editRecipe.details.saturatedFat')}:&nbsp;
+                  {recipe?.nutriments?.saturated_fat ?? 0}
+                </li>
+              </ul>
+            </li>
+            <li>
+              {t('editRecipe.details.carbohydrates')}:{' '}
+              {recipe?.nutriments?.carbohydrates ?? 0}
+              <ul className="ml-6 list-disc">
+                <li>
+                  {t('editRecipe.details.sugar')}:{' '}
+                  {recipe?.nutriments?.sugars ?? 0}
+                </li>
+              </ul>
+            </li>
+            <li>
+              {t('editRecipe.details.proteins')}:{' '}
+              {recipe?.nutriments?.proteins ?? 0}
+            </li>
+            <li>
+              {t('editRecipe.details.salt')}: {recipe?.nutriments?.salt ?? 0}
+            </li>
+          </ul>
+        ) : (
+          <span>{t('editRecipe.details.table.noIngredient')}</span>
+        )}
       </div>
     );
   };
@@ -147,4 +148,4 @@ function RecipeDetails({recipe}) {
   );
 }
 
-export default RecipeDetails;
+export { RecipeDetails };

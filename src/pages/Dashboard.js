@@ -25,14 +25,14 @@ function Dashboard() {
     setShowRecipePanel(true);
   };
 
-  const CloseAndDiscard = () => {
+  const CloseAndDiscard = (e) => {
+    e.preventDefault()
     setSelectedRecipe([])
     setShowRecipePanel(false);
   }
 
   return (
     <div className="flex flex-col w-full h-full gap-4 p-8">
-      {/* <button onClick={() => console.log(recipe)}>TEST</button> */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img
