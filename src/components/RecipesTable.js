@@ -114,7 +114,7 @@ export default function RecipesTable({ onRemoveRecipe, onSelect }) {
           <div>
             <img
               width="70px"
-              src={`./images/nutriscore/nutriscore_${cell.value}.svg`}
+              src={`./images/nutriscore/nutriscore_${cell.value.toLowerCase()}.svg`}
               alt={`logo-nutriscore`}
             />
           </div>
