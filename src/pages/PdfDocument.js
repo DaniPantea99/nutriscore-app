@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: '20',
+    backgroundColor: '#232323',
+    borderRadius: 20,
+    color: 'white',
+    fontSize: '28',
   },
   image: {
     width: 120,
-    backgroundColor: '#232323',
-    borderRadius: 20,
-
   },
   recipeTitle: {
     flexDirection: 'row',
