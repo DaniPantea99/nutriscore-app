@@ -20,44 +20,44 @@
       "is_vegetarian": 0,
       "labels": "",
       "nutriments": [
-          {
-              "name": "carbohydrates",
-              "quantity_100": 0
-          },
-          {
-              "name": "sodium",
-              "quantity_100": 0
-          },
-          {
-              "name": "proteins",
-              "quantity_100": 0
-          },
-          {
-              "name": "energy-kcal",
-              "quantity_100": 0
-          },
-          {
-              "name": "saturated-fat",
-              "quantity_100": 0
-          },
-          {
-              "name": "fat",
-              "quantity_100": 0
-          },
-          {
-              "name": "sugars",
-              "quantity_100": 0
-          },
-          {
-              "name": "salt",
-              "quantity_100": 0
-          }
+        {
+          "name": "carbohydrates",
+          "quantity_100": 0
+        },
+        {
+          "name": "sodium",
+          "quantity_100": 0
+        },
+        {
+          "name": "proteins",
+          "quantity_100": 0
+        },
+        {
+          "name": "energy-kcal",
+          "quantity_100": 0
+        },
+        {
+          "name": "saturated-fat",
+          "quantity_100": 0
+        },
+        {
+          "name": "fat",
+          "quantity_100": 0
+        },
+        {
+          "name": "sugars",
+          "quantity_100": 0
+        },
+        {
+          "name": "salt",
+          "quantity_100": 0
+        }
       ],
       "nutri_sodium": 0,
       "nutri_salt": 0,
       "nutri_energy-kcal": 0,
       "nutri_sugars": 0
-  },
+    },
     {
       "product_name": "Parmesan",
       "lang": "en",
@@ -65,8 +65,8 @@
       "brands": "Kraft",
       "image_front_url": "006/810/089/4776/front_en.24.400.jpg",
       "packaging_tags": [
-          "en:1-plastic-container-pete",
-          "en:1-plastic-lid-pp"
+        "en:1-plastic-container-pete",
+        "en:1-plastic-lid-pp"
       ],
       "quantity": "680 g",
       "sursa": "OpenFoodFacts",
@@ -81,45 +81,45 @@
       "is_vegetarian": 0,
       "labels": "",
       "additives_tags": [
-          "en:e1104"
+        "en:e1104"
       ],
       "nutriments": {
-          "0": {
-              "name": "proteins",
-              "quantity_100": 33.3
-          },
-          "1": {
-              "name": "sodium",
-              "quantity_100": 1.83
-          },
-          "2": {
-              "name": "carbohydrates",
-              "quantity_100": 0
-          },
-          "3": {
-              "name": "fat",
-              "quantity_100": 33.3
-          },
-          "4": {
-              "name": "sugars",
-              "quantity_100": 0
-          },
-          "5": {
-              "name": "saturated-fat",
-              "quantity_100": 20.8
-          },
-          "6": {
-              "name": "energy-kcal",
-              "quantity_100": 417
-          },
-          "8": {
-              "name": "nova-group",
-              "quantity_100": 4
-          },
-          "11": {
-              "name": "salt",
-              "quantity_100": 4.58
-          }
+        "0": {
+          "name": "proteins",
+          "quantity_100": 33.3
+        },
+        "1": {
+          "name": "sodium",
+          "quantity_100": 1.83
+        },
+        "2": {
+          "name": "carbohydrates",
+          "quantity_100": 0
+        },
+        "3": {
+          "name": "fat",
+          "quantity_100": 33.3
+        },
+        "4": {
+          "name": "sugars",
+          "quantity_100": 0
+        },
+        "5": {
+          "name": "saturated-fat",
+          "quantity_100": 20.8
+        },
+        "6": {
+          "name": "energy-kcal",
+          "quantity_100": 417
+        },
+        "8": {
+          "name": "nova-group",
+          "quantity_100": 4
+        },
+        "11": {
+          "name": "salt",
+          "quantity_100": 4.58
+        }
       },
       "nutri_sodium": 1.83,
       "nutri_sugars": 0,
@@ -128,15 +128,15 @@
       "nova-info": "",
       "nutri_salt": 4.58,
       "allergens": [
-          "milk"
+        "milk"
       ],
       "calories": 417,
       "burn_calories": {
-          "walking": "102.12",
-          "pedalling": "59.57",
-          "running": "44.68"
+        "walking": "102.12",
+        "pedalling": "59.57",
+        "running": "44.68"
       }
-  },
+    },
     {
       "product_name": "Noodles",
       "lang": "en",
@@ -156,42 +156,42 @@
       "is_vegan": 0,
       "is_vegetarian": 0,
       "labels": [
-          "Vegetarian",
-          " Vegan"
+        "Vegetarian",
+        " Vegan"
       ],
       "nutriments": {
-          "0": {
-              "name": "energy-kcal",
-              "quantity_100": 50
-          },
-          "1": {
-              "name": "saturated-fat",
-              "quantity_100": 0.1
-          },
-          "2": {
-              "name": "carbohydrates",
-              "quantity_100": 1
-          },
-          "3": {
-              "name": "fat",
-              "quantity_100": 0.1
-          },
-          "4": {
-              "name": "salt",
-              "quantity_100": 0.01
-          },
-          "6": {
-              "name": "sodium",
-              "quantity_100": 0.004
-          },
-          "7": {
-              "name": "sugars",
-              "quantity_100": 0.1
-          },
-          "8": {
-              "name": "proteins",
-              "quantity_100": 0.2
-          }
+        "0": {
+          "name": "energy-kcal",
+          "quantity_100": 50
+        },
+        "1": {
+          "name": "saturated-fat",
+          "quantity_100": 0.1
+        },
+        "2": {
+          "name": "carbohydrates",
+          "quantity_100": 1
+        },
+        "3": {
+          "name": "fat",
+          "quantity_100": 0.1
+        },
+        "4": {
+          "name": "salt",
+          "quantity_100": 0.01
+        },
+        "6": {
+          "name": "sodium",
+          "quantity_100": 0.004
+        },
+        "7": {
+          "name": "sugars",
+          "quantity_100": 0.1
+        },
+        "8": {
+          "name": "proteins",
+          "quantity_100": 0.2
+        }
       },
       "nutri_energy-kcal": 50,
       "nutri_salt": 0.01,
@@ -199,22 +199,22 @@
       "nutri_sugars": 0.1,
       "calories": 50,
       "burn_calories": {
-          "walking": "12.24",
-          "pedalling": "7.14",
-          "running": "5.36"
+        "walking": "12.24",
+        "pedalling": "7.14",
+        "running": "5.36"
       }
-  },
-  {
+    },
+    {
       "product_name": "Noodle",
       "lang": "en",
       "creator": "kiliweb",
       "brands": "Pot Noodle,Unilever",
       "image_front_url": "500/011/820/3534/front_en.12.400.jpg",
       "packaging_tags": [
-          "en:plastic",
-          "en:pot",
-          "en:film",
-          "en:alufoil"
+        "en:plastic",
+        "en:pot",
+        "en:film",
+        "en:alufoil"
       ],
       "quantity": "90 g",
       "sursa": "OpenFoodFacts",
@@ -228,64 +228,64 @@
       "is_vegan": 0,
       "is_vegetarian": 0,
       "labels": [
-          "Vegetarian",
-          " European Vegetarian Union",
-          " Lacto-vegetarian",
-          " No artificial flavors",
-          " Ovo-vegetarian",
-          " European Vegetarian Union Ovo-lacto-vegetarian",
-          " No artificial colors",
-          " No artificial colours or flavours",
-          " Ovo-lacto-vegetarian"
+        "Vegetarian",
+        " European Vegetarian Union",
+        " Lacto-vegetarian",
+        " No artificial flavors",
+        " Ovo-vegetarian",
+        " European Vegetarian Union Ovo-lacto-vegetarian",
+        " No artificial colors",
+        " No artificial colours or flavours",
+        " Ovo-lacto-vegetarian"
       ],
       "additives_tags": [
-          "en:e260",
-          "en:e330",
-          "en:e500",
-          "en:e500i",
-          "en:e501",
-          "en:e501i",
-          "en:e621",
-          "en:e627",
-          "en:e631"
+        "en:e260",
+        "en:e330",
+        "en:e500",
+        "en:e500i",
+        "en:e501",
+        "en:e501i",
+        "en:e621",
+        "en:e627",
+        "en:e631"
       ],
       "nutriments": {
-          "0": {
-              "name": "fat",
-              "quantity_100": 5.3
-          },
-          "1": {
-              "name": "energy-kcal",
-              "quantity_100": 140
-          },
-          "2": {
-              "name": "proteins",
-              "quantity_100": 3.2
-          },
-          "3": {
-              "name": "salt",
-              "quantity_100": 0.63
-          },
-          "4": {
-              "name": "sodium",
-              "quantity_100": 0.252
-          },
-          "5": {
-              "name": "sugars",
-              "quantity_100": 1.5
-          },
-          "7": {
-              "name": "carbohydrates",
-              "quantity_100": 19
-          },
-          "12": {
-              "name": "saturated-fat",
-              "quantity_100": 2.6
-          },
-          "13": {
-              "name": "nova-group",
-              "quantity_100": 4
-          }
+        "0": {
+          "name": "fat",
+          "quantity_100": 5.3
+        },
+        "1": {
+          "name": "energy-kcal",
+          "quantity_100": 140
+        },
+        "2": {
+          "name": "proteins",
+          "quantity_100": 3.2
+        },
+        "3": {
+          "name": "salt",
+          "quantity_100": 0.63
+        },
+        "4": {
+          "name": "sodium",
+          "quantity_100": 0.252
+        },
+        "5": {
+          "name": "sugars",
+          "quantity_100": 1.5
+        },
+        "7": {
+          "name": "carbohydrates",
+          "quantity_100": 19
+        },
+        "12": {
+          "name": "saturated-fat",
+          "quantity_100": 2.6
+        },
+        "13": {
+          "name": "nova-group",
+          "quantity_100": 4
+        }
       },
       "nutri_energy-kcal": 140,
       "nutri_salt": 0.63,
@@ -294,17 +294,17 @@
       "nova-score": 4,
       "nova-info": "",
       "allergens": [
-          "gluten",
-          "soybeans"
+        "gluten",
+        "soybeans"
       ],
       "calories": 140,
       "burn_calories": {
-          "walking": "34.29",
-          "pedalling": "20.00",
-          "running": "15.00"
+        "walking": "34.29",
+        "pedalling": "20.00",
+        "running": "15.00"
       }
-  },
-  {
+    },
+    {
       "product_name": "Mr. Noodle Handmade Noodles",
       "lang": "en",
       "creator": "foodvisor",
@@ -324,40 +324,40 @@
       "is_vegetarian": 0,
       "labels": "",
       "nutriments": [
-          {
-              "name": "sugars",
-              "quantity_100": 5.4
-          },
-          {
-              "name": "fat",
-              "quantity_100": 52
-          },
-          {
-              "name": "energy-kcal",
-              "quantity_100": 327
-          },
-          {
-              "name": "saturated-fat",
-              "quantity_100": 5.8
-          },
-          {
-              "name": "proteins",
-              "quantity_100": 4
-          },
-          {
-              "name": "carbohydrates",
-              "quantity_100": 57.9
-          }
+        {
+          "name": "sugars",
+          "quantity_100": 5.4
+        },
+        {
+          "name": "fat",
+          "quantity_100": 52
+        },
+        {
+          "name": "energy-kcal",
+          "quantity_100": 327
+        },
+        {
+          "name": "saturated-fat",
+          "quantity_100": 5.8
+        },
+        {
+          "name": "proteins",
+          "quantity_100": 4
+        },
+        {
+          "name": "carbohydrates",
+          "quantity_100": 57.9
+        }
       ],
       "nutri_sugars": 5.4,
       "nutri_energy-kcal": 327,
       "calories": 327,
       "burn_calories": {
-          "walking": "80.08",
-          "pedalling": "46.71",
-          "running": "35.04"
+        "walking": "80.08",
+        "pedalling": "46.71",
+        "running": "35.04"
       }
-  },
+    },
     {
       "product_name": "milk",
       "lang": "en",
@@ -365,9 +365,9 @@
       "brands": "Arla",
       "image_front_url": "",
       "packaging_tags": [
-          "en:hdpe-bottle",
-          "en:mixed-plastic-lid",
-          "en:mixed-plastic-sleeve"
+        "en:hdpe-bottle",
+        "en:mixed-plastic-lid",
+        "en:mixed-plastic-sleeve"
       ],
       "quantity": "",
       "sursa": "OpenFoodFacts",
@@ -382,38 +382,38 @@
       "is_vegetarian": 0,
       "labels": "",
       "nutriments": {
-          "0": {
-              "name": "sodium",
-              "quantity_100": 0.04
-          },
-          "1": {
-              "name": "sugars",
-              "quantity_100": 4.7
-          },
-          "2": {
-              "name": "salt",
-              "quantity_100": 0.1
-          },
-          "3": {
-              "name": "proteins",
-              "quantity_100": 3.4
-          },
-          "4": {
-              "name": "energy-kcal",
-              "quantity_100": 65
-          },
-          "5": {
-              "name": "saturated-fat",
-              "quantity_100": 2.3
-          },
-          "6": {
-              "name": "carbohydrates",
-              "quantity_100": 4.7
-          },
-          "8": {
-              "name": "fat",
-              "quantity_100": 3.6
-          }
+        "0": {
+          "name": "sodium",
+          "quantity_100": 0.04
+        },
+        "1": {
+          "name": "sugars",
+          "quantity_100": 4.7
+        },
+        "2": {
+          "name": "salt",
+          "quantity_100": 0.1
+        },
+        "3": {
+          "name": "proteins",
+          "quantity_100": 3.4
+        },
+        "4": {
+          "name": "energy-kcal",
+          "quantity_100": 65
+        },
+        "5": {
+          "name": "saturated-fat",
+          "quantity_100": 2.3
+        },
+        "6": {
+          "name": "carbohydrates",
+          "quantity_100": 4.7
+        },
+        "8": {
+          "name": "fat",
+          "quantity_100": 3.6
+        }
       },
       "nutri_sodium": 0.04,
       "nutri_sugars": 4.7,
@@ -421,11 +421,11 @@
       "nutri_energy-kcal": 65,
       "calories": 65,
       "burn_calories": {
-          "walking": "15.92",
-          "pedalling": "9.29",
-          "running": "6.96"
+        "walking": "15.92",
+        "pedalling": "9.29",
+        "running": "6.96"
       }
-  },
+    },
     {
       "product_name": "Flour perfect pastry flour",
       "lang": "en",
@@ -446,38 +446,38 @@
       "is_vegetarian": 0,
       "labels": "",
       "nutriments": {
-          "0": {
-              "name": "energy-kcal",
-              "quantity_100": 366.66666666667
-          },
-          "1": {
-              "name": "saturated-fat",
-              "quantity_100": 0
-          },
-          "2": {
-              "name": "fat",
-              "quantity_100": 0
-          },
-          "3": {
-              "name": "sugars",
-              "quantity_100": 0
-          },
-          "4": {
-              "name": "carbohydrates",
-              "quantity_100": 76.666666666667
-          },
-          "5": {
-              "name": "sodium",
-              "quantity_100": 0
-          },
-          "6": {
-              "name": "proteins",
-              "quantity_100": 10
-          },
-          "10": {
-              "name": "salt",
-              "quantity_100": 0
-          }
+        "0": {
+          "name": "energy-kcal",
+          "quantity_100": 366.66666666667
+        },
+        "1": {
+          "name": "saturated-fat",
+          "quantity_100": 0
+        },
+        "2": {
+          "name": "fat",
+          "quantity_100": 0
+        },
+        "3": {
+          "name": "sugars",
+          "quantity_100": 0
+        },
+        "4": {
+          "name": "carbohydrates",
+          "quantity_100": 76.666666666667
+        },
+        "5": {
+          "name": "sodium",
+          "quantity_100": 0
+        },
+        "6": {
+          "name": "proteins",
+          "quantity_100": 10
+        },
+        "10": {
+          "name": "salt",
+          "quantity_100": 0
+        }
       },
       "nutri_energy-kcal": 366.66666666667,
       "nutri_sugars": 0,
@@ -485,11 +485,11 @@
       "nutri_salt": 0,
       "calories": 366,
       "burn_calories": {
-          "walking": "89.63",
-          "pedalling": "52.29",
-          "running": "39.21"
+        "walking": "89.63",
+        "pedalling": "52.29",
+        "running": "39.21"
       }
-  },
+    },
     {
       "product_name": "Broth",
       "lang": "en",
@@ -510,46 +510,46 @@
       "is_vegetarian": 0,
       "labels": "",
       "nutriments": {
-          "0": {
-              "name": "fat",
-              "quantity_100": 0
-          },
-          "1": {
-              "name": "sugars",
-              "quantity_100": 0.42
-          },
-          "2": {
-              "name": "carbohydrates",
-              "quantity_100": 0.42
-          },
-          "3": {
-              "name": "sodium",
-              "quantity_100": 0.358
-          },
-          "4": {
-              "name": "calcium",
-              "quantity_100": 0
-          },
-          "5": {
-              "name": "proteins",
-              "quantity_100": 0.42
-          },
-          "8": {
-              "name": "salt",
-              "quantity_100": 0.895
-          },
-          "10": {
-              "name": "energy-kcal",
-              "quantity_100": 2
-          },
-          "12": {
-              "name": "saturated-fat",
-              "quantity_100": 0
-          },
-          "15": {
-              "name": "nova-group",
-              "quantity_100": 4
-          }
+        "0": {
+          "name": "fat",
+          "quantity_100": 0
+        },
+        "1": {
+          "name": "sugars",
+          "quantity_100": 0.42
+        },
+        "2": {
+          "name": "carbohydrates",
+          "quantity_100": 0.42
+        },
+        "3": {
+          "name": "sodium",
+          "quantity_100": 0.358
+        },
+        "4": {
+          "name": "calcium",
+          "quantity_100": 0
+        },
+        "5": {
+          "name": "proteins",
+          "quantity_100": 0.42
+        },
+        "8": {
+          "name": "salt",
+          "quantity_100": 0.895
+        },
+        "10": {
+          "name": "energy-kcal",
+          "quantity_100": 2
+        },
+        "12": {
+          "name": "saturated-fat",
+          "quantity_100": 0
+        },
+        "15": {
+          "name": "nova-group",
+          "quantity_100": 4
+        }
       },
       "nutri_sugars": 0.42,
       "nutri_sodium": 0.358,
@@ -558,15 +558,15 @@
       "nova-score": 4,
       "nova-info": "",
       "allergens": [
-          "celery"
+        "celery"
       ],
       "calories": 2,
       "burn_calories": {
-          "walking": "0.49",
-          "pedalling": "0.29",
-          "running": "0.21"
+        "walking": "0.49",
+        "pedalling": "0.29",
+        "running": "0.21"
       }
-  },
+    },
     {
       "product_name": "Butter",
       "lang": "en",
@@ -587,45 +587,45 @@
       "is_vegetarian": 0,
       "labels": "",
       "additives_tags": [
-          "en:e941"
+        "en:e941"
       ],
       "nutriments": {
-          "0": {
-              "name": "salt",
-              "quantity_100": 0.2
-          },
-          "1": {
-              "name": "sugars",
-              "quantity_100": 0
-          },
-          "2": {
-              "name": "sodium",
-              "quantity_100": 0.08
-          },
-          "3": {
-              "name": "nova-group",
-              "quantity_100": 4
-          },
-          "4": {
-              "name": "proteins",
-              "quantity_100": 0.1
-          },
-          "5": {
-              "name": "saturated-fat",
-              "quantity_100": 5
-          },
-          "6": {
-              "name": "energy-kcal",
-              "quantity_100": 70
-          },
-          "8": {
-              "name": "fat",
-              "quantity_100": 8
-          },
-          "10": {
-              "name": "carbohydrates",
-              "quantity_100": 0
-          }
+        "0": {
+          "name": "salt",
+          "quantity_100": 0.2
+        },
+        "1": {
+          "name": "sugars",
+          "quantity_100": 0
+        },
+        "2": {
+          "name": "sodium",
+          "quantity_100": 0.08
+        },
+        "3": {
+          "name": "nova-group",
+          "quantity_100": 4
+        },
+        "4": {
+          "name": "proteins",
+          "quantity_100": 0.1
+        },
+        "5": {
+          "name": "saturated-fat",
+          "quantity_100": 5
+        },
+        "6": {
+          "name": "energy-kcal",
+          "quantity_100": 70
+        },
+        "8": {
+          "name": "fat",
+          "quantity_100": 8
+        },
+        "10": {
+          "name": "carbohydrates",
+          "quantity_100": 0
+        }
       },
       "nutri_salt": 0.2,
       "nutri_sugars": 0,
@@ -634,15 +634,15 @@
       "nova-info": "",
       "nutri_energy-kcal": 70,
       "allergens": [
-          "milk"
+        "milk"
       ],
       "calories": 70,
       "burn_calories": {
-          "walking": "17.14",
-          "pedalling": "10.00",
-          "running": "7.50"
+        "walking": "17.14",
+        "pedalling": "10.00",
+        "running": "7.50"
       }
-  },
+    },
     {
       "product_name": "Vegeta",
       "lang": "en",
@@ -2235,6 +2235,1696 @@
         "saturated_fats": 6.79,
         "sodium": 236,
         "sugar": 26.84
+      }
+    },
+    {
+      "id": 2,
+      "name": "meniu 2",
+      "quantity": 350,
+      "date": "01.03.2023",
+      "ingredients": [
+        {
+          "id": "b67be953-e5e1-4dab-94d3-46433c023cf6",
+          "productName": "Parmesan",
+          "brand": "Kraft",
+          "quantity": 10,
+          "calories_100": 417,
+          "calories_currQty": 41.7,
+          "nutriments": [
+            {
+              "name": "proteins",
+              "quantity_100": 33.3,
+              "quantity_current": 3.33
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 1.83,
+              "quantity_current": 0.18
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "fat",
+              "quantity_100": 33.3,
+              "quantity_current": 3.33
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 20.8,
+              "quantity_current": 2.08
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 417,
+              "quantity_current": 41.7
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "salt",
+              "quantity_100": 4.58,
+              "quantity_current": 0.46
+            }
+          ],
+          "additives": [
+            "en:e1104"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "ad2784d0-7e44-49cb-93b7-3a55f6ae04ce",
+          "productName": "Noodles",
+          "brand": "Bare naked foods",
+          "quantity": 10,
+          "calories_100": 50,
+          "calories_currQty": 5,
+          "nutriments": [
+            {
+              "name": "energy-kcal",
+              "quantity_100": 50,
+              "quantity_current": 5
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 1,
+              "quantity_current": 0.1
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.01,
+              "quantity_current": 0
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.004,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 0.2,
+              "quantity_current": 0.02
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "3ca66d14-39f8-4111-9c36-87f938d20c5c",
+          "productName": "Noodle",
+          "brand": "Pot Noodle,Unilever",
+          "quantity": 10,
+          "calories_100": 140,
+          "calories_currQty": 14,
+          "nutriments": [
+            {
+              "name": "fat",
+              "quantity_100": 5.3,
+              "quantity_current": 0.53
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 140,
+              "quantity_current": 14
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 3.2,
+              "quantity_current": 0.32
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.63,
+              "quantity_current": 0.06
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.252,
+              "quantity_current": 0.03
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 1.5,
+              "quantity_current": 0.15
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 19,
+              "quantity_current": 1.9
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2.6,
+              "quantity_current": 0.26
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            }
+          ],
+          "additives": [
+            "en:e260",
+            "en:e330",
+            "en:e500",
+            "en:e500i",
+            "en:e501",
+            "en:e501i",
+            "en:e621",
+            "en:e627",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "08c000de-cbc8-4225-a889-5f065d484b9b",
+          "productName": "Mr. Noodle Handmade Noodles",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 327,
+          "calories_currQty": 32.7,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 5.4,
+              "quantity_current": 0.54
+            },
+            {
+              "name": "fat",
+              "quantity_100": 52,
+              "quantity_current": 5.2
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 327,
+              "quantity_current": 32.7
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 5.8,
+              "quantity_current": 0.58
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 57.9,
+              "quantity_current": 5.79
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "45dba3e3-cef7-42c3-a806-330d6fbe06ed",
+          "productName": "milk",
+          "brand": "Arla",
+          "quantity": 10,
+          "calories_100": 65,
+          "calories_currQty": 6.5,
+          "nutriments": [
+            {
+              "name": "sodium",
+              "quantity_100": 0.04,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 4.7,
+              "quantity_current": 0.47
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 3.4,
+              "quantity_current": 0.34
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 65,
+              "quantity_current": 6.5
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2.3,
+              "quantity_current": 0.23
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 4.7,
+              "quantity_current": 0.47
+            },
+            {
+              "name": "fat",
+              "quantity_100": 3.6,
+              "quantity_current": 0.36
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "ac6f3126-8e16-4490-92e4-a43f377e59ef",
+          "productName": "Flour perfect pastry flour",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 366,
+          "calories_currQty": 36.6,
+          "nutriments": [
+            {
+              "name": "energy-kcal",
+              "quantity_100": 366.66666666667,
+              "quantity_current": 36.67
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 76.666666666667,
+              "quantity_current": 7.67
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 10,
+              "quantity_current": 1
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0,
+              "quantity_current": 0
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "f7df704f-ac0a-42c4-b693-0420b979c5ea",
+          "productName": "Broth",
+          "brand": "Lowes Foods,  Lowe's Food Stores  Inc.",
+          "quantity": 10,
+          "calories_100": 2,
+          "calories_currQty": 0.2,
+          "nutriments": [
+            {
+              "name": "fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.42,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0.42,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.358,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "calcium",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 0.42,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.895,
+              "quantity_current": 0.09
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 2,
+              "quantity_current": 0.2
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "b7bdce4a-df6e-411f-8e6f-6d5adef04c7b",
+          "productName": "Butter",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 70,
+          "calories_currQty": 7,
+          "nutriments": [
+            {
+              "name": "salt",
+              "quantity_100": 0.2,
+              "quantity_current": 0.02
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.08,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 5,
+              "quantity_current": 0.5
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 70,
+              "quantity_current": 7
+            },
+            {
+              "name": "fat",
+              "quantity_100": 8,
+              "quantity_current": 0.8
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0,
+              "quantity_current": 0
+            }
+          ],
+          "additives": [
+            "en:e941"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "a399b5c6-ce1f-4ba6-a3d8-cdf9a48d48c7",
+          "productName": "Vegeta",
+          "brand": "VegetaPodravka,",
+          "quantity": 10,
+          "calories_100": 157,
+          "calories_currQty": 15.7,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 22,
+              "quantity_current": 2.2
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.3,
+              "quantity_current": 0.03
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 157,
+              "quantity_current": 15.7
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 27,
+              "quantity_current": 2.7
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 8.5,
+              "quantity_current": 0.85
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0.5,
+              "quantity_current": 0.05
+            }
+          ],
+          "additives": [
+            "en:e101",
+            "en:e621",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "af1f8129-4b2b-49e0-b052-786cfe853e3c",
+          "productName": "Mușchi file",
+          "brand": "Matache Măcelaru",
+          "quantity": 10,
+          "calories_100": 87,
+          "calories_currQty": 8.7,
+          "nutriments": [
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 17.7,
+              "quantity_current": 1.77
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.9,
+              "quantity_current": 0.19
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.85,
+              "quantity_current": 0.09
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.76,
+              "quantity_current": 0.08
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0.9,
+              "quantity_current": 0.09
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.5,
+              "quantity_current": 0.15
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 87.9,
+              "quantity_current": 8.79
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1,
+              "quantity_current": 0.1
+            }
+          ],
+          "additives": [
+            "en:e250",
+            "en:e262",
+            "en:e262i",
+            "en:e301",
+            "en:e451"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "85525759-2828-4313-809b-bd1b90f8c836",
+          "productName": "Vin",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 318,
+          "calories_currQty": 31.8,
+          "nutriments": [
+            {
+              "name": "saturated-fat",
+              "quantity_100": 3030,
+              "quantity_current": 303
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 318,
+              "quantity_current": 31.8
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "92f76fbb-cd1f-4496-a78c-d3b8b15bf3ff",
+          "productName": "miere",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 325,
+          "calories_currQty": 32.5,
+          "nutriments": [
+            {
+              "name": "carbohydrates",
+              "quantity_100": 80.8,
+              "quantity_current": 8.08
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 0.5,
+              "quantity_current": 0.05
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 325,
+              "quantity_current": 32.5
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 80.8,
+              "quantity_current": 8.08
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "836d2563-8f2a-49c6-9ca1-7c6a3fb06657",
+          "productName": "Pesmet Boromir",
+          "brand": "Boromir",
+          "quantity": 10,
+          "calories_100": 401,
+          "calories_currQty": 40.1,
+          "nutriments": [
+            {
+              "name": "fat",
+              "quantity_100": 4.7,
+              "quantity_current": 0.47
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 2.06,
+              "quantity_current": 0.21
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 401.18,
+              "quantity_current": 40.12
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1.97,
+              "quantity_current": 0.2
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 11.81,
+              "quantity_current": 1.18
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 77.91,
+              "quantity_current": 7.79
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.44400000000000006,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.11,
+              "quantity_current": 0.11
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            }
+          ],
+          "additives": [
+            "en:e223",
+            "en:e500",
+            "en:e500ii",
+            "en:e503",
+            "en:e503ii"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "5e90072d-fa96-4361-9723-49ec3d2b034f",
+          "productName": "Avocado",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 8,
+          "calories_currQty": 0.8,
+          "nutriments": [
+            {
+              "name": "sodium",
+              "quantity_100": 0.073333333333332,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.18333333333333,
+              "quantity_current": 0.02
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14.666666666667,
+              "quantity_current": 1.47
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 8.6666666666667,
+              "quantity_current": 0.87
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2,
+              "quantity_current": 0.2
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 8.6666666666667,
+              "quantity_current": 0.87
+            },
+            {
+              "name": "fat",
+              "quantity_100": 14.666666666667,
+              "quantity_current": 1.47
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "7a2e0170-6c89-4637-894c-11a5d496ac24",
+          "productName": "Cartofi Bio",
+          "brand": "inima.bio",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "daba2511-29ce-48de-9762-e30f16f2b4a7",
+          "productName": "Broccoli",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 27,
+          "calories_currQty": 2.7,
+          "nutriments": [
+            {
+              "name": "proteins",
+              "quantity_100": 3.3333333333333,
+              "quantity_current": 0.33
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 1.1111111111111,
+              "quantity_current": 0.11
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 4.4444444444444,
+              "quantity_current": 0.44
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 27.777777777778,
+              "quantity_current": 2.78
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "9c477ba9-086e-49bc-aaf2-72bb34a95691",
+          "productName": "Zuzu lapte",
+          "brand": "Zuzu",
+          "quantity": 10,
+          "calories_100": 44,
+          "calories_currQty": 4.4,
+          "nutriments": [
+            {
+              "name": "proteins",
+              "quantity_100": 3.1,
+              "quantity_current": 0.31
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 4.5,
+              "quantity_current": 0.45
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.04,
+              "quantity_current": 0
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 4.5,
+              "quantity_current": 0.45
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.5,
+              "quantity_current": 0.15
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 44,
+              "quantity_current": 4.4
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1,
+              "quantity_current": 0.1
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "a0a18990-705e-4651-8cac-60ca0772e992",
+          "productName": "lapte",
+          "brand": "Friss",
+          "quantity": 10,
+          "calories_100": 62,
+          "calories_currQty": 6.2,
+          "nutriments": [
+            {
+              "name": "energy-kcal",
+              "quantity_100": 62,
+              "quantity_current": 6.2
+            },
+            {
+              "name": "fat",
+              "quantity_100": 3.5,
+              "quantity_current": 0.35
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.04,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 4.5,
+              "quantity_current": 0.45
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 4.5,
+              "quantity_current": 0.45
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2.4,
+              "quantity_current": 0.24
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "b879aa39-862c-45da-887f-5276cf861c36",
+          "productName": "Porumb",
+          "brand": "Globus",
+          "quantity": 10,
+          "calories_100": 118,
+          "calories_currQty": 11.8,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 3.5,
+              "quantity_current": 0.35
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 118,
+              "quantity_current": 11.8
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.3,
+              "quantity_current": 0.13
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 22,
+              "quantity_current": 2.2
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "aa04c6c4-03e1-4a2d-9d02-dc650195bcde",
+          "productName": "Porumb dulce",
+          "brand": "Alex Star",
+          "quantity": 10,
+          "calories_100": 228,
+          "calories_currQty": 22.8,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 2,
+              "quantity_current": 0.2
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 228,
+              "quantity_current": 22.8
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 2.2,
+              "quantity_current": 0.22
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.4,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 11.2,
+              "quantity_current": 1.12
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1,
+              "quantity_current": 0.1
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "34107155-316a-4c40-abf4-8d8a049656db",
+          "productName": "Bulion",
+          "brand": "Sultan",
+          "quantity": 10,
+          "calories_100": 80,
+          "calories_currQty": 8,
+          "nutriments": [
+            {
+              "name": "proteins",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.368,
+              "quantity_current": 0.04
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 15.4,
+              "quantity_current": 1.54
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.1,
+              "quantity_current": 0.11
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 8.1,
+              "quantity_current": 0.81
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.35,
+              "quantity_current": 0.03
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 80,
+              "quantity_current": 8
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.92,
+              "quantity_current": 0.09
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "ee81092b-6298-4ae8-930a-a8328600f1a0",
+          "productName": "Ulei",
+          "brand": "",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "f43c049e-275a-420b-b277-081c885fadc3",
+          "productName": "Piper Mozaic",
+          "brand": "Kamis",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "24ef2d70-a8c9-4bfd-b8da-233d8cfedf26",
+          "productName": "Parmezan",
+          "brand": "Sirela",
+          "quantity": 10,
+          "calories_100": 364,
+          "calories_currQty": 36.4,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 33,
+              "quantity_current": 3.3
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 364,
+              "quantity_current": 36.4
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 15.3,
+              "quantity_current": 1.53
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "fat",
+              "quantity_100": 24,
+              "quantity_current": 2.4
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "c1c9c2b7-c91f-442a-953e-0d82f37ccb7a",
+          "productName": "Smântână",
+          "brand": "Napolact",
+          "quantity": 10,
+          "calories_100": 247,
+          "calories_currQty": 24.7,
+          "nutriments": [
+            {
+              "name": "saturated-fat",
+              "quantity_100": 15,
+              "quantity_current": 1.5
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 247,
+              "quantity_current": 24.7
+            },
+            {
+              "name": "fat",
+              "quantity_100": 25,
+              "quantity_current": 2.5
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 3.3,
+              "quantity_current": 0.33
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 3.3,
+              "quantity_current": 0.33
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 2.3,
+              "quantity_current": 0.23
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "d7a60d2f-521a-4816-9bf2-735d2fac8482",
+          "productName": "Piept de pui",
+          "brand": "La Provoncia",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "e448da4f-f0eb-437b-baa7-573e98667785",
+          "productName": "Gorgonzola",
+          "brand": "Coop",
+          "quantity": 10,
+          "calories_100": 314,
+          "calories_currQty": 31.4,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 20,
+              "quantity_current": 2
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0,
+              "quantity_current": 0
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.4,
+              "quantity_current": 0.14
+            },
+            {
+              "name": "fat",
+              "quantity_100": 26,
+              "quantity_current": 2.6
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.5599999999999999,
+              "quantity_current": 0.06
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 314,
+              "quantity_current": 31.4
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 16,
+              "quantity_current": 1.6
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "049eb962-7cc5-4c65-9347-5fa637d79991",
+          "productName": "Boia dulce",
+          "brand": "",
+          "quantity": 10,
+          "calories_100": 388,
+          "calories_currQty": 38.8,
+          "nutriments": [
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1.7,
+              "quantity_current": 0.17
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 388,
+              "quantity_current": 38.8
+            },
+            {
+              "name": "fat",
+              "quantity_100": 12.9,
+              "quantity_current": 1.29
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.1,
+              "quantity_current": 0.01
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 54,
+              "quantity_current": 5.4
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.04,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 10.3,
+              "quantity_current": 1.03
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14.1,
+              "quantity_current": 1.41
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "91965b0e-93e4-4ac1-b116-8a0a411f2033",
+          "productName": "Unt",
+          "brand": "Big Panda",
+          "quantity": 10,
+          "calories_100": 587,
+          "calories_currQty": 58.7,
+          "nutriments": [
+            {
+              "name": "proteins",
+              "quantity_100": 0.3,
+              "quantity_current": 0.03
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.012,
+              "quantity_current": 0
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.2,
+              "quantity_current": 0.02
+            },
+            {
+              "name": "salt",
+              "quantity_100": 0.03,
+              "quantity_current": 0
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0.2,
+              "quantity_current": 0.02
+            },
+            {
+              "name": "fat",
+              "quantity_100": 65,
+              "quantity_current": 6.5
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 587,
+              "quantity_current": 58.7
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 38,
+              "quantity_current": 3.8
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "d7102a84-01df-4078-b5c4-973e5b34227e",
+          "productName": "Pateu de gasca",
+          "brand": "Scandia",
+          "quantity": 10,
+          "calories_100": 298,
+          "calories_currQty": 29.8,
+          "nutriments": [
+            {
+              "name": "saturated-fat",
+              "quantity_100": 4.6,
+              "quantity_current": 0.46
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 298,
+              "quantity_current": 29.8
+            },
+            {
+              "name": "fat",
+              "quantity_100": 26.7,
+              "quantity_current": 2.67
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.4,
+              "quantity_current": 0.14
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 4.6,
+              "quantity_current": 0.46
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 1.1,
+              "quantity_current": 0.11
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.5599999999999999,
+              "quantity_current": 0.06
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 9.2,
+              "quantity_current": 0.92
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "680ec61d-e03a-4f97-aaa4-64d9c5bb54a1",
+          "productName": "Mustar",
+          "brand": "Mustardino",
+          "quantity": 10,
+          "calories_100": 109,
+          "calories_currQty": 10.9,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 7,
+              "quantity_current": 0.7
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.48,
+              "quantity_current": 0.05
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.2,
+              "quantity_current": 0.12
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 5.4,
+              "quantity_current": 0.54
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 0.4
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 109,
+              "quantity_current": 10.9
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.3,
+              "quantity_current": 0.03
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 10.6,
+              "quantity_current": 1.06
+            },
+            {
+              "name": "fat",
+              "quantity_100": 4.7,
+              "quantity_current": 0.47
+            }
+          ],
+          "additives": [
+            "en:e101"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "b2eaffe2-72c3-4f90-ae8a-37f3c95fd242",
+          "productName": "Apă",
+          "brand": "",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "f16c91c6-e7f0-4444-965b-0afe3ecfcea1",
+          "productName": "Orez mare",
+          "brand": "Scotti",
+          "quantity": 10,
+          "calories_100": 334,
+          "calories_currQty": 33.4,
+          "nutriments": [
+            {
+              "name": "carbohydrates",
+              "quantity_100": 30,
+              "quantity_current": 3
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1,
+              "quantity_current": 0.1
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 334,
+              "quantity_current": 33.4
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 2,
+              "quantity_current": 0.2
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 14,
+              "quantity_current": 1.4
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 3,
+              "quantity_current": 0.3
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "58b5e08f-6346-4b40-a024-fdb4c19b9bde",
+          "productName": "Sare",
+          "brand": "peny",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [
+            {
+              "name": "salt",
+              "quantity_current": 10
+            }
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "3578b847-b07a-438c-8e40-abb95eca7b8c",
+          "productName": "Piper negru",
+          "brand": "",
+          "quantity": 10,
+          "calories_currQty": null,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 169.51,
+        "fat": 9.04,
+        "saturated_fat": 90.53,
+        "carbohydrates": 14.96,
+        "sugars": 4.87,
+        "proteins": 6.39,
+        "salt": 3.31
+      },
+      "additives": [
+        "e1104 ",
+        "e260 ",
+        "e330 ",
+        "e500 ",
+        "e500i ",
+        "e501 ",
+        "e501i ",
+        "e621 ",
+        "e627 ",
+        "e631 ",
+        "e941 ",
+        "e101 ",
+        "e250 ",
+        "e262 ",
+        "e262i ",
+        "e301 ",
+        "e451 ",
+        "e223 ",
+        "e500ii ",
+        "e503 ",
+        "e503ii "
+      ],
+      "nutriscore": "E",
+      "nutriscore_TEMP": {
+        "energy": 2483.75,
+        "fibers": 0,
+        "fruit_percentage": 0,
+        "proteins": 22.37,
+        "saturated_fats": 316.86,
+        "sodium": 4632,
+        "sugar": 17.05
+      }
+    },
+    {
+      "id": 3,
+      "name": "meniu 3",
+      "quantity": 300,
+      "date": "01.03.2023",
+      "ingredients": [
+        {
+          "id": "03371980-635d-4d6e-a322-7f3da92c328c",
+          "productName": "Vegeta",
+          "brand": "VegetaPodravka,",
+          "quantity": 100,
+          "calories_100": 157,
+          "calories_currQty": 157,
+          "nutriments": [
+            {
+              "name": "sugars",
+              "quantity_100": 22,
+              "quantity_current": 22
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 0.3,
+              "quantity_current": 0.3
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 157,
+              "quantity_current": 157
+            },
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 4
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 27,
+              "quantity_current": 27
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 8.5,
+              "quantity_current": 8.5
+            },
+            {
+              "name": "fat",
+              "quantity_100": 0.5,
+              "quantity_current": 0.5
+            }
+          ],
+          "additives": [
+            "en:e101",
+            "en:e621",
+            "en:e631"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "17a1df0b-8a20-4a7d-8578-85b3ad4c1930",
+          "productName": "Mușchi file",
+          "brand": "Matache Măcelaru",
+          "quantity": 100,
+          "calories_100": 87,
+          "calories_currQty": 87,
+          "nutriments": [
+            {
+              "name": "nova-group",
+              "quantity_100": 4,
+              "quantity_current": 4
+            },
+            {
+              "name": "proteins",
+              "quantity_100": 17.7,
+              "quantity_current": 17.7
+            },
+            {
+              "name": "salt",
+              "quantity_100": 1.9,
+              "quantity_current": 1.9
+            },
+            {
+              "name": "sugars",
+              "quantity_100": 0.85,
+              "quantity_current": 0.85
+            },
+            {
+              "name": "sodium",
+              "quantity_100": 0.76,
+              "quantity_current": 0.76
+            },
+            {
+              "name": "carbohydrates",
+              "quantity_100": 0.9,
+              "quantity_current": 0.9
+            },
+            {
+              "name": "fat",
+              "quantity_100": 1.5,
+              "quantity_current": 1.5
+            },
+            {
+              "name": "energy-kcal",
+              "quantity_100": 87.9,
+              "quantity_current": 87.9
+            },
+            {
+              "name": "saturated-fat",
+              "quantity_100": 1,
+              "quantity_current": 1
+            }
+          ],
+          "additives": [
+            "en:e250",
+            "en:e262",
+            "en:e262i",
+            "en:e301",
+            "en:e451"
+          ],
+          "source": "OpenFoodFacts"
+        },
+        {
+          "id": "ba7f8fad-374e-45eb-bf27-28c3f7aec0b3",
+          "productName": "Apă",
+          "brand": "",
+          "quantity": 100,
+          "calories_currQty": 0,
+          "nutriments": [],
+          "source": "OpenFoodFacts"
+        }
+      ],
+      "nutriments": {
+        "calories": 81.33,
+        "fat": 0.67,
+        "saturated_fat": 0.43,
+        "carbohydrates": 9.3,
+        "sugars": 7.62,
+        "proteins": 8.73,
+        "salt": 0.63
+      },
+      "additives": [
+        "e101 ",
+        "e621 ",
+        "e631 ",
+        "e250 ",
+        "e262 ",
+        "e262i ",
+        "e301 ",
+        "e451 "
+      ],
+      "nutriscore": "D",
+      "nutriscore_TEMP": {
+        "energy": 1024.66,
+        "fibers": 0,
+        "fruit_percentage": 0,
+        "proteins": 26.2,
+        "saturated_fats": 1.3,
+        "sodium": 760,
+        "sugar": 22.85
       }
     }
   ]
