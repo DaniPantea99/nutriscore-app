@@ -1,6 +1,649 @@
 {
   "data": [
     {
+      "product_name": "Water",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "oppelez-nous : /call us at: t-877-442-7873 visitez nous : /visit us at: eaulabrador.com livraison/delivery votre eau. valeur nutritive votre choix.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": [
+          {
+              "name": "carbohydrates",
+              "quantity_100": 0
+          },
+          {
+              "name": "sodium",
+              "quantity_100": 0
+          },
+          {
+              "name": "proteins",
+              "quantity_100": 0
+          },
+          {
+              "name": "energy-kcal",
+              "quantity_100": 0
+          },
+          {
+              "name": "saturated-fat",
+              "quantity_100": 0
+          },
+          {
+              "name": "fat",
+              "quantity_100": 0
+          },
+          {
+              "name": "sugars",
+              "quantity_100": 0
+          },
+          {
+              "name": "salt",
+              "quantity_100": 0
+          }
+      ],
+      "nutri_sodium": 0,
+      "nutri_salt": 0,
+      "nutri_energy-kcal": 0,
+      "nutri_sugars": 0
+  },
+    {
+      "product_name": "Parmesan",
+      "lang": "en",
+      "creator": "openfoodfacts-contributors",
+      "brands": "Kraft",
+      "image_front_url": "006/810/089/4776/front_en.24.400.jpg",
+      "packaging_tags": [
+          "en:1-plastic-container-pete",
+          "en:1-plastic-lid-pp"
+      ],
+      "quantity": "680 g",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "fromage parmesan (lait, sel, culture bactérienne, substances laitières modifiées, chlorure de calcium enzyme microbienne, lipase), cellulose en poudre, sorbate de potassium.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "additives_tags": [
+          "en:e1104"
+      ],
+      "nutriments": {
+          "0": {
+              "name": "proteins",
+              "quantity_100": 33.3
+          },
+          "1": {
+              "name": "sodium",
+              "quantity_100": 1.83
+          },
+          "2": {
+              "name": "carbohydrates",
+              "quantity_100": 0
+          },
+          "3": {
+              "name": "fat",
+              "quantity_100": 33.3
+          },
+          "4": {
+              "name": "sugars",
+              "quantity_100": 0
+          },
+          "5": {
+              "name": "saturated-fat",
+              "quantity_100": 20.8
+          },
+          "6": {
+              "name": "energy-kcal",
+              "quantity_100": 417
+          },
+          "8": {
+              "name": "nova-group",
+              "quantity_100": 4
+          },
+          "11": {
+              "name": "salt",
+              "quantity_100": 4.58
+          }
+      },
+      "nutri_sodium": 1.83,
+      "nutri_sugars": 0,
+      "nutri_energy-kcal": 417,
+      "nova-score": 4,
+      "nova-info": "",
+      "nutri_salt": 4.58,
+      "allergens": [
+          "milk"
+      ],
+      "calories": 417,
+      "burn_calories": {
+          "walking": "102.12",
+          "pedalling": "59.57",
+          "running": "44.68"
+      }
+  },
+    {
+      "product_name": "Noodles",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "Bare naked foods",
+      "image_front_url": "070/281/159/4777/front_en.19.400.jpg",
+      "packaging_tags": [],
+      "quantity": "250g",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": [
+          "Vegetarian",
+          " Vegan"
+      ],
+      "nutriments": {
+          "0": {
+              "name": "energy-kcal",
+              "quantity_100": 50
+          },
+          "1": {
+              "name": "saturated-fat",
+              "quantity_100": 0.1
+          },
+          "2": {
+              "name": "carbohydrates",
+              "quantity_100": 1
+          },
+          "3": {
+              "name": "fat",
+              "quantity_100": 0.1
+          },
+          "4": {
+              "name": "salt",
+              "quantity_100": 0.01
+          },
+          "6": {
+              "name": "sodium",
+              "quantity_100": 0.004
+          },
+          "7": {
+              "name": "sugars",
+              "quantity_100": 0.1
+          },
+          "8": {
+              "name": "proteins",
+              "quantity_100": 0.2
+          }
+      },
+      "nutri_energy-kcal": 50,
+      "nutri_salt": 0.01,
+      "nutri_sodium": 0.004,
+      "nutri_sugars": 0.1,
+      "calories": 50,
+      "burn_calories": {
+          "walking": "12.24",
+          "pedalling": "7.14",
+          "running": "5.36"
+      }
+  },
+  {
+      "product_name": "Noodle",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "Pot Noodle,Unilever",
+      "image_front_url": "500/011/820/3534/front_en.12.400.jpg",
+      "packaging_tags": [
+          "en:plastic",
+          "en:pot",
+          "en:film",
+          "en:alufoil"
+      ],
+      "quantity": "90 g",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "noodles: noodles (50%) [wheat flour, palm fat, salt, firming agents (potassium carbonate, sodium carbonate)]. \nsauce and vegetables: water, vegetables (5.8%) [carrots (3.5%). peas, onion powder, tomato powder, garlic powder], maltodextrin, wheat flour, flour enhancers (monosodium glutamate, disodium inosinate, disodium guanylate), spice, flavourings, sugar, soy sauce (soybeans, wheat), potassium chloride, palm fat, chives, acid (citric acid), smoke flavouring. \nsachet: soy sauce (1.3%) [water, soy sauce (soybeans, wheat), salt, molasses, sugar and acid (acetic acid)].",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": [
+          "Vegetarian",
+          " European Vegetarian Union",
+          " Lacto-vegetarian",
+          " No artificial flavors",
+          " Ovo-vegetarian",
+          " European Vegetarian Union Ovo-lacto-vegetarian",
+          " No artificial colors",
+          " No artificial colours or flavours",
+          " Ovo-lacto-vegetarian"
+      ],
+      "additives_tags": [
+          "en:e260",
+          "en:e330",
+          "en:e500",
+          "en:e500i",
+          "en:e501",
+          "en:e501i",
+          "en:e621",
+          "en:e627",
+          "en:e631"
+      ],
+      "nutriments": {
+          "0": {
+              "name": "fat",
+              "quantity_100": 5.3
+          },
+          "1": {
+              "name": "energy-kcal",
+              "quantity_100": 140
+          },
+          "2": {
+              "name": "proteins",
+              "quantity_100": 3.2
+          },
+          "3": {
+              "name": "salt",
+              "quantity_100": 0.63
+          },
+          "4": {
+              "name": "sodium",
+              "quantity_100": 0.252
+          },
+          "5": {
+              "name": "sugars",
+              "quantity_100": 1.5
+          },
+          "7": {
+              "name": "carbohydrates",
+              "quantity_100": 19
+          },
+          "12": {
+              "name": "saturated-fat",
+              "quantity_100": 2.6
+          },
+          "13": {
+              "name": "nova-group",
+              "quantity_100": 4
+          }
+      },
+      "nutri_energy-kcal": 140,
+      "nutri_salt": 0.63,
+      "nutri_sodium": 0.252,
+      "nutri_sugars": 1.5,
+      "nova-score": 4,
+      "nova-info": "",
+      "allergens": [
+          "gluten",
+          "soybeans"
+      ],
+      "calories": 140,
+      "burn_calories": {
+          "walking": "34.29",
+          "pedalling": "20.00",
+          "running": "15.00"
+      }
+  },
+  {
+      "product_name": "Mr. Noodle Handmade Noodles",
+      "lang": "en",
+      "creator": "foodvisor",
+      "brands": "",
+      "image_front_url": "",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": [
+          {
+              "name": "sugars",
+              "quantity_100": 5.4
+          },
+          {
+              "name": "fat",
+              "quantity_100": 52
+          },
+          {
+              "name": "energy-kcal",
+              "quantity_100": 327
+          },
+          {
+              "name": "saturated-fat",
+              "quantity_100": 5.8
+          },
+          {
+              "name": "proteins",
+              "quantity_100": 4
+          },
+          {
+              "name": "carbohydrates",
+              "quantity_100": 57.9
+          }
+      ],
+      "nutri_sugars": 5.4,
+      "nutri_energy-kcal": 327,
+      "calories": 327,
+      "burn_calories": {
+          "walking": "80.08",
+          "pedalling": "46.71",
+          "running": "35.04"
+      }
+  },
+    {
+      "product_name": "milk",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "Arla",
+      "image_front_url": "",
+      "packaging_tags": [
+          "en:hdpe-bottle",
+          "en:mixed-plastic-lid",
+          "en:mixed-plastic-sleeve"
+      ],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "1 litre e pasteurised, homogenised, standardised, whole, fresh filtered milk nutrition information",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": {
+          "0": {
+              "name": "sodium",
+              "quantity_100": 0.04
+          },
+          "1": {
+              "name": "sugars",
+              "quantity_100": 4.7
+          },
+          "2": {
+              "name": "salt",
+              "quantity_100": 0.1
+          },
+          "3": {
+              "name": "proteins",
+              "quantity_100": 3.4
+          },
+          "4": {
+              "name": "energy-kcal",
+              "quantity_100": 65
+          },
+          "5": {
+              "name": "saturated-fat",
+              "quantity_100": 2.3
+          },
+          "6": {
+              "name": "carbohydrates",
+              "quantity_100": 4.7
+          },
+          "8": {
+              "name": "fat",
+              "quantity_100": 3.6
+          }
+      },
+      "nutri_sodium": 0.04,
+      "nutri_sugars": 4.7,
+      "nutri_salt": 0.1,
+      "nutri_energy-kcal": 65,
+      "calories": 65,
+      "burn_calories": {
+          "walking": "15.92",
+          "pedalling": "9.29",
+          "running": "6.96"
+      }
+  },
+    {
+      "product_name": "Flour perfect pastry flour",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "007/101/206/0016/front_en.3.400.jpg",
+      "packaging_tags": [],
+      "quantity": "48 oz",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": {
+          "0": {
+              "name": "energy-kcal",
+              "quantity_100": 366.66666666667
+          },
+          "1": {
+              "name": "saturated-fat",
+              "quantity_100": 0
+          },
+          "2": {
+              "name": "fat",
+              "quantity_100": 0
+          },
+          "3": {
+              "name": "sugars",
+              "quantity_100": 0
+          },
+          "4": {
+              "name": "carbohydrates",
+              "quantity_100": 76.666666666667
+          },
+          "5": {
+              "name": "sodium",
+              "quantity_100": 0
+          },
+          "6": {
+              "name": "proteins",
+              "quantity_100": 10
+          },
+          "10": {
+              "name": "salt",
+              "quantity_100": 0
+          }
+      },
+      "nutri_energy-kcal": 366.66666666667,
+      "nutri_sugars": 0,
+      "nutri_sodium": 0,
+      "nutri_salt": 0,
+      "calories": 366,
+      "burn_calories": {
+          "walking": "89.63",
+          "pedalling": "52.29",
+          "running": "39.21"
+      }
+  },
+    {
+      "product_name": "Broth",
+      "lang": "en",
+      "creator": "usda-ndb-import",
+      "brands": "Lowes Foods,  Lowe's Food Stores  Inc.",
+      "image_front_url": "",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "Chicken broth (water, chicken flavor concentrate [chicken stock, salt, chicken flavor, yeast extract, carrot, onion powder, cornstarch, celery, onion, flavor]), contains less than 1% of: sea salt, cane sugar.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "nutriments": {
+          "0": {
+              "name": "fat",
+              "quantity_100": 0
+          },
+          "1": {
+              "name": "sugars",
+              "quantity_100": 0.42
+          },
+          "2": {
+              "name": "carbohydrates",
+              "quantity_100": 0.42
+          },
+          "3": {
+              "name": "sodium",
+              "quantity_100": 0.358
+          },
+          "4": {
+              "name": "calcium",
+              "quantity_100": 0
+          },
+          "5": {
+              "name": "proteins",
+              "quantity_100": 0.42
+          },
+          "8": {
+              "name": "salt",
+              "quantity_100": 0.895
+          },
+          "10": {
+              "name": "energy-kcal",
+              "quantity_100": 2
+          },
+          "12": {
+              "name": "saturated-fat",
+              "quantity_100": 0
+          },
+          "15": {
+              "name": "nova-group",
+              "quantity_100": 4
+          }
+      },
+      "nutri_sugars": 0.42,
+      "nutri_sodium": 0.358,
+      "nutri_salt": 0.895,
+      "nutri_energy-kcal": 2,
+      "nova-score": 4,
+      "nova-info": "",
+      "allergens": [
+          "celery"
+      ],
+      "calories": 2,
+      "burn_calories": {
+          "walking": "0.49",
+          "pedalling": "0.29",
+          "running": "0.21"
+      }
+  },
+    {
+      "product_name": "Butter",
+      "lang": "en",
+      "creator": "kiliweb",
+      "brands": "",
+      "image_front_url": "",
+      "packaging_tags": [],
+      "quantity": "",
+      "sursa": "OpenFoodFacts",
+      "ingredients_no": 0,
+      "aditives": [],
+      "has_pork": 0,
+      "has_chicken": 0,
+      "has_cow": 0,
+      "ingredients": "",
+      "ingredients_str": "cream (milk), salt, nitrogen. ingrédients: crème (lait), sel, azote.",
+      "is_vegan": 0,
+      "is_vegetarian": 0,
+      "labels": "",
+      "additives_tags": [
+          "en:e941"
+      ],
+      "nutriments": {
+          "0": {
+              "name": "salt",
+              "quantity_100": 0.2
+          },
+          "1": {
+              "name": "sugars",
+              "quantity_100": 0
+          },
+          "2": {
+              "name": "sodium",
+              "quantity_100": 0.08
+          },
+          "3": {
+              "name": "nova-group",
+              "quantity_100": 4
+          },
+          "4": {
+              "name": "proteins",
+              "quantity_100": 0.1
+          },
+          "5": {
+              "name": "saturated-fat",
+              "quantity_100": 5
+          },
+          "6": {
+              "name": "energy-kcal",
+              "quantity_100": 70
+          },
+          "8": {
+              "name": "fat",
+              "quantity_100": 8
+          },
+          "10": {
+              "name": "carbohydrates",
+              "quantity_100": 0
+          }
+      },
+      "nutri_salt": 0.2,
+      "nutri_sugars": 0,
+      "nutri_sodium": 0.08,
+      "nova-score": 4,
+      "nova-info": "",
+      "nutri_energy-kcal": 70,
+      "allergens": [
+          "milk"
+      ],
+      "calories": 70,
+      "burn_calories": {
+          "walking": "17.14",
+          "pedalling": "10.00",
+          "running": "7.50"
+      }
+  },
+    {
       "product_name": "Vegeta",
       "lang": "en",
       "creator": "openfood-ch-import",

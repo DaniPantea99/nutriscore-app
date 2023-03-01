@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { format2Decimals } from '../utility';
 import { RecipeDetails } from './RecipeDetails';
 import ListOfIngredients from './ListOfIngredients';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 const initialState = {
   recipe: {
@@ -272,7 +272,7 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
 
   return (
     <div className="flex flex-col h-full p-4 text-gray-900 bg-gray-100 shadow-2xl md:px-7">
-      <NavLink to={'/pdf'}>Print</NavLink>
+      {/* <NavLink to={'/pdf'}>Print</NavLink> */}
       {/* <button onClick={() => console.log(state.recipe)}>TEST recipe</button> */}
       <div className="flex justify-between gap-3">
         <h2 className="text-base font-semibold">
