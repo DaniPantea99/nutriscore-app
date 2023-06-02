@@ -102,23 +102,23 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
           nutriments = [
             {
               name: 'salt',
-              quantity_current: Number(value) ?? 0,
+              quantity_current: +value ?? 0,
             },
           ];
         } else if (item.nutriments.length) {
           nutriments = item.nutriments?.map((el) => ({
             ...el,
             quantity_current: format2Decimals(
-              (Number(el.quantity_100) / 100) * Number(value)
+              (+el.quantity_100 / 100) * +value
             ),
           }));
         }
         return {
           ...item,
-          quantity: Number(value),
+          quantity: +value,
           calories_currQty:
             format2Decimals(
-              ((Number(item.calories_100) ?? 0) / 100) * Number(value)
+              ((item.calories_100 ? +item.calories_100 : 0) / 100) * +value
             ) ?? 0,
           nutriments: nutriments,
         };
@@ -148,28 +148,25 @@ function CreateRecipe({ onCloseAndDiscard, recipe }) {
             0
           ) *
             100) /
-            Number(recipeQuantity)
+            +recipeQuantity
         ),
         fat: format2Decimals(
-          (calculateQty(_ingredients, 'fat') * 100) / Number(recipeQuantity)
+          (calculateQty(_ingredients, 'fat') * 100) / +recipeQuantity
         ),
         saturated_fat: format2Decimals(
-          (calculateQty(_ingredients, 'saturated-fat') * 100) /
-            Number(recipeQuantity)
+          (calculateQty(_ingredients, 'saturated-fat') * 100) / +recipeQuantity
         ),
         carbohydrates: format2Decimals(
-          (calculateQty(_ingredients, 'carbohydrates') * 100) /
-            Number(recipeQuantity)
+          (calculateQty(_ingredients, 'carbohydrates') * 100) / +recipeQuantity
         ),
         sugars: format2Decimals(
-          (calculateQty(_ingredients, 'sugars') * 100) / Number(recipeQuantity)
+          (calculateQty(_ingredients, 'sugars') * 100) / +recipeQuantity
         ),
         proteins: format2Decimals(
-          (calculateQty(_ingredients, 'proteins') * 100) /
-            Number(recipeQuantity)
+          (calculateQty(_ingredients, 'proteins') * 100) / +recipeQuantity
         ),
         salt: format2Decimals(
-          (calculateQty(_ingredients, 'salt') * 100) / Number(recipeQuantity)
+          (calculateQty(_ingredients, 'salt') * 100) / +recipeQuantity
         ),
       },
       additives: _ingredients.length ? calculateAdditives(_ingredients) : [],

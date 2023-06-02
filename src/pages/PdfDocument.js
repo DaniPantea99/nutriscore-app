@@ -7,10 +7,7 @@ import {
   StyleSheet,
   PDFViewer,
   Image,
-  Font, 
 } from '@react-pdf/renderer';
-
-// Font.register({ family: 'Roboto', src: source });
 
 const styles = StyleSheet.create({
   viewer: {
@@ -18,23 +15,20 @@ const styles = StyleSheet.create({
     height: window.innerHeight,
   },
   page: {
-    backgroundColor: '#ecb75b',
+    backgroundColor: 'white',
     fontSize: 16,
+    fontFamily: 'Helvetica',
   },
   section: {
-    margin: 10,
-    padding: 10,
     height: '100%',
-    // fontFamily: 'Roboto',
-
   },
   brand: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: '20',
-    backgroundColor: '#232323',
+    backgroundColor: 'white',
     borderRadius: 20,
-    color: 'white',
+    color: 'black',
     fontSize: '28',
   },
   image: {
@@ -46,6 +40,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginBottom: 80,
     fontSize: 42,
+    fontFamily: 'Helvetica-BoldOblique',
   },
   cards: {
     flexDirection: 'row',
@@ -57,36 +52,46 @@ const styles = StyleSheet.create({
     fontSize: 12,
     width: 220,
     minHeight: 200,
-    padding: 20,
-    backgroundColor: '#4e220d',
-    borderRadius: 20,
-    color: '#fefcf0',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#FFFBF5',
+    borderRadius: 15,
+    borderTop: 1,
+    borderBottom: 1,
+    borderColor: '#DAA520',
+    color: '#4C4C4C',
   },
   nutritionCard: {
     flexDirection: 'column',
     fontSize: 12,
     width: 220,
     minHeight: 200,
-    padding: 20,
-    backgroundColor: '#9b6030',
-    borderRadius: 20,
-    color: '#fefcf0',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#FFFBF5',
+    borderRadius: 15,
+    borderTop: 1,
+    borderBottom: 1,
+    borderColor: '#DAA520',
+    color: '#4C4C4C',
   },
   ingredientsCardTitle: {
-    backgroundColor: '#9b6030',
-    borderRadius: 30,
+    borderBottom: 1,
+    borderColor: '#DAA520',
     paddingHorizontal: 12,
-    paddingVertical: 8,
-    fontSize: 18,
+    paddingVertical: 5,
+    fontSize: 16,
     textAlign: 'center',
+    fontFamily: 'Helvetica-Bold',
   },
   nutritionCardTitle: {
-    backgroundColor: '#4e220d',
-    borderRadius: 30,
+    borderBottom: 1,
+    borderColor: '#DAA520',
     paddingHorizontal: 12,
-    paddingVertical: 8,
-    fontSize: 18,
+    paddingVertical: 5,
+    fontSize: 16,
     textAlign: 'center',
+    fontFamily: 'Helvetica-Bold',
   },
   cardContent: {
     flexGrow: 1,
@@ -98,7 +103,9 @@ const styles = StyleSheet.create({
 });
 
 const PdfDocument = () => {
+
   return (
+
     <PDFViewer style={styles.viewer}>
       <Document>
         <Page size="A4" style={styles.page}>
@@ -109,7 +116,7 @@ const PdfDocument = () => {
             </View>
 
             <View style={styles.recipeTitle}>
-              <Text>NUMELE RETETEI</Text>
+              <Text>nume reteta</Text>
             </View>
 
             <View style={styles.cards}>
@@ -132,6 +139,8 @@ const PdfDocument = () => {
         </Page>
       </Document>
     </PDFViewer>
+
+
   );
 };
 
