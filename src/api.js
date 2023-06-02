@@ -1,6 +1,5 @@
-// const IngredientsURL = "https://api.infocons.ro/api/en/open/food/"
 
-const InfoConsIngredientsURL = 'http://localhost:3000/data';
-const InfoConsRecipesURL = 'http://localhost:3000/recipes';
+const IngredientsURL = 'https://nutriscore-app-json-server.vercel.app/data';
+const RecipesURL = 'https://nutriscore-app-json-server.vercel.app/recipes';
 
-export { InfoConsIngredientsURL, InfoConsRecipesURL };
+export { IngredientsURL, RecipesURL };
