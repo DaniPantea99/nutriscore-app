@@ -21,7 +21,7 @@ function RecipeDetails({ recipe }) {
             recipe?.ingredients?.map((item, index) => (
               <tr key={index}>
                 <td className="first-letter:uppercase">{item.productName}</td>
-                <td>{format2Decimals(Number(item?.quantity)) ?? 0}</td>
+                <td>{format2Decimals(+item?.quantity) ?? 0}</td>
               </tr>
             ))
           ) : (
@@ -35,7 +35,7 @@ function RecipeDetails({ recipe }) {
         <tfoot>
           <tr className="font-semibold">
             <td>{t('editRecipe.details.totalQuantity')}</td>
-            <td>{format2Decimals(Number(recipe?.quantity)) ?? 0}</td>
+            <td>{format2Decimals(+recipe?.quantity) ?? 0}</td>
           </tr>
         </tfoot>
       </table>
@@ -52,35 +52,35 @@ function RecipeDetails({ recipe }) {
           <ul className="ml-6 list-disc">
             <li>
               {t('editRecipe.details.calories')}:&nbsp;
-              {Number(recipe.nutriments.calories) ? recipe?.nutriments?.calories : 0} kcal /&nbsp;
-              {Number(recipe.nutriments.calories) ? format2Decimals(recipe?.nutriments?.calories * 4.184) : 0} kJ
+              {recipe.nutriments.calories ? format2Decimals(recipe?.nutriments?.calories) : 0} kcal /&nbsp;
+              {recipe.nutriments.calories ? format2Decimals(recipe?.nutriments?.calories * 4.184) : 0} kJ
             </li>
             <li>
               {t('editRecipe.details.fat')}:&nbsp;
-              {Number(recipe.nutriments.fat) ? recipe?.nutriments?.fat : 0}
+              {recipe.nutriments.fat ? format2Decimals(recipe?.nutriments?.fat) : 0}
               <ul className="ml-6 list-disc">
                 <li>
                   {t('editRecipe.details.saturatedFat')}:&nbsp;
-                  {Number(recipe.nutriments.saturated_fat) ? recipe?.nutriments?.saturated_fat : 0}
+                  {recipe.nutriments.saturated_fat ? format2Decimals(recipe?.nutriments?.saturated_fat) : 0}
                 </li>
               </ul>
             </li>
             <li>
               {t('editRecipe.details.carbohydrates')}:{' '}
-              {Number(recipe.nutriments.carbohydrates) ? recipe?.nutriments?.carbohydrates : 0}
+              {recipe.nutriments.carbohydrates ? format2Decimals(recipe?.nutriments?.carbohydrates) : 0}
               <ul className="ml-6 list-disc">
                 <li>
                   {t('editRecipe.details.sugar')}:{' '}
-                  {Number(recipe.nutriments.sugars) ? recipe?.nutriments?.sugars : 0}
+                  {recipe.nutriments.sugars ? format2Decimals(recipe?.nutriments?.sugars) : 0}
                 </li>
               </ul>
             </li>
             <li>
               {t('editRecipe.details.proteins')}:{' '}
-              {Number(recipe.nutriments.proteins) ? recipe?.nutriments?.proteins : 0}
+              {recipe.nutriments.proteins ? format2Decimals(recipe?.nutriments?.proteins) : 0}
             </li>
             <li>
-              {t('editRecipe.details.salt')}: {Number(recipe.nutriments.salt) ? recipe?.nutriments?.salt :  0}
+              {t('editRecipe.details.salt')}: {recipe.nutriments.salt ? format2Decimals(recipe?.nutriments?.salt) :  0}
             </li>
           </ul>
         ) : (
