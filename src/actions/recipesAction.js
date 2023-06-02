@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { InfoConsRecipesURL } from '../api.js';
+import { RecipesURL } from '../api.js';
 
 const loadRecipes = () => async (dispatch) => {
-  const allRecipes = await axios.get(InfoConsRecipesURL);
+  const allRecipes = await axios.get(RecipesURL);
   dispatch({
     type: 'FETCH_RECIPES',
     payload: {
@@ -12,7 +12,7 @@ const loadRecipes = () => async (dispatch) => {
 };
 
 const createRecipe = (recipe) => async (dispatch) => {
-  const createdRecipe = await axios.post(InfoConsRecipesURL, recipe);
+  const createdRecipe = await axios.post(RecipesURL, recipe);
   dispatch({
     type: 'CREATE_RECIPE',
     payload: {
@@ -28,7 +28,7 @@ const createRecipe = (recipe) => async (dispatch) => {
 };
 
 const updateRecipe = (recipe) => async (dispatch) => {
-  const updatedRecipe = await axios.put(`${InfoConsRecipesURL}/${recipe.id}`, recipe)
+  const updatedRecipe = await axios.put(`${RecipesURL}/${recipe.id}`, recipe)
   dispatch({
     type: 'UPDATE_RECIPE',
     payload: {
@@ -44,11 +44,11 @@ const updateRecipe = (recipe) => async (dispatch) => {
 };
 
 const removeRecipe = (recipe) => async (dispatch) => {
-  const allRecipes = await axios.get(InfoConsRecipesURL);
+  const allRecipes = await axios.get(RecipesURL);
   const filtered = allRecipes.data.filter(
     (element) => element.id !== recipe.id
   );
-  await axios.delete(InfoConsRecipesURL + `/${recipe.id}`);
+  await axios.delete(RecipesURL + `/${recipe.id}`);
   dispatch({
     type: 'REMOVE_RECIPE',
     payload: {

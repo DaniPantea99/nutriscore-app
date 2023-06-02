@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { InfoConsIngredientsURL } from '../api.js';
+import { IngredientsURL } from '../api.js';
 
 
 const loadIngredients = () => async (dispatch) => {
-  const allIngredients = await axios.get(InfoConsIngredientsURL);
+  const allIngredients = await axios.get(IngredientsURL);
 
   dispatch({
     type: 'FETCH_INGREDIENTS',
