@@ -37,6 +37,10 @@ i18n
             createButton: 'Create New Recipe',
             searchInput: 'Search',
           },
+          filterColumns: {
+            title: 'Filter Columns',
+            allFilters: 'Toggle all',
+          },
           recipesOption: {
             openBtn: 'View',
             removeBtn: 'Remove',
@@ -86,6 +90,11 @@ i18n
             title: 'Settings Page',
             translateButton: 'Translate',
             language: 'Select Language:',
+            languageList: {
+              en: 'English',
+              ro: 'Romanian',
+            },
+            noLanguageFound: 'Nothing found.',
             themeSwitcher: 'Set Theme:',
           },
           ingredient: {
@@ -96,7 +105,7 @@ i18n
             inputPlaceholder: 'quantity...',
             brand: 'Brand',
             source: 'Source',
-          }
+          },
         },
       },
       ro: {
@@ -126,6 +135,10 @@ i18n
             },
             createButton: 'Creare Rețetă Nouă',
             searchInput: 'Căutare',
+          },
+          filterColumns: {
+            title: 'Filtrează Coloanele',
+            allFilters: 'Comută toate',
           },
           recipesOption: {
             openBtn: 'Deschide',
@@ -173,12 +186,15 @@ i18n
             title: 'Pagină Client',
           },
           settingsPage: {
-            title: 'Setări',
+            title: 'Pagina de Setări',
+            translateButton: 'Tradu',
             language: 'Selectează Limba',
-            theme: {
-              title: 'Set Theme:',
-              mode: 'Light / Dark',
+            languageList: {
+              en: 'Engleză',
+              ro: 'Română',
             },
+            noLanguageFound: 'Nu s-a găsit.',
+            themeSwitcher: 'Setează Tema:',
           },
           ingredient: {
             calories: 'Calorii',
@@ -188,7 +204,7 @@ i18n
             inputPlaceholder: 'cantitatea...',
             brand: 'Marcă',
             source: 'Sursa',
-          }
+          },
         },
       },
     },
